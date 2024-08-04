@@ -20,7 +20,9 @@ For example I think most of the times `open` does not occur as a tactic.)
 It then sorts the tactics by number of occurances as tokens, visualizes the counts,
 and writes a `README.md` markdown file.
 
-Click into `sort.ipynb` in github if you want to see the visualization.
+Click into `sort.ipynb` if you want to see a visualization (e.g. a bar chart of top 200 tactics).
+
+What I find interesting is that even if the y-axis is logarithmic, the frequency curve is not a straight line, but still a concave curve. As far as I know, this is different from the situation of human languages. The frequency of human words should be exponentially distributed.
 
 ## Tactics used at least once
 
