@@ -14,11 +14,13 @@ I then copy-pasted the output into a file called `tactics.txt`
 and processed it with the python script in `sort.ipynb`.
 
 `sort.ipynb` reads all `.lean` files in `./lake/packages/mathlib`,
-splits the text by spaces and line breaks, and counts the tactics.
-It then sorts the tactics by usage count, visualizes the counts,
+splits the text into "tokens" by spaces and line breaks, and counts the tokens.
+(This crude method does not count accurately though. 
+For example I think most of the times `open` does not occur as a tactic.)
+It then sorts the tactics by number of occurances as tokens, visualizes the counts,
 and writes a `README.md` markdown file.
 
-Click into `sort.ipynb` if you want to see the visualization.
+Click into `sort.ipynb` in github if you want to see the visualization.
 
 ## Tactics used at least once
 
