@@ -12,10 +12,12 @@ import Mathlib
 I then copy-pasted the output into a file called `tactics.txt`
 and processed it with the python script in `sort.ipynb`.
 
-`sort.ipynb` reads all `.lean` files in ./lake/packages/mathlib ,
+`sort.ipynb` reads all `.lean` files in `./lake/packages/mathlib`,
 splits the text by spaces and line breaks, and counts the tactics.
 It then sorts the tactics by usage count, visualizes the counts,
 and writes a `README.md` markdown file.
+
+Click into `sort.ipynb` if you want to see the visualization.
 
 ## Tactics used at least once
 
@@ -29,8 +31,6 @@ and writes a `README.md` markdown file.
 of goals if there are any. It is useful as a placeholder after starting a tactic block
 such as `by _` to make it syntactically correct and show the current goal.
 
----
-
 ### 2. rw
 
 > Occurrences: 57452
@@ -38,8 +38,6 @@ such as `by _` to make it syntactically correct and show the current goal.
 > `import Lean.Parser.Tactic.rwSeq`
 
 `rw` is like `rewrite`, but also tries to close the goal by "cheap" (reducible) `rfl` afterwards.
-
----
 
 ### 3. simp
 
@@ -66,8 +64,6 @@ non-dependent hypotheses. It has many variants:
 - `simp [*] at *` simplifies target and all (propositional) hypotheses using the
   other hypotheses.
 
----
-
 ### 4. exact
 
 > Occurrences: 37045
@@ -75,8 +71,6 @@ non-dependent hypotheses. It has many variants:
 > `import Lean.Parser.Tactic.exact`
 
 `exact e` closes the main goal if its target type matches that of `e`.
-
----
 
 ### 5. rfl
 
@@ -91,17 +85,11 @@ for new reflexive relations.
 Remark: `rfl` is an extensible tactic. We later add `macro_rules` to try different
 reflexivity theorems (e.g., `Iff.rfl`).
 
----
-
 ### 6. have
 
 > Occurrences: 25041
 > 
 > `import Mathlib.Tactic.tacticHave_`
-
-
-
----
 
 ### 7. refine
 
@@ -113,8 +101,6 @@ reflexivity theorems (e.g., `Iff.rfl`).
 holes in `e` that are not solved by unification with the main goal's target type
 are converted into new goals, using the hole's name, if any, as the goal case name.
 
----
-
 ### 8. apply
 
 > Occurrences: 14067
@@ -123,8 +109,6 @@ are converted into new goals, using the hole's name, if any, as the goal case na
 
 `apply (config := cfg) e` is like `apply e` but allows you to provide a configuration
 `cfg : ApplyConfig` to pass to the underlying apply operation.
-
----
 
 ### 9. let
 
@@ -141,8 +125,6 @@ The `let` tactic is for adding definitions to the local context of the main goal
   It is convenient for types that let only one applicable constructor.
   For example, given `p : α × β × γ`, `let ⟨x, y, z⟩ := p` produces the
   local variables `x : α`, `y : β`, and `z : γ`.
-
----
 
 ### 10. intro
 
@@ -166,8 +148,6 @@ match x with
 That is, `intro` can be followed by match arms and it introduces the values while
 doing a pattern match. This is equivalent to `fun` with match arms in term mode.
 
----
-
 ### 11. open
 
 > Occurrences: 10155
@@ -176,8 +156,6 @@ doing a pattern match. This is equivalent to `fun` with match arms in term mode.
 
 `open Foo in tacs` (the tactic) acts like `open Foo` at command level,
 but it opens a namespace only within the tactics `tacs`.
-
----
 
 ### 12. simpa
 
@@ -198,8 +176,6 @@ more robust under changes to the simp lemma set.
 hypothesis `this` if present in the context, then try to close the goal using
 the `assumption` tactic.
 
----
-
 ### 13. ext
 
 > Occurrences: 8283
@@ -218,8 +194,6 @@ The `ext1 pat*` tactic is like `ext pat*` except that it only applies a single e
 
 Unused patterns will generate warning.
 Patterns that don't match the variables will typically result in the introduction of anonymous hypotheses.
-
----
 
 ### 14. obtain
 
@@ -243,8 +217,6 @@ If `⟨patt⟩` is omitted, `rcases` will try to infer the pattern.
 
 If `type` is omitted, `:= proof` is required.
 
----
-
 ### 15. rintro
 
 > Occurrences: 6623
@@ -260,8 +232,6 @@ two subgoals, one with variables `a d e` and the other with `b c d e`.
 `rintro`, unlike `rcases`, also supports the form `(x y : ty)` for introducing
 and type-ascripting multiple variables at once, similar to binders.
 
----
-
 ### 16. <;>
 
 > Occurrences: 6545
@@ -271,17 +241,11 @@ and type-ascripting multiple variables at once, similar to binders.
 `tac <;> tac'` runs `tac` on the main goal and `tac'` on each produced goal,
 concatenating all goals produced by `tac'`.
 
----
-
 ### 17. set
 
 > Occurrences: 6237
 > 
 > `import Mathlib.Tactic.setTactic`
-
-
-
----
 
 ### 18. rcases
 
@@ -331,8 +295,6 @@ matching on the constructor `quot.mk`.
 `rcases h : e with PAT` will do the same as `rcases e with PAT` with the exception that an
 assumption `h : e = PAT` will be added to the context.
 
----
-
 ### 19. simp_rw
 
 > Occurrences: 5533
@@ -360,8 +322,6 @@ example {a : ℕ}
   simp_rw [h1, h2]
 ```
 
----
-
 ### 20. dsimp
 
 > Occurrences: 4699
@@ -372,8 +332,6 @@ The `dsimp` tactic is the definitional simplifier. It is similar to `simp` but o
 applies theorems that hold by reflexivity. Thus, the result is guaranteed to be
 definitionally equal to the input.
 
----
-
 ### 21. set_option
 
 > Occurrences: 4313
@@ -382,8 +340,6 @@ definitionally equal to the input.
 
 `set_option opt val in tacs` (the tactic) acts like `set_option opt val` at the command level,
 but it sets the option only within the tactics `tacs`.
-
----
 
 ### 22. use
 
@@ -428,8 +384,6 @@ By default it is `use (discharger := try with_reducible use_discharger) e₁, e�
 To turn off the discharger and keep all goals, use `(discharger := skip)`.
 To allow "heavy refls", use `(discharger := try use_discharger)`.
 
----
-
 ### 23. cases
 
 > Occurrences: 3922
@@ -458,8 +412,6 @@ You can use `with` to provide the variables names for each constructor.
   performs cases on `e` as above, but also adds a hypothesis `h : e = ...` to each hypothesis,
   where `...` is the constructor instance for that particular case.
 
----
-
 ### 24. rwa
 
 > Occurrences: 3545
@@ -467,8 +419,6 @@ You can use `with` to provide the variables names for each constructor.
 > `import Lean.Parser.Tactic.tacticRwa__`
 
 `rwa` calls `rw`, then closes any remaining goals using `assumption`.
-
----
 
 ### 25. ring
 
@@ -489,8 +439,6 @@ example (a b : ℤ) (n : ℕ) : (a + b)^(n + 2) = (a^2 + b^2 + a * b + b * a) * 
 example (x y : ℕ) : x + id y = y + id x := by ring!
 ```
 
----
-
 ### 26. else
 
 > Occurrences: 3237
@@ -509,8 +457,6 @@ nondependent `if`, since this wouldn't add anything to the context and hence wou
 useless for proving theorems. To actually insert an `ite` application use
 `refine if t then ?_ else ?_`.)
 
----
-
 ### 27. show
 
 > Occurrences: 3236
@@ -519,8 +465,6 @@ useless for proving theorems. To actually insert an `ite` application use
 
 `show t` finds the first goal whose target unifies with `t`. It makes that the main goal,
 performs the unification, and replaces the target with the unified version of `t`.
-
----
 
 ### 28. convert
 
@@ -589,8 +533,6 @@ convert (config := {transparency := .default}) h
 ```
 These are passed to `congr!`. See `Congr!.Config` for options.
 
----
-
 ### 29. by_cases
 
 > Occurrences: 3071
@@ -598,8 +540,6 @@ These are passed to `congr!`. See `Congr!.Config` for options.
 > `import «tacticBy_cases_:_»`
 
 `by_cases (h :)? p` splits the main goal into two cases, assuming `h : p` in the first branch, and `h : ¬ p` in the second branch.
-
----
 
 ### 30. constructor
 
@@ -609,8 +549,6 @@ These are passed to `congr!`. See `Congr!.Config` for options.
 
 If the main goal's target type is an inductive type, `constructor` solves it with
 the first matching constructor, or else fails.
-
----
 
 ### 31. calc
 
@@ -653,17 +591,11 @@ See [Theorem Proving in Lean 4][tpil4] for more information.
 
 [tpil4]: https://lean-lang.org/theorem_proving_in_lean4/quantifiers_and_equality.html#calculational-proofs
 
----
-
 ### 32. suffices
 
 > Occurrences: 2307
 > 
 > `import Mathlib.Tactic.tacticSuffices_`
-
-
-
----
 
 ### 33. group
 
@@ -685,8 +617,6 @@ example {G : Type} [Group G] (a b c d : G) (h : c = (a*b^2)*((b*b)⁻¹*a⁻¹)*
   group      -- which then normalized and closed
 ```
 
----
-
 ### 34. congr
 
 > Occurrences: 2252
@@ -700,8 +630,6 @@ For example, given `⊢ f (g (x + y)) = f (g (y + x))`,
 `congr` produces the goals `⊢ x = y` and `⊢ y = x`,
 while `congr 2` produces the intended `⊢ x + y = y + x`.
 
----
-
 ### 35. haveI
 
 > Occurrences: 2183
@@ -710,17 +638,11 @@ while `congr 2` produces the intended `⊢ x + y = y + x`.
 
 `haveI` behaves like `have`, but inlines the value instead of producing a `let_fun` term.
 
----
-
 ### 36. cases'
 
 > Occurrences: 2007
 > 
 > `import Mathlib.Tactic.cases'`
-
-
-
----
 
 ### 37. change
 
@@ -732,8 +654,6 @@ while `congr 2` produces the intended `⊢ x + y = y + x`.
   assuming `a` and `b` are are definitionally equal.
 * `change a with b at h` similarly changes `a` to `b` in the type of hypothesis `h`.
 
----
-
 ### 38. erw
 
 > Occurrences: 1934
@@ -743,8 +663,6 @@ while `congr 2` produces the intended `⊢ x + y = y + x`.
 `erw [rules]` is a shorthand for `rw (config := { transparency := .default }) [rules]`.
 This does rewriting up to unfolding of regular definitions (by comparison to regular `rw`
 which only unfolds `@[reducible]` definitions).
-
----
 
 ### 39. left
 
@@ -760,8 +678,6 @@ example : True ∨ False := by
   trivial
 ```
 
----
-
 ### 40. right
 
 > Occurrences: 1780
@@ -776,17 +692,11 @@ example {p q : Prop} (h : q) : p ∨ q := by
   exact h
 ```
 
----
-
 ### 41. induction'
 
 > Occurrences: 1723
 > 
 > `import Mathlib.Tactic.induction'`
-
-
-
----
 
 ### 42. match
 
@@ -797,8 +707,6 @@ example {p q : Prop} (h : q) : p ∨ q := by
 The syntax `match ⋯ with.` has been deprecated in favor of `nomatch ⋯`.
 
 Both now support multiple discriminants.
-
----
 
 ### 43. lift
 
@@ -844,8 +752,6 @@ integer `z` (in the supertype) to `ℕ` (the subtype), given a proof that `z ≥
 propositions concerning `z` will still be over `ℤ`. `zify` changes propositions about `ℕ` (the
 subtype) to propositions about `ℤ` (the supertype), without changing the type of any variable.
 
----
-
 ### 44. case
 
 > Occurrences: 1637
@@ -857,8 +763,6 @@ subtype) to propositions about `ℤ` (the supertype), without changing the type 
 * `case tag x₁ ... xₙ => tac` additionally renames the `n` most recent hypotheses
   with inaccessible names to the given names.
 * `case tag₁ | tag₂ => tac` is equivalent to `(case tag₁ => tac); (case tag₂ => tac)`.
-
----
 
 ### 45. induction
 
@@ -891,8 +795,6 @@ You can use `with` to provide the variables names for each constructor.
 - Given `x : Nat`, `induction x with | zero => tac₁ | succ x' ih => tac₂`
   uses tactic `tac₁` for the `zero` case, and `tac₂` for the `succ` case.
 
----
-
 ### 46. infer_instance
 
 > Occurrences: 1528
@@ -901,8 +803,6 @@ You can use `with` to provide the variables names for each constructor.
 
 `infer_instance` is an abbreviation for `exact inferInstance`.
 It synthesizes a value of any target type by typeclass inference.
-
----
 
 ### 47. classical
 
@@ -916,8 +816,6 @@ local instance.
 Note that (unlike lean 3) `classical` is a scoping tactic - it adds the instance only within the
 scope of the tactic.
 
----
-
 ### 48. letI
 
 > Occurrences: 1408
@@ -926,8 +824,6 @@ scope of the tactic.
 
 `letI` behaves like `let`, but inlines the value instead of producing a `let_fun` term.
 
----
-
 ### 49. first
 
 > Occurrences: 1378
@@ -935,8 +831,6 @@ scope of the tactic.
 > `import Lean.Parser.Tactic.first`
 
 `first | tac | ...` runs each `tac` until one succeeds, or else fails.
-
----
 
 ### 50. funext
 
@@ -955,8 +849,6 @@ Patterns can be used like in the `intro` tactic. Example, given a goal
   |-  ((fun x : Nat × Bool => ...) = (fun x => ...))
 ```
 `funext (a, b)` applies `funext` once and performs pattern matching on the newly introduced pair.
-
----
 
 ### 51. replace
 
@@ -992,17 +884,11 @@ h : β
 
 This can be used to simulate the `specialize` and `apply at` tactics of Coq.
 
----
-
 ### 52. field
 
 > Occurrences: 1185
 > 
 > `import Mathlib.Tactic.field`
-
-
-
----
 
 ### 53. split_ifs
 
@@ -1018,8 +904,6 @@ starting with a top-most one whose condition does not contain another
 ite-expression.
 `split_ifs at *` splits all ite-expressions in all hypotheses as well as the goal.
 `split_ifs with h₁ h₂ h₃` overrides the default names for the hypotheses.
-
----
 
 ### 54. filter_upwards
 
@@ -1040,8 +924,6 @@ The list is an optional parameter, `[]` being its default value.
 Combining both shortcuts is done by writing `filter_upwards [h₁, ⋯, hₙ] with a₁ a₂ ⋯ aₖ using e`.
 Note that in this case, the `aᵢ` terms can be used in `e`.
 
----
-
 ### 55. exists
 
 > Occurrences: 1033
@@ -1050,8 +932,6 @@ Note that in this case, the `aᵢ` terms can be used in `e`.
 
 `exists e₁, e₂, ...` is shorthand for `refine ⟨e₁, e₂, ...⟩; try trivial`.
 It is useful for existential goals.
-
----
 
 ### 56. trivial
 
@@ -1066,8 +946,6 @@ You can use the command `macro_rules` to extend the set of tactics used. Example
 macro_rules | `(tactic| trivial) => `(tactic| simp)
 ```
 
----
-
 ### 57. subst
 
 > Occurrences: 896
@@ -1078,8 +956,6 @@ macro_rules | `(tactic| trivial) => `(tactic| simp)
 of type `x = e` or `e = x`.
 If `x` is itself a hypothesis of type `y = e` or `e = y`, `y` is substituted instead.
 
----
-
 ### 58. assumption
 
 > Occurrences: 854
@@ -1088,8 +964,6 @@ If `x` is itself a hypothesis of type `y = e` or `e = y`, `y` is substituted ins
 
 `assumption` tries to solve the main goal using a hypothesis of compatible type, or else fails.
 Note also the `‹t›` term notation, which is a shorthand for `show t by assumption`.
-
----
 
 ### 59. linarith
 
@@ -1154,8 +1028,6 @@ A variant, `nlinarith`, does some basic preprocessing to handle some nonlinear g
 The option `set_option trace.linarith true` will trace certain intermediate stages of the `linarith`
 routine.
 
----
-
 ### 60. unfold
 
 > Occurrences: 796
@@ -1168,8 +1040,6 @@ routine.
 For non-recursive definitions, this tactic is identical to `delta`.
 For definitions by pattern matching, it uses "equation lemmas" which are
 autogenerated for each match arm.
-
----
 
 ### 61. intros
 
@@ -1247,8 +1117,6 @@ example : let n := 1; let k := 2; n + k = 3 := by
   rfl
 ```
 
----
-
 ### 62. ext1
 
 > Occurrences: 731
@@ -1261,8 +1129,6 @@ than recursively applying as many extensionality theorems as possible.
 The `pat*` patterns are processed using the `rintro` tactic.
 If no patterns are supplied, then variables are introduced anonymously using the `intros` tactic.
 
----
-
 ### 63. norm_num1
 
 > Occurrences: 683
@@ -1270,8 +1136,6 @@ If no patterns are supplied, then variables are introduced anonymously using the
 > `import Mathlib.Tactic.normNum1`
 
 Basic version of `norm_num` that does not call `simp`.
-
----
 
 ### 64. choose
 
@@ -1316,8 +1180,6 @@ example (h : ∀ i : ℕ, i < 7 → ∃ j, i < j ∧ j < i+i) : True := by
   trivial
 ```
 
----
-
 ### 65. positivity
 
 > Occurrences: 667
@@ -1338,8 +1200,6 @@ example {a : ℤ} (ha : 1 < a) : 0 < |(3:ℤ) + a| := by positivity
 example {b : ℤ} : 0 ≤ max (-3) (b ^ 2) := by positivity
 ```
 
----
-
 ### 66. contrapose!
 
 > Occurrences: 612
@@ -1348,8 +1208,6 @@ example {b : ℤ} : 0 ≤ max (-3) (b ^ 2) := by positivity
 
 Transforms the goal into its contrapositive and uses pushes negations inside `P` and `Q`.
 Usage matches `contrapose`
-
----
 
 ### 67. gcongr
 
@@ -1394,8 +1252,6 @@ side goal `0 ≤ x ^ 2` in the above application of `mul_le_mul_of_nonneg_left`)
 `gcongr_discharger`, which wraps `positivity` but can also be extended. Side goals not discharged
 in this way are left for the user.
 
----
-
 ### 68. norm_num
 
 > Occurrences: 591
@@ -1406,8 +1262,6 @@ Normalize numerical expressions. Supports the operations `+` `-` `*` `/` `⁻¹`
 over numerical types such as `ℕ`, `ℤ`, `ℚ`, `ℝ`, `ℂ` and some general algebraic types,
 and can prove goals of the form `A = B`, `A ≠ B`, `A < B` and `A ≤ B`, where `A` and `B` are
 numerical expressions. It also has a relatively simple primality prover.
-
----
 
 ### 69. aesop_cat
 
@@ -1420,8 +1274,6 @@ allows `aesop` to look through semireducible definitions when calling `intros`.
 It also turns on `zetaDelta` in the `simp` config, allowing `aesop_cat` to unfold any `let`s.
 This tactic fails when it is unable to solve the goal, making it suitable for
 use in auto-params.
-
----
 
 ### 70. aesop
 
@@ -1454,8 +1306,6 @@ clauses are:
   `simp` rule. The given options are directly passed to `simp`. For example,
   `(simp_config := { zeta := false })` makes Aesop use
   `simp (config := { zeta := false })`.
-
----
 
 ### 71. norm_cast
 
@@ -1497,8 +1347,6 @@ their operation, to make them more flexible about the expressions they accept
 
 See also `push_cast`, which moves casts inwards rather than lifting them outwards.
 
----
-
 ### 72. exacts
 
 > Occurrences: 516
@@ -1506,8 +1354,6 @@ See also `push_cast`, which moves casts inwards rather than lifting them outward
 > `import Batteries.Tactic.exacts`
 
 Like `exact`, but takes a list of terms and checks that all goals are discharged after the tactic.
-
----
 
 ### 73. symm
 
@@ -1520,8 +1366,6 @@ Like `exact`, but takes a list of terms and checks that all goals are discharged
   It replaces the target with `u ~ t`.
 * `symm at h` will rewrite a hypothesis `h : t ~ u` to `h : u ~ t`.
 
----
-
 ### 74. swap
 
 > Occurrences: 492
@@ -1529,8 +1373,6 @@ Like `exact`, but takes a list of terms and checks that all goals are discharged
 > `import Batteries.Tactic.tacticSwap`
 
 `swap` is a shortcut for `pick_goal 2`, which interchanges the 1st and 2nd goals.
-
----
 
 ### 75. specialize
 
@@ -1545,8 +1387,6 @@ from arguments `a₁` ... `aₙ`.
 The tactic adds a new hypothesis with the same name `h := h a₁ ... aₙ`
 and tries to clear the previous one.
 
----
-
 ### 76. clear
 
 > Occurrences: 446
@@ -1556,17 +1396,11 @@ and tries to clear the previous one.
 `clear x...` removes the given hypotheses, or fails if there are remaining
 references to a hypothesis.
 
----
-
 ### 77. find
 
 > Occurrences: 429
 > 
 > `import Mathlib.Tactic.Find.tacticFind`
-
-
-
----
 
 ### 78. says
 
@@ -1587,8 +1421,6 @@ simp? [X] says simp only [X, Y, Z]
 If you use `set_option says.verify true` (set automatically during CI) then `X says Y`
 runs `X` and verifies that it still prints "Try this: Y".
 
----
-
 ### 79. by_contra
 
 > Occurrences: 418
@@ -1600,8 +1432,6 @@ introducing a hypothesis `h : ¬p` and proving `False`.
 * If `p` is a negation `¬q`, `h : q` will be introduced instead of `¬¬q`.
 * If `p` is decidable, it uses `Decidable.byContradiction` instead of `Classical.byContradiction`.
 * If `h` is omitted, the introduced variable `_: ¬p` will be anonymous.
-
----
 
 ### 80. trans
 
@@ -1618,8 +1448,6 @@ that is, a relation which has a transitivity lemma tagged with the attribute [tr
 Additionally, `trans` also applies to a goal whose target has the form `t → u`,
 in which case it replaces the goal with `t → s` and `s → u`.
 
----
-
 ### 81. try
 
 > Occurrences: 403
@@ -1627,8 +1455,6 @@ in which case it replaces the goal with `t → s` and `s → u`.
 > `import Lean.Parser.Tactic.tacticTry_`
 
 `try tac` runs `tac` and succeeds even if `tac` failed.
-
----
 
 ### 82. simp_all
 
@@ -1639,8 +1465,6 @@ in which case it replaces the goal with `t → s` and `s → u`.
 `simp_all` is a stronger version of `simp [*] at *` where the hypotheses and target
 are simplified multiple times until no simplification is applicable.
 Only non-dependent propositional hypotheses are considered.
-
----
 
 ### 83. omega
 
@@ -1678,17 +1502,11 @@ can be used to:
 * `splitMinMax`: for each occurrence of `min a b`, split on `min a b = a ∨ min a b = b`
 Currently, all of these are on by default.
 
----
-
 ### 84. conv_rhs
 
 > Occurrences: 381
 > 
 > `import Mathlib.Tactic.Conv.convRHS`
-
-
-
----
 
 ### 85. field_simp
 
@@ -1755,8 +1573,6 @@ that have numerals in denominators.
 The tactics are not related: `cancel_denoms` will only handle numeric denominators, and will try to
 entirely remove (numeric) division from the expression by multiplying by a factor.
 
----
-
 ### 86. split
 
 > Occurrences: 378
@@ -1773,8 +1589,6 @@ renamed used the `case` or `next` tactics.
 
 - `split` will split the goal (target).
 - `split at h` will split the hypothesis `h`.
-
----
 
 ### 87. decide
 
@@ -1836,8 +1650,6 @@ example : 1 + 1 = 2 := by decide
 example : 1 + 1 = 2 := by rfl
 ```
 
----
-
 ### 88. all_goals
 
 > Occurrences: 360
@@ -1845,8 +1657,6 @@ example : 1 + 1 = 2 := by rfl
 > `import Lean.Parser.Tactic.allGoals`
 
 `all_goals tac` runs `tac` on each goal, concatenating the resulting goals, if any.
-
----
 
 ### 89. next
 
@@ -1858,8 +1668,6 @@ example : 1 + 1 = 2 := by rfl
 `next x₁ ... xₙ => tac` additionally renames the `n` most recent hypotheses with
 inaccessible names to the given names.
 
----
-
 ### 90. absurd
 
 > Occurrences: 351
@@ -1868,8 +1676,6 @@ inaccessible names to the given names.
 
 Given a proof `h` of `p`, `absurd h` changes the goal to `⊢ ¬ p`.
 If `p` is a negation `¬q` then the goal is changed to `⊢ q` instead.
-
----
 
 ### 91. revert
 
@@ -1880,8 +1686,6 @@ If `p` is a negation `¬q` then the goal is changed to `⊢ q` instead.
 `revert x...` is the inverse of `intro x...`: it moves the given hypotheses
 into the main goal's target type.
 
----
-
 ### 92. continuity
 
 > Occurrences: 338
@@ -1891,17 +1695,11 @@ into the main goal's target type.
 The tactic `continuity` solves goals of the form `Continuous f` by applying lemmas tagged with the
 `continuity` user attribute.
 
----
-
 ### 93. conv_lhs
 
 > Occurrences: 334
 > 
 > `import Mathlib.Tactic.Conv.convLHS`
-
-
-
----
 
 ### 94. contradiction
 
@@ -1931,8 +1729,6 @@ example (h : p) (h' : ¬ p) : q := by contradiction
 example (x : Nat) (h : x ≠ x) : p := by contradiction
 ```
 
----
-
 ### 95. guard_target
 
 > Occurrences: 308
@@ -1947,8 +1743,6 @@ Tactic to check that the target agrees with a given expression.
 
 The term `e` is elaborated with the type of the goal as the expected type, which is mostly
 useful within `conv` mode.
-
----
 
 ### 96. abel
 
@@ -1967,8 +1761,6 @@ example [AddCommMonoid α] (a b : α) : a + (b + a) = a + a + b := by abel
 example [AddCommGroup α] (a : α) : (3 : ℤ) • a = a + (2 : ℤ) • a := by abel
 ```
 
----
-
 ### 97. delta
 
 > Occurrences: 305
@@ -1979,8 +1771,6 @@ example [AddCommGroup α] (a : α) : (3 : ℤ) • a = a + (2 : ℤ) • a := by
 This is a low-level tactic, it will expose how recursive definitions have been
 compiled by Lean.
 
----
-
 ### 98. trace
 
 > Occurrences: 301
@@ -1988,8 +1778,6 @@ compiled by Lean.
 > `import Lean.Parser.Tactic.traceMessage`
 
 `trace msg` displays `msg` in the info view.
-
----
 
 ### 99. guard_hyp
 
@@ -2010,8 +1798,6 @@ Tactic to check that a named hypothesis has a given type and/or value.
 
 The value `v` is elaborated using the type of `h` as the expected type.
 
----
-
 ### 100. conv
 
 > Occurrences: 285
@@ -2027,8 +1813,6 @@ Basic forms:
 * `conv => cs` will rewrite the goal with conv tactics `cs`.
 * `conv at h => cs` will rewrite hypothesis `h`.
 * `conv in pat => cs` will rewrite the first subexpression matching `pat` (see `pattern`).
-
----
 
 ### 101. push_neg
 
@@ -2057,8 +1841,6 @@ using say `push_neg at h h' ⊢` as usual.
 
 This tactic has two modes: in standard mode, it transforms `¬(p ∧ q)` into `p → ¬q`, whereas in
 distrib mode it produces `¬p ∨ ¬q`. To use distrib mode, use `set_option push_neg.use_distrib true`.
-
----
 
 ### 102. apply_fun
 
@@ -2102,8 +1884,6 @@ example (X Y Z : Type) (f : X → Y) (g : Y → Z) (H : Injective <| g ∘ f) :
 The function `f` is handled similarly to how it would be handled by `refine` in that `f` can contain
 placeholders. Named placeholders (like `?a` or `?_`) will produce new goals.
 
----
-
 ### 103. tfae_have
 
 > Occurrences: 266
@@ -2143,8 +1923,6 @@ example : TFAE [P, Q, R] := by
   tfae_finish
 ```
 
----
-
 ### 104. generalize
 
 > Occurrences: 261
@@ -2157,8 +1935,6 @@ example : TFAE [P, Q, R] := by
   inside `h₁`, ..., `hₙ`.
 * `generalize e = x at *` will generalize occurrences of `e` everywhere.
 
----
-
 ### 105. nth_rw
 
 > Occurrences: 227
@@ -2166,8 +1942,6 @@ example : TFAE [P, Q, R] := by
 > `import Mathlib.Tactic.nthRwSeq`
 
 `nth_rw` is like `nth_rewrite`, but also tries to close the goal by trying `rfl` afterwards.
-
----
 
 ### 106. push_cast
 
@@ -2207,8 +1981,6 @@ example (a b : Nat)
 
 See also `norm_cast`.
 
----
-
 ### 107. tauto
 
 > Occurrences: 225
@@ -2223,8 +1995,6 @@ This is a finishing tactic: it either closes the goal or raises an error.
 The Lean 3 version of this tactic by default attempted to avoid classical reasoning
 where possible. This Lean 4 version makes no such attempt. The `itauto` tactic
 is designed for that purpose.
-
----
 
 ### 108. injection
 
@@ -2244,8 +2014,6 @@ Given `h : a::b = c::d`, the tactic `injection h` adds two new hypothesis with t
 `a = c` and `b = d` to the main goal.
 The tactic `injection h with h₁ h₂` uses the names `h₁` and `h₂` to name the new hypotheses.
 
----
-
 ### 109. slice_lhs
 
 > Occurrences: 214
@@ -2254,8 +2022,6 @@ The tactic `injection h with h₁ h₂` uses the names `h₁` and `h₂` to name
 
 `slice_lhs a b => tac` zooms to the left hand side, uses associativity for categorical
 composition as needed, zooms in on the `a`-th through `b`-th morphisms, and invokes `tac`.
-
----
 
 ### 110. mono
 
@@ -2271,8 +2037,6 @@ example (x y z k : ℤ)
     (k + 3 + x) - y ≤ (k + 4 + x) - z := by
   mono
 ```
-
----
 
 ### 111. nontriviality
 
@@ -2322,8 +2086,6 @@ example {α : Type} (a b : α) (h : a = b) : myeq a b := by
   nontriviality α using myeq -- There is now a `Nontrivial α` hypothesis available
   assumption
 ```
-
----
 
 ### 112. linear_combination
 
@@ -2401,17 +2163,11 @@ example (a b : ℚ) (h : ∀ p q : ℚ, p = q) : 3*a + qc = 3*b + 2*qc := by
   linear_combination 3 * h a b + hqc
 ```
 
----
-
 ### 113. safe
 
 > Occurrences: 200
 > 
 > `import Mathlib.Tactic.safe`
-
-
-
----
 
 ### 114. by_contra!
 
@@ -2441,8 +2197,6 @@ example : 1 < 2 := by
   -- h : ¬ 1 < 2 ⊢ False
 ```
 
----
-
 ### 115. fin_cases
 
 > Occurrences: 196
@@ -2461,8 +2215,6 @@ example (f : ℕ → Prop) (p : Fin 3) (h0 : f 0) (h1 : f 1) (h2 : f 2) : f p.va
 ```
 after `fin_cases p; simp`, there are three goals, `f 0`, `f 1`, and `f 2`.
 
----
-
 ### 116. ring_nf
 
 > Occurrences: 187
@@ -2478,8 +2230,6 @@ which rewrites all ring expressions into a normal form.
 * `ring_nf` works as both a tactic and a conv tactic.
   In tactic mode, `ring_nf at h` can be used to rewrite in a hypothesis.
 
----
-
 ### 117. done
 
 > Occurrences: 183
@@ -2487,8 +2237,6 @@ which rewrites all ring expressions into a normal form.
 > `import Lean.Parser.Tactic.done`
 
 `done` succeeds iff there are no remaining goals.
-
----
 
 ### 118. rewrite
 
@@ -2514,8 +2262,6 @@ restricting which later rewrites can be found.
 (Disallowed occurrences do not result in instantiation.)
 `{occs := .neg L}` allows skipping specified occurrences.
 
----
-
 ### 119. coherence
 
 > Occurrences: 172
@@ -2535,8 +2281,6 @@ where `a = a'`, `b = b'`, and `c = c'` can be proved using `pure_coherence`.
 you may need to increase the typeclass search depth,
 using e.g. `set_option synthInstance.maxSize 500`.)
 
----
-
 ### 120. fun_prop
 
 > Occurrences: 168
@@ -2544,8 +2288,6 @@ using e.g. `set_option synthInstance.maxSize 500`.)
 > `import Mathlib.Meta.FunProp.funPropTacStx`
 
 Tactic to prove function properties
-
----
 
 ### 121. congr!
 
@@ -2619,8 +2361,6 @@ This is somewhat like `congr`.
 
 See `Congr!.Config` for all options.
 
----
-
 ### 122. slice_rhs
 
 > Occurrences: 155
@@ -2630,8 +2370,6 @@ See `Congr!.Config` for all options.
 `slice_rhs a b => tac` zooms to the right hand side, uses associativity for categorical
 composition as needed, zooms in on the `a`-th through `b`-th morphisms, and invokes `tac`.
 
----
-
 ### 123. exfalso
 
 > Occurrences: 153
@@ -2639,8 +2377,6 @@ composition as needed, zooms in on the `a`-th through `b`-th morphisms, and invo
 > `import Lean.Parser.Tactic.tacticExfalso`
 
 `exfalso` converts a goal `⊢ tgt` into `⊢ False` by applying `False.elim`.
-
----
 
 ### 124. reduce
 
@@ -2652,8 +2388,6 @@ composition as needed, zooms in on the `a`-th through `b`-th morphisms, and invo
 This also exists as a `conv`-mode tactic.
 
 This does the same transformation as the `#reduce` command.
-
----
 
 ### 125. repeat
 
@@ -2671,8 +2405,6 @@ See also:
 * `try tac` is like `repeat tac` but will apply `tac` at most once.
 * `repeat' tac` recursively applies `tac` to each goal.
 * `first | tac1 | tac2` implements the backtracking used by `repeat`
-
----
 
 ### 126. cc
 
@@ -2700,8 +2432,6 @@ example (f : ℕ → ℕ) (x : ℕ)
   cc
 ```
 
----
-
 ### 127. #check
 
 > Occurrences: 129
@@ -2717,8 +2447,6 @@ Use `#check (t)` to pretty print it as an elaborated expression.
 Like the `#check` command, the `#check` tactic allows stuck typeclass instance problems.
 These become metavariables in the output.
 
----
-
 ### 128. measurability
 
 > Occurrences: 128
@@ -2729,8 +2457,6 @@ The tactic `measurability` solves goals of the form `Measurable f`, `AEMeasurabl
 `StronglyMeasurable f`, `AEStronglyMeasurable f μ`, or `MeasurableSet s` by applying lemmas tagged
 with the `measurability` user attribute.
 
----
-
 ### 129. fail_if_success
 
 > Occurrences: 127
@@ -2738,8 +2464,6 @@ with the `measurability` user attribute.
 > `import Lean.Parser.Tactic.failIfSuccess`
 
 `fail_if_success t` fails if the tactic `t` succeeds.
-
----
 
 ### 130. simp?
 
@@ -2756,8 +2480,6 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 ```
 
 This command can also be used in `simp_all` and `dsimp`.
-
----
 
 ### 131. iterate
 
@@ -2777,8 +2499,6 @@ iterate n
   ⋯
 ```
 
----
-
 ### 132. #adaptation_note
 
 > Occurrences: 121
@@ -2789,8 +2509,6 @@ Adaptation notes are comments that are used to indicate that a piece of code
 has been changed to accomodate a change in Lean core.
 They typically require further action/maintenance to be taken in the future.
 
----
-
 ### 133. hint
 
 > Occurrences: 118
@@ -2799,8 +2517,6 @@ They typically require further action/maintenance to be taken in the future.
 
 The `hint` tactic tries every tactic registered using `register_hint tac`,
 and reports any that succeed.
-
----
 
 ### 134. ring1
 
@@ -2814,8 +2530,6 @@ allowing variables in the exponent.
 * This version of `ring` fails if the target is not an equality.
 * The variant `ring1!` will use a more aggressive reducibility setting
   to determine equality of atoms.
-
----
 
 ### 135. rel
 
@@ -2846,8 +2560,6 @@ side goal `0 ≤ x ^ 2` in the above application of `mul_le_mul_of_nonneg_left`)
 `gcongr_discharger`, which wraps `positivity` but can also be extended. If the side goals cannot
 be discharged in this way, the tactic fails.
 
----
-
 ### 136. nlinarith
 
 > Occurrences: 95
@@ -2865,8 +2577,6 @@ in `linarith`. The preprocessing is as follows:
   the assumption `0 R' (b1 - a1) * (b2 - a2)` is added to the context (non-recursively),
   where `R ∈ {<, ≤, =}` is the appropriate comparison derived from `R1, R2`.
 
----
-
 ### 137. solve
 
 > Occurrences: 93
@@ -2874,8 +2584,6 @@ in `linarith`. The preprocessing is as follows:
 > `import Lean.solveTactic`
 
 Similar to `first`, but succeeds only if one the given tactics solves the current goal.
-
----
 
 ### 138. fail
 
@@ -2885,8 +2593,6 @@ Similar to `first`, but succeeds only if one the given tactics solves the curren
 
 `fail msg` is a tactic that always fails, and produces an error using the given message.
 
----
-
 ### 139. rename
 
 > Occurrences: 91
@@ -2895,8 +2601,6 @@ Similar to `first`, but succeeds only if one the given tactics solves the curren
 
 `rename t => x` renames the most recent hypothesis whose type matches `t`
 (which may contain placeholders) to `x`, or fails if no such hypothesis could be found.
-
----
 
 ### 140. sorry
 
@@ -2910,8 +2614,6 @@ a warning whenever a proof uses `sorry`, so you aren't likely to miss it, but
 you can double check if a theorem depends on `sorry` by using
 `#print axioms my_thm` and looking for `sorryAx` in the axiom list.
 
----
-
 ### 141. inhabit
 
 > Occurrences: 89
@@ -2921,8 +2623,6 @@ you can double check if a theorem depends on `sorry` by using
 `inhabit α` tries to derive a `Nonempty α` instance and
 then uses it to make an `Inhabited α` instance.
 If the target is a `Prop`, this is done constructively. Otherwise, it uses `Classical.choice`.
-
----
 
 ### 142. solve_by_elim
 
@@ -2966,17 +2666,11 @@ See also the doc-comment for `Lean.Meta.Tactic.Backtrack.BacktrackConfig` for th
 `proc`, `suspend`, and `discharge` which allow further customization of `solve_by_elim`.
 Both `apply_assumption` and `apply_rules` are implemented via these hooks.
 
----
-
 ### 143. destruct
 
 > Occurrences: 88
 > 
 > `import Mathlib.Tactic.tacticDestruct_`
-
-
-
----
 
 ### 144. wlog
 
@@ -3001,8 +2695,6 @@ In this way, the wlog-claim `this` can be applied to `x` and `y` in different or
 
 By default, the entire context is reverted.
 
----
-
 ### 145. exact_mod_cast
 
 > Occurrences: 86
@@ -3010,8 +2702,6 @@ By default, the entire context is reverted.
 > `import Lean.Parser.Tactic.tacticExact_mod_cast_`
 
 Normalize casts in the goal and the given expression, then close the goal with `exact`.
-
----
 
 ### 146. choose!
 
@@ -3056,8 +2746,6 @@ example (h : ∀ i : ℕ, i < 7 → ∃ j, i < j ∧ j < i+i) : True := by
   trivial
 ```
 
----
-
 ### 147. apply_rules
 
 > Occurrences: 82
@@ -3085,8 +2773,6 @@ You can bound the iteration depth using the syntax `apply_rules (config := {maxD
 
 Unlike `solve_by_elim`, `apply_rules` does not perform backtracking, and greedily applies
 a lemma from the list until it gets stuck.
-
----
 
 ### 148. introv
 
@@ -3125,8 +2811,6 @@ h₂ : b = c
 ⊢ a = c
 ```
 
----
-
 ### 149. valid
 
 > Occurrences: 75
@@ -3135,17 +2819,11 @@ h₂ : b = c
 
 A wrapper for `omega` which prefaces it with some quick and useful attempts
 
----
-
 ### 150. abstract
 
 > Occurrences: 73
 > 
 > `import Mathlib.Tactic.abstract`
-
-
-
----
 
 ### 151. borelize
 
@@ -3160,8 +2838,6 @@ The behaviour of `borelize α` depends on the existing assumptions on `α`.
 - otherwise, `borelize α` adds instances `borel α : MeasurableSpace α` and `⟨rfl⟩ : BorelSpace α`.
 
 Finally, `borelize α β γ` runs `borelize α; borelize β; borelize γ`.
-
----
 
 ### 152. on_goal
 
@@ -3178,8 +2854,6 @@ bottom.
 The goal is not required to be solved and any resulting subgoals are inserted back into the
 list of goals, replacing the chosen goal.
 
----
-
 ### 153. repeat'
 
 > Occurrences: 72
@@ -3193,8 +2867,6 @@ See also:
 * `repeat tac` simply repeatedly applies `tac`.
 * `repeat1' tac` is `repeat' tac` but requires that `tac` succeed for some goal at least once.
 
----
-
 ### 154. fapply
 
 > Occurrences: 69
@@ -3203,8 +2875,6 @@ See also:
 
 `fapply e` is like `apply e` but it adds goals in the order they appear,
 rather than putting the dependent goals first.
-
----
 
 ### 155. nth_rewrite
 
@@ -3218,8 +2888,6 @@ to be rewritten.
 Note: The occurrences are counted beginning with `1` and not `0`, this is different than in
 mathlib3. The translation will be handled by mathport.
 
----
-
 ### 156. rename_i
 
 > Occurrences: 69
@@ -3227,8 +2895,6 @@ mathlib3. The translation will be handled by mathport.
 > `import Lean.Parser.Tactic.renameI`
 
 `rename_i x_1 ... x_n` renames the last `n` inaccessible names using the given names.
-
----
 
 ### 157. clear_value
 
@@ -3242,8 +2908,6 @@ into regular hypotheses. A hypothesis `n : α := t` is changed to `n : α`.
 The order of `n₁ n₂ ...` does not matter, and values will be cleared in reverse order of
 where they appear in the context.
 
----
-
 ### 158. (
 
 > Occurrences: 66
@@ -3253,8 +2917,6 @@ where they appear in the context.
 `(tacs)` executes a list of tactics in sequence, without requiring that
 the goal be closed at the end like `· tacs`. Like `by` itself, the tactics
 can be either separated by newlines or `;`.
-
----
 
 ### 159. ac_rfl
 
@@ -3269,8 +2931,6 @@ instance : Commutative (α := Nat) (.+.) := ⟨Nat.add_comm⟩
 
 example (a b c d : Nat) : a + b + c + d = d + (b + c) + a := by ac_rfl
 ```
-
----
 
 ### 160. convert_to
 
@@ -3288,8 +2948,6 @@ That is, `convert_to g using n` is equivalent to `convert (?_ : g) using n`.
 The syntax for `convert_to` is the same as for `convert`, and it has variations such as
 `convert_to ← g` and `convert_to (config := {transparency := .default}) g`.
 
----
-
 ### 161. skip
 
 > Occurrences: 63
@@ -3297,8 +2955,6 @@ The syntax for `convert_to` is the same as for `convert`, and it has variations 
 > `import Lean.Parser.Tactic.skip`
 
 `skip` does nothing.
-
----
 
 ### 162. tfae_finish
 
@@ -3323,8 +2979,6 @@ example : TFAE [P, Q, R] := by
   tfae_finish
 ```
 
----
-
 ### 163. refine'
 
 > Occurrences: 60
@@ -3333,8 +2987,6 @@ example : TFAE [P, Q, R] := by
 
 `refine' e` behaves like `refine e`, except that unsolved placeholders (`_`)
 and implicit parameters are also converted into new goals.
-
----
 
 ### 164. congrm
 
@@ -3376,8 +3028,6 @@ built from `e` by replacing each placeholder `?m` by `$(?m)`.
 The pattern `e` is allowed to contain `$(...)` expressions to immediately substitute
 equality proofs into the congruence, just like for congruence quotations.
 
----
-
 ### 165. fconstructor
 
 > Occurrences: 57
@@ -3387,8 +3037,6 @@ equality proofs into the congruence, just like for congruence quotations.
 `fconstructor` is like `constructor`
 (it calls `apply` using the first matching constructor of an inductive datatype)
 except that it does not reorder goals.
-
----
 
 ### 166. interval_cases
 
@@ -3416,8 +3064,6 @@ in which case `interval_cases` calls `fin_cases` on the resulting fact `n ∈ Se
 You can specify a name `h` for the new hypothesis,
 as `interval_cases h : n` or `interval_cases h : n using hl, hu`.
 
----
-
 ### 167. noncomm_ring
 
 > Occurrences: 57
@@ -3433,8 +3079,6 @@ example {R : Type*} [Ring R] (a b c : R) : a * (b + c + c - b) = 2 * a * c := by
 ```
 
 You can use `noncomm_ring [h]` to also simplify using `h`.
-
----
 
 ### 168. peel
 
@@ -3497,8 +3141,6 @@ may be paired with any of the other features of `peel`.
 This tactic works by repeatedly applying lemmas such as `forall_imp`, `Exists.imp`,
 `Filter.Eventually.mp`, `Filter.Frequently.mp`, and `Filter.eventually_of_forall`.
 
----
-
 ### 169. contrapose
 
 > Occurrences: 55
@@ -3509,8 +3151,6 @@ Transforms the goal into its contrapositive.
 * `contrapose`     turns a goal `P → Q` into `¬ Q → ¬ P`
 * `contrapose h`   first reverts the local assumption `h`, and then uses `contrapose` and `intro h`
 * `contrapose h with new_h` uses the name `new_h` for the introduced hypothesis
-
----
 
 ### 170. generalize_proofs
 
@@ -3549,17 +3189,11 @@ example : List.nthLe [1, 2] 1 (by simp) = 2 := by
   -- ⊢ [1, 2].nthLe 1 h = 2
 ```
 
----
-
 ### 171. continue
 
 > Occurrences: 53
 > 
 > `import Mathlib.Tactic.continue`
-
-
-
----
 
 ### 172. rotate_left
 
@@ -3571,17 +3205,11 @@ example : List.nthLe [1, 2] 1 (by simp) = 2 := by
 takes the main goal and puts it to the back of the subgoal list.
 If `n` is omitted, it defaults to `1`.
 
----
-
 ### 173. generalizes
 
 > Occurrences: 51
 > 
 > `import Mathlib.Tactic.generalizes`
-
-
-
----
 
 ### 174. rsuffices
 
@@ -3593,8 +3221,6 @@ The `rsuffices` tactic is an alternative version of `suffices`, that allows the 
 of any syntax that would be valid in an `obtain` block. This tactic just calls `obtain`
 on the expression, and then `rotate_left`.
 
----
-
 ### 175. subst_vars
 
 > Occurrences: 49
@@ -3602,8 +3228,6 @@ on the expression, and then `rotate_left`.
 > `import Lean.Parser.Tactic.substVars`
 
 Applies `subst` to all hypotheses of the form `h : x = t` or `h : t = x`.
-
----
 
 ### 176. beta_reduce
 
@@ -3617,8 +3241,6 @@ This also exists as a `conv`-mode tactic.
 This means that whenever there is an applied lambda expression such as
 `(fun x => f x) y` then the argument is substituted into the lambda expression
 yielding an expression such as `f y`.
-
----
 
 ### 177. polyrith
 
@@ -3664,8 +3286,6 @@ example (a b c d : ℚ) (h : a + b = 0) (h2: b + c = 0) : a + b + c + d = 0 := b
 -- Try this: linear_combination scary c d + h
 ```
 
----
-
 ### 178. any_goals
 
 > Occurrences: 44
@@ -3674,8 +3294,6 @@ example (a b c d : ℚ) (h : a + b = 0) (h2: b + c = 0) : a + b + c + d = 0 := b
 
 `any_goals tac` applies the tactic `tac` to every goal, and succeeds if at
 least one application succeeds.
-
----
 
 ### 179. compute_degree!
 
@@ -3699,8 +3317,6 @@ leading coefficient of `f`.
 The variant `compute_degree!` first applies `compute_degree`.
 Then it uses `norm_num` on all the whole remaining goals and tries `assumption`.
 
----
-
 ### 180. substs
 
 > Occurrences: 43
@@ -3709,8 +3325,6 @@ Then it uses `norm_num` on all the whole remaining goals and tries `assumption`.
 
 Applies the `subst` tactic to all given hypotheses from left to right.
 
----
-
 ### 181. admit
 
 > Occurrences: 42
@@ -3718,8 +3332,6 @@ Applies the `subst` tactic to all given hypotheses from left to right.
 > `import Lean.Parser.Tactic.tacticAdmit`
 
 `admit` is a shorthand for `exact sorry`.
-
----
 
 ### 182. simp!
 
@@ -3731,8 +3343,6 @@ Applies the `subst` tactic to all given hypotheses from left to right.
 This will rewrite with all equation lemmas, which can be used to
 partially evaluate many definitions.
 
----
-
 ### 183. success_if_fail_with_msg
 
 > Occurrences: 42
@@ -3743,8 +3353,6 @@ partially evaluate many definitions.
 `msg`.
 
 `msg` can be any term that evaluates to an explicit `String`.
-
----
 
 ### 184. whnf
 
@@ -3758,8 +3366,6 @@ This also exists as a `conv`-mode tactic.
 Weak-head normal form is when the outer-most expression has been fully reduced, the expression
 may contain subexpressions which have not been reduced.
 
----
-
 ### 185. mfld_set_tac
 
 > Occurrences: 41
@@ -3769,17 +3375,11 @@ may contain subexpressions which have not been reduced.
 A very basic tactic to show that sets showing up in manifolds coincide or are included
 in one another.
 
----
-
 ### 186. elementwise
 
 > Occurrences: 40
 > 
 > `import Tactic.Elementwise.tacticElementwise___`
-
-
-
----
 
 ### 187. itauto
 
@@ -3801,8 +3401,6 @@ example (p : Prop) : ¬ (p ↔ ¬ p) := by itauto
 find among the atomic propositions, and `itauto! *` will case on all propositional atoms.
 *Warning:* This can blow up the proof search, so it should be used sparingly.
 
----
-
 ### 188. apply?
 
 > Occurrences: 39
@@ -3814,8 +3412,6 @@ with conditions resolved when possible with `solve_by_elim`.
 
 The optional `using` clause provides identifiers in the local context that must be
 used when closing the goal.
-
----
 
 ### 189. zify
 
@@ -3850,8 +3446,6 @@ propositions concerning `z` will still be over `Int`.
 `zify` changes propositions about `Nat` (the subtype) to propositions about `Int` (the supertype),
 without changing the type of any variable.
 
----
-
 ### 190. clean
 
 > Occurrences: 37
@@ -3859,8 +3453,6 @@ without changing the type of any variable.
 > `import Mathlib.Tactic.tacticClean_`
 
 (Deprecated) `clean t` is a macro for `exact clean% t`.
-
----
 
 ### 191. clear!
 
@@ -3871,17 +3463,11 @@ without changing the type of any variable.
 A variant of `clear` which clears not only the given hypotheses but also any other hypotheses
 depending on them
 
----
-
 ### 192. transport
 
 > Occurrences: 36
 > 
 > `import Mathlib.Tactic.transport`
-
-
-
----
 
 ### 193. unreachable!
 
@@ -3899,8 +3485,6 @@ The `unreachableTactic` linter has a special exception for uses of `unreachable!
 ```
 example : True := by trivial <;> unreachable!
 ```
-
----
 
 ### 194. slim_check
 
@@ -3958,8 +3542,6 @@ Options:
   the proposition
 * `set_option trace.slim_check.success true`: print the tested samples that satisfy a property
 
----
-
 ### 195. abel_nf
 
 > Occurrences: 33
@@ -3975,8 +3557,6 @@ which rewrites all group expressions into a normal form.
 * `abel_nf` works as both a tactic and a conv tactic.
   In tactic mode, `abel_nf at h` can be used to rewrite in a hypothesis.
 
----
-
 ### 196. unfold_let
 
 > Occurrences: 33
@@ -3991,8 +3571,6 @@ If no local definitions are given, then all local definitions are unfolded.
 This variant also exists as the `conv`-mode tactic `zeta`.
 
 This is similar to the `unfold` tactic, which instead is for unfolding global definitions.
-
----
 
 ### 197. compute_degree
 
@@ -4016,8 +3594,6 @@ leading coefficient of `f`.
 The variant `compute_degree!` first applies `compute_degree`.
 Then it uses `norm_num` on all the whole remaining goals and tries `assumption`.
 
----
-
 ### 198. cancel_denoms
 
 > Occurrences: 31
@@ -4039,8 +3615,6 @@ example (h : a > 0) : a / 5 > 0 := by
   exact h
 ```
 
----
-
 ### 199. nofun
 
 > Occurrences: 31
@@ -4050,8 +3624,6 @@ example (h : a > 0) : a / 5 > 0 := by
 The tactic `nofun` is shorthand for `exact nofun`: it introduces the assumptions, then performs an
 empty pattern match, closing the goal if the introduced pattern is impossible.
 
----
-
 ### 200. rw_mod_cast
 
 > Occurrences: 31
@@ -4059,8 +3631,6 @@ empty pattern match, closing the goal if the introduced pattern is impossible.
 > `import Lean.Parser.Tactic.tacticRw_mod_cast___`
 
 Rewrites with the given rules, normalizing casts prior to each step.
-
----
 
 ### 201. assumption_mod_cast
 
@@ -4076,17 +3646,11 @@ in more situations.
 Concretely, it runs `norm_cast` on the goal. For each local hypothesis `h`, it also
 normalizes `h` with `norm_cast` and tries to use that to close the goal.
 
----
-
 ### 202. transitivity
 
 > Occurrences: 30
 > 
 > `import Mathlib.Tactic.tacticTransitivity___`
-
-
-
----
 
 ### 203. with_reducible_and_instances
 
@@ -4097,27 +3661,17 @@ normalizes `h` with `norm_cast` and tries to use that to close the goal.
 `with_reducible_and_instances tacs` executes `tacs` using the `.instances` transparency setting.
 In this setting only definitions tagged as `[reducible]` or type class instances are unfolded.
 
----
-
 ### 204. finish
 
 > Occurrences: 27
 > 
 > `import Mathlib.Tactic.finish`
 
-
-
----
-
 ### 205. rw_search
 
 > Occurrences: 26
 > 
 > `import Mathlib.Tactic.rwSearch`
-
-
-
----
 
 ### 206. apply_assumption
 
@@ -4144,27 +3698,17 @@ will have two goals, `P` and `Q`.
 You can pass a further configuration via the syntax `apply_rules (config := {...}) lemmas`.
 The options supported are the same as for `solve_by_elim` (and include all the options for `apply`).
 
----
-
 ### 207. obviously
 
 > Occurrences: 24
 > 
 > `import Mathlib.Tactic.obviously`
 
-
-
----
-
 ### 208. reassoc
 
 > Occurrences: 24
 > 
 > `import Mathlib.Tactic.reassoc`
-
-
-
----
 
 ### 209. abel1
 
@@ -4179,8 +3723,6 @@ that is provable by the axioms of commutative monoids/groups.
 
 `abel1!` will use a more aggressive reducibility setting to identify atoms.
 This can prove goals that `abel` cannot, but is more expensive.
-
----
 
 ### 210. extract_goal
 
@@ -4208,8 +3750,6 @@ to being unambiguously pretty printed.
 The tactic responds to pretty printing options.
 For example, `set_option pp.all true in extract_goal` gives the `pp.all` form.
 
----
-
 ### 211. recover
 
 > Occurrences: 23
@@ -4219,8 +3759,6 @@ For example, `set_option pp.all true in extract_goal` gives the `pp.all` form.
 Modifier `recover` for a tactic (sequence) to debug cases where goals are closed incorrectly.
 The tactic `recover tacs` for a tactic (sequence) tacs applies the tactics and then adds goals
 that are not closed starting from the original
-
----
 
 ### 212. stop
 
@@ -4232,8 +3770,6 @@ that are not closed starting from the original
 it is defined as `repeat sorry`.
 It is useful when working on the middle of a complex proofs,
 and less messy than commenting the remainder of the proof.
-
----
 
 ### 213. extract_lets
 
@@ -4256,8 +3792,6 @@ case all the `let` bindings are extracted.
 The tactic `extract_lets` (without `at`) or `extract_lets at h ⊢` acts as a weaker
 form of `intros` on the goal that only introduces obvious `let`s.
 
----
-
 ### 214. focus
 
 > Occurrences: 20
@@ -4266,8 +3800,6 @@ form of `intros` on the goal that only introduces obvious `let`s.
 
 `focus tac` focuses on the main goal, suppressing all other goals, and runs `tac` on it.
 Usually `· tac`, which enforces that the goal is closed by `tac`, should be preferred.
-
----
 
 ### 215. lift_lets
 
@@ -4288,8 +3820,6 @@ example : (let x := 1; x) = 1 := by
 ```
 
 During the lifting process, let bindings are merged if they have the same type and value.
-
----
 
 ### 216. qify
 
@@ -4319,17 +3849,11 @@ example (a b c : ℤ) (h : a / b = c) (hab : b ∣ a) (hb : b ≠ 0) : a = c * b
 `qify` makes use of the `@[zify_simps]` and `@[qify_simps]` attributes to move propositions,
 and the `push_cast` tactic to simplify the `ℚ`-valued expressions.
 
----
-
 ### 217. #find
 
 > Occurrences: 19
 > 
 > `import Mathlib.Tactic.Find.«tactic#find_»`
-
-
-
----
 
 ### 218. native_decide
 
@@ -4349,8 +3873,6 @@ large computations this is one way to run external programs and trust the result
 ```
 example : (List.range 1000).length = 1000 := by native_decide
 ```
-
----
 
 ### 219. use!
 
@@ -4395,8 +3917,6 @@ By default it is `use (discharger := try with_reducible use_discharger) e₁, e�
 To turn off the discharger and keep all goals, use `(discharger := skip)`.
 To allow "heavy refls", use `(discharger := try use_discharger)`.
 
----
-
 ### 220. rw?
 
 > Occurrences: 18
@@ -4411,8 +3931,6 @@ Suggestions are printed as `rw [h]` or `rw [← h]`.
 
 You can use `rw? [-my_lemma, -my_theorem]` to prevent `rw?` using the named lemmas.
 
----
-
 ### 221. with_reducible
 
 > Occurrences: 18
@@ -4422,8 +3940,6 @@ You can use `rw? [-my_lemma, -my_theorem]` to prevent `rw?` using the named lemm
 `with_reducible tacs` executes `tacs` using the reducible transparency setting.
 In this setting only definitions tagged as `[reducible]` are unfolded.
 
----
-
 ### 222. nomatch
 
 > Occurrences: 17
@@ -4431,8 +3947,6 @@ In this setting only definitions tagged as `[reducible]` are unfolded.
 > `import Lean.Parser.Tactic.«tacticNomatch_,,»`
 
 The tactic `nomatch h` is shorthand for `exact nomatch h`.
-
----
 
 ### 223. reduce_mod_char
 
@@ -4458,8 +3972,6 @@ The variant `reduce_mod_char!` also tries to use `CharP R n` hypotheses in the c
 (Limitations of the typeclass system mean the tactic can't search for a `CharP R n` instance if
 `n` is not yet known; use `have : CharP R n := inferInstance; reduce_mod_char!` as a workaround.)
 
----
-
 ### 224. existsi
 
 > Occurrences: 15
@@ -4481,8 +3993,6 @@ example : ∃ x : Nat, ∃ y : Nat, x = y := by
   rfl
 ```
 
----
-
 ### 225. injections
 
 > Occurrences: 15
@@ -4492,8 +4002,6 @@ example : ∃ x : Nat, ∃ y : Nat, x = y := by
 `injections` applies `injection` to all hypotheses recursively
 (since `injection` can produce new hypotheses). Useful for destructing nested
 constructor equalities like `(a::b::c) = (d::e::f)`.
-
----
 
 ### 226. casesm
 
@@ -4513,8 +4021,6 @@ Example: The following tactic destructs all conjunctions and disjunctions in the
 casesm* _ ∨ _, _ ∧ _
 ```
 
----
-
 ### 227. frac_tac
 
 > Occurrences: 14
@@ -4522,8 +4028,6 @@ casesm* _ ∨ _, _ ∧ _
 > `import RatFunc.tacticFrac_tac`
 
 Solve equations for `RatFunc K` by working in `FractionRing K[X]`.
-
----
 
 ### 228. rify
 
@@ -4558,17 +4062,11 @@ example (a b c : ℕ) (h : a - b < c) (hab : b ≤ a) : a < b + c := by
 Note that `zify` or `qify` would work just as well in the above example (and `zify` is the natural
 choice since it is enough to get rid of the pathological `ℕ` subtraction).
 
----
-
 ### 229. tidy
 
 > Occurrences: 14
 > 
 > `import Mathlib.Tactic.tidy`
-
-
-
----
 
 ### 230. clear_
 
@@ -4578,17 +4076,11 @@ choice since it is enough to get rid of the pathological `ℕ` subtraction).
 
 Clear all hypotheses starting with `_`, like `_match` and `_let_match`.
 
----
-
 ### 231. move_add
 
 > Occurrences: 13
 > 
 > `import Mathlib.Tactic.moveAdd`
-
-
-
----
 
 ### 232. observe
 
@@ -4605,8 +4097,6 @@ If `hp` is omitted, then the placeholder `this` is used.
 The variant `observe? hp : p` will emit a trace message of the form `have hp : p := proof_term`.
 This may be particularly useful to speed up proofs.
 
----
-
 ### 233. pick_goal
 
 > Occurrences: 13
@@ -4619,8 +4109,6 @@ This may be particularly useful to speed up proofs.
 
 See also `Tactic.rotate_goals`, which moves goals from the front to the back and vice-versa.
 
----
-
 ### 234. unfold_projs
 
 > Occurrences: 13
@@ -4629,8 +4117,6 @@ See also `Tactic.rotate_goals`, which moves goals from the front to the back and
 
 `unfold_projs at loc` unfolds projections of class instances at the given location.
 This also exists as a `conv`-mode tactic.
-
----
 
 ### 235. dbg_trace
 
@@ -4647,8 +4133,6 @@ example : False ∨ True := by
   | apply Or.inr; trivial; dbg_trace "right"
 ```
 
----
-
 ### 236. assumption'
 
 > Occurrences: 11
@@ -4656,8 +4140,6 @@ example : False ∨ True := by
 > `import Mathlib.Tactic.tacticAssumption'`
 
 Try calling `assumption` on all goals; succeeds if it closes at least one goal.
-
----
 
 ### 237. fail_if_no_progress
 
@@ -4668,8 +4150,6 @@ Try calling `assumption` on all goals; succeeds if it closes at least one goal.
 `fail_if_no_progress tacs` evaluates `tacs`, and fails if no progress is made on the main goal
 or the local context at reducible transparency.
 
----
-
 ### 238. run_tac
 
 > Occurrences: 11
@@ -4678,17 +4158,11 @@ or the local context at reducible transparency.
 
 The `run_tac doSeq` tactic executes code in `TacticM Unit`.
 
----
-
 ### 239. unit_interval
 
 > Occurrences: 11
 > 
 > `import Mathlib.Tactic.unitInterval`
-
-
-
----
 
 ### 240. move_oper
 
@@ -4710,8 +4184,6 @@ There is also a general tactic for a "binary associative commutative operation":
 In this case the syntax requires providing first a term whose head symbol is the operation.
 E.g. `move_oper HAdd.hAdd [...]` is the same as `move_add`, while `move_oper Max.max [...]`
 rearranges `max`s.
-
----
 
 ### 241. rcongr
 
@@ -4745,8 +4217,6 @@ and `congr with x` (or `congr; ext x`) would produce
 x : α ⊢ f x + 3 = g x + 3
 ```
 
----
-
 ### 242. save
 
 > Occurrences: 10
@@ -4762,17 +4232,11 @@ when working on a long tactic proof, by using `save` after expensive tactics.
 (TODO: do this automatically and transparently so that users don't have to use
 this combinator explicitly.)
 
----
-
 ### 243. set!
 
 > Occurrences: 10
 > 
 > `import Mathlib.Tactic.tacticSet!_`
-
-
-
----
 
 ### 244. apply_mod_cast
 
@@ -4782,8 +4246,6 @@ this combinator explicitly.)
 
 Normalize casts in the goal and the given expression, then `apply` the expression to the goal.
 
----
-
 ### 245. bicategory_coherence
 
 > Occurrences: 9
@@ -4792,8 +4254,6 @@ Normalize casts in the goal and the given expression, then `apply` the expressio
 
 Coherence tactic for bicategories.
 Use `pure_coherence` instead, which is a frontend to this one.
-
----
 
 ### 246. case'
 
@@ -4806,8 +4266,6 @@ but it does not ensure the goal has been solved after applying `tac`,
 nor does it admit the goal if `tac` failed.
 Recall that `case` closes the goal using `sorry` when `tac` fails,
 and the tactic execution is not interrupted.
-
----
 
 ### 247. eta_expand
 
@@ -4825,8 +4283,6 @@ and `f x` becomes `fun y => f x y`.
 
 This can be useful to turn, for example, a raw `HAdd.hAdd` into `fun x y => x + y`.
 
----
-
 ### 248. exact?
 
 > Occurrences: 9
@@ -4840,8 +4296,6 @@ The optional `using` clause provides identifiers in the local context that must 
 used by `exact?` when closing the goal.  This is most useful if there are multiple
 ways to resolve the goal, and one wants to guide which lemma is used.
 
----
-
 ### 249. ghost_fun_tac
 
 > Occurrences: 9
@@ -4849,8 +4303,6 @@ ways to resolve the goal, and one wants to guide which lemma is used.
 > `import WittVector.«tacticGhost_fun_tac_,_»`
 
 An auxiliary tactic for proving that `ghostFun` respects the ring operations.
-
----
 
 ### 250. ghost_simp
 
@@ -4860,8 +4312,6 @@ An auxiliary tactic for proving that `ghostFun` respects the ring operations.
 
 A macro for a common simplification when rewriting with ghost component equations.
 
----
-
 ### 251. map_fun_tac
 
 > Occurrences: 9
@@ -4869,8 +4319,6 @@ A macro for a common simplification when rewriting with ghost component equation
 > `import WittVector.mapFun.tacticMap_fun_tac`
 
 Auxiliary tactic for showing that `mapFun` respects the ring operations.
-
----
 
 ### 252. move_mul
 
@@ -4893,8 +4341,6 @@ In this case the syntax requires providing first a term whose head symbol is the
 E.g. `move_oper HAdd.hAdd [...]` is the same as `move_add`, while `move_oper Max.max [...]`
 rearranges `max`s.
 
----
-
 ### 253. simp_intro
 
 > Occurrences: 9
@@ -4915,8 +4361,6 @@ example : x + 0 = y → x = z := by
   sorry
 ```
 
----
-
 ### 254. subst_hom_lift
 
 > Occurrences: 9
@@ -4924,8 +4368,6 @@ example : x + 0 = y → x = z := by
 > `import CategoryTheory.tacticSubst_hom_lift___`
 
 `subst_hom_lift p f φ` tries to substitute `f` with `p(φ)` by using `p.IsHomLift f φ`
-
----
 
 ### 255. arith_mult
 
@@ -4935,8 +4377,6 @@ example : x + 0 = y → x = z := by
 
 `arith_mult` solves goals of the form `IsMultiplicative f` for `f : ArithmeticFunction R`
 by applying lemmas tagged with the user attribute `arith_mult`.
-
----
 
 ### 256. ghost_calc
 
@@ -4968,8 +4408,6 @@ All it does is apply the appropriate extensionality lemma and try to infer the r
 This is subtle and Lean's elaborator doesn't like it because of the HO unification involved,
 so it is easier (and prettier) to put it in a tactic script.
 
----
-
 ### 257. init_ring
 
 > Occurrences: 8
@@ -4977,8 +4415,6 @@ so it is easier (and prettier) to put it in a tactic script.
 > `import WittVector.initRing`
 
 `init_ring` is an auxiliary tactic that discharges goals factoring `init` over ring operations.
-
----
 
 ### 258. pgame_wf_tac
 
@@ -4989,8 +4425,6 @@ so it is easier (and prettier) to put it in a tactic script.
 Discharges proof obligations of the form `⊢ Subsequent ..` arising in termination proofs
 of definitions using well-founded recursion on `PGame`.
 
----
-
 ### 259. try_this
 
 > Occurrences: 8
@@ -4999,8 +4433,6 @@ of definitions using well-founded recursion on `PGame`.
 
 Produces the text `Try this: <tac>` with the given tactic, and then executes it.
 
----
-
 ### 260. type_check
 
 > Occurrences: 8
@@ -5008,8 +4440,6 @@ Produces the text `Try this: <tac>` with the given tactic, and then executes it.
 > `import tacticType_check_`
 
 Type check the given expression, and trace its type.
-
----
 
 ### 261. isBoundedDefault
 
@@ -5022,17 +4452,11 @@ in complete and conditionally complete lattices but let automation fill automati
 boundedness proofs in complete lattices, we use the tactic `isBoundedDefault` in the statements,
 in the form `(hf : f.IsBounded (≥) := by isBoundedDefault)`.
 
----
-
 ### 262. suggest
 
 > Occurrences: 7
 > 
 > `import Mathlib.Tactic.suggest`
-
-
-
----
 
 ### 263. witt_truncateFun_tac
 
@@ -5041,8 +4465,6 @@ in the form `(hf : f.IsBounded (≥) := by isBoundedDefault)`.
 > `import witt_truncateFun_tac`
 
 A macro tactic used to prove that `truncateFun` respects ring operations.
-
----
 
 ### 264. aesop?
 
@@ -5076,17 +4498,11 @@ clauses are:
   `(simp_config := { zeta := false })` makes Aesop use
   `simp (config := { zeta := false })`.
 
----
-
 ### 265. comp_val
 
 > Occurrences: 6
 > 
 > `import Mathlib.Tactic.compVal`
-
-
-
----
 
 ### 266. have?
 
@@ -5107,8 +4523,6 @@ only the types of the lemmas in the `using` clause.
 
 Suggestions are printed as `have := f a b c`.
 
----
-
 ### 267. infer_param
 
 > Occurrences: 6
@@ -5116,8 +4530,6 @@ Suggestions are printed as `have := f a b c`.
 > `import Mathlib.Tactic.inferOptParam`
 
 Close a goal of the form `optParam α a` or `autoParam α stx` by using `a`.
-
----
 
 ### 268. refold_let
 
@@ -5128,8 +4540,6 @@ Close a goal of the form `optParam α a` or `autoParam α stx` by using `a`.
 `refold_let x y z at loc` looks for the bodies of local definitions `x`, `y`, and `z` at the given
 location and replaces them with `x`, `y`, or `z`. This is the inverse of "zeta reduction."
 This also exists as a `conv`-mode tactic.
-
----
 
 ### 269. ring!
 
@@ -5150,17 +4560,11 @@ example (a b : ℤ) (n : ℕ) : (a + b)^(n + 2) = (a^2 + b^2 + a * b + b * a) * 
 example (x y : ℕ) : x + id y = y + id x := by ring!
 ```
 
----
-
 ### 270. ac_mono
 
 > Occurrences: 5
 > 
 > `import Mathlib.Tactic.acMono`
-
-
-
----
 
 ### 271. change?
 
@@ -5179,8 +4583,6 @@ example : (fun x : Nat => x) 0 = 1 := by
   change? 0 = _  -- `Try this: change 0 = 1`
 ```
 
----
-
 ### 272. eta_reduce
 
 > Occurrences: 5
@@ -5191,8 +4593,6 @@ example : (fun x : Nat => x) 0 = 1 := by
 This also exists as a `conv`-mode tactic.
 
 For example, `fun x y => f x y` becomes `f` after eta reduction.
-
----
 
 ### 273. reduce_mod_char!
 
@@ -5218,8 +4618,6 @@ The variant `reduce_mod_char!` also tries to use `CharP R n` hypotheses in the c
 (Limitations of the typeclass system mean the tactic can't search for a `CharP R n` instance if
 `n` is not yet known; use `have : CharP R n := inferInstance; reduce_mod_char!` as a workaround.)
 
----
-
 ### 274. rename'
 
 > Occurrences: 5
@@ -5230,8 +4628,6 @@ The variant `reduce_mod_char!` also tries to use `CharP R n` hypotheses in the c
 To rename several hypothesis, use `rename' h₁ => h₁new, h₂ => h₂new`.
 You can use `rename' a => b, b => a` to swap two variables.
 
----
-
 ### 275. simp_arith
 
 > Occurrences: 5
@@ -5241,8 +4637,6 @@ You can use `rename' a => b, b => a` to swap two variables.
 `simp_arith` is shorthand for `simp` with `arith := true` and `decide := true`.
 This enables the use of normalization by linear arithmetic.
 
----
-
 ### 276. smul_tac
 
 > Occurrences: 5
@@ -5250,8 +4644,6 @@ This enables the use of normalization by linear arithmetic.
 > `import RatFunc.tacticSmul_tac`
 
 Solve equations for `RatFunc K` by applying `RatFunc.induction_on`.
-
----
 
 ### 277. swap_var
 
@@ -5270,8 +4662,6 @@ example {P Q : Prop} (q : P) (p : Q) : P ∧ Q := by
   exact ⟨p, q⟩
 ```
 
----
-
 ### 278. ac_change
 
 > Occurrences: 4
@@ -5285,8 +4675,6 @@ example (a b c d e f g N : ℕ) : (a + b) + (c + d) + (e + f) + g ≤ N := by
   ac_change a + d + e + f + c + g + b ≤ _
   -- ⊢ a + d + e + f + c + g + b ≤ N
 ```
-
----
 
 ### 279. cases_type
 
@@ -5305,8 +4693,6 @@ Example: The following tactic destructs all conjunctions and disjunctions in the
 cases_type* Or And
 ```
 
----
-
 ### 280. decreasing_tactic
 
 > Occurrences: 4
@@ -5319,8 +4705,6 @@ well founded relation. It can be locally overridden by using `decreasing_by tac`
 on the recursive definition, and it can also be globally extended by adding
 more definitions for `decreasing_tactic` (or `decreasing_trivial`,
 which this tactic calls).
-
----
 
 ### 281. eta_struct
 
@@ -5337,8 +4721,6 @@ equal expressions.
 
 For example, given `x : α × β`, then `(x.1, x.2)` becomes `x` after this transformation.
 
----
-
 ### 282. guard_goal_nums
 
 > Occurrences: 4
@@ -5346,8 +4728,6 @@ For example, given `x : α × β`, then `(x.1, x.2)` becomes `x` after this tran
 > `import guardGoalNums`
 
 `guard_goal_nums n` succeeds if there are exactly `n` goals and fails otherwise.
-
----
 
 ### 283. have?!
 
@@ -5367,8 +4747,6 @@ only the types of the lemmas in the `using` clause.
 `have?` should not be left in proofs; it is a search tool, like `apply?`.
 
 Suggestions are printed as `have := f a b c`.
-
----
 
 ### 284. itauto!
 
@@ -5390,8 +4768,6 @@ example (p : Prop) : ¬ (p ↔ ¬ p) := by itauto
 find among the atomic propositions, and `itauto! *` will case on all propositional atoms.
 *Warning:* This can blow up the proof search, so it should be used sparingly.
 
----
-
 ### 285. mod_cases
 
 > Occurrences: 4
@@ -5407,8 +4783,6 @@ find among the atomic propositions, and `itauto! *` will case on all proposition
   when `n` is a positive numeral and `e` is an expression of type `ℕ` or `ℤ`.
 * If `h` is omitted as in `mod_cases e % n`, it will be default-named `H`.
 
----
-
 ### 286. pi_lower_bound
 
 > Occurrences: 4
@@ -5418,8 +4792,6 @@ find among the atomic propositions, and `itauto! *` will case on all proposition
 Create a proof of `a < π` for a fixed rational number `a`, given a witness, which is a
 sequence of rational numbers `√2 < r 1 < r 2 < ... < r n < 2` satisfying the property that
 `√(2 + r i) ≤ r(i+1)`, where `r 0 = 0` and `√(2 - r n) ≥ a/2^(n+1)`.
-
----
 
 ### 287. pure_coherence
 
@@ -5440,8 +4812,6 @@ which can also cope with identities of the form
 `a ≫ f ≫ b ≫ g ≫ c = a' ≫ f ≫ b' ≫ g ≫ c'`
 where `a = a'`, `b = b'`, and `c = c'` can be proved using `pure_coherence`
 
----
-
 ### 288. show_term
 
 > Occurrences: 4
@@ -5452,8 +4822,6 @@ where `a = a'`, `b = b'`, and `c = c'` can be proved using `pure_coherence`
 "exact X Y Z" or "refine X ?_ Z" if there are remaining subgoals.
 
 (For some tactics, the printed term will not be human readable.)
-
----
 
 ### 289. simp_all?
 
@@ -5470,8 +4838,6 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 ```
 
 This command can also be used in `simp_all` and `dsimp`.
-
----
 
 ### 290. simpa?
 
@@ -5492,8 +4858,6 @@ more robust under changes to the simp lemma set.
 hypothesis `this` if present in the context, then try to close the goal using
 the `assumption` tactic.
 
----
-
 ### 291. sleep
 
 > Occurrences: 4
@@ -5503,8 +4867,6 @@ the `assumption` tactic.
 The tactic `sleep ms` sleeps for `ms` milliseconds and does nothing.
 It is used for debugging purposes only.
 
----
-
 ### 292. to_encard_tac
 
 > Occurrences: 4
@@ -5512,8 +4874,6 @@ It is used for debugging purposes only.
 > `import Set.tacticTo_encard_tac`
 
 A tactic useful for transferring proofs for `encard` to their corresponding `card` statements
-
----
 
 ### 293. trace_state
 
@@ -5523,8 +4883,6 @@ A tactic useful for transferring proofs for `encard` to their corresponding `car
 
 `trace_state` displays the current state in the info view.
 
----
-
 ### 294. triv
 
 > Occurrences: 4
@@ -5532,8 +4890,6 @@ A tactic useful for transferring proofs for `encard` to their corresponding `car
 > `import Batteries.Tactic.triv`
 
 Deprecated variant of `trivial`.
-
----
 
 ### 295. with_panel_widgets
 
@@ -5550,8 +4906,6 @@ by with_panel_widgets [GeometryDisplay]
 ```
 will show the geometry display alongside the usual tactic state throughout the proof.
 
----
-
 ### 296. abel1!
 
 > Occurrences: 3
@@ -5565,8 +4919,6 @@ that is provable by the axioms of commutative monoids/groups.
 
 `abel1!` will use a more aggressive reducibility setting to identify atoms.
 This can prove goals that `abel` cannot, but is more expensive.
-
----
 
 ### 297. aesop_graph
 
@@ -5582,8 +4934,6 @@ to standard `aesop`:
 - We instruct Aesop to fail if it can't fully solve the goal. This allows us to
   use `aesop_graph` for auto-params.
 
----
-
 ### 298. bitwise_assoc_tac
 
 > Occurrences: 3
@@ -5592,8 +4942,6 @@ to standard `aesop`:
 
 Proving associativity of bitwise operations in general essentially boils down to a huge case
 distinction, so it is shorter to use this tactic instead of proving it in the general case.
-
----
 
 ### 299. constructorm
 
@@ -5612,8 +4960,6 @@ and/or/true:
 constructorm* _ ∨ _, _ ∧ _, True
 ```
 
----
-
 ### 300. eq_refl
 
 > Occurrences: 3
@@ -5622,27 +4968,17 @@ constructorm* _ ∨ _, _ ∧ _, True
 
 `eq_refl` is equivalent to `exact rfl`, but has a few optimizations.
 
----
-
 ### 301. mem_tac
 
 > Occurrences: 3
 > 
 > `import AlgebraicGeometry.ProjIsoSpecTopComponent.FromSpec.tacticMem_tac`
 
-
-
----
-
 ### 302. mem_tac_aux
 
 > Occurrences: 3
 > 
 > `import AlgebraicGeometry.ProjIsoSpecTopComponent.FromSpec.tacticMem_tac_aux`
-
-
-
----
 
 ### 303. monoidal_coherence
 
@@ -5653,17 +4989,11 @@ constructorm* _ ∨ _, _ ∧ _, True
 Coherence tactic for monoidal categories.
 Use `pure_coherence` instead, which is a frontend to this one.
 
----
-
 ### 304. mv_bisim
 
 > Occurrences: 3
 > 
 > `import Mathlib.Tactic.mvBisim`
-
-
-
----
 
 ### 305. pi_upper_bound
 
@@ -5675,8 +5005,6 @@ Create a proof of `π < a` for a fixed rational number `a`, given a witness, whi
 sequence of rational numbers `√2 < r 1 < r 2 < ... < r n < 2` satisfying the property that
 `√(2 + r i) ≥ r(i+1)`, where `r 0 = 0` and `√(2 - r n) ≥ (a - 1/4^n) / 2^(n+1)`.
 
----
-
 ### 306. whisker_simps
 
 > Occurrences: 3
@@ -5685,8 +5013,6 @@ sequence of rational numbers `√2 < r 1 < r 2 < ... < r n < 2` satisfying the p
 
 Simp lemmas for rewriting a 2-morphism into a normal form.
 
----
-
 ### 307. aux_group₂
 
 > Occurrences: 2
@@ -5694,8 +5020,6 @@ Simp lemmas for rewriting a 2-morphism into a normal form.
 > `import Mathlib.Tactic.Group.aux_group₂`
 
 Auxiliary tactic for the `group` tactic. Calls `ring_nf` to normalize exponents.
-
----
 
 ### 308. checkpoint
 
@@ -5713,8 +5037,6 @@ See the `save` tactic, which may be more convenient to use.
 (TODO: do this automatically and transparently so that users don't have to use
 this combinator explicitly.)
 
----
-
 ### 309. decreasing_trivial
 
 > Occurrences: 2
@@ -5728,8 +5050,6 @@ It can be extended by adding more macro definitions, e.g.
 macro_rules | `(tactic| decreasing_trivial) => `(tactic| linarith)
 ```
 
----
-
 ### 310. discrete_cases
 
 > Occurrences: 2
@@ -5737,8 +5057,6 @@ macro_rules | `(tactic| decreasing_trivial) => `(tactic| linarith)
 > `import CategoryTheory.Discrete.tacticDiscrete_cases`
 
 A simple tactic to run `cases` on any `Discrete α` hypotheses.
-
----
 
 ### 311. econstructor
 
@@ -5750,17 +5068,11 @@ A simple tactic to run `cases` on any `Discrete α` hypotheses.
 (it calls `apply` using the first matching constructor of an inductive datatype)
 except only non-dependent premises are added as new goals.
 
----
-
 ### 312. elide
 
 > Occurrences: 2
 > 
 > `import Mathlib.Tactic.elide`
-
-
-
----
 
 ### 313. ext?
 
@@ -5769,8 +5081,6 @@ except only non-dependent premises are added as new goals.
 > `import Mathlib.Tactic.ext?`
 
 `ext? pat*` is like `ext pat*` but gives a suggestion on what pattern to use
-
----
 
 ### 314. guard_hyp_nums
 
@@ -5783,8 +5093,6 @@ except only non-dependent premises are added as new goals.
 Note that, depending on what options are set, some hypotheses in the local context might
 not be printed in the goal view. This tactic computes the total number of hypotheses,
 not the number of visible hypotheses.
-
----
 
 ### 315. linear_combination2
 
@@ -5862,8 +5170,6 @@ example (a b : ℚ) (h : ∀ p q : ℚ, p = q) : 3*a + qc = 3*b + 2*qc := by
   linear_combination 3 * h a b + hqc
 ```
 
----
-
 ### 316. monoidal_simps
 
 > Occurrences: 2
@@ -5872,17 +5178,11 @@ example (a b : ℚ) (h : ∀ p q : ℚ, p = q) : 3*a + qc = 3*b + 2*qc := by
 
 Simp lemmas for rewriting a hom in monoical categories into a normal form.
 
----
-
 ### 317. move_op
 
 > Occurrences: 2
 > 
 > `import Mathlib.Tactic.moveOp`
-
-
-
----
 
 ### 318. refine_lift
 
@@ -5892,8 +5192,6 @@ Simp lemmas for rewriting a hom in monoical categories into a normal form.
 
 Auxiliary macro for lifting have/suffices/let/...
 It makes sure the "continuation" `?_` is the main goal after refining.
-
----
 
 ### 319. rename_bvar
 
@@ -5912,8 +5210,6 @@ example (P : ℕ → ℕ → Prop) (h : ∀ n, ∃ m, P n m) : ∀ l, ∃ m, P l
 ```
 Note: name clashes are resolved automatically.
 
----
-
 ### 320. ring1!
 
 > Occurrences: 2
@@ -5927,8 +5223,6 @@ allowing variables in the exponent.
 * The variant `ring1!` will use a more aggressive reducibility setting
   to determine equality of atoms.
 
----
-
 ### 321. simp_all!
 
 > Occurrences: 2
@@ -5939,8 +5233,6 @@ allowing variables in the exponent.
 This will rewrite with all equation lemmas, which can be used to
 partially evaluate many definitions.
 
----
-
 ### 322. simp_wf
 
 > Occurrences: 2
@@ -5950,8 +5242,6 @@ partially evaluate many definitions.
 Unfold definitions commonly used in well founded relation definitions.
 This is primarily intended for internal use in `decreasing_tactic`.
 
----
-
 ### 323. sorry_if_sorry
 
 > Occurrences: 2
@@ -5959,8 +5249,6 @@ This is primarily intended for internal use in `decreasing_tactic`.
 > `import CategoryTheory.sorryIfSorry`
 
 Close the main goal with `sorry` if its type contains `sorry`, and fail otherwise.
-
----
 
 ### 324. symm_saturate
 
@@ -5971,17 +5259,11 @@ Close the main goal with `sorry` if its type contains `sorry`, and fail otherwis
 For every hypothesis `h : a ~ b` where a `@[symm]` lemma is available,
 add a hypothesis `h_symm : b ~ a`.
 
----
-
 ### 325. use_finite_instance
 
 > Occurrences: 2
 > 
 > `import tacticUse_finite_instance`
-
-
-
----
 
 ### 326. aesop_mat
 
@@ -5992,8 +5274,6 @@ add a hypothesis `h_symm : b ~ a`.
 The `aesop_mat` tactic attempts to prove a set is contained in the ground set of a matroid.
 It uses a `[Matroid]` ruleset, and is allowed to fail.
 
----
-
 ### 327. apply_gmonoid_gnpowRec_succ_tac
 
 > Occurrences: 1
@@ -6001,8 +5281,6 @@ It uses a `[Matroid]` ruleset, and is allowed to fail.
 > `import GradedMonoid.tacticApply_gmonoid_gnpowRec_succ_tac`
 
 A tactic to for use as an optional value for `GMonoid.gnpow_succ'`.
-
----
 
 ### 328. apply_gmonoid_gnpowRec_zero_tac
 
@@ -6012,27 +5290,17 @@ A tactic to for use as an optional value for `GMonoid.gnpow_succ'`.
 
 A tactic to for use as an optional value for `GMonoid.gnpow_zero'`.
 
----
-
 ### 329. apply_normed
 
 > Occurrences: 1
 > 
 > `import Mathlib.Tactic.applyNormed`
 
-
-
----
-
 ### 330. assoc_rw
 
 > Occurrences: 1
 > 
 > `import Mathlib.Tactic.assocRw`
-
-
-
----
 
 ### 331. aux_group₁
 
@@ -6041,8 +5309,6 @@ A tactic to for use as an optional value for `GMonoid.gnpow_zero'`.
 > `import Mathlib.Tactic.Group.aux_group₁`
 
 Auxiliary tactic for the `group` tactic. Calls the simplifier only.
-
----
 
 ### 332. cases_type!
 
@@ -6061,8 +5327,6 @@ Example: The following tactic destructs all conjunctions and disjunctions in the
 cases_type* Or And
 ```
 
----
-
 ### 333. clear_aux_decl
 
 > Occurrences: 1
@@ -6070,8 +5334,6 @@ cases_type* Or And
 > `import Mathlib.Tactic.clearAuxDecl`
 
 This tactic clears all auxiliary declarations from the context.
-
----
 
 ### 334. compareOfLessAndEq_rfl
 
@@ -6089,8 +5351,6 @@ implicit arguments, requires us to unfold the defs and split the `if`s in the de
 3. seeing if we can split by cases on the arguments, then see if the defs work themselves out
   (useful when `compare` is defined via a `match` statement, as it is for `Bool`)
 
----
-
 ### 335. conv'
 
 > Occurrences: 1
@@ -6099,8 +5359,6 @@ implicit arguments, requires us to unfold the defs and split the `if`s in the de
 
 Executes the given conv block without converting regular goal into a `conv` goal.
 
----
-
 ### 336. count_heartbeats
 
 > Occurrences: 1
@@ -6108,8 +5366,6 @@ Executes the given conv block without converting regular goal into a `conv` goal
 > `import Mathlib.CountHeartbeats.tacticCount_heartbeats_`
 
 Count the heartbeats used by a tactic, e.g.: `count_heartbeats simp`.
-
----
 
 ### 337. count_heartbeats!
 
@@ -6120,27 +5376,17 @@ Count the heartbeats used by a tactic, e.g.: `count_heartbeats simp`.
 `count_heartbeats! in tac` runs a tactic 10 times, counting the heartbeats used, and logs the range
 and standard deviation. The tactic `count_heartbeats! n in tac` runs it `n` times instead.
 
----
-
 ### 338. decide!
 
 > Occurrences: 1
 > 
 > `import Mathlib.Tactic.decide!`
 
-
-
----
-
 ### 339. delta_instance
 
 > Occurrences: 1
 > 
 > `import Mathlib.Tactic.deltaInstance`
-
-
-
----
 
 ### 340. liftable_prefixes
 
@@ -6153,8 +5399,6 @@ Internal tactic used in `coherence`.
 Rewrites an equation `f = g` as `f₀ ≫ f₁ = g₀ ≫ g₁`,
 where `f₀` and `g₀` are maximal prefixes of `f` and `g` (possibly after reassociating)
 which are "liftable" (i.e. expressible as compositions of unitors and associators).
-
----
 
 ### 341. linarith!
 
@@ -6219,17 +5463,11 @@ A variant, `nlinarith`, does some basic preprocessing to handle some nonlinear g
 The option `set_option trace.linarith true` will trace certain intermediate stages of the `linarith`
 routine.
 
----
-
 ### 342. match_target
 
 > Occurrences: 1
 > 
 > `import Mathlib.Tactic.tacticMatch_target_`
-
-
-
----
 
 ### 343. monicity!
 
@@ -6243,8 +5481,6 @@ and calls `compute_degree` on those two goals.
 
 The variant `monicity!` starts like `monicity`, but calls `compute_degree!` on the two side-goals.
 
----
-
 ### 344. norm_cast0
 
 > Occurrences: 1
@@ -6253,17 +5489,11 @@ The variant `monicity!` starts like `monicity`, but calls `compute_degree!` on t
 
 Implementation of `norm_cast` (the full `norm_cast` calls `trivial` afterwards).
 
----
-
 ### 345. nth_rw_rhs
 
 > Occurrences: 1
 > 
 > `import Mathlib.Tactic.nthRwRHS`
-
-
-
----
 
 ### 346. observe?
 
@@ -6280,8 +5510,6 @@ If `hp` is omitted, then the placeholder `this` is used.
 The variant `observe? hp : p` will emit a trace message of the form `have hp : p := proof_term`.
 This may be particularly useful to speed up proofs.
 
----
-
 ### 347. repeat1
 
 > Occurrences: 1
@@ -6291,8 +5519,6 @@ This may be particularly useful to speed up proofs.
 `repeat1 tac` applies `tac` to main goal at least once. If the application succeeds,
 the tactic is applied recursively to the generated subgoals until it eventually fails.
 
----
-
 ### 348. restrict_tac
 
 > Occurrences: 1
@@ -6300,8 +5526,6 @@ the tactic is applied recursively to the generated subgoals until it eventually 
 > `import TopCat.Presheaf.restrict_tac`
 
 `restrict_tac` solves relations among subsets (copied from `aesop cat`)
-
----
 
 ### 349. ring1_nf
 
@@ -6315,8 +5539,6 @@ Tactic for solving equations of *commutative* (semi)rings, allowing variables in
 * The variant `ring1_nf!` will use a more aggressive reducibility setting
   to determine equality of atoms.
 
----
-
 ### 350. rotate_right
 
 > Occurrences: 1
@@ -6325,8 +5547,6 @@ Tactic for solving equations of *commutative* (semi)rings, allowing variables in
 
 Rotate the goals to the right by `n`. That is, take the goal at the back
 and push it to the front `n` times. If `n` is omitted, it defaults to `1`.
-
----
 
 ### 351. simpa!
 
@@ -6347,8 +5567,6 @@ more robust under changes to the simp lemma set.
 hypothesis `this` if present in the context, then try to close the goal using
 the `assumption` tactic.
 
----
-
 ### 352. sleep_heartbeats
 
 > Occurrences: 1
@@ -6356,8 +5574,6 @@ the `assumption` tactic.
 > `import tacticSleep_heartbeats_`
 
 do nothing for at least n heartbeats
-
----
 
 ### 353. with_unfolding_all
 
@@ -6367,8 +5583,6 @@ do nothing for at least n heartbeats
 
 `with_unfolding_all tacs` executes `tacs` using the `.all` transparency setting.
 In this setting all definitions that are not opaque are unfolded.
-
----
 
 ## Unused Tactics
 
@@ -6389,8 +5603,6 @@ example [AddCommMonoid α] (a b : α) : a + (b + a) = a + a + b := by abel
 example [AddCommGroup α] (a : α) : (3 : ℤ) • a = a + (2 : ℤ) • a := by abel
 ```
 
----
-
 ### 355. abel_nf!
 
 > Occurrences: 0
@@ -6406,8 +5618,6 @@ which rewrites all group expressions into a normal form.
 * `abel_nf` works as both a tactic and a conv tactic.
   In tactic mode, `abel_nf at h` can be used to rewrite in a hypothesis.
 
----
-
 ### 356. aesop_cat?
 
 > Occurrences: 0
@@ -6415,8 +5625,6 @@ which rewrites all group expressions into a normal form.
 > `import CategoryTheory.aesop_cat?`
 
 We also use `aesop_cat?` to pass along a `Try this` suggestion when using `aesop_cat`
-
----
 
 ### 357. aesop_cat_nonterminal
 
@@ -6428,8 +5636,6 @@ A variant of `aesop_cat` which does not fail when it is unable to solve the
 goal. Use this only for exploration! Nonterminal `aesop` is even worse than
 nonterminal `simp`.
 
----
-
 ### 358. aesop_graph?
 
 > Occurrences: 0
@@ -6437,8 +5643,6 @@ nonterminal `simp`.
 > `import aesop_graph?`
 
 Use `aesop_graph?` to pass along a `Try this` suggestion when using `aesop_graph`
-
----
 
 ### 359. aesop_graph_nonterminal
 
@@ -6450,17 +5654,11 @@ A variant of `aesop_graph` which does not fail if it is unable to solve the
 goal. Use this only for exploration! Nonterminal Aesop is even worse than
 nonterminal `simp`.
 
----
-
 ### 360. aesop_unfold
 
 > Occurrences: 0
 > 
 > `import Aesop.«tacticAesop_unfold[_,,]»`
-
-
-
----
 
 ### 361. and_intros
 
@@ -6470,8 +5668,6 @@ nonterminal `simp`.
 
 `and_intros` applies `And.intro` until it does not make progress.
 
----
-
 ### 362. apply_ext_theorem
 
 > Occurrences: 0
@@ -6480,17 +5676,11 @@ nonterminal `simp`.
 
 Apply a single extensionality theorem to the current goal.
 
----
-
 ### 363. apply_field
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.applyField`
-
-
-
----
 
 ### 364. apply_rfl
 
@@ -6502,8 +5692,6 @@ This tactic applies to a goal whose target has the form `x ~ x`,
 where `~` is a reflexive relation other than `=`,
 that is, a relation which has a reflexive lemma tagged with the attribute @[refl].
 
----
-
 ### 365. arith_mult?
 
 > Occurrences: 0
@@ -6513,8 +5701,6 @@ that is, a relation which has a reflexive lemma tagged with the attribute @[refl
 `arith_mult` solves goals of the form `IsMultiplicative f` for `f : ArithmeticFunction R`
 by applying lemmas tagged with the user attribute `arith_mult`, and prints out the generated
 proof term.
-
----
 
 ### 366. array_get_dec
 
@@ -6526,8 +5712,6 @@ This tactic, added to the `decreasing_trivial` toolbox, proves that
 `sizeOf arr[i] < sizeOf arr`, which is useful for well founded recursions
 over a nested inductive like `inductive T | mk : Array T → T`.
 
----
-
 ### 367. array_mem_dec
 
 > Occurrences: 0
@@ -6538,17 +5722,11 @@ This tactic, added to the `decreasing_trivial` toolbox, proves that `sizeOf a < 
 provided that `a ∈ arr` which is useful for well founded recursions over a nested inductive like
 `inductive T | mk : Array T → T`.
 
----
-
 ### 368. async
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.async`
-
-
-
----
 
 ### 369. bddDefault
 
@@ -6561,8 +5739,6 @@ in complete and conditionally complete lattices but let automation fill automati
 boundedness proofs in complete lattices, we use the tactic `bddDefault` in the statements,
 in the form `(hA : BddAbove A := by bddDefault)`.
 
----
-
 ### 370. bv_omega
 
 > Occurrences: 0
@@ -6573,17 +5749,11 @@ in the form `(hA : BddAbove A := by bddDefault)`.
 Currently the preprocessor is implemented as `try simp only [bv_toNat] at *`.
 `bv_toNat` is a `@[simp]` attribute that you can (cautiously) add to more theorems.
 
----
-
 ### 371. cases''
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.cases''`
-
-
-
----
 
 ### 372. cfc_cont_tac
 
@@ -6594,8 +5764,6 @@ Currently the preprocessor is implemented as `try simp only [bv_toNat] at *`.
 A tactic used to automatically discharge goals relating to the continuous functional calculus,
 specifically concerning continuity of the functions involved.
 
----
-
 ### 373. cfc_tac
 
 > Occurrences: 0
@@ -6604,8 +5772,6 @@ specifically concerning continuity of the functions involved.
 
 A tactic used to automatically discharge goals relating to the continuous functional calculus,
 specifically whether the element satisfies the predicate.
-
----
 
 ### 374. cfc_zero_tac
 
@@ -6616,17 +5782,11 @@ specifically whether the element satisfies the predicate.
 A tactic used to automatically discharge goals relating to the continuous functional calculus,
 specifically concerning whether `f 0 = 0`.
 
----
-
 ### 375. clarify
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.clarify`
-
-
-
----
 
 ### 376. classical!
 
@@ -6636,17 +5796,11 @@ specifically concerning whether `f 0 = 0`.
 
 `classical!` has been removed; use `classical` instead
 
----
-
 ### 377. compute_degree_le
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.computeDegreeLE`
-
-
-
----
 
 ### 378. congrm?
 
@@ -6657,8 +5811,6 @@ specifically concerning whether `f 0 = 0`.
 Display a widget panel allowing to generate a `congrm` call with holes specified by selecting
 subexpressions in the goal.
 
----
-
 ### 379. continuity?
 
 > Occurrences: 0
@@ -6667,8 +5819,6 @@ subexpressions in the goal.
 
 The tactic `continuity` solves goals of the form `Continuous f` by applying lemmas tagged with the
 `continuity` user attribute.
-
----
 
 ### 380. conv?
 
@@ -6679,8 +5829,6 @@ The tactic `continuity` solves goals of the form `Continuous f` by applying lemm
 Display a widget panel allowing to generate a `conv` call zooming to the subexpression selected
 in the goal.
 
----
-
 ### 381. decreasing_trivial_pre_omega
 
 > Occurrences: 0
@@ -6689,8 +5837,6 @@ in the goal.
 
 Variant of `decreasing_trivial` that does not use `omega`, intended to be used in core modules
 before `omega` is available.
-
----
 
 ### 382. decreasing_with
 
@@ -6702,27 +5848,17 @@ Constructs a proof of decreasing along a well founded relation, by applying
 lexicographic order lemmas and using `ts` to solve the base case. If it fails,
 it prints a message to help the user diagnose an ill-founded recursive definition.
 
----
-
 ### 383. derive_elementwise_proof
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.deriveElementwiseProof`
 
-
-
----
-
 ### 384. derive_reassoc_proof
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.deriveReassocProof`
-
-
-
----
 
 ### 385. dsimp!
 
@@ -6733,8 +5869,6 @@ it prints a message to help the user diagnose an ill-founded recursive definitio
 `dsimp!` is shorthand for `dsimp` with `autoUnfold := true`.
 This will rewrite with all equation lemmas, which can be used to
 partially evaluate many definitions.
-
----
 
 ### 386. dsimp?
 
@@ -6752,8 +5886,6 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 
 This command can also be used in `simp_all` and `dsimp`.
 
----
-
 ### 387. dsimp?!
 
 > Occurrences: 0
@@ -6770,17 +5902,11 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 
 This command can also be used in `simp_all` and `dsimp`.
 
----
-
 ### 388. dsimp_result
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.dsimpResult`
-
-
-
----
 
 ### 389. eapply
 
@@ -6799,17 +5925,11 @@ example (h : ∀ x : Nat, x = x → True) : True := by
 -- (kernel) declaration has metavariables '_example'
 ```
 
----
-
 ### 390. elementwise!
 
 > Occurrences: 0
 > 
 > `import Tactic.Elementwise.tacticElementwise!___`
-
-
-
----
 
 ### 391. equiv_rw
 
@@ -6817,19 +5937,11 @@ example (h : ∀ x : Nat, x = x → True) : True := by
 > 
 > `import Mathlib.Tactic.equivRw`
 
-
-
----
-
 ### 392. equiv_rw_type
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.equivRwType`
-
-
-
----
 
 ### 393. ext1?
 
@@ -6839,27 +5951,17 @@ example (h : ∀ x : Nat, x = x → True) : True := by
 
 `ext1? pat*` is like `ext1 pat*` but gives a suggestion on what pattern to use
 
----
-
 ### 394. extract_goal!
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.extractGoal!`
 
-
-
----
-
 ### 395. fail_if_success?
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.failIfSuccess?`
-
-
-
----
 
 ### 396. false_or_by_contra
 
@@ -6877,8 +5979,6 @@ Changes the goal to `False`, retaining as much information as possible:
   and introduce `¬ P`.
 * For a non-propositional goal use `False.elim`.
 
----
-
 ### 397. field_simp_discharge
 
 > Occurrences: 0
@@ -6886,8 +5986,6 @@ Changes the goal to `False`, retaining as much information as possible:
 > `import Mathlib.Tactic.FieldSimp.tacticField_simp_discharge`
 
 Discharge strategy for the `field_simp` tactic.
-
----
 
 ### 398. gcongr?
 
@@ -6898,17 +5996,11 @@ Discharge strategy for the `field_simp` tactic.
 Display a widget panel allowing to generate a `gcongr` call with holes specified by selecting
 subexpressions in the goal.
 
----
-
 ### 399. gcongr_discharger
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.GCongr.tacticGcongr_discharger`
-
-
-
----
 
 ### 400. generalize'
 
@@ -6917,8 +6009,6 @@ subexpressions in the goal.
 > `import «tacticGeneralize'_:_=_»`
 
 Backwards compatibility shim for `generalize`.
-
----
 
 ### 401. get_elem_tactic
 
@@ -6932,8 +6022,6 @@ to prove any side conditions that arise when constructing the term
 `get_elem_tactic_trivial` and gives a diagnostic error message otherwise;
 users are encouraged to extend `get_elem_tactic_trivial` instead of this tactic.
 
----
-
 ### 402. get_elem_tactic_trivial
 
 > Occurrences: 0
@@ -6946,8 +6034,6 @@ constructing the term (e.g. the index is in bounds of the array).
 The default behavior is to just try `trivial` (which handles the case
 where `i < arr.size` is in the context) and `simp_arith` and `omega`
 (for doing linear arithmetic in the index).
-
----
 
 ### 403. guard_expr
 
@@ -6965,17 +6051,11 @@ Both `e` and `e'` are elaborated then have their metavariables instantiated befo
 check. Their types are unified (using `isDefEqGuarded`) before synthetic metavariables are
 processed, which helps with default instance handling.
 
----
-
 ### 404. guard_proof_term
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.guardProofTerm`
-
-
-
----
 
 ### 405. guard_tags
 
@@ -6983,29 +6063,17 @@ processed, which helps with default instance handling.
 > 
 > `import Mathlib.Tactic.guardTags`
 
-
-
----
-
 ### 406. h_generalize
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.hGeneralize`
 
-
-
----
-
 ### 407. h_generalize!
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.hGeneralize!`
-
-
-
----
 
 ### 408. have!?
 
@@ -7026,8 +6094,6 @@ only the types of the lemmas in the `using` clause.
 
 Suggestions are printed as `have := f a b c`.
 
----
-
 ### 409. have'
 
 > Occurrences: 0
@@ -7036,17 +6102,11 @@ Suggestions are printed as `have := f a b c`.
 
 Similar to `have`, but using `refine'`
 
----
-
 ### 410. have_field
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.haveField`
-
-
-
----
 
 ### 411. html!
 
@@ -7054,19 +6114,11 @@ Similar to `have`, but using `refine'`
 > 
 > `import ProofWidgets.htmlTac`
 
-
-
----
-
 ### 412. induction''
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.induction''`
-
-
-
----
 
 ### 413. injections_and_clear
 
@@ -7074,19 +6126,11 @@ Similar to `have`, but using `refine'`
 > 
 > `import Mathlib.Tactic.injectionsAndClear`
 
-
-
----
-
 ### 414. isBounded_default
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.isBounded_default`
-
-
-
----
 
 ### 415. let'
 
@@ -7095,8 +6139,6 @@ Similar to `have`, but using `refine'`
 > `import Lean.Parser.Tactic.tacticLet'_`
 
 Similar to `let`, but using `refine'`
-
----
 
 ### 416. map_tacs
 
@@ -7107,17 +6149,11 @@ Similar to `let`, but using `refine'`
 Assuming there are `n` goals, `map_tacs [t1; t2; ...; tn]` applies each `ti` to the respective
 goal and leaves the resulting subgoals.
 
----
-
 ### 417. mapply
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.mapply`
-
-
-
----
 
 ### 418. match_hyp
 
@@ -7125,29 +6161,17 @@ goal and leaves the resulting subgoals.
 > 
 > `import Mathlib.Tactic.matchHyp`
 
-
-
----
-
 ### 419. measurability!
 
 > Occurrences: 0
 > 
 > `import measurability!`
 
-
-
----
-
 ### 420. measurability!?
 
 > Occurrences: 0
 > 
 > `import measurability!?`
-
-
-
----
 
 ### 421. measurability?
 
@@ -7160,17 +6184,11 @@ The tactic `measurability?` solves goals of the form `Measurable f`, `AEMeasurab
 with the `measurability` user attribute, and suggests a faster proof script that can be substituted
 for the tactic call in case of success.
 
----
-
 ### 422. mk_decorations
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.mkDecorations`
-
-
-
----
 
 ### 423. monicity
 
@@ -7183,8 +6201,6 @@ It converts the goal into a goal of the form `natDegree f ≤ n` and one of the 
 and calls `compute_degree` on those two goals.
 
 The variant `monicity!` starts like `monicity`, but calls `compute_degree!` on the two side-goals.
-
----
 
 ### 424. nlinarith!
 
@@ -7203,17 +6219,11 @@ in `linarith`. The preprocessing is as follows:
   the assumption `0 R' (b1 - a1) * (b2 - a2)` is added to the context (non-recursively),
   where `R ∈ {<, ≤, =}` is the appropriate comparison derived from `R1, R2`.
 
----
-
 ### 425. nth_rw_lhs
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.nthRwLHS`
-
-
-
----
 
 ### 426. padic_index_simp
 
@@ -7221,19 +6231,11 @@ in `linarith`. The preprocessing is as follows:
 > 
 > `import Mathlib.Tactic.padicIndexSimp`
 
-
-
----
-
 ### 427. pi_instance
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.piInstance`
-
-
-
----
 
 ### 428. pi_instance_derive_field
 
@@ -7241,19 +6243,11 @@ in `linarith`. The preprocessing is as follows:
 > 
 > `import Mathlib.Tactic.piInstanceDeriveField`
 
-
-
----
-
 ### 429. pretty_cases
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.prettyCases`
-
-
-
----
 
 ### 430. propagate_tags
 
@@ -7261,29 +6255,17 @@ in `linarith`. The preprocessing is as follows:
 > 
 > `import Mathlib.Tactic.propagateTags`
 
-
-
----
-
 ### 431. rcases?
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.rcases?`
 
-
-
----
-
 ### 432. reassoc!
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.reassoc!`
-
-
-
----
 
 ### 433. refine_lift'
 
@@ -7293,17 +6275,11 @@ in `linarith`. The preprocessing is as follows:
 
 Similar to `refine_lift`, but using `refine'`
 
----
-
 ### 434. refine_struct
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.refineStruct`
-
-
-
----
 
 ### 435. repeat1'
 
@@ -7318,8 +6294,6 @@ See also:
 * `repeat tac` simply applies `tac` repeatedly.
 * `repeat' tac` is like `repeat1' tac` but it does not require that `tac` succeed at least once.
 
----
-
 ### 436. restrict_tac?
 
 > Occurrences: 0
@@ -7328,17 +6302,11 @@ See also:
 
 `restrict_tac?` passes along `Try this` from `aesop`
 
----
-
 ### 437. revert_after
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.revertAfter`
-
-
-
----
 
 ### 438. revert_deps
 
@@ -7346,19 +6314,11 @@ See also:
 > 
 > `import Mathlib.Tactic.revertDeps`
 
-
-
----
-
 ### 439. revert_target_deps
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.revertTargetDeps`
-
-
-
----
 
 ### 440. rfl'
 
@@ -7368,8 +6328,6 @@ See also:
 
 `rfl'` is similar to `rfl`, but disables smart unfolding and unfolds all kinds of definitions,
 theorems included (relevant for declarations defined by well-founded recursion).
-
----
 
 ### 441. ring1_nf!
 
@@ -7382,8 +6340,6 @@ Tactic for solving equations of *commutative* (semi)rings, allowing variables in
 * This version of `ring1` uses `ring_nf` to simplify in atoms.
 * The variant `ring1_nf!` will use a more aggressive reducibility setting
   to determine equality of atoms.
-
----
 
 ### 442. ring_nf!
 
@@ -7400,17 +6356,11 @@ which rewrites all ring expressions into a normal form.
 * `ring_nf` works as both a tactic and a conv tactic.
   In tactic mode, `ring_nf at h` can be used to rewrite in a hypothesis.
 
----
-
 ### 443. rintro?
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.rintro?`
-
-
-
----
 
 ### 444. rsimp
 
@@ -7418,19 +6368,11 @@ which rewrites all ring expressions into a normal form.
 > 
 > `import Mathlib.Tactic.rsimp`
 
-
-
----
-
 ### 445. rw_search?
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.rwSearch?`
-
-
-
----
 
 ### 446. simp?!
 
@@ -7448,8 +6390,6 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 
 This command can also be used in `simp_all` and `dsimp`.
 
----
-
 ### 447. simp_all?!
 
 > Occurrences: 0
@@ -7466,8 +6406,6 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 
 This command can also be used in `simp_all` and `dsimp`.
 
----
-
 ### 448. simp_all_arith
 
 > Occurrences: 0
@@ -7476,8 +6414,6 @@ This command can also be used in `simp_all` and `dsimp`.
 
 `simp_all_arith` combines the effects of `simp_all` and `simp_arith`.
 
----
-
 ### 449. simp_all_arith!
 
 > Occurrences: 0
@@ -7485,8 +6421,6 @@ This command can also be used in `simp_all` and `dsimp`.
 > `import Lean.Parser.Tactic.simpAllArithAutoUnfold`
 
 `simp_all_arith!` combines the effects of `simp_all`, `simp_arith` and `simp!`.
-
----
 
 ### 450. simp_arith!
 
@@ -7498,17 +6432,11 @@ This command can also be used in `simp_all` and `dsimp`.
 This will rewrite with all equation lemmas, which can be used to
 partially evaluate many definitions.
 
----
-
 ### 451. simp_result
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.simpResult`
-
-
-
----
 
 ### 452. simpa?!
 
@@ -7529,8 +6457,6 @@ more robust under changes to the simp lemma set.
 hypothesis `this` if present in the context, then try to close the goal using
 the `assumption` tactic.
 
----
-
 ### 453. sizeOf_list_dec
 
 > Occurrences: 0
@@ -7541,8 +6467,6 @@ This tactic, added to the `decreasing_trivial` toolbox, proves that
 `sizeOf a < sizeOf as` when `a ∈ as`, which is useful for well founded recursions
 over a nested inductive like `inductive T | mk : List T → T`.
 
----
-
 ### 454. split_ands
 
 > Occurrences: 0
@@ -7550,8 +6474,6 @@ over a nested inductive like `inductive T | mk : List T → T`.
 > `import Batteries.Tactic.tacticSplit_ands`
 
 `split_ands` applies `And.intro` until it does not make progress.
-
----
 
 ### 455. squeeze_scope
 
@@ -7580,8 +6502,6 @@ example : foo x y = 1 + y := by
     cases x <;> simp -- only one printout: "Try this: simp only [foo, baz, bar]"
 ```
 
----
-
 ### 456. subst_eqs
 
 > Occurrences: 0
@@ -7591,27 +6511,17 @@ example : foo x y = 1 + y := by
 `subst_eq` repeatedly substitutes according to the equality proof hypotheses in the context,
 replacing the left side of the equality with the right, until no more progress can be made.
 
----
-
 ### 457. subtype_instance
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.subtypeInstance`
 
-
-
----
-
 ### 458. tidy?
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.tidy?`
-
-
-
----
 
 ### 459. toFinite_tac
 
@@ -7622,17 +6532,11 @@ replacing the left side of the equality with the right, until no more progress c
 A tactic (for use in default params) that applies `Set.toFinite` to synthesize a `Set.Finite`
 term.
 
----
-
 ### 460. trunc_cases
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.truncCases`
-
-
-
----
 
 ### 461. try_for
 
@@ -7640,19 +6544,11 @@ term.
 > 
 > `import Mathlib.Tactic.tryFor`
 
-
-
----
-
 ### 462. unelide
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.unelide`
-
-
-
----
 
 ### 463. unfold_aux
 
@@ -7660,19 +6556,11 @@ term.
 > 
 > `import Mathlib.Tactic.unfoldAux`
 
-
-
----
-
 ### 464. unfold_cases
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.unfoldCases`
-
-
-
----
 
 ### 465. unfold_coes
 
@@ -7680,19 +6568,11 @@ term.
 > 
 > `import Mathlib.Tactic.unfoldCoes`
 
-
-
----
-
 ### 466. unfold_wf
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.unfoldWf`
-
-
-
----
 
 ### 467. unhygienic
 
@@ -7711,8 +6591,6 @@ example : ∀ x : Nat, x = x := by unhygienic
   exact Eq.refl x  -- refer to x
 ```
 
----
-
 ### 468. uniqueDiffWithinAt_Ici_Iic_univ
 
 > Occurrences: 0
@@ -7721,8 +6599,6 @@ example : ∀ x : Nat, x = x := by unhygienic
 
 An auxiliary tactic closing goals `UniqueDiffWithinAt ℝ s a` where
 `s ∈ {Iic a, Ici a, univ}`.
-
----
 
 ### 469. use_discharger
 
@@ -7733,8 +6609,6 @@ An auxiliary tactic closing goals `UniqueDiffWithinAt ℝ s a` where
 Default discharger to try to use for the `use` and `use!` tactics.
 This is similar to the `trivial` tactic but doesn't do things like `contradiction` or `decide`.
 
----
-
 ### 470. volume_tac
 
 > Occurrences: 0
@@ -7743,15 +6617,9 @@ This is similar to the `trivial` tactic but doesn't do things like `contradictio
 
 The tactic `exact volume`, to be used in optional (`autoParam`) arguments.
 
----
-
 ### 471. witt_truncate_fun_tac
 
 > Occurrences: 0
 > 
 > `import Mathlib.Tactic.wittTruncateFunTac`
-
-
-
----
 
