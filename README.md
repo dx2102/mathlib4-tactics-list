@@ -1,6 +1,7 @@
 # Mathlib Tactics
 
-This file lists all tactics defined in Mathlib and Lean, sorted by usage count.
+This file lists all tactics defined in Mathlib and Lean, sorted by usage count,
+similar to [https://github.com/haruhisa-enomoto/mathlib4-all-tactics].
 
 I found this command that can print all tactic names and docstrings currently imported.
 
