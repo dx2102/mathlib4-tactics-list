@@ -5,7 +5,7 @@ similar to https://github.com/haruhisa-enomoto/mathlib4-all-tactics.
 
 The order is determined by roughly counting the number of times they appear in Mathlib.
 
-See [./postprocess.ipynb](./postprocess.ipynb) for visualizations.
+See [./postprocess.ipynb](./postprocess.ipynb) for the visualization.
 
 ### 0. (
 > Syntax full name: Parser.Tactic.paren.( <br>Frequency: 699255, 49.5162% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.paren)
