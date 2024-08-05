@@ -1,32 +1,21 @@
-
-<style>
-.division {
-    border-bottom: 2px solid #eee;
-}
-</style>
 ### 0. (
 > Syntax full name: Parser.Tactic.paren.( <br>Frequency: 699255, 49.5162% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.paren)
-
 
 `(tacs)` executes a list of tactics in sequence, without requiring that
 the goal be closed at the end like `· tacs`. Like `by` itself, the tactics
 can be either separated by newlines or `;`.
 
-<div class="division"></div>
 
 ### 1. _
 > Syntax full name: Batteries.Tactic.tactic_._ <br>Frequency: 164807, 11.6704% <br>File: import Batteries.Tactic.Init <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Init.html#Batteries.Tactic.tactic_)
-
 
 `_` in tactic position acts like the `done` tactic: it fails and gives the list
 of goals if there are any. It is useful as a placeholder after starting a tactic block
 such as `by _` to make it syntactically correct and show the current goal.
 
-<div class="division"></div>
 
 ### 2. simp
 > Syntax full name: Parser.Tactic.simp.simp <br>Frequency: 78532, 5.5611% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.simp)
-
 
 The `simp` tactic uses lemmas and hypotheses to simplify the main goal target or
 non-dependent hypotheses. It has many variants:
@@ -47,19 +36,15 @@ non-dependent hypotheses. It has many variants:
 - `simp [*] at *` simplifies target and all (propositional) hypotheses using the
   other hypotheses.
 
-<div class="division"></div>
 
 ### 3. rw
 > Syntax full name: Parser.Tactic.rwSeq.rw <br>Frequency: 57509, 4.0724% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.rwSeq)
 
-
 `rw` is like `rewrite`, but also tries to close the goal by "cheap" (reducible) `rfl` afterwards.
 
-<div class="division"></div>
 
 ### 4. rfl
 > Syntax full name: Parser.Tactic.tacticRfl.rfl <br>Frequency: 39937, 2.8281% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticRfl)
-
 
 `rfl` tries to close the current goal using reflexivity.
 This is supposed to be an extensible tactic and users can add their own support
@@ -68,19 +53,15 @@ for new reflexive relations.
 Remark: `rfl` is an extensible tactic. We later add `macro_rules` to try different
 reflexivity theorems (e.g., `Iff.rfl`).
 
-<div class="division"></div>
 
 ### 5. exact
 > Syntax full name: Parser.Tactic.exact.exact <br>Frequency: 37282, 2.6400% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.exact)
 
-
 `exact e` closes the main goal if its target type matches that of `e`.
 
-<div class="division"></div>
 
 ### 6. have
 > Syntax full name: Parser.Tactic.tacticHave_.have <br>Frequency: 25066, 1.7750% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticHave_)
-
 
 The `have` tactic is for adding hypotheses to the local context of the main goal.
 * `have h : t := e` adds the hypothesis `h : t` if `e` is a term of type `t`.
@@ -92,36 +73,30 @@ The `have` tactic is for adding hypotheses to the local context of the main goal
   For example, given `h : p ∧ q ∧ r`, `have ⟨h₁, h₂, h₃⟩ := h` produces the
   hypotheses `h₁ : p`, `h₂ : q`, and `h₃ : r`.
 
+
 > Syntax full name: tacticHave_.have <br>Frequency: 25066, 1.7750% <br>File: import Mathlib.Tactic.Have <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Have.html#tacticHave_)
 
 
 
-<div class="division"></div>
-
 ### 7. symm
 > Syntax full name: Parser.Tactic.symm.symm <br>Frequency: 20096, 1.4231% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.symm)
-
 
 * `symm` applies to a goal whose target has the form `t ~ u` where `~` is a symmetric relation,
   that is, a relation which has a symmetry lemma tagged with the attribute [symm].
   It replaces the target with `u ~ t`.
 * `symm at h` will rewrite a hypothesis `h : t ~ u` to `h : u ~ t`.
 
-<div class="division"></div>
 
 ### 8. refine
 > Syntax full name: Parser.Tactic.refine.refine <br>Frequency: 16484, 1.1673% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.refine)
-
 
 `refine e` behaves like `exact e`, except that named (`?x`) or unnamed (`?_`)
 holes in `e` that are not solved by unification with the main goal's target type
 are converted into new goals, using the hole's name, if any, as the goal case name.
 
-<div class="division"></div>
 
 ### 9. apply
 > Syntax full name: tacticApply_At_.apply <br>Frequency: 14659, 1.0380% <br>File: import Mathlib.Tactic.ApplyAt <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ApplyAt.html#tacticApply_At_)
-
 
 `apply t at i` will use forward reasoning with `t` at the hypothesis `i`.
 Explicitly, if `t : α₁ → ⋯ → αᵢ → ⋯ → αₙ` and `i` has type `αᵢ`, then this tactic will add
@@ -129,8 +104,8 @@ metavariables/goals for any terms of `αⱼ` for `j = 1, …, i-1`,
 then replace the type of `i` with `αᵢ₊₁ → ⋯ → αₙ` by applying those metavariables and the
 original `i`.
 
-> Syntax full name: Parser.Tactic.apply.apply <br>Frequency: 14659, 1.0380% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.apply)
 
+> Syntax full name: Parser.Tactic.apply.apply <br>Frequency: 14659, 1.0380% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.apply)
 
 `apply e` tries to match the current goal against the conclusion of `e`'s type.
 If it succeeds, then the tactic returns as many subgoals as the number of premises that
@@ -140,17 +115,15 @@ Non-dependent premises are added before dependent ones.
 The `apply` tactic uses higher-order pattern matching, type class resolution,
 and first-order unification with dependent types.
 
-> Syntax full name: applyWith.apply <br>Frequency: 14659, 1.0380% <br>File: import Mathlib.Tactic.ApplyWith <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ApplyWith.html#applyWith)
 
+> Syntax full name: applyWith.apply <br>Frequency: 14659, 1.0380% <br>File: import Mathlib.Tactic.ApplyWith <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ApplyWith.html#applyWith)
 
 `apply (config := cfg) e` is like `apply e` but allows you to provide a configuration
 `cfg : ApplyConfig` to pass to the underlying apply operation.
 
-<div class="division"></div>
 
 ### 10. ext
 > Syntax full name: Ext.ext.ext <br>Frequency: 13979, 0.9899% <br>File: import Init.Ext <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Ext.html#Ext.ext)
-
 
 Applies extensionality lemmas that are registered with the `@[ext]` attribute.
 * `ext pat*` applies extensionality theorems as much as possible,
@@ -165,21 +138,19 @@ The `ext1 pat*` tactic is like `ext pat*` except that it only applies a single e
 Unused patterns will generate warning.
 Patterns that don't match the variables will typically result in the introduction of anonymous hypotheses.
 
-<div class="division"></div>
 
 ### 11. let
 > Syntax full name: Parser.Tactic.letrec.let <br>Frequency: 12823, 0.9080% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.letrec)
 
-
 `let rec f : t := e` adds a recursive definition `f` to the current goal.
 The syntax is the same as term-mode `let rec`.
+
 
 > Syntax full name: tacticLet_.let <br>Frequency: 12823, 0.9080% <br>File: import Mathlib.Tactic.Have <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Have.html#tacticLet_)
 
 
 
 > Syntax full name: Parser.Tactic.tacticLet_.let <br>Frequency: 12823, 0.9080% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticLet_)
-
 
 The `let` tactic is for adding definitions to the local context of the main goal.
 * `let x : t := e` adds the definition `x : t := e` if `e` is a term of type `t`.
@@ -191,23 +162,19 @@ The `let` tactic is for adding definitions to the local context of the main goal
   For example, given `p : α × β × γ`, `let ⟨x, y, z⟩ := p` produces the
   local variables `x : α`, `y : β`, and `z : γ`.
 
-<div class="division"></div>
 
 ### 12. set
 > Syntax full name: setTactic.set <br>Frequency: 12248, 0.8673% <br>File: import Mathlib.Tactic.Set <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Set.html#setTactic)
 
 
 
-<div class="division"></div>
-
 ### 13. intro
 > Syntax full name: Batteries.Tactic.introDot.intro <br>Frequency: 11295, 0.7998% <br>File: import Batteries.Tactic.NoMatch <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/NoMatch.html#Batteries.Tactic.introDot)
 
-
 The syntax `intro.` is deprecated in favor of `nofun`.
 
-> Syntax full name: Parser.Tactic.intro.intro <br>Frequency: 11295, 0.7998% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.intro)
 
+> Syntax full name: Parser.Tactic.intro.intro <br>Frequency: 11295, 0.7998% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.intro)
 
 Introduces one or more hypotheses, optionally naming and/or pattern-matching them.
 For each hypothesis to be introduced, the remaining main goal's target type must
@@ -229,8 +196,8 @@ be a `let` or function type.
   | ...
   ```
 
-> Syntax full name: Parser.Tactic.introMatch.intro <br>Frequency: 11295, 0.7998% <br>File: import Lean.Parser.Tactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Tactic.html#Parser.Tactic.introMatch)
 
+> Syntax full name: Parser.Tactic.introMatch.intro <br>Frequency: 11295, 0.7998% <br>File: import Lean.Parser.Tactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Tactic.html#Parser.Tactic.introMatch)
 
 The tactic
 ```
@@ -248,11 +215,9 @@ match x with
 That is, `intro` can be followed by match arms and it introduces the values while
 doing a pattern match. This is equivalent to `fun` with match arms in term mode.
 
-<div class="division"></div>
 
 ### 14. trans
 > Syntax full name: tacticTrans___.trans <br>Frequency: 11004, 0.7792% <br>File: import Mathlib.Tactic.Relation.Trans <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Relation/Trans.html#tacticTrans___)
-
 
 `trans` applies to a goal whose target has the form `t ~ u` where `~` is a transitive relation,
 that is, a relation which has a transitivity lemma tagged with the attribute [trans].
@@ -263,20 +228,16 @@ that is, a relation which has a transitivity lemma tagged with the attribute [tr
 Additionally, `trans` also applies to a goal whose target has the form `t → u`,
 in which case it replaces the goal with `t → s` and `s → u`.
 
-<div class="division"></div>
 
 ### 15. open
 > Syntax full name: Parser.Tactic.open.open <br>Frequency: 10290, 0.7287% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Tactic.open)
 
-
 `open Foo in tacs` (the tactic) acts like `open Foo` at command level,
 but it opens a namespace only within the tactics `tacs`.
 
-<div class="division"></div>
 
 ### 16. simpa
 > Syntax full name: Parser.Tactic.simpa.simpa <br>Frequency: 8485, 0.6008% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.simpa)
-
 
 This is a "finishing" tactic modification of `simp`. It has two forms.
 
@@ -291,11 +252,9 @@ more robust under changes to the simp lemma set.
 hypothesis `this` if present in the context, then try to close the goal using
 the `assumption` tactic.
 
-<div class="division"></div>
 
 ### 17. obtain
 > Syntax full name: Parser.Tactic.obtain.obtain <br>Frequency: 7822, 0.5539% <br>File: import Init.RCases <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/RCases.html#Parser.Tactic.obtain)
-
 
 The `obtain` tactic is a combination of `have` and `rcases`. See `rcases` for
 a description of supported patterns.
@@ -313,11 +272,9 @@ If `⟨patt⟩` is omitted, `rcases` will try to infer the pattern.
 
 If `type` is omitted, `:= proof` is required.
 
-<div class="division"></div>
 
 ### 18. rintro
 > Syntax full name: Parser.Tactic.rintro.rintro <br>Frequency: 6632, 0.4696% <br>File: import Init.RCases <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/RCases.html#Parser.Tactic.rintro)
-
 
 The `rintro` tactic is a combination of the `intros` tactic with `rcases` to
 allow for destructuring patterns while introducing variables. See `rcases` for
@@ -328,27 +285,23 @@ two subgoals, one with variables `a d e` and the other with `b c d e`.
 `rintro`, unlike `rcases`, also supports the form `(x y : ty)` for introducing
 and type-ascripting multiple variables at once, similar to binders.
 
-<div class="division"></div>
 
 ### 19. <;>
 > Syntax full name: Batteries.Tactic.seq_focus.<;> <br>Frequency: 6545, 0.4635% <br>File: import Batteries.Tactic.SeqFocus <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/SeqFocus.html#Batteries.Tactic.seq_focus)
-
 
 `t <;> [t1; t2; ...; tn]` focuses on the first goal and applies `t`, which should result in `n`
 subgoals. It then applies each `ti` to the corresponding goal and collects the resulting
 subgoals.
 
-> Syntax full name: Parser.Tactic.«tactic_<;>_».<;> <br>Frequency: 6545, 0.4635% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.«tactic_<;>_»)
 
+> Syntax full name: Parser.Tactic.«tactic_<;>_».<;> <br>Frequency: 6545, 0.4635% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.«tactic_<;>_»)
 
 `tac <;> tac'` runs `tac` on the main goal and `tac'` on each produced goal,
 concatenating all goals produced by `tac'`.
 
-<div class="division"></div>
 
 ### 20. rcases
 > Syntax full name: Parser.Tactic.rcases.rcases <br>Frequency: 6031, 0.4271% <br>File: import Init.RCases <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/RCases.html#Parser.Tactic.rcases)
-
 
 `rcases` is a tactic that will perform `cases` recursively, according to a pattern. It is used to
 destructure hypotheses or expressions composed of inductive types like `h1 : a ∧ b ∧ c ∨ d` or
@@ -392,11 +345,9 @@ matching on the constructor `quot.mk`.
 `rcases h : e with PAT` will do the same as `rcases e with PAT` with the exception that an
 assumption `h : e = PAT` will be added to the context.
 
-<div class="division"></div>
 
 ### 21. simp_rw
 > Syntax full name: tacticSimp_rw___.simp_rw <br>Frequency: 5533, 0.3918% <br>File: import Mathlib.Tactic.SimpRw <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SimpRw.html#tacticSimp_rw___)
-
 
 `simp_rw` functions as a mix of `simp` and `rw`. Like `rw`, it applies each
 rewrite rule in the given order, but like `simp` it repeatedly applies these
@@ -419,11 +370,9 @@ example {a : ℕ}
   simp_rw [h1, h2]
 ```
 
-<div class="division"></div>
 
 ### 22. lift
 > Syntax full name: lift.lift <br>Frequency: 4992, 0.3535% <br>File: import Mathlib.Tactic.Lift <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Lift.html#lift)
-
 
 Lift an expression to another type.
 * Usage: `'lift' expr 'to' expr ('using' expr)? ('with' id (id id?)?)?`.
@@ -463,30 +412,24 @@ integer `z` (in the supertype) to `ℕ` (the subtype), given a proof that `z ≥
 propositions concerning `z` will still be over `ℤ`. `zify` changes propositions about `ℕ` (the
 subtype) to propositions about `ℤ` (the supertype), without changing the type of any variable.
 
-<div class="division"></div>
 
 ### 23. dsimp
 > Syntax full name: Parser.Tactic.dsimp.dsimp <br>Frequency: 4722, 0.3344% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.dsimp)
-
 
 The `dsimp` tactic is the definitional simplifier. It is similar to `simp` but only
 applies theorems that hold by reflexivity. Thus, the result is guaranteed to be
 definitionally equal to the input.
 
-<div class="division"></div>
 
 ### 24. set_option
 > Syntax full name: Parser.Tactic.set_option.set_option <br>Frequency: 4315, 0.3056% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Tactic.set_option)
 
-
 `set_option opt val in tacs` (the tactic) acts like `set_option opt val` at the command level,
 but it sets the option only within the tactics `tacs`.
 
-<div class="division"></div>
 
 ### 25. ring
 > Syntax full name: RingNF.ring.ring <br>Frequency: 4260, 0.3017% <br>File: import Mathlib.Tactic.Ring.RingNF <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/RingNF.html#RingNF.ring)
-
 
 Tactic for evaluating expressions in *commutative* (semi)rings, allowing for variables in the
 exponent.
@@ -501,20 +444,16 @@ example (a b : ℤ) (n : ℕ) : (a + b)^(n + 2) = (a^2 + b^2 + a * b + b * a) * 
 example (x y : ℕ) : x + id y = y + id x := by ring!
 ```
 
-<div class="division"></div>
 
 ### 26. show
 > Syntax full name: Parser.Tactic.tacticShow_.show <br>Frequency: 4130, 0.2925% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticShow_)
 
-
 `show t` finds the first goal whose target unifies with `t`. It makes that the main goal,
 performs the unification, and replaces the target with the unified version of `t`.
 
-<div class="division"></div>
 
 ### 27. cases
 > Syntax full name: Parser.Tactic.cases.cases <br>Frequency: 4128, 0.2923% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.cases)
-
 
 Assuming `x` is a variable in the local context with an inductive type,
 `cases x` splits the main goal, producing one goal for each constructor of the
@@ -538,11 +477,9 @@ You can use `with` to provide the variables names for each constructor.
   performs cases on `e` as above, but also adds a hypothesis `h : e = ...` to each hypothesis,
   where `...` is the constructor instance for that particular case.
 
-<div class="division"></div>
 
 ### 28. use
 > Syntax full name: useSyntax.use <br>Frequency: 4075, 0.2886% <br>File: import Mathlib.Tactic.Use <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Use.html#useSyntax)
-
 
 `use e₁, e₂, ⋯` is similar to `exists`, but unlike `exists` it is equivalent to applying the tactic
 `refine ⟨e₁, e₂, ⋯, ?_, ⋯, ?_⟩` with any number of placeholders (rather than just one) and
@@ -581,11 +518,9 @@ By default it is `use (discharger := try with_reducible use_discharger) e₁, e�
 To turn off the discharger and keep all goals, use `(discharger := skip)`.
 To allow "heavy refls", use `(discharger := try use_discharger)`.
 
-<div class="division"></div>
 
 ### 29. left
 > Syntax full name: Parser.Tactic.left.left <br>Frequency: 3752, 0.2657% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.left)
-
 
 Applies the first constructor when
 the goal is an inductive type with exactly two constructors, or fails otherwise.
@@ -595,19 +530,15 @@ example : True ∨ False := by
   trivial
 ```
 
-<div class="division"></div>
 
 ### 30. rwa
 > Syntax full name: Parser.Tactic.tacticRwa__.rwa <br>Frequency: 3548, 0.2512% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticRwa__)
 
-
 `rwa` calls `rw`, then closes any remaining goals using `assumption`.
 
-<div class="division"></div>
 
 ### 31. right
 > Syntax full name: Parser.Tactic.right.right <br>Frequency: 3447, 0.2441% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.right)
-
 
 Applies the second constructor when
 the goal is an inductive type with exactly two constructors, or fails otherwise.
@@ -617,11 +548,9 @@ example {p q : Prop} (h : q) : p ∨ q := by
   exact h
 ```
 
-<div class="division"></div>
 
 ### 32. congr
 > Syntax full name: Parser.Tactic.congr.congr <br>Frequency: 3274, 0.2318% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.congr)
-
 
 Apply congruence (recursively) to goals of the form `⊢ f as = f bs` and `⊢ HEq (f as) (f bs)`.
 The optional parameter is the depth of the recursive applications.
@@ -630,8 +559,8 @@ For example, given `⊢ f (g (x + y)) = f (g (y + x))`,
 `congr` produces the goals `⊢ x = y` and `⊢ y = x`,
 while `congr 2` produces the intended `⊢ x + y = y + x`.
 
-> Syntax full name: Batteries.Tactic.congrConfigWith.congr <br>Frequency: 3274, 0.2318% <br>File: import Batteries.Tactic.Congr <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Congr.html#Batteries.Tactic.congrConfigWith)
 
+> Syntax full name: Batteries.Tactic.congrConfigWith.congr <br>Frequency: 3274, 0.2318% <br>File: import Batteries.Tactic.Congr <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Congr.html#Batteries.Tactic.congrConfigWith)
 
 Apply congruence (recursively) to goals of the form `⊢ f as = f bs` and `⊢ HEq (f as) (f bs)`.
 * `congr n` controls the depth of the recursive applications.
@@ -644,8 +573,8 @@ Apply congruence (recursively) to goals of the form `⊢ f as = f bs` and `⊢ H
   For example, if the goal is `⊢ f '' s = g '' s` then `congr with x` generates the goal
   `x : α ⊢ f x = g x`.
 
-> Syntax full name: Batteries.Tactic.congrConfig.congr <br>Frequency: 3274, 0.2318% <br>File: import Batteries.Tactic.Congr <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Congr.html#Batteries.Tactic.congrConfig)
 
+> Syntax full name: Batteries.Tactic.congrConfig.congr <br>Frequency: 3274, 0.2318% <br>File: import Batteries.Tactic.Congr <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Congr.html#Batteries.Tactic.congrConfig)
 
 Apply congruence (recursively) to goals of the form `⊢ f as = f bs` and `⊢ HEq (f as) (f bs)`.
 The optional parameter is the depth of the recursive applications.
@@ -654,11 +583,9 @@ For example, given `⊢ f (g (x + y)) = f (g (y + x))`,
 `congr` produces the goals `⊢ x = y` and `⊢ y = x`,
 while `congr 2` produces the intended `⊢ x + y = y + x`.
 
-<div class="division"></div>
 
 ### 33. else
 > Syntax full name: Parser.Tactic.tacDepIfThenElse.else <br>Frequency: 3254, 0.2304% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacDepIfThenElse)
-
 
 In tactic mode, `if h : t then tac1 else tac2` can be used as alternative syntax for:
 ```
@@ -672,8 +599,8 @@ You can use `?_` or `_` for either subproof to delay the goal to after the tacti
 if a tactic sequence is provided for `tac1` or `tac2` then it will require the goal to be closed
 by the end of the block.
 
-> Syntax full name: Parser.Tactic.tacIfThenElse.else <br>Frequency: 3254, 0.2304% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacIfThenElse)
 
+> Syntax full name: Parser.Tactic.tacIfThenElse.else <br>Frequency: 3254, 0.2304% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacIfThenElse)
 
 In tactic mode, `if t then tac1 else tac2` is alternative syntax for:
 ```
@@ -687,11 +614,9 @@ nondependent `if`, since this wouldn't add anything to the context and hence wou
 useless for proving theorems. To actually insert an `ite` application use
 `refine if t then ?_ else ?_`.)
 
-<div class="division"></div>
 
 ### 34. mono
 > Syntax full name: Monotonicity.mono.mono <br>Frequency: 3189, 0.2258% <br>File: import Mathlib.Tactic.Monotonicity.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Monotonicity/Basic.html#Monotonicity.mono)
-
 
 `mono` applies monotonicity rules and local hypotheses repetitively.  For example,
 ```lean
@@ -702,11 +627,9 @@ example (x y z k : ℤ)
   mono
 ```
 
-<div class="division"></div>
 
 ### 35. convert
 > Syntax full name: convert.convert <br>Frequency: 3178, 0.2250% <br>File: import Mathlib.Tactic.Convert <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Convert.html#convert)
-
 
 The `exact e` and `refine e` tactics require a term `e` whose type is
 definitionally equal to the goal. `convert e` is similar to `refine e`,
@@ -769,19 +692,15 @@ convert (config := {transparency := .default}) h
 ```
 These are passed to `congr!`. See `Congr!.Config` for options.
 
-<div class="division"></div>
 
 ### 36. by_cases
 > Syntax full name: «tacticBy_cases_:_».by_cases <br>Frequency: 3114, 0.2205% <br>File: import Init.ByCases <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/ByCases.html#«tacticBy_cases_:_»)
 
-
 `by_cases (h :)? p` splits the main goal into two cases, assuming `h : p` in the first branch, and `h : ¬ p` in the second branch.
 
-<div class="division"></div>
 
 ### 37. group
 > Syntax full name: Group.group.group <br>Frequency: 3043, 0.2155% <br>File: import Mathlib.Tactic.Group <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Group.html#Group.group)
-
 
 Tactic for normalizing expressions in multiplicative groups, without assuming
 commutativity, using only the group axioms without any information about which group
@@ -797,20 +716,16 @@ example {G : Type} [Group G] (a b c d : G) (h : c = (a*b^2)*((b*b)⁻¹*a⁻¹)*
   group      -- which then normalized and closed
 ```
 
-<div class="division"></div>
 
 ### 38. constructor
 > Syntax full name: Parser.Tactic.constructor.constructor <br>Frequency: 2962, 0.2097% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.constructor)
 
-
 If the main goal's target type is an inductive type, `constructor` solves it with
 the first matching constructor, or else fails.
 
-<div class="division"></div>
 
 ### 39. calc
 > Syntax full name: calcTactic.calc <br>Frequency: 2489, 0.1763% <br>File: import Init.NotationExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/NotationExtra.html#calcTactic)
-
 
 Step-wise reasoning over transitive relations.
 ```
@@ -847,11 +762,9 @@ See [Theorem Proving in Lean 4][tpil4] for more information.
 
 [tpil4]: https://lean-lang.org/theorem_proving_in_lean4/quantifiers_and_equality.html#calculational-proofs
 
-<div class="division"></div>
 
 ### 40. norm_cast
 > Syntax full name: Parser.Tactic.tacticNorm_cast_.norm_cast <br>Frequency: 2472, 0.1750% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticNorm_cast_)
-
 
 The `norm_cast` family of tactics is used to normalize certain coercions (*casts*) in expressions.
 - `norm_cast` normalizes casts in the target.
@@ -887,11 +800,9 @@ their operation, to make them more flexible about the expressions they accept
 
 See also `push_cast`, which moves casts inwards rather than lifting them outwards.
 
-<div class="division"></div>
 
 ### 41. suffices
 > Syntax full name: Parser.Tactic.tacticSuffices_.suffices <br>Frequency: 2316, 0.1640% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticSuffices_)
-
 
 Given a main goal `ctx ⊢ t`, `suffices h : t' from e` replaces the main goal with `ctx ⊢ t'`,
 `e` must have type `t` in the context `ctx, h : t'`.
@@ -899,48 +810,40 @@ Given a main goal `ctx ⊢ t`, `suffices h : t' from e` replaces the main goal w
 The variant `suffices h : t' by tac` is a shorthand for `suffices h : t' from by tac`.
 If `h :` is omitted, the name `this` is used.
 
+
 > Syntax full name: tacticSuffices_.suffices <br>Frequency: 2316, 0.1640% <br>File: import Mathlib.Tactic.Have <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Have.html#tacticSuffices_)
 
 
 
-<div class="division"></div>
-
 ### 42. haveI
 > Syntax full name: Parser.Tactic.tacticHaveI_.haveI <br>Frequency: 2214, 0.1568% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticHaveI_)
 
-
 `haveI` behaves like `have`, but inlines the value instead of producing a `let_fun` term.
 
-<div class="division"></div>
 
 ### 43. cases'
 > Syntax full name: cases'.cases' <br>Frequency: 2019, 0.1430% <br>File: import Mathlib.Tactic.Cases <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Cases.html#cases')
 
 
 
-<div class="division"></div>
-
 ### 44. change
 > Syntax full name: Parser.Tactic.change.change <br>Frequency: 2016, 0.1428% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.change)
-
 
 * `change tgt'` will change the goal from `tgt` to `tgt'`,
   assuming these are definitionally equal.
 * `change t' at h` will change hypothesis `h : t` to have type `t'`, assuming
   assuming `t` and `t'` are definitionally equal.
 
-> Syntax full name: Parser.Tactic.changeWith.change <br>Frequency: 2016, 0.1428% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.changeWith)
 
+> Syntax full name: Parser.Tactic.changeWith.change <br>Frequency: 2016, 0.1428% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.changeWith)
 
 * `change a with b` will change occurrences of `a` to `b` in the goal,
   assuming `a` and `b` are are definitionally equal.
 * `change a with b at h` similarly changes `a` to `b` in the type of hypothesis `h`.
 
-<div class="division"></div>
 
 ### 45. case
 > Syntax full name: Batteries.Tactic.casePatt.case <br>Frequency: 1956, 0.1385% <br>File: import Batteries.Tactic.Case <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Case.html#Batteries.Tactic.casePatt)
-
 
 * `case _ : t => tac` finds the first goal that unifies with `t` and then solves it
 using `tac` or else fails. Like `show`, it changes the type of the goal to `t`.
@@ -966,8 +869,8 @@ each goal is consumed as they are matched, so patterns may repeat or overlap.
 goal tag is changed to `m`.
 In particular, the goal becomes metavariable `?m`.
 
-> Syntax full name: Parser.Tactic.case.case <br>Frequency: 1956, 0.1385% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.case)
 
+> Syntax full name: Parser.Tactic.case.case <br>Frequency: 1956, 0.1385% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.case)
 
 * `case tag => tac` focuses on the goal with case name `tag` and solves it using `tac`,
   or else fails.
@@ -975,21 +878,17 @@ In particular, the goal becomes metavariable `?m`.
   with inaccessible names to the given names.
 * `case tag₁ | tag₂ => tac` is equivalent to `(case tag₁ => tac); (case tag₂ => tac)`.
 
-<div class="division"></div>
 
 ### 46. erw
 > Syntax full name: Parser.Tactic.tacticErw__.erw <br>Frequency: 1937, 0.1372% <br>File: import Init.Meta <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Meta.html#Parser.Tactic.tacticErw__)
-
 
 `erw [rules]` is a shorthand for `rw (config := { transparency := .default }) [rules]`.
 This does rewriting up to unfolding of regular definitions (by comparison to regular `rw`
 which only unfolds `@[reducible]` definitions).
 
-<div class="division"></div>
 
 ### 47. induction
 > Syntax full name: Parser.Tactic.induction.induction <br>Frequency: 1933, 0.1369% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.induction)
-
 
 Assuming `x` is a variable in the local context with an inductive type,
 `induction x` applies induction on `x` to the main goal,
@@ -1016,11 +915,9 @@ You can use `with` to provide the variables names for each constructor.
 - Given `x : Nat`, `induction x with | zero => tac₁ | succ x' ih => tac₂`
   uses tactic `tac₁` for the `zero` case, and `tac₂` for the `succ` case.
 
-<div class="division"></div>
 
 ### 48. choose
 > Syntax full name: Choose.choose.choose <br>Frequency: 1759, 0.1246% <br>File: import Mathlib.Tactic.Choose <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Choose.html#Choose.choose)
-
 
 * `choose a b h h' using hyp` takes a hypothesis `hyp` of the form
   `∀ (x : X) (y : Y), ∃ (a : A) (b : B), P x y a b ∧ Q x y a b`
@@ -1059,50 +956,38 @@ example (h : ∀ i : ℕ, i < 7 → ∃ j, i < j ∧ j < i+i) : True := by
   trivial
 ```
 
-<div class="division"></div>
 
 ### 49. exists
 > Syntax full name: Parser.Tactic.«tacticExists_,,».exists <br>Frequency: 1739, 0.1231% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.«tacticExists_,,»)
 
-
 `exists e₁, e₂, ...` is shorthand for `refine ⟨e₁, e₂, ...⟩; try trivial`.
 It is useful for existential goals.
 
-<div class="division"></div>
 
 ### 50. induction'
 > Syntax full name: induction'.induction' <br>Frequency: 1726, 0.1222% <br>File: import Mathlib.Tactic.Cases <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Cases.html#induction')
 
 
 
-<div class="division"></div>
-
 ### 51. reassoc
 > Syntax full name: reassoc.reassoc <br>Frequency: 1723, 0.1220% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#reassoc)
 
 
 
-<div class="division"></div>
-
 ### 52. infer_instance
 > Syntax full name: Parser.Tactic.tacticInfer_instance.infer_instance <br>Frequency: 1689, 0.1196% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticInfer_instance)
-
 
 `infer_instance` is an abbreviation for `exact inferInstance`.
 It synthesizes a value of any target type by typeclass inference.
 
-<div class="division"></div>
 
 ### 53. field
 > Syntax full name: field.field <br>Frequency: 1678, 0.1188% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#field)
 
 
 
-<div class="division"></div>
-
 ### 54. match
 > Syntax full name: Parser.Tactic.match.match <br>Frequency: 1672, 0.1184% <br>File: import Lean.Parser.Tactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Tactic.html#Parser.Tactic.match)
-
 
 `match` performs case analysis on one or more expressions.
 See [Induction and Recursion][tpil4].
@@ -1117,26 +1002,22 @@ example (n : Nat) : n = n := by
 
 [tpil4]: https://lean-lang.org/theorem_proving_in_lean4/induction_and_recursion.html
 
-> Syntax full name: Batteries.Tactic.«tacticMatch_,,With.».match <br>Frequency: 1672, 0.1184% <br>File: import Batteries.Tactic.NoMatch <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/NoMatch.html#Batteries.Tactic.«tacticMatch_,,With.»)
 
+> Syntax full name: Batteries.Tactic.«tacticMatch_,,With.».match <br>Frequency: 1672, 0.1184% <br>File: import Batteries.Tactic.NoMatch <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/NoMatch.html#Batteries.Tactic.«tacticMatch_,,With.»)
 
 The syntax `match ⋯ with.` has been deprecated in favor of `nomatch ⋯`.
 
 Both now support multiple discriminants.
 
-<div class="division"></div>
 
 ### 55. swap
 > Syntax full name: Batteries.Tactic.tacticSwap.swap <br>Frequency: 1617, 0.1145% <br>File: import Batteries.Tactic.PermuteGoals <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/PermuteGoals.html#Batteries.Tactic.tacticSwap)
 
-
 `swap` is a shortcut for `pick_goal 2`, which interchanges the 1st and 2nd goals.
 
-<div class="division"></div>
 
 ### 56. funext
 > Syntax full name: tacticFunext___.funext <br>Frequency: 1484, 0.1051% <br>File: import Init.NotationExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/NotationExtra.html#tacticFunext___)
-
 
 Apply function extensionality and introduce new hypotheses.
 The tactic `funext` will keep applying the `funext` lemma until the goal target is not reducible to
@@ -1150,19 +1031,15 @@ Patterns can be used like in the `intro` tactic. Example, given a goal
 ```
 `funext (a, b)` applies `funext` once and performs pattern matching on the newly introduced pair.
 
-<div class="division"></div>
 
 ### 57. first
 > Syntax full name: Parser.Tactic.first.first <br>Frequency: 1472, 0.1042% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.first)
 
-
 `first | tac | ...` runs each `tac` until one succeeds, or else fails.
 
-<div class="division"></div>
 
 ### 58. trivial
 > Syntax full name: Parser.Tactic.tacticTrivial.trivial <br>Frequency: 1471, 0.1042% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticTrivial)
-
 
 `trivial` tries different simple tactics (e.g., `rfl`, `contradiction`, ...)
 to close the current goal.
@@ -1171,11 +1048,9 @@ You can use the command `macro_rules` to extend the set of tactics used. Example
 macro_rules | `(tactic| trivial) => `(tactic| simp)
 ```
 
-<div class="division"></div>
 
 ### 59. classical
 > Syntax full name: Batteries.Tactic.tacticClassical_.classical <br>Frequency: 1459, 0.1033% <br>File: import Batteries.Tactic.Classical <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Classical.html#Batteries.Tactic.tacticClassical_)
-
 
 `classical tacs` runs `tacs` in a scope where `Classical.propDecidable` is a low priority
 local instance.
@@ -1183,19 +1058,15 @@ local instance.
 Note that (unlike lean 3) `classical` is a scoping tactic - it adds the instance only within the
 scope of the tactic.
 
-<div class="division"></div>
 
 ### 60. letI
 > Syntax full name: Parser.Tactic.tacticLetI_.letI <br>Frequency: 1446, 0.1024% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticLetI_)
 
-
 `letI` behaves like `let`, but inlines the value instead of producing a `let_fun` term.
 
-<div class="division"></div>
 
 ### 61. replace
 > Syntax full name: replace'.replace <br>Frequency: 1261, 0.0893% <br>File: import Mathlib.Tactic.Replace <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Replace.html#replace')
-
 
 Acts like `have`, but removes a hypothesis with the same name as
 this one if possible. For example, if the state is:
@@ -1227,8 +1098,8 @@ h : β
 ⊢ goal
 ```
 
-> Syntax full name: Parser.Tactic.replace.replace <br>Frequency: 1261, 0.0893% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.replace)
 
+> Syntax full name: Parser.Tactic.replace.replace <br>Frequency: 1261, 0.0893% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.replace)
 
 Acts like `have`, but removes a hypothesis with the same name as
 this one if possible. For example, if the state is:
@@ -1258,11 +1129,9 @@ h : β
 
 This can be used to simulate the `specialize` and `apply at` tactics of Coq.
 
-<div class="division"></div>
 
 ### 62. positivity
 > Syntax full name: Positivity.positivity.positivity <br>Frequency: 1212, 0.0858% <br>File: import Mathlib.Tactic.Positivity.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Positivity/Core.html#Positivity.positivity)
-
 
 Tactic solving goals of the form `0 ≤ x`, `0 < x` and `x ≠ 0`.  The tactic works recursively
 according to the syntax of the expression `x`, if the atoms composing the expression all have
@@ -1278,22 +1147,18 @@ example {a : ℤ} (ha : 1 < a) : 0 < |(3:ℤ) + a| := by positivity
 example {b : ℤ} : 0 ≤ max (-3) (b ^ 2) := by positivity
 ```
 
-<div class="division"></div>
 
 ### 63. norm_num
 > Syntax full name: normNum.norm_num <br>Frequency: 1133, 0.0802% <br>File: import Mathlib.Tactic.NormNum.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/NormNum/Core.html#normNum)
-
 
 Normalize numerical expressions. Supports the operations `+` `-` `*` `/` `⁻¹` `^` and `%`
 over numerical types such as `ℕ`, `ℤ`, `ℚ`, `ℝ`, `ℂ` and some general algebraic types,
 and can prove goals of the form `A = B`, `A ≠ B`, `A < B` and `A ≤ B`, where `A` and `B` are
 numerical expressions. It also has a relatively simple primality prover.
 
-<div class="division"></div>
 
 ### 64. split_ifs
 > Syntax full name: splitIfs.split_ifs <br>Frequency: 1123, 0.0795% <br>File: import Mathlib.Tactic.SplitIfs <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SplitIfs.html#splitIfs)
-
 
 Splits all if-then-else-expressions into multiple goals.
 Given a goal of the form `g (if p then x else y)`, `split_ifs` will produce
@@ -1304,11 +1169,9 @@ ite-expression.
 `split_ifs at *` splits all ite-expressions in all hypotheses as well as the goal.
 `split_ifs with h₁ h₂ h₃` overrides the default names for the hypotheses.
 
-<div class="division"></div>
 
 ### 65. filter_upwards
 > Syntax full name: filterUpwards.filter_upwards <br>Frequency: 1112, 0.0787% <br>File: import Mathlib.Order.Filter.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Filter/Basic.html#filterUpwards)
-
 
 `filter_upwards [h₁, ⋯, hₙ]` replaces a goal of the form `s ∈ f` and terms
 `h₁ : t₁ ∈ f, ⋯, hₙ : tₙ ∈ f` with `∀ x, x ∈ t₁ → ⋯ → x ∈ tₙ → x ∈ s`.
@@ -1323,11 +1186,9 @@ The list is an optional parameter, `[]` being its default value.
 Combining both shortcuts is done by writing `filter_upwards [h₁, ⋯, hₙ] with a₁ a₂ ⋯ aₖ using e`.
 Note that in this case, the `aᵢ` terms can be used in `e`.
 
-<div class="division"></div>
 
 ### 66. linarith
 > Syntax full name: linarith.linarith <br>Frequency: 1093, 0.0774% <br>File: import Mathlib.Tactic.Linarith.Frontend <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Linarith/Frontend.html#linarith)
-
 
 `linarith` attempts to find a contradiction between hypotheses that are linear (in)equalities.
 Equivalently, it can prove a linear inequality by assuming its negation and proving `False`.
@@ -1386,11 +1247,9 @@ A variant, `nlinarith`, does some basic preprocessing to handle some nonlinear g
 The option `set_option trace.linarith true` will trace certain intermediate stages of the `linarith`
 routine.
 
-<div class="division"></div>
 
 ### 67. aesop_cat
 > Syntax full name: CategoryTheory.aesop_cat.aesop_cat <br>Frequency: 1077, 0.0763% <br>File: import Mathlib.CategoryTheory.Category.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.aesop_cat)
-
 
 A thin wrapper for `aesop` which adds the `CategoryTheory` rule set and
 allows `aesop` to look through semireducible definitions when calling `intros`.
@@ -1398,30 +1257,24 @@ It also turns on `zetaDelta` in the `simp` config, allowing `aesop_cat` to unfol
 This tactic fails when it is unable to solve the goal, making it suitable for
 use in auto-params.
 
-<div class="division"></div>
 
 ### 68. assumption
 > Syntax full name: Parser.Tactic.assumption.assumption <br>Frequency: 1049, 0.0743% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.assumption)
 
-
 `assumption` tries to solve the main goal using a hypothesis of compatible type, or else fails.
 Note also the `‹t›` term notation, which is a shorthand for `show t by assumption`.
 
-<div class="division"></div>
 
 ### 69. subst
 > Syntax full name: Parser.Tactic.subst.subst <br>Frequency: 994, 0.0704% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.subst)
-
 
 `subst x...` substitutes each `x` with `e` in the goal if there is a hypothesis
 of type `x = e` or `e = x`.
 If `x` is itself a hypothesis of type `y = e` or `e = y`, `y` is substituted instead.
 
-<div class="division"></div>
 
 ### 70. gcongr
 > Syntax full name: GCongr.tacticGcongr__With__.gcongr <br>Frequency: 904, 0.0640% <br>File: import Mathlib.Tactic.GCongr.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/GCongr/Core.html#GCongr.tacticGcongr__With__)
-
 
 The `gcongr` tactic applies "generalized congruence" rules, reducing a relational goal
 between a LHS and RHS matching the same pattern to relational subgoals between the differing
@@ -1460,11 +1313,9 @@ side goal `0 ≤ x ^ 2` in the above application of `mul_le_mul_of_nonneg_left`)
 `gcongr_discharger`, which wraps `positivity` but can also be extended. Side goals not discharged
 in this way are left for the user.
 
-<div class="division"></div>
 
 ### 71. omega
 > Syntax full name: Parser.Tactic.omega.omega <br>Frequency: 889, 0.0630% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.omega)
-
 
 The `omega` tactic, for resolving integer and natural linear arithmetic problems.
 
@@ -1496,19 +1347,15 @@ can be used to:
 * `splitMinMax`: for each occurrence of `min a b`, split on `min a b = a ∨ min a b = b`
 Currently, all of these are on by default.
 
-<div class="division"></div>
 
 ### 72. fun_prop
 > Syntax full name: Mathlib.Meta.FunProp.funPropTacStx.fun_prop <br>Frequency: 826, 0.0585% <br>File: import Mathlib.Tactic.FunProp.Elab <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/FunProp/Elab.html#Mathlib.Meta.FunProp.funPropTacStx)
 
-
 Tactic to prove function properties
 
-<div class="division"></div>
 
 ### 73. unfold
 > Syntax full name: Parser.Tactic.unfold.unfold <br>Frequency: 808, 0.0572% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.unfold)
-
 
 * `unfold id` unfolds definition `id`.
 * `unfold id1 id2 ...` is equivalent to `unfold id1; unfold id2; ...`.
@@ -1517,24 +1364,20 @@ For non-recursive definitions, this tactic is identical to `delta`.
 For definitions by pattern matching, it uses "equation lemmas" which are
 autogenerated for each match arm.
 
-<div class="division"></div>
 
 ### 74. trace
 > Syntax full name: Parser.Tactic.trace.trace <br>Frequency: 786, 0.0557% <br>File: import Mathlib.Tactic.Trace <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Trace.html#Parser.Tactic.trace)
 
-
 Evaluates a term to a string (when possible), and prints it as a trace message.
+
 
 > Syntax full name: Parser.Tactic.traceMessage.trace <br>Frequency: 786, 0.0557% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.traceMessage)
 
-
 `trace msg` displays `msg` in the info view.
 
-<div class="division"></div>
 
 ### 75. aesop
 > Syntax full name: Aesop.Frontend.Parser.aesopTactic.aesop <br>Frequency: 781, 0.0553% <br>File: import Aesop.Frontend.Tactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Tactic.html#Aesop.Frontend.Parser.aesopTactic)
-
 
 `aesop <clause>*` tries to solve the current goal by applying a set of rules
 registered with the `@[aesop]` attribute. See [its
@@ -1562,11 +1405,9 @@ clauses are:
   `(simp_config := { zeta := false })` makes Aesop use
   `simp (config := { zeta := false })`.
 
-<div class="division"></div>
 
 ### 76. intros
 > Syntax full name: Parser.Tactic.intros.intros <br>Frequency: 763, 0.0540% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.intros)
-
 
 Introduces zero or more hypotheses, optionally naming them.
 
@@ -1638,19 +1479,15 @@ example : let n := 1; let k := 2; n + k = 3 := by
   rfl
 ```
 
-<div class="division"></div>
 
 ### 77. norm_num1
 > Syntax full name: normNum1.norm_num1 <br>Frequency: 741, 0.0525% <br>File: import Mathlib.Tactic.NormNum.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/NormNum/Core.html#normNum1)
 
-
 Basic version of `norm_num` that does not call `simp`.
 
-<div class="division"></div>
 
 ### 78. ext1
 > Syntax full name: Ext.tacticExt1___.ext1 <br>Frequency: 732, 0.0518% <br>File: import Init.Ext <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Ext.html#Ext.tacticExt1___)
-
 
 `ext1 pat*` is like `ext pat*` except that it only applies a single extensionality theorem rather
 than recursively applying as many extensionality theorems as possible.
@@ -1658,20 +1495,16 @@ than recursively applying as many extensionality theorems as possible.
 The `pat*` patterns are processed using the `rintro` tactic.
 If no patterns are supplied, then variables are introduced anonymously using the `intros` tactic.
 
-<div class="division"></div>
 
 ### 79. continuity
 > Syntax full name: tacticContinuity.continuity <br>Frequency: 682, 0.0483% <br>File: import Mathlib.Tactic.Continuity <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Continuity.html#tacticContinuity)
 
-
 The tactic `continuity` solves goals of the form `Continuous f` by applying lemmas tagged with the
 `continuity` user attribute.
 
-<div class="division"></div>
 
 ### 80. decide
 > Syntax full name: Parser.Tactic.decide.decide <br>Frequency: 672, 0.0476% <br>File: import Lean.Parser.Tactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Tactic.html#Parser.Tactic.decide)
-
 
 `decide` attempts to prove the main goal (with target type `p`) by synthesizing an instance of `Decidable p`
 and then reducing that instance to evaluate the truth value of `p`.
@@ -1727,55 +1560,43 @@ example : 1 + 1 = 2 := by decide
 example : 1 + 1 = 2 := by rfl
 ```
 
-<div class="division"></div>
 
 ### 81. find
 > Syntax full name: Find.tacticFind.find <br>Frequency: 663, 0.0469% <br>File: import Mathlib.Tactic.Find <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Find.html#Find.tacticFind)
 
 
 
-<div class="division"></div>
-
 ### 82. contrapose!
 > Syntax full name: Contrapose.contrapose!.contrapose! <br>Frequency: 614, 0.0435% <br>File: import Mathlib.Tactic.Contrapose <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Contrapose.html#Contrapose.contrapose!)
-
 
 Transforms the goal into its contrapositive and uses pushes negations inside `P` and `Q`.
 Usage matches `contrapose`
 
-<div class="division"></div>
 
 ### 83. next
 > Syntax full name: Parser.Tactic.«tacticNext_=>_».next <br>Frequency: 590, 0.0418% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.«tacticNext_=>_»)
-
 
 `next => tac` focuses on the next goal and solves it using `tac`, or else fails.
 `next x₁ ... xₙ => tac` additionally renames the `n` most recent hypotheses with
 inaccessible names to the given names.
 
-<div class="division"></div>
 
 ### 84. exacts
 > Syntax full name: Batteries.Tactic.exacts.exacts <br>Frequency: 516, 0.0365% <br>File: import Batteries.Tactic.Init <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Init.html#Batteries.Tactic.exacts)
 
-
 Like `exact`, but takes a list of terms and checks that all goals are discharged after the tactic.
 
-<div class="division"></div>
 
 ### 85. measurability
 > Syntax full name: tacticMeasurability_.measurability <br>Frequency: 507, 0.0359% <br>File: import Mathlib.Tactic.Measurability <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Measurability.html#tacticMeasurability_)
-
 
 The tactic `measurability` solves goals of the form `Measurable f`, `AEMeasurable f`,
 `StronglyMeasurable f`, `AEStronglyMeasurable f μ`, or `MeasurableSet s` by applying lemmas tagged
 with the `measurability` user attribute.
 
-<div class="division"></div>
 
 ### 86. split
 > Syntax full name: Parser.Tactic.split.split <br>Frequency: 481, 0.0341% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.split)
-
 
 The `split` tactic is useful for breaking nested if-then-else and `match` expressions into separate cases.
 For a `match` expression with `n` cases, the `split` tactic generates at most `n` subgoals.
@@ -1788,25 +1609,21 @@ renamed used the `case` or `next` tactics.
 - `split` will split the goal (target).
 - `split at h` will split the hypothesis `h`.
 
-<div class="division"></div>
 
 ### 87. clear
 > Syntax full name: clearExcept.clear <br>Frequency: 481, 0.0341% <br>File: import Mathlib.Tactic.ClearExcept <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ClearExcept.html#clearExcept)
 
-
 Clears all hypotheses it can besides those provided
 
-> Syntax full name: Parser.Tactic.clear.clear <br>Frequency: 481, 0.0341% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.clear)
 
+> Syntax full name: Parser.Tactic.clear.clear <br>Frequency: 481, 0.0341% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.clear)
 
 `clear x...` removes the given hypotheses, or fails if there are remaining
 references to a hypothesis.
 
-<div class="division"></div>
 
 ### 88. specialize
 > Syntax full name: Parser.Tactic.specialize.specialize <br>Frequency: 460, 0.0326% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.specialize)
-
 
 The tactic `specialize h a₁ ... aₙ` works on local hypothesis `h`.
 The premises of this hypothesis, either universal quantifications or
@@ -1815,11 +1632,9 @@ from arguments `a₁` ... `aₙ`.
 The tactic adds a new hypothesis with the same name `h := h a₁ ... aₙ`
 and tries to clear the previous one.
 
-<div class="division"></div>
 
 ### 89. says
 > Syntax full name: Says.says.says <br>Frequency: 443, 0.0314% <br>File: import Mathlib.Tactic.Says <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Says.html#Says.says)
-
 
 If you write `X says`, where `X` is a tactic that produces a "Try this: Y" message,
 then you will get a message "Try this: X says Y".
@@ -1834,29 +1649,23 @@ simp? [X] says simp only [X, Y, Z]
 If you use `set_option says.verify true` (set automatically during CI) then `X says Y`
 runs `X` and verifies that it still prints "Try this: Y".
 
-<div class="division"></div>
 
 ### 90. try
 > Syntax full name: Parser.Tactic.tacticTry_.try <br>Frequency: 434, 0.0307% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticTry_)
 
-
 `try tac` runs `tac` and succeeds even if `tac` failed.
 
-<div class="division"></div>
 
 ### 91. simp_all
 > Syntax full name: Parser.Tactic.simpAll.simp_all <br>Frequency: 434, 0.0307% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.simpAll)
-
 
 `simp_all` is a stronger version of `simp [*] at *` where the hypotheses and target
 are simplified multiple times until no simplification is applicable.
 Only non-dependent propositional hypotheses are considered.
 
-<div class="division"></div>
 
 ### 92. by_contra
 > Syntax full name: Batteries.Tactic.byContra.by_contra <br>Frequency: 421, 0.0298% <br>File: import Batteries.Tactic.Init <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Init.html#Batteries.Tactic.byContra)
-
 
 `by_contra h` proves `⊢ p` by contradiction,
 introducing a hypothesis `h : ¬p` and proving `False`.
@@ -1864,18 +1673,14 @@ introducing a hypothesis `h : ¬p` and proving `False`.
 * If `p` is decidable, it uses `Decidable.byContradiction` instead of `Classical.byContradiction`.
 * If `h` is omitted, the introduced variable `_: ¬p` will be anonymous.
 
-<div class="division"></div>
 
 ### 93. conv_rhs
 > Syntax full name: Conv.convRHS.conv_rhs <br>Frequency: 392, 0.0278% <br>File: import Mathlib.Tactic.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Conv.html#Conv.convRHS)
 
 
 
-<div class="division"></div>
-
 ### 94. field_simp
 > Syntax full name: FieldSimp.fieldSimp.field_simp <br>Frequency: 388, 0.0275% <br>File: import Mathlib.Tactic.FieldSimp <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/FieldSimp.html#FieldSimp.fieldSimp)
-
 
 The goal of `field_simp` is to reduce an expression in a field to an expression of the form `n / d`
 where neither `n` nor `d` contains any division symbol, just using the simplifier (with a carefully
@@ -1936,11 +1741,9 @@ that have numerals in denominators.
 The tactics are not related: `cancel_denoms` will only handle numeric denominators, and will try to
 entirely remove (numeric) division from the expression by multiplying by a factor.
 
-<div class="division"></div>
 
 ### 95. contradiction
 > Syntax full name: Parser.Tactic.contradiction.contradiction <br>Frequency: 377, 0.0267% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.contradiction)
-
 
 `contradiction` closes the main goal if its hypotheses are "trivially contradictory".
 - Inductive type/family with no applicable constructors
@@ -1964,37 +1767,29 @@ example (h : p) (h' : ¬ p) : q := by contradiction
 example (x : Nat) (h : x ≠ x) : p := by contradiction
 ```
 
-<div class="division"></div>
 
 ### 96. absurd
 > Syntax full name: Batteries.Tactic.tacticAbsurd_.absurd <br>Frequency: 363, 0.0257% <br>File: import Batteries.Tactic.Init <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Init.html#Batteries.Tactic.tacticAbsurd_)
 
-
 Given a proof `h` of `p`, `absurd h` changes the goal to `⊢ ¬ p`.
 If `p` is a negation `¬q` then the goal is changed to `⊢ q` instead.
 
-<div class="division"></div>
 
 ### 97. all_goals
 > Syntax full name: Parser.Tactic.allGoals.all_goals <br>Frequency: 361, 0.0256% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.allGoals)
 
-
 `all_goals tac` runs `tac` on each goal, concatenating the resulting goals, if any.
 
-<div class="division"></div>
 
 ### 98. revert
 > Syntax full name: Parser.Tactic.revert.revert <br>Frequency: 355, 0.0251% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.revert)
 
-
 `revert x...` is the inverse of `intro x...`: it moves the given hypotheses
 into the main goal's target type.
 
-<div class="division"></div>
 
 ### 99. iterate
 > Syntax full name: Parser.Tactic.tacticIterate____.iterate <br>Frequency: 351, 0.0249% <br>File: import Init.TacticsExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/TacticsExtra.html#Parser.Tactic.tacticIterate____)
-
 
 `iterate n tac` runs `tac` exactly `n` times.
 `iterate tac` runs `tac` repeatedly until failure.
@@ -2008,16 +1803,14 @@ iterate n
   ⋯
 ```
 
-<div class="division"></div>
 
 ### 100. abel
 > Syntax full name: Abel.abel_term.abel <br>Frequency: 342, 0.0242% <br>File: import Mathlib.Tactic.Abel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Abel.html#Abel.abel_term)
 
-
 Unsupported legacy syntax from mathlib3, which allowed passing additional terms to `abel`.
 
-> Syntax full name: Abel.abel.abel <br>Frequency: 342, 0.0242% <br>File: import Mathlib.Tactic.Abel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Abel.html#Abel.abel)
 
+> Syntax full name: Abel.abel.abel <br>Frequency: 342, 0.0242% <br>File: import Mathlib.Tactic.Abel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Abel.html#Abel.abel)
 
 Tactic for evaluating expressions in abelian groups.
 
@@ -2030,18 +1823,14 @@ example [AddCommMonoid α] (a b : α) : a + (b + a) = a + a + b := by abel
 example [AddCommGroup α] (a : α) : (3 : ℤ) • a = a + (2 : ℤ) • a := by abel
 ```
 
-<div class="division"></div>
 
 ### 101. conv_lhs
 > Syntax full name: Conv.convLHS.conv_lhs <br>Frequency: 336, 0.0238% <br>File: import Mathlib.Tactic.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Conv.html#Conv.convLHS)
 
 
 
-<div class="division"></div>
-
 ### 102. rel
 > Syntax full name: GCongr.«tacticRel[_]».rel <br>Frequency: 329, 0.0233% <br>File: import Mathlib.Tactic.GCongr.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/GCongr/Core.html#GCongr.«tacticRel[_]»)
-
 
 The `rel` tactic applies "generalized congruence" rules to solve a relational goal by
 "substitution".  For example,
@@ -2066,21 +1855,17 @@ side goal `0 ≤ x ^ 2` in the above application of `mul_le_mul_of_nonneg_left`)
 `gcongr_discharger`, which wraps `positivity` but can also be extended. If the side goals cannot
 be discharged in this way, the tactic fails.
 
-<div class="division"></div>
 
 ### 103. delta
 > Syntax full name: Parser.Tactic.delta.delta <br>Frequency: 322, 0.0228% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.delta)
-
 
 `delta id1 id2 ...` delta-expands the definitions `id1`, `id2`, ....
 This is a low-level tactic, it will expose how recursive definitions have been
 compiled by Lean.
 
-<div class="division"></div>
 
 ### 104. guard_target
 > Syntax full name: Parser.Tactic.guardTarget.guard_target <br>Frequency: 308, 0.0218% <br>File: import Init.Guard <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Guard.html#Parser.Tactic.guardTarget)
-
 
 Tactic to check that the target agrees with a given expression.
 * `guard_target = e` checks that the target is defeq at reducible transparency to `e`.
@@ -2091,11 +1876,9 @@ Tactic to check that the target agrees with a given expression.
 The term `e` is elaborated with the type of the goal as the expected type, which is mostly
 useful within `conv` mode.
 
-<div class="division"></div>
 
 ### 105. guard_hyp
 > Syntax full name: Parser.Tactic.guardHyp.guard_hyp <br>Frequency: 298, 0.0211% <br>File: import Init.Guard <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Guard.html#Parser.Tactic.guardHyp)
-
 
 Tactic to check that a named hypothesis has a given type and/or value.
 
@@ -2110,11 +1893,9 @@ Tactic to check that a named hypothesis has a given type and/or value.
 
 The value `v` is elaborated using the type of `h` as the expected type.
 
-<div class="division"></div>
 
 ### 106. conv
 > Syntax full name: Parser.Tactic.Conv.conv.conv <br>Frequency: 293, 0.0207% <br>File: import Init.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Conv.html#Parser.Tactic.Conv.conv)
-
 
 `conv => ...` allows the user to perform targeted rewriting on a goal or hypothesis,
 by focusing on particular subexpressions.
@@ -2126,11 +1907,9 @@ Basic forms:
 * `conv at h => cs` will rewrite hypothesis `h`.
 * `conv in pat => cs` will rewrite the first subexpression matching `pat` (see `pattern`).
 
-<div class="division"></div>
 
 ### 107. tauto
 > Syntax full name: Tauto.tauto.tauto <br>Frequency: 288, 0.0204% <br>File: import Mathlib.Tactic.Tauto <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Tauto.html#Tauto.tauto)
-
 
 `tauto` breaks down assumptions of the form `_ ∧ _`, `_ ∨ _`, `_ ↔ _` and `∃ _, _`
 and splits a goal of the form `_ ∧ _`, `_ ↔ _` or `∃ _, _` until it can be discharged
@@ -2141,11 +1920,9 @@ The Lean 3 version of this tactic by default attempted to avoid classical reason
 where possible. This Lean 4 version makes no such attempt. The `itauto` tactic
 is designed for that purpose.
 
-<div class="division"></div>
 
 ### 108. push_neg
 > Syntax full name: PushNeg.tacticPush_neg_.push_neg <br>Frequency: 287, 0.0203% <br>File: import Mathlib.Tactic.PushNeg <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/PushNeg.html#PushNeg.tacticPush_neg_)
-
 
 Push negations into the conclusion of a hypothesis.
 For instance, a hypothesis `h : ¬ ∀ x, ∃ y, x ≤ y` will be transformed by `push_neg at h` into
@@ -2169,11 +1946,9 @@ using say `push_neg at h h' ⊢` as usual.
 This tactic has two modes: in standard mode, it transforms `¬(p ∧ q)` into `p → ¬q`, whereas in
 distrib mode it produces `¬p ∨ ¬q`. To use distrib mode, use `set_option push_neg.use_distrib true`.
 
-<div class="division"></div>
 
 ### 109. apply_fun
 > Syntax full name: applyFun.apply_fun <br>Frequency: 279, 0.0198% <br>File: import Mathlib.Tactic.ApplyFun <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ApplyFun.html#applyFun)
-
 
 Apply a function to an equality or inequality in either a local hypothesis or the goal.
 
@@ -2211,11 +1986,9 @@ example (X Y Z : Type) (f : X → Y) (g : Y → Z) (H : Injective <| g ∘ f) :
 The function `f` is handled similarly to how it would be handled by `refine` in that `f` can contain
 placeholders. Named placeholders (like `?a` or `?_`) will produce new goals.
 
-<div class="division"></div>
 
 ### 110. nontriviality
 > Syntax full name: Nontriviality.nontriviality.nontriviality <br>Frequency: 274, 0.0194% <br>File: import Mathlib.Tactic.Nontriviality.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Nontriviality/Core.html#Nontriviality.nontriviality)
-
 
 Attempts to generate a `Nontrivial α` hypothesis.
 
@@ -2260,22 +2033,18 @@ example {α : Type} (a b : α) (h : a = b) : myeq a b := by
   assumption
 ```
 
-<div class="division"></div>
 
 ### 111. reduce
 > Syntax full name: tacticReduce__.reduce <br>Frequency: 271, 0.0192% <br>File: import Mathlib.Tactic.DefEqTransformations <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DefEqTransformations.html#tacticReduce__)
-
 
 `reduce at loc` completely reduces the given location.
 This also exists as a `conv`-mode tactic.
 
 This does the same transformation as the `#reduce` command.
 
-<div class="division"></div>
 
 ### 112. tfae_have
 > Syntax full name: TFAE.tfaeHave.tfae_have <br>Frequency: 266, 0.0188% <br>File: import Mathlib.Tactic.TFAE <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/TFAE.html#TFAE.tfaeHave)
-
 
 `tfae_have` introduces hypotheses for proving goals of the form `TFAE [P₁, P₂, ...]`. Specifically,
 `tfae_have i arrow j` introduces a hypothesis of type `Pᵢ arrow Pⱼ` to the local context,
@@ -2310,11 +2079,9 @@ example : TFAE [P, Q, R] := by
   tfae_finish
 ```
 
-<div class="division"></div>
 
 ### 113. generalize
 > Syntax full name: Parser.Tactic.generalize.generalize <br>Frequency: 264, 0.0187% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.generalize)
-
 
 * `generalize ([h :] e = x),+` replaces all occurrences `e`s in the main goal
   with a fresh hypothesis `x`s. If `h` is given, `h : e = x` is introduced as well.
@@ -2322,11 +2089,9 @@ example : TFAE [P, Q, R] := by
   inside `h₁`, ..., `hₙ`.
 * `generalize e = x at *` will generalize occurrences of `e` everywhere.
 
-<div class="division"></div>
 
 ### 114. push_cast
 > Syntax full name: Parser.Tactic.pushCast.push_cast <br>Frequency: 254, 0.0180% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.pushCast)
-
 
 `push_cast` rewrites the goal to move certain coercions (*casts*) inward, toward the leaf nodes.
 This uses `norm_cast` lemmas in the forward direction.
@@ -2360,11 +2125,9 @@ example (a b : Nat)
 
 See also `norm_cast`.
 
-<div class="division"></div>
 
 ### 115. injection
 > Syntax full name: Parser.Tactic.injection.injection <br>Frequency: 250, 0.0177% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.injection)
-
 
 The `injection` tactic is based on the fact that constructors of inductive data
 types are injections.
@@ -2378,28 +2141,22 @@ Given `h : a::b = c::d`, the tactic `injection h` adds two new hypothesis with t
 `a = c` and `b = d` to the main goal.
 The tactic `injection h with h₁ h₂` uses the names `h₁` and `h₂` to name the new hypotheses.
 
-<div class="division"></div>
 
 ### 116. done
 > Syntax full name: Parser.Tactic.done.done <br>Frequency: 237, 0.0168% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.done)
 
-
 `done` succeeds iff there are no remaining goals.
 
-<div class="division"></div>
 
 ### 117. hint
 > Syntax full name: Hint.hintStx.hint <br>Frequency: 229, 0.0162% <br>File: import Mathlib.Tactic.Hint <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Hint.html#Hint.hintStx)
 
-
 The `hint` tactic tries every tactic registered using `register_hint tac`,
 and reports any that succeed.
 
-<div class="division"></div>
 
 ### 118. ring_nf
 > Syntax full name: RingNF.ringNF.ring_nf <br>Frequency: 228, 0.0161% <br>File: import Mathlib.Tactic.Ring.RingNF <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/RingNF.html#RingNF.ringNF)
-
 
 Simplification tactic for expressions in the language of commutative (semi)rings,
 which rewrites all ring expressions into a normal form.
@@ -2410,42 +2167,32 @@ which rewrites all ring expressions into a normal form.
 * `ring_nf` works as both a tactic and a conv tactic.
   In tactic mode, `ring_nf at h` can be used to rewrite in a hypothesis.
 
-<div class="division"></div>
 
 ### 119. nth_rw
 > Syntax full name: nthRwSeq.nth_rw <br>Frequency: 227, 0.0161% <br>File: import Mathlib.Tactic.NthRewrite <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/NthRewrite.html#nthRwSeq)
 
-
 `nth_rw` is like `nth_rewrite`, but also tries to close the goal by trying `rfl` afterwards.
 
-<div class="division"></div>
 
 ### 120. safe
 > Syntax full name: safe.safe <br>Frequency: 218, 0.0154% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#safe)
 
 
 
-<div class="division"></div>
-
 ### 121. slice_lhs
 > Syntax full name: sliceLHS.slice_lhs <br>Frequency: 218, 0.0154% <br>File: import Mathlib.Tactic.CategoryTheory.Slice <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/Slice.html#sliceLHS)
-
 
 `slice_lhs a b => tac` zooms to the left hand side, uses associativity for categorical
 composition as needed, zooms in on the `a`-th through `b`-th morphisms, and invokes `tac`.
 
-<div class="division"></div>
 
 ### 122. destruct
 > Syntax full name: tacticDestruct_.destruct <br>Frequency: 211, 0.0149% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#tacticDestruct_)
 
 
 
-<div class="division"></div>
-
 ### 123. linear_combination
 > Syntax full name: LinearCombination.linearCombination.linear_combination <br>Frequency: 208, 0.0147% <br>File: import Mathlib.Tactic.LinearCombination <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/LinearCombination.html#LinearCombination.linearCombination)
-
 
 `linear_combination` attempts to simplify the target by creating a linear combination
   of a list of equalities and subtracting it from the target.
@@ -2517,11 +2264,9 @@ example (a b : ℚ) (h : ∀ p q : ℚ, p = q) : 3*a + qc = 3*b + 2*qc := by
   linear_combination 3 * h a b + hqc
 ```
 
-<div class="division"></div>
 
 ### 124. by_contra!
 > Syntax full name: byContra!.by_contra! <br>Frequency: 197, 0.0140% <br>File: import Mathlib.Tactic.ByContra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ByContra.html#byContra!)
-
 
 If the target of the main goal is a proposition `p`,
 `by_contra!` reduces the goal to proving `False` using the additional hypothesis `this : ¬ p`.
@@ -2545,11 +2290,9 @@ example : 1 < 2 := by
   -- h : ¬ 1 < 2 ⊢ False
 ```
 
-<div class="division"></div>
 
 ### 125. fin_cases
 > Syntax full name: finCases.fin_cases <br>Frequency: 197, 0.0140% <br>File: import Mathlib.Tactic.FinCases <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/FinCases.html#finCases)
-
 
 `fin_cases h` performs case analysis on a hypothesis of the form
 `h : A`, where `[Fintype A]` is available, or
@@ -2563,11 +2306,9 @@ example (f : ℕ → Prop) (p : Fin 3) (h0 : f 0) (h1 : f 1) (h2 : f 2) : f p.va
 ```
 after `fin_cases p; simp`, there are three goals, `f 0`, `f 1`, and `f 2`.
 
-<div class="division"></div>
 
 ### 126. cc
 > Syntax full name: cc.cc <br>Frequency: 196, 0.0139% <br>File: import Mathlib.Tactic.CC <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CC.html#cc)
-
 
 The congruence closure tactic `cc` tries to solve the goal by chaining
 equalities from context and applying congruence (i.e. if `a = b`, then `f a = f b`).
@@ -2589,11 +2330,9 @@ example (f : ℕ → ℕ) (x : ℕ)
   cc
 ```
 
-<div class="division"></div>
 
 ### 127. rewrite
 > Syntax full name: Parser.Tactic.rewriteSeq.rewrite <br>Frequency: 193, 0.0137% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.rewriteSeq)
-
 
 `rewrite [e]` applies identity `e` as a rewrite rule to the target of the main goal.
 If `e` is preceded by left arrow (`←` or `<-`), the rewrite is applied in the reverse direction.
@@ -2613,11 +2352,9 @@ restricting which later rewrites can be found.
 (Disallowed occurrences do not result in instantiation.)
 `{occs := .neg L}` allows skipping specified occurrences.
 
-<div class="division"></div>
 
 ### 128. coherence
 > Syntax full name: Coherence.coherence.coherence <br>Frequency: 184, 0.0130% <br>File: import Mathlib.Tactic.CategoryTheory.Coherence <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/Coherence.html#Coherence.coherence)
-
 
 Use the coherence theorem for monoidal categories to solve equations in a monoidal equation,
 where the two sides only differ by replacing strings of monoidal structural morphisms
@@ -2632,28 +2369,22 @@ where `a = a'`, `b = b'`, and `c = c'` can be proved using `pure_coherence`.
 you may need to increase the typeclass search depth,
 using e.g. `set_option synthInstance.maxSize 500`.)
 
-<div class="division"></div>
 
 ### 129. rename
 > Syntax full name: Parser.Tactic.rename.rename <br>Frequency: 184, 0.0130% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.rename)
 
-
 `rename t => x` renames the most recent hypothesis whose type matches `t`
 (which may contain placeholders) to `x`, or fails if no such hypothesis could be found.
 
-<div class="division"></div>
 
 ### 130. valid
 > Syntax full name: CategoryTheory.ComposableArrows.tacticValid.valid <br>Frequency: 178, 0.0126% <br>File: import Mathlib.CategoryTheory.ComposableArrows <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/ComposableArrows.html#CategoryTheory.ComposableArrows.tacticValid)
 
-
 A wrapper for `omega` which prefaces it with some quick and useful attempts
 
-<div class="division"></div>
 
 ### 131. ring1
 > Syntax full name: Ring.ring1.ring1 <br>Frequency: 176, 0.0125% <br>File: import Mathlib.Tactic.Ring.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/Basic.html#Ring.ring1)
-
 
 Tactic for solving equations of *commutative* (semi)rings,
 allowing variables in the exponent.
@@ -2662,11 +2393,9 @@ allowing variables in the exponent.
 * The variant `ring1!` will use a more aggressive reducibility setting
   to determine equality of atoms.
 
-<div class="division"></div>
 
 ### 132. congr!
 > Syntax full name: Congr!.congr!.congr! <br>Frequency: 175, 0.0124% <br>File: import Mathlib.Tactic.Congr! <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Congr!.html#Congr!.congr!)
-
 
 Equates pieces of the left-hand side of a goal to corresponding pieces of the right-hand side by
 recursively applying congruence lemmas. For example, with `⊢ f as = g bs` we could get
@@ -2734,11 +2463,9 @@ This is somewhat like `congr`.
 
 See `Congr!.Config` for all options.
 
-<div class="division"></div>
 
 ### 133. repeat
 > Syntax full name: Parser.Tactic.tacticRepeat_.repeat <br>Frequency: 169, 0.0120% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticRepeat_)
-
 
 `repeat tac` repeatedly applies `tac` so long as it succeeds.
 The tactic `tac` may be a tactic sequence, and if `tac` fails at any point in its execution,
@@ -2751,43 +2478,33 @@ See also:
 * `repeat' tac` recursively applies `tac` to each goal.
 * `first | tac1 | tac2` implements the backtracking used by `repeat`
 
-<div class="division"></div>
 
 ### 134. exfalso
 > Syntax full name: Parser.Tactic.tacticExfalso.exfalso <br>Frequency: 165, 0.0117% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticExfalso)
 
-
 `exfalso` converts a goal `⊢ tgt` into `⊢ False` by applying `False.elim`.
 
-<div class="division"></div>
 
 ### 135. slice_rhs
 > Syntax full name: sliceRHS.slice_rhs <br>Frequency: 155, 0.0110% <br>File: import Mathlib.Tactic.CategoryTheory.Slice <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/Slice.html#sliceRHS)
 
-
 `slice_rhs a b => tac` zooms to the right hand side, uses associativity for categorical
 composition as needed, zooms in on the `a`-th through `b`-th morphisms, and invokes `tac`.
 
-<div class="division"></div>
 
 ### 136. elementwise
 > Syntax full name: Elementwise.tacticElementwise___.elementwise <br>Frequency: 136, 0.0096% <br>File: import Mathlib.Tactic.CategoryTheory.Elementwise <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/Elementwise.html#Elementwise.tacticElementwise___)
 
 
 
-<div class="division"></div>
-
 ### 137. fail_if_success
 > Syntax full name: Parser.Tactic.failIfSuccess.fail_if_success <br>Frequency: 131, 0.0093% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.failIfSuccess)
 
-
 `fail_if_success t` fails if the tactic `t` succeeds.
 
-<div class="division"></div>
 
 ### 138. #check
 > Syntax full name: «tactic#check__».#check <br>Frequency: 129, 0.0091% <br>File: import Mathlib.Tactic.Check <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Check.html#«tactic#check__»)
-
 
 The `#check t` tactic elaborates the term `t` and then pretty prints it with its type as `e : ty`.
 
@@ -2798,11 +2515,9 @@ Use `#check (t)` to pretty print it as an elaborated expression.
 Like the `#check` command, the `#check` tactic allows stuck typeclass instance problems.
 These become metavariables in the output.
 
-<div class="division"></div>
 
 ### 139. simp?
 > Syntax full name: Parser.Tactic.simpTrace.simp? <br>Frequency: 127, 0.0090% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.simpTrace)
-
 
 `simp?` takes the same arguments as `simp`, but reports an equivalent call to `simp only`
 that would be sufficient to close the goal. This is useful for reducing the size of the simp
@@ -2814,21 +2529,17 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 
 This command can also be used in `simp_all` and `dsimp`.
 
-<div class="division"></div>
 
 ### 140. #adaptation_note
 > Syntax full name: «tactic#adaptation_note_».#adaptation_note <br>Frequency: 122, 0.0086% <br>File: import Mathlib.Tactic.AdaptationNote <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/AdaptationNote.html#«tactic#adaptation_note_»)
-
 
 Adaptation notes are comments that are used to indicate that a piece of code
 has been changed to accomodate a change in Lean core.
 They typically require further action/maintenance to be taken in the future.
 
-<div class="division"></div>
 
 ### 141. sorry
 > Syntax full name: Parser.Tactic.tacticSorry.sorry <br>Frequency: 121, 0.0086% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticSorry)
-
 
 The `sorry` tactic closes the goal using `sorryAx`. This is intended for stubbing out incomplete
 parts of a proof while still having a syntactically correct proof skeleton. Lean will give
@@ -2836,19 +2547,15 @@ a warning whenever a proof uses `sorry`, so you aren't likely to miss it, but
 you can double check if a theorem depends on `sorry` by using
 `#print axioms my_thm` and looking for `sorryAx` in the axiom list.
 
-<div class="division"></div>
 
 ### 142. fail
 > Syntax full name: Parser.Tactic.fail.fail <br>Frequency: 117, 0.0083% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.fail)
 
-
 `fail msg` is a tactic that always fails, and produces an error using the given message.
 
-<div class="division"></div>
 
 ### 143. nlinarith
 > Syntax full name: nlinarith.nlinarith <br>Frequency: 110, 0.0078% <br>File: import Mathlib.Tactic.Linarith.Frontend <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Linarith/Frontend.html#nlinarith)
-
 
 An extension of `linarith` with some preprocessing to allow it to solve some nonlinear arithmetic
 problems. (Based on Coq's `nra` tactic.) See `linarith` for the available syntax of options,
@@ -2861,30 +2568,24 @@ in `linarith`. The preprocessing is as follows:
   the assumption `0 R' (b1 - a1) * (b2 - a2)` is added to the context (non-recursively),
   where `R ∈ {<, ≤, =}` is the appropriate comparison derived from `R1, R2`.
 
-<div class="division"></div>
 
 ### 144. isBoundedDefault
 > Syntax full name: Filter.tacticIsBoundedDefault.isBoundedDefault <br>Frequency: 96, 0.0068% <br>File: import Mathlib.Order.LiminfLimsup <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/LiminfLimsup.html#Filter.tacticIsBoundedDefault)
-
 
 Filters are automatically bounded or cobounded in complete lattices. To use the same statements
 in complete and conditionally complete lattices but let automation fill automatically the
 boundedness proofs in complete lattices, we use the tactic `isBoundedDefault` in the statements,
 in the form `(hf : f.IsBounded (≥) := by isBoundedDefault)`.
 
-<div class="division"></div>
 
 ### 145. solve
 > Syntax full name: solveTactic.solve <br>Frequency: 95, 0.0067% <br>File: import Init.NotationExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/NotationExtra.html#solveTactic)
 
-
 Similar to `first`, but succeeds only if one the given tactics solves the current goal.
 
-<div class="division"></div>
 
 ### 146. solve_by_elim
 > Syntax full name: Parser.Tactic.solveByElim.solve_by_elim <br>Frequency: 92, 0.0065% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.solveByElim)
-
 
 `solve_by_elim` calls `apply` on the main goal to find an assumption whose head matches
 and then repeatedly calls `apply` on the generated subgoals until no subgoals remain,
@@ -2922,11 +2623,9 @@ See also the doc-comment for `Lean.Meta.Tactic.Backtrack.BacktrackConfig` for th
 `proc`, `suspend`, and `discharge` which allow further customization of `solve_by_elim`.
 Both `apply_assumption` and `apply_rules` are implemented via these hooks.
 
-<div class="division"></div>
 
 ### 147. wlog
 > Syntax full name: wlog.wlog <br>Frequency: 90, 0.0064% <br>File: import Mathlib.Tactic.WLOG <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/WLOG.html#wlog)
-
 
 `wlog h : P` will add an assumption `h : P` to the main goal, and add a side goal that requires
 showing that the case `h : ¬ P` can be reduced to the case where `P` holds (typically by symmetry).
@@ -2945,29 +2644,23 @@ In this way, the wlog-claim `this` can be applied to `x` and `y` in different or
 
 By default, the entire context is reverted.
 
-<div class="division"></div>
 
 ### 148. inhabit
 > Syntax full name: inhabit.inhabit <br>Frequency: 90, 0.0064% <br>File: import Mathlib.Tactic.Inhabit <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Inhabit.html#inhabit)
-
 
 `inhabit α` tries to derive a `Nonempty α` instance and
 then uses it to make an `Inhabited α` instance.
 If the target is a `Prop`, this is done constructively. Otherwise, it uses `Classical.choice`.
 
-<div class="division"></div>
 
 ### 149. skip
 > Syntax full name: Parser.Tactic.skip.skip <br>Frequency: 88, 0.0062% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.skip)
 
-
 `skip` does nothing.
 
-<div class="division"></div>
 
 ### 150. slim_check
 > Syntax full name: slimCheckSyntax.slim_check <br>Frequency: 87, 0.0062% <br>File: import Mathlib.Tactic.SlimCheck <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SlimCheck.html#slimCheckSyntax)
-
 
 `slim_check` considers a proof goal and tries to generate examples
 that would contradict the statement.
@@ -3019,19 +2712,15 @@ Options:
   the proposition
 * `set_option trace.slim_check.success true`: print the tested samples that satisfy a property
 
-<div class="division"></div>
 
 ### 151. exact_mod_cast
 > Syntax full name: Parser.Tactic.tacticExact_mod_cast_.exact_mod_cast <br>Frequency: 86, 0.0061% <br>File: import Init.TacticsExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/TacticsExtra.html#Parser.Tactic.tacticExact_mod_cast_)
 
-
 Normalize casts in the goal and the given expression, then close the goal with `exact`.
 
-<div class="division"></div>
 
 ### 152. introv
 > Syntax full name: introv.introv <br>Frequency: 85, 0.0060% <br>File: import Mathlib.Tactic.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Basic.html#introv)
-
 
 The tactic `introv` allows the user to automatically introduce the variables of a theorem and
 explicitly name the non-dependent hypotheses.
@@ -3064,11 +2753,9 @@ h₂ : b = c
 ⊢ a = c
 ```
 
-<div class="division"></div>
 
 ### 153. choose!
 > Syntax full name: Choose.tacticChoose!___Using_.choose! <br>Frequency: 83, 0.0059% <br>File: import Mathlib.Tactic.Choose <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Choose.html#Choose.tacticChoose!___Using_)
-
 
 * `choose a b h h' using hyp` takes a hypothesis `hyp` of the form
   `∀ (x : X) (y : Y), ∃ (a : A) (b : B), P x y a b ∧ Q x y a b`
@@ -3107,18 +2794,14 @@ example (h : ∀ i : ℕ, i < 7 → ∃ j, i < j ∧ j < i+i) : True := by
   trivial
 ```
 
-<div class="division"></div>
 
 ### 154. continue
 > Syntax full name: continue.continue <br>Frequency: 82, 0.0058% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#continue)
 
 
 
-<div class="division"></div>
-
 ### 155. apply_rules
 > Syntax full name: Parser.Tactic.applyRules.apply_rules <br>Frequency: 82, 0.0058% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.applyRules)
-
 
 `apply_rules [l₁, l₂, ...]` tries to solve the main goal by iteratively
 applying the list of lemmas `[l₁, l₂, ...]` or by applying a local hypothesis.
@@ -3142,26 +2825,20 @@ You can bound the iteration depth using the syntax `apply_rules (config := {maxD
 Unlike `solve_by_elim`, `apply_rules` does not perform backtracking, and greedily applies
 a lemma from the list until it gets stuck.
 
-<div class="division"></div>
 
 ### 156. abstract
 > Syntax full name: Mathlib.Tactic.abstract.abstract <br>Frequency: 82, 0.0058% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#Mathlib.Tactic.abstract)
 
 
 
-<div class="division"></div>
-
 ### 157. volume_tac
 > Syntax full name: MeasureTheory.tacticVolume_tac.volume_tac <br>Frequency: 78, 0.0055% <br>File: import Mathlib.MeasureTheory.Measure.MeasureSpaceDef <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Measure/MeasureSpaceDef.html#MeasureTheory.tacticVolume_tac)
 
-
 The tactic `exact volume`, to be used in optional (`autoParam`) arguments.
 
-<div class="division"></div>
 
 ### 158. itauto
 > Syntax full name: ITauto.itauto.itauto <br>Frequency: 76, 0.0054% <br>File: import Mathlib.Tactic.ITauto <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ITauto.html#ITauto.itauto)
-
 
 A decision procedure for intuitionistic propositional logic. Unlike `finish` and `tauto!` this
 tactic never uses the law of excluded middle (without the `!` option), and the proof search is
@@ -3177,11 +2854,9 @@ example (p : Prop) : ¬ (p ↔ ¬ p) := by itauto
 find among the atomic propositions, and `itauto! *` will case on all propositional atoms.
 *Warning:* This can blow up the proof search, so it should be used sparingly.
 
-<div class="division"></div>
 
 ### 159. repeat'
 > Syntax full name: Parser.Tactic.repeat'.repeat' <br>Frequency: 75, 0.0053% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.repeat')
-
 
 `repeat' tac` recursively applies `tac` on all of the goals so long as it succeeds.
 That is to say, if `tac` produces multiple subgoals, then `repeat' tac` is applied to each of them.
@@ -3190,11 +2865,9 @@ See also:
 * `repeat tac` simply repeatedly applies `tac`.
 * `repeat1' tac` is `repeat' tac` but requires that `tac` succeed for some goal at least once.
 
-<div class="division"></div>
 
 ### 160. on_goal
 > Syntax full name: Batteries.Tactic.«tacticOn_goal-_=>_».on_goal <br>Frequency: 74, 0.0052% <br>File: import Batteries.Tactic.PermuteGoals <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/PermuteGoals.html#Batteries.Tactic.«tacticOn_goal-_=>_»)
-
 
 `on_goal n => tacSeq` creates a block scope for the `n`-th goal and tries the sequence
 of tactics `tacSeq` on it.
@@ -3205,11 +2878,9 @@ bottom.
 The goal is not required to be solved and any resulting subgoals are inserted back into the
 list of goals, replacing the chosen goal.
 
-<div class="division"></div>
 
 ### 161. congrm
 > Syntax full name: congrM.congrm <br>Frequency: 74, 0.0052% <br>File: import Mathlib.Tactic.Congrm <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Congrm.html#congrM)
-
 
 `congrm e` is a tactic for proving goals of the form `lhs = rhs`, `lhs ↔ rhs`, `HEq lhs rhs`,
 or `R lhs rhs` when `R` is a reflexive relation.
@@ -3245,11 +2916,9 @@ built from `e` by replacing each placeholder `?m` by `$(?m)`.
 The pattern `e` is allowed to contain `$(...)` expressions to immediately substitute
 equality proofs into the congruence, just like for congruence quotations.
 
-<div class="division"></div>
 
 ### 162. borelize
 > Syntax full name: Borelize.tacticBorelize___.borelize <br>Frequency: 73, 0.0052% <br>File: import Mathlib.MeasureTheory.Constructions.BorelSpace.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Constructions/BorelSpace/Basic.html#Borelize.tacticBorelize___)
-
 
 The behaviour of `borelize α` depends on the existing assumptions on `α`.
 
@@ -3259,19 +2928,15 @@ The behaviour of `borelize α` depends on the existing assumptions on `α`.
 
 Finally, `borelize α β γ` runs `borelize α; borelize β; borelize γ`.
 
-<div class="division"></div>
 
 ### 163. rename_i
 > Syntax full name: Parser.Tactic.renameI.rename_i <br>Frequency: 71, 0.0050% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.renameI)
 
-
 `rename_i x_1 ... x_n` renames the last `n` inaccessible names using the given names.
 
-<div class="division"></div>
 
 ### 164. nth_rewrite
 > Syntax full name: nthRewriteSeq.nth_rewrite <br>Frequency: 70, 0.0050% <br>File: import Mathlib.Tactic.NthRewrite <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/NthRewrite.html#nthRewriteSeq)
-
 
 `nth_rewrite` is a variant of `rewrite` that only changes the nth occurrence of the expression
 to be rewritten.
@@ -3279,20 +2944,16 @@ to be rewritten.
 Note: The occurrences are counted beginning with `1` and not `0`, this is different than in
 mathlib3. The translation will be handled by mathport.
 
-<div class="division"></div>
 
 ### 165. fapply
 > Syntax full name: Batteries.Tactic.tacticFapply_.fapply <br>Frequency: 69, 0.0049% <br>File: import Batteries.Tactic.Init <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Init.html#Batteries.Tactic.tacticFapply_)
 
-
 `fapply e` is like `apply e` but it adds goals in the order they appear,
 rather than putting the dependent goals first.
 
-<div class="division"></div>
 
 ### 166. generalize_proofs
 > Syntax full name: generalizeProofsElab.generalize_proofs <br>Frequency: 69, 0.0049% <br>File: import Mathlib.Tactic.GeneralizeProofs <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/GeneralizeProofs.html#generalizeProofsElab)
-
 
 `generalize_proofs ids* [at locs]?` generalizes proofs in the current goal,
 turning them into new local hypotheses.
@@ -3325,11 +2986,9 @@ example : List.nthLe [1, 2] 1 (by simp) = 2 := by
   -- ⊢ [1, 2].nthLe 1 h = 2
 ```
 
-<div class="division"></div>
 
 ### 167. ac_rfl
 > Syntax full name: Parser.Tactic.acRfl.ac_rfl <br>Frequency: 69, 0.0049% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.acRfl)
-
 
 `ac_rfl` proves equalities up to application of an associative and commutative operator.
 ```
@@ -3339,11 +2998,9 @@ instance : Commutative (α := Nat) (.+.) := ⟨Nat.add_comm⟩
 example (a b c d : Nat) : a + b + c + d = d + (b + c) + a := by ac_rfl
 ```
 
-<div class="division"></div>
 
 ### 168. clear_value
 > Syntax full name: clearValue.clear_value <br>Frequency: 68, 0.0048% <br>File: import Mathlib.Tactic.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Basic.html#clearValue)
-
 
 `clear_value n₁ n₂ ...` clears the bodies of the local definitions `n₁, n₂ ...`, changing them
 into regular hypotheses. A hypothesis `n : α := t` is changed to `n : α`.
@@ -3351,20 +3008,16 @@ into regular hypotheses. A hypothesis `n : α := t` is changed to `n : α`.
 The order of `n₁ n₂ ...` does not matter, and values will be cleared in reverse order of
 where they appear in the context.
 
-<div class="division"></div>
 
 ### 169. cfc_cont_tac
 > Syntax full name: cfcContTac.cfc_cont_tac <br>Frequency: 67, 0.0047% <br>File: import Mathlib.Topology.ContinuousFunction.FunctionalCalculus <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/ContinuousFunction/FunctionalCalculus.html#cfcContTac)
 
-
 A tactic used to automatically discharge goals relating to the continuous functional calculus,
 specifically concerning continuity of the functions involved.
 
-<div class="division"></div>
 
 ### 170. convert_to
 > Syntax full name: convertTo.convert_to <br>Frequency: 65, 0.0046% <br>File: import Mathlib.Tactic.Convert <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Convert.html#convertTo)
-
 
 `convert_to g using n` attempts to change the current goal to `g`, but unlike `change`,
 it will generate equality proof obligations using `congr! n` to resolve discrepancies.
@@ -3376,11 +3029,9 @@ That is, `convert_to g using n` is equivalent to `convert (?_ : g) using n`.
 The syntax for `convert_to` is the same as for `convert`, and it has variations such as
 `convert_to ← g` and `convert_to (config := {transparency := .default}) g`.
 
-<div class="division"></div>
 
 ### 171. tfae_finish
 > Syntax full name: TFAE.tfaeFinish.tfae_finish <br>Frequency: 64, 0.0045% <br>File: import Mathlib.Tactic.TFAE <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/TFAE.html#TFAE.tfaeFinish)
-
 
 `tfae_finish` is used to close goals of the form `TFAE [P₁, P₂, ...]` once a sufficient collection
 of hypotheses of the form `Pᵢ → Pⱼ` or `Pᵢ ↔ Pⱼ` have been introduced to the local context.
@@ -3399,20 +3050,16 @@ example : TFAE [P, Q, R] := by
   tfae_finish
 ```
 
-<div class="division"></div>
 
 ### 172. cfc_tac
 > Syntax full name: cfcTac.cfc_tac <br>Frequency: 62, 0.0044% <br>File: import Mathlib.Topology.ContinuousFunction.FunctionalCalculus <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/ContinuousFunction/FunctionalCalculus.html#cfcTac)
 
-
 A tactic used to automatically discharge goals relating to the continuous functional calculus,
 specifically whether the element satisfies the predicate.
 
-<div class="division"></div>
 
 ### 173. whnf
 > Syntax full name: tacticWhnf__.whnf <br>Frequency: 62, 0.0044% <br>File: import Mathlib.Tactic.DefEqTransformations <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DefEqTransformations.html#tacticWhnf__)
-
 
 `whnf at loc` puts the given location into weak-head normal form.
 This also exists as a `conv`-mode tactic.
@@ -3420,29 +3067,23 @@ This also exists as a `conv`-mode tactic.
 Weak-head normal form is when the outer-most expression has been fully reduced, the expression
 may contain subexpressions which have not been reduced.
 
-<div class="division"></div>
 
 ### 174. toFinite_tac
 > Syntax full name: Set.tacticToFinite_tac.toFinite_tac <br>Frequency: 61, 0.0043% <br>File: import Mathlib.Data.Set.Card <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Set/Card.html#Set.tacticToFinite_tac)
 
-
 A tactic (for use in default params) that applies `Set.toFinite` to synthesize a `Set.Finite`
 term.
 
-<div class="division"></div>
 
 ### 175. refine'
 > Syntax full name: Parser.Tactic.refine'.refine' <br>Frequency: 60, 0.0042% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.refine')
 
-
 `refine' e` behaves like `refine e`, except that unsolved placeholders (`_`)
 and implicit parameters are also converted into new goals.
 
-<div class="division"></div>
 
 ### 176. noncomm_ring
 > Syntax full name: NoncommRing.noncomm_ring.noncomm_ring <br>Frequency: 58, 0.0041% <br>File: import Mathlib.Tactic.NoncommRing <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/NoncommRing.html#NoncommRing.noncomm_ring)
-
 
 A tactic for simplifying identities in not-necessarily-commutative rings.
 
@@ -3454,32 +3095,26 @@ example {R : Type*} [Ring R] (a b c : R) : a * (b + c + c - b) = 2 * a * c := by
 
 You can use `noncomm_ring [h]` to also simplify using `h`.
 
-<div class="division"></div>
 
 ### 177. contrapose
 > Syntax full name: Contrapose.contrapose.contrapose <br>Frequency: 57, 0.0040% <br>File: import Mathlib.Tactic.Contrapose <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Contrapose.html#Contrapose.contrapose)
-
 
 Transforms the goal into its contrapositive.
 * `contrapose`     turns a goal `P → Q` into `¬ Q → ¬ P`
 * `contrapose h`   first reverts the local assumption `h`, and then uses `contrapose` and `intro h`
 * `contrapose h with new_h` uses the name `new_h` for the introduced hypothesis
 
-<div class="division"></div>
 
 ### 178. fconstructor
 > Syntax full name: tacticFconstructor.fconstructor <br>Frequency: 57, 0.0040% <br>File: import Mathlib.Tactic.Constructor <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Constructor.html#tacticFconstructor)
-
 
 `fconstructor` is like `constructor`
 (it calls `apply` using the first matching constructor of an inductive datatype)
 except that it does not reorder goals.
 
-<div class="division"></div>
 
 ### 179. interval_cases
 > Syntax full name: intervalCases.interval_cases <br>Frequency: 57, 0.0040% <br>File: import Mathlib.Tactic.IntervalCases <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/IntervalCases.html#intervalCases)
-
 
 `interval_cases n` searches for upper and lower bounds on a variable `n`,
 and if bounds are found,
@@ -3501,11 +3136,9 @@ in which case `interval_cases` calls `fin_cases` on the resulting fact `n ∈ Se
 You can specify a name `h` for the new hypothesis,
 as `interval_cases h : n` or `interval_cases h : n using hl, hu`.
 
-<div class="division"></div>
 
 ### 180. peel
 > Syntax full name: Peel.peel.peel <br>Frequency: 57, 0.0040% <br>File: import Mathlib.Tactic.Peel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Peel.html#Peel.peel)
-
 
 Peels matching quantifiers off of a given term and the goal and introduces the relevant variables.
 
@@ -3562,65 +3195,51 @@ may be paired with any of the other features of `peel`.
 This tactic works by repeatedly applying lemmas such as `forall_imp`, `Exists.imp`,
 `Filter.Eventually.mp`, `Filter.Frequently.mp`, and `Filter.eventually_of_forall`.
 
-<div class="division"></div>
 
 ### 181. rotate_left
 > Syntax full name: Parser.Tactic.rotateLeft.rotate_left <br>Frequency: 55, 0.0039% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.rotateLeft)
-
 
 `rotate_left n` rotates goals to the left by `n`. That is, `rotate_left 1`
 takes the main goal and puts it to the back of the subgoal list.
 If `n` is omitted, it defaults to `1`.
 
-<div class="division"></div>
 
 ### 182. transport
 > Syntax full name: transport.transport <br>Frequency: 54, 0.0038% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#transport)
 
 
 
-<div class="division"></div>
-
 ### 183. generalizes
 > Syntax full name: generalizes.generalizes <br>Frequency: 53, 0.0038% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#generalizes)
 
 
 
-<div class="division"></div>
-
 ### 184. unit_interval
 > Syntax full name: Interactive.tacticUnit_interval.unit_interval <br>Frequency: 51, 0.0036% <br>File: import Mathlib.Topology.UnitInterval <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/UnitInterval.html#Interactive.tacticUnit_interval)
 
-
 A tactic that solves `0 ≤ ↑x`, `0 ≤ 1 - ↑x`, `↑x ≤ 1`, and `1 - ↑x ≤ 1` for `x : I`.
+
 
 > Syntax full name: Mathlib.Tactic.unitInterval.unit_interval <br>Frequency: 51, 0.0036% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#Mathlib.Tactic.unitInterval)
 
 
 
-<div class="division"></div>
-
 ### 185. subst_vars
 > Syntax full name: Parser.Tactic.substVars.subst_vars <br>Frequency: 51, 0.0036% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.substVars)
 
-
 Applies `subst` to all hypotheses of the form `h : x = t` or `h : t = x`.
 
-<div class="division"></div>
 
 ### 186. rsuffices
 > Syntax full name: rsuffices.rsuffices <br>Frequency: 51, 0.0036% <br>File: import Mathlib.Tactic.RSuffices <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/RSuffices.html#rsuffices)
-
 
 The `rsuffices` tactic is an alternative version of `suffices`, that allows the usage
 of any syntax that would be valid in an `obtain` block. This tactic just calls `obtain`
 on the expression, and then `rotate_left`.
 
-<div class="division"></div>
 
 ### 187. polyrith
 > Syntax full name: Polyrith.«tacticPolyrithOnly[_]».polyrith <br>Frequency: 49, 0.0035% <br>File: import Mathlib.Tactic.Polyrith <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Polyrith.html#Polyrith.«tacticPolyrithOnly[_]»)
-
 
 Attempts to prove polynomial equality goals through polynomial arithmetic
 on the hypotheses (and additional proof terms if the user specifies them).
@@ -3660,11 +3279,9 @@ example (a b c d : ℚ) (h : a + b = 0) (h2: b + c = 0) : a + b + c + d = 0 := b
 -- Try this: linear_combination scary c d + h
 ```
 
-<div class="division"></div>
 
 ### 188. beta_reduce
 > Syntax full name: betaReduceStx.beta_reduce <br>Frequency: 47, 0.0033% <br>File: import Mathlib.Tactic.DefEqTransformations <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DefEqTransformations.html#betaReduceStx)
-
 
 `beta_reduce at loc` completely beta reduces the given location.
 This also exists as a `conv`-mode tactic.
@@ -3673,29 +3290,23 @@ This means that whenever there is an applied lambda expression such as
 `(fun x => f x) y` then the argument is substituted into the lambda expression
 yielding an expression such as `f y`.
 
-<div class="division"></div>
 
 ### 189. mfld_set_tac
 > Syntax full name: MfldSetTac.mfldSetTac.mfld_set_tac <br>Frequency: 46, 0.0033% <br>File: import Mathlib.Logic.Equiv.PartialEquiv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Logic/Equiv/PartialEquiv.html#MfldSetTac.mfldSetTac)
 
-
 A very basic tactic to show that sets showing up in manifolds coincide or are included
 in one another.
 
-<div class="division"></div>
 
 ### 190. any_goals
 > Syntax full name: Parser.Tactic.anyGoals.any_goals <br>Frequency: 45, 0.0032% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.anyGoals)
 
-
 `any_goals tac` applies the tactic `tac` to every goal, and succeeds if at
 least one application succeeds.
 
-<div class="division"></div>
 
 ### 191. compute_degree!
 > Syntax full name: ComputeDegree.tacticCompute_degree!.compute_degree! <br>Frequency: 44, 0.0031% <br>File: import Mathlib.Tactic.ComputeDegree <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ComputeDegree.html#ComputeDegree.tacticCompute_degree!)
-
 
 `compute_degree` is a tactic to solve goals of the form
 *  `natDegree f = d`,
@@ -3713,48 +3324,38 @@ leading coefficient of `f`.
 The variant `compute_degree!` first applies `compute_degree`.
 Then it uses `norm_num` on all the whole remaining goals and tries `assumption`.
 
-<div class="division"></div>
 
 ### 192. substs
 > Syntax full name: Substs.substs.substs <br>Frequency: 44, 0.0031% <br>File: import Mathlib.Tactic.Substs <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Substs.html#Substs.substs)
 
-
 Applies the `subst` tactic to all given hypotheses from left to right.
 
-<div class="division"></div>
 
 ### 193. admit
 > Syntax full name: Parser.Tactic.tacticAdmit.admit <br>Frequency: 43, 0.0030% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticAdmit)
 
-
 `admit` is a shorthand for `exact sorry`.
 
-<div class="division"></div>
 
 ### 194. simp!
 > Syntax full name: Parser.Tactic.simpAutoUnfold.simp! <br>Frequency: 42, 0.0030% <br>File: import Init.Meta <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Meta.html#Parser.Tactic.simpAutoUnfold)
-
 
 `simp!` is shorthand for `simp` with `autoUnfold := true`.
 This will rewrite with all equation lemmas, which can be used to
 partially evaluate many definitions.
 
-<div class="division"></div>
 
 ### 195. success_if_fail_with_msg
 > Syntax full name: successIfFailWithMsg.success_if_fail_with_msg <br>Frequency: 42, 0.0030% <br>File: import Mathlib.Tactic.SuccessIfFailWithMsg <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SuccessIfFailWithMsg.html#successIfFailWithMsg)
-
 
 `success_if_fail_with_msg msg tacs` runs `tacs` and succeeds only if they fail with the message
 `msg`.
 
 `msg` can be any term that evaluates to an explicit `String`.
 
-<div class="division"></div>
 
 ### 196. apply?
 > Syntax full name: Parser.Tactic.apply?.apply? <br>Frequency: 41, 0.0029% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.apply?)
-
 
 Searches environment for definitions or theorems that can refine the goal using `apply`
 with conditions resolved when possible with `solve_by_elim`.
@@ -3762,35 +3363,27 @@ with conditions resolved when possible with `solve_by_elim`.
 The optional `using` clause provides identifiers in the local context that must be
 used when closing the goal.
 
-<div class="division"></div>
 
 ### 197. clean
 > Syntax full name: tacticClean_.clean <br>Frequency: 39, 0.0028% <br>File: import Mathlib.Tactic.Clean <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Clean.html#tacticClean_)
 
-
 (Deprecated) `clean t` is a macro for `exact clean% t`.
 
-<div class="division"></div>
 
 ### 198. nofun
 > Syntax full name: Parser.Tactic.tacticNofun.nofun <br>Frequency: 39, 0.0028% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticNofun)
 
-
 The tactic `nofun` is shorthand for `exact nofun`: it introduces the assumptions, then performs an
 empty pattern match, closing the goal if the introduced pattern is impossible.
 
-<div class="division"></div>
 
 ### 199. finish
 > Syntax full name: finish.finish <br>Frequency: 39, 0.0028% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#finish)
 
 
 
-<div class="division"></div>
-
 ### 200. zify
 > Syntax full name: Zify.zify.zify <br>Frequency: 39, 0.0028% <br>File: import Mathlib.Tactic.Zify <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Zify.html#Zify.zify)
-
 
 The `zify` tactic is used to shift propositions from `Nat` to `Int`.
 This is often useful since `Int` has well-behaved subtraction.
@@ -3819,18 +3412,14 @@ propositions concerning `z` will still be over `Int`.
 `zify` changes propositions about `Nat` (the subtype) to propositions about `Int` (the supertype),
 without changing the type of any variable.
 
-<div class="division"></div>
 
 ### 201. transitivity
 > Syntax full name: tacticTransitivity___.transitivity <br>Frequency: 38, 0.0027% <br>File: import Mathlib.Tactic.Relation.Trans <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Relation/Trans.html#tacticTransitivity___)
 
 
 
-<div class="division"></div>
-
 ### 202. unreachable!
 > Syntax full name: Batteries.Tactic.unreachable.unreachable! <br>Frequency: 37, 0.0026% <br>File: import Batteries.Tactic.Unreachable <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Unreachable.html#Batteries.Tactic.unreachable)
-
 
 This tactic causes a panic when run (at compile time).
 (This is distinct from `exact unreachable!`, which inserts code which will panic at run time.)
@@ -3843,20 +3432,16 @@ The `unreachableTactic` linter has a special exception for uses of `unreachable!
 example : True := by trivial <;> unreachable!
 ```
 
-<div class="division"></div>
 
 ### 203. clear!
 > Syntax full name: clear!.clear! <br>Frequency: 37, 0.0026% <br>File: import Mathlib.Tactic.ClearExclamation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ClearExclamation.html#clear!)
 
-
 A variant of `clear` which clears not only the given hypotheses but also any other hypotheses
 depending on them
 
-<div class="division"></div>
 
 ### 204. abel_nf
 > Syntax full name: Abel.abelNF.abel_nf <br>Frequency: 36, 0.0025% <br>File: import Mathlib.Tactic.Abel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Abel.html#Abel.abelNF)
-
 
 Simplification tactic for expressions in the language of abelian groups,
 which rewrites all group expressions into a normal form.
@@ -3867,11 +3452,9 @@ which rewrites all group expressions into a normal form.
 * `abel_nf` works as both a tactic and a conv tactic.
   In tactic mode, `abel_nf at h` can be used to rewrite in a hypothesis.
 
-<div class="division"></div>
 
 ### 205. compute_degree
 > Syntax full name: ComputeDegree.computeDegree.compute_degree <br>Frequency: 35, 0.0025% <br>File: import Mathlib.Tactic.ComputeDegree <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ComputeDegree.html#ComputeDegree.computeDegree)
-
 
 `compute_degree` is a tactic to solve goals of the form
 *  `natDegree f = d`,
@@ -3889,20 +3472,16 @@ leading coefficient of `f`.
 The variant `compute_degree!` first applies `compute_degree`.
 Then it uses `norm_num` on all the whole remaining goals and tries `assumption`.
 
-<div class="division"></div>
 
 ### 206. aesop_mat
 > Syntax full name: Matroid.aesop_mat.aesop_mat <br>Frequency: 35, 0.0025% <br>File: import Mathlib.Data.Matroid.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Matroid/Basic.html#Matroid.aesop_mat)
 
-
 The `aesop_mat` tactic attempts to prove a set is contained in the ground set of a matroid.
 It uses a `[Matroid]` ruleset, and is allowed to fail.
 
-<div class="division"></div>
 
 ### 207. assumption_mod_cast
 > Syntax full name: Parser.Tactic.tacticAssumption_mod_cast.assumption_mod_cast <br>Frequency: 35, 0.0025% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticAssumption_mod_cast)
-
 
 `assumption_mod_cast` is a variant of `assumption` that solves the goal
 using a hypothesis. Unlike `assumption`, it first pre-processes the goal and
@@ -3912,11 +3491,9 @@ in more situations.
 Concretely, it runs `norm_cast` on the goal. For each local hypothesis `h`, it also
 normalizes `h` with `norm_cast` and tries to use that to close the goal.
 
-<div class="division"></div>
 
 ### 208. unfold_let
 > Syntax full name: unfoldLetStx.unfold_let <br>Frequency: 34, 0.0024% <br>File: import Mathlib.Tactic.DefEqTransformations <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DefEqTransformations.html#unfoldLetStx)
-
 
 `unfold_let x y z at loc` unfolds the local definitions `x`, `y`, and `z` at the given
 location, which is known as "zeta reduction."
@@ -3927,14 +3504,11 @@ This variant also exists as the `conv`-mode tactic `zeta`.
 
 This is similar to the `unfold` tactic, which instead is for unfolding global definitions.
 
-<div class="division"></div>
 
 ### 209. tidy
 > Syntax full name: tidy.tidy <br>Frequency: 33, 0.0023% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#tidy)
 
 
-
-<div class="division"></div>
 
 ### 210. cancel_denoms
 > Syntax full name: tacticCancel_denoms_.cancel_denoms <br>Frequency: 32, 0.0023% <br>File: import Mathlib.Tactic.CancelDenoms.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CancelDenoms/Core.html#tacticCancel_denoms_)
@@ -3942,7 +3516,6 @@ This is similar to the `unfold` tactic, which instead is for unfolding global de
 
 
 > Syntax full name: cancelDenoms.cancel_denoms <br>Frequency: 32, 0.0023% <br>File: import Mathlib.Tactic.CancelDenoms.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CancelDenoms/Core.html#cancelDenoms)
-
 
 `cancel_denoms` attempts to remove numerals from the denominators of fractions.
 It works on propositions that are field-valued inequalities.
@@ -3959,28 +3532,22 @@ example (h : a > 0) : a / 5 > 0 := by
   exact h
 ```
 
-<div class="division"></div>
 
 ### 211. rw_mod_cast
 > Syntax full name: Parser.Tactic.tacticRw_mod_cast___.rw_mod_cast <br>Frequency: 31, 0.0022% <br>File: import Init.TacticsExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/TacticsExtra.html#Parser.Tactic.tacticRw_mod_cast___)
 
-
 Rewrites with the given rules, normalizing casts prior to each step.
 
-<div class="division"></div>
 
 ### 212. with_reducible_and_instances
 > Syntax full name: Parser.Tactic.withReducibleAndInstances.with_reducible_and_instances <br>Frequency: 30, 0.0021% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.withReducibleAndInstances)
 
-
 `with_reducible_and_instances tacs` executes `tacs` using the `.instances` transparency setting.
 In this setting only definitions tagged as `[reducible]` or type class instances are unfolded.
 
-<div class="division"></div>
 
 ### 213. rw_search
 > Syntax full name: RewriteSearch.tacticRw_search_.rw_search <br>Frequency: 29, 0.0021% <br>File: import Mathlib.Tactic.RewriteSearch <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/RewriteSearch.html#RewriteSearch.tacticRw_search_)
-
 
 `rw_search` attempts to solve an equality goal
 by repeatedly rewriting using lemmas from the library.
@@ -3996,33 +3563,27 @@ separating delimiters `(`, `)`, `[`, `]`, and `,` into their own tokens.)
 You can use `rw_search [-my_lemma, -my_theorem]`
 to prevent `rw_search` from using the names theorems.
 
+
 > Syntax full name: rwSearch.rw_search <br>Frequency: 29, 0.0021% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#rwSearch)
 
 
 
-<div class="division"></div>
-
 ### 214. stop
 > Syntax full name: Parser.Tactic.tacticStop_.stop <br>Frequency: 29, 0.0021% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticStop_)
-
 
 `stop` is a helper tactic for "discarding" the rest of a proof:
 it is defined as `repeat sorry`.
 It is useful when working on the middle of a complex proofs,
 and less messy than commenting the remainder of the proof.
 
-<div class="division"></div>
 
 ### 215. ac_mono
 > Syntax full name: acMono.ac_mono <br>Frequency: 26, 0.0018% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#acMono)
 
 
 
-<div class="division"></div>
-
 ### 216. reduce_mod_char
 > Syntax full name: ReduceModChar.reduce_mod_char.reduce_mod_char <br>Frequency: 26, 0.0018% <br>File: import Mathlib.Tactic.ReduceModChar <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ReduceModChar.html#ReduceModChar.reduce_mod_char)
-
 
 The tactic `reduce_mod_char` looks for numeric expressions in characteristic `p`
 and reduces these to lie between `0` and `p`.
@@ -4042,11 +3603,9 @@ The variant `reduce_mod_char!` also tries to use `CharP R n` hypotheses in the c
 (Limitations of the typeclass system mean the tactic can't search for a `CharP R n` instance if
 `n` is not yet known; use `have : CharP R n := inferInstance; reduce_mod_char!` as a workaround.)
 
-<div class="division"></div>
 
 ### 217. abel1
 > Syntax full name: Abel.abel1.abel1 <br>Frequency: 26, 0.0018% <br>File: import Mathlib.Tactic.Abel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Abel.html#Abel.abel1)
-
 
 Tactic for solving equations in the language of
 *additive*, commutative monoids and groups.
@@ -4056,11 +3615,9 @@ that is provable by the axioms of commutative monoids/groups.
 `abel1!` will use a more aggressive reducibility setting to identify atoms.
 This can prove goals that `abel` cannot, but is more expensive.
 
-<div class="division"></div>
 
 ### 218. apply_assumption
 > Syntax full name: Parser.Tactic.applyAssumption.apply_assumption <br>Frequency: 25, 0.0018% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.applyAssumption)
-
 
 `apply_assumption` looks for an assumption of the form `... → ∀ _, ... → head`
 where `head` matches the current goal.
@@ -4081,46 +3638,36 @@ will have two goals, `P` and `Q`.
 You can pass a further configuration via the syntax `apply_rules (config := {...}) lemmas`.
 The options supported are the same as for `solve_by_elim` (and include all the options for `apply`).
 
-<div class="division"></div>
 
 ### 219. focus
 > Syntax full name: Parser.Tactic.focus.focus <br>Frequency: 25, 0.0018% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.focus)
 
-
 `focus tac` focuses on the main goal, suppressing all other goals, and runs `tac` on it.
 Usually `· tac`, which enforces that the goal is closed by `tac`, should be preferred.
 
-<div class="division"></div>
 
 ### 220. obviously
 > Syntax full name: obviously.obviously <br>Frequency: 25, 0.0018% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#obviously)
 
 
 
-<div class="division"></div>
-
 ### 221. cfc_zero_tac
 > Syntax full name: cfcZeroTac.cfc_zero_tac <br>Frequency: 25, 0.0018% <br>File: import Mathlib.Topology.ContinuousFunction.NonUnitalFunctionalCalculus <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/ContinuousFunction/NonUnitalFunctionalCalculus.html#cfcZeroTac)
-
 
 A tactic used to automatically discharge goals relating to the continuous functional calculus,
 specifically concerning whether `f 0 = 0`.
 
-<div class="division"></div>
 
 ### 222. recover
 > Syntax full name: tacticRecover_.recover <br>Frequency: 24, 0.0017% <br>File: import Mathlib.Tactic.Recover <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Recover.html#tacticRecover_)
-
 
 Modifier `recover` for a tactic (sequence) to debug cases where goals are closed incorrectly.
 The tactic `recover tacs` for a tactic (sequence) tacs applies the tactics and then adds goals
 that are not closed starting from the original
 
-<div class="division"></div>
 
 ### 223. extract_goal
 > Syntax full name: ExtractGoal.extractGoal.extract_goal <br>Frequency: 23, 0.0016% <br>File: import Mathlib.Tactic.ExtractGoal <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ExtractGoal.html#ExtractGoal.extractGoal)
-
 
 - `extract_goal` formats the current goal as a stand-alone theorem or definition after
   cleaning up the local context of irrelevant variables.
@@ -4142,27 +3689,21 @@ to being unambiguously pretty printed.
 The tactic responds to pretty printing options.
 For example, `set_option pp.all true in extract_goal` gives the `pp.all` form.
 
-<div class="division"></div>
 
 ### 224. arith_mult
 > Syntax full name: ArithmeticFunction.arith_mult.arith_mult <br>Frequency: 23, 0.0016% <br>File: import Mathlib.Tactic.ArithMult <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ArithMult.html#ArithmeticFunction.arith_mult)
 
-
 `arith_mult` solves goals of the form `IsMultiplicative f` for `f : ArithmeticFunction R`
 by applying lemmas tagged with the user attribute `arith_mult`.
 
-<div class="division"></div>
 
 ### 225. set!
 > Syntax full name: tacticSet!_.set! <br>Frequency: 23, 0.0016% <br>File: import Mathlib.Tactic.Set <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Set.html#tacticSet!_)
 
 
 
-<div class="division"></div>
-
 ### 226. extract_lets
 > Syntax full name: Mathlib.extractLets.extract_lets <br>Frequency: 22, 0.0016% <br>File: import Mathlib.Tactic.ExtractLets <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ExtractLets.html#Mathlib.extractLets)
-
 
 The `extract_lets at h` tactic takes a local hypothesis of the form `h : let x := v; b`
 and introduces a new local definition `x := v` while changing `h` to be `h : b`.  It can be thought
@@ -4179,11 +3720,9 @@ case all the `let` bindings are extracted.
 The tactic `extract_lets` (without `at`) or `extract_lets at h ⊢` acts as a weaker
 form of `intros` on the goal that only introduces obvious `let`s.
 
-<div class="division"></div>
 
 ### 227. lift_lets
 > Syntax full name: lift_lets.lift_lets <br>Frequency: 21, 0.0015% <br>File: import Mathlib.Tactic.LiftLets <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/LiftLets.html#lift_lets)
-
 
 Lift all the `let` bindings in the type of an expression as far out as possible.
 
@@ -4199,18 +3738,14 @@ example : (let x := 1; x) = 1 := by
 
 During the lifting process, let bindings are merged if they have the same type and value.
 
-<div class="division"></div>
 
 ### 228. comp_val
 > Syntax full name: compVal.comp_val <br>Frequency: 21, 0.0015% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#compVal)
 
 
 
-<div class="division"></div>
-
 ### 229. qify
 > Syntax full name: Qify.qify.qify <br>Frequency: 21, 0.0015% <br>File: import Mathlib.Tactic.Qify <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Qify.html#Qify.qify)
-
 
 The `qify` tactic is used to shift propositions from `ℕ` or `ℤ` to `ℚ`.
 This is often useful since `ℚ` has well-behaved division.
@@ -4234,21 +3769,17 @@ example (a b c : ℤ) (h : a / b = c) (hab : b ∣ a) (hb : b ≠ 0) : a = c * b
 `qify` makes use of the `@[zify_simps]` and `@[qify_simps]` attributes to move propositions,
 and the `push_cast` tactic to simplify the `ℚ`-valued expressions.
 
-<div class="division"></div>
 
 ### 230. injections
 > Syntax full name: Parser.Tactic.injections.injections <br>Frequency: 20, 0.0014% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.injections)
-
 
 `injections` applies `injection` to all hypotheses recursively
 (since `injection` can produce new hypotheses). Useful for destructing nested
 constructor equalities like `(a::b::c) = (d::e::f)`.
 
-<div class="division"></div>
 
 ### 231. use!
 > Syntax full name: «tacticUse!___,,».use! <br>Frequency: 19, 0.0013% <br>File: import Mathlib.Tactic.Use <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Use.html#«tacticUse!___,,»)
-
 
 `use e₁, e₂, ⋯` is similar to `exists`, but unlike `exists` it is equivalent to applying the tactic
 `refine ⟨e₁, e₂, ⋯, ?_, ⋯, ?_⟩` with any number of placeholders (rather than just one) and
@@ -4287,27 +3818,21 @@ By default it is `use (discharger := try with_reducible use_discharger) e₁, e�
 To turn off the discharger and keep all goals, use `(discharger := skip)`.
 To allow "heavy refls", use `(discharger := try use_discharger)`.
 
-<div class="division"></div>
 
 ### 232. #find
 > Syntax full name: Find.«tactic#find_».#find <br>Frequency: 19, 0.0013% <br>File: import Mathlib.Tactic.Find <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Find.html#Find.«tactic#find_»)
 
 
 
-<div class="division"></div>
-
 ### 233. with_reducible
 > Syntax full name: Parser.Tactic.withReducible.with_reducible <br>Frequency: 19, 0.0013% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.withReducible)
-
 
 `with_reducible tacs` executes `tacs` using the reducible transparency setting.
 In this setting only definitions tagged as `[reducible]` are unfolded.
 
-<div class="division"></div>
 
 ### 234. native_decide
 > Syntax full name: Parser.Tactic.nativeDecide.native_decide <br>Frequency: 19, 0.0013% <br>File: import Lean.Parser.Tactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Tactic.html#Parser.Tactic.nativeDecide)
-
 
 `native_decide` will attempt to prove a goal of type `p` by synthesizing an instance
 of `Decidable p` and then evaluating it to `isTrue ..`. Unlike `decide`, this
@@ -4322,18 +3847,14 @@ large computations this is one way to run external programs and trust the result
 example : (List.range 1000).length = 1000 := by native_decide
 ```
 
-<div class="division"></div>
 
 ### 235. mem_tac
 > Syntax full name: AlgebraicGeometry.ProjIsoSpecTopComponent.FromSpec.tacticMem_tac.mem_tac <br>Frequency: 18, 0.0013% <br>File: import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Scheme <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/AlgebraicGeometry/ProjectiveSpectrum/Scheme.html#AlgebraicGeometry.ProjIsoSpecTopComponent.FromSpec.tacticMem_tac)
 
 
 
-<div class="division"></div>
-
 ### 236. rw?
 > Syntax full name: Parser.Tactic.rewrites?.rw? <br>Frequency: 18, 0.0013% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.rewrites?)
-
 
 `rw?` tries to find a lemma which can rewrite the goal.
 
@@ -4343,19 +3864,15 @@ Suggestions are printed as `rw [h]` or `rw [← h]`.
 
 You can use `rw? [-my_lemma, -my_theorem]` to prevent `rw?` using the named lemmas.
 
-<div class="division"></div>
 
 ### 237. nomatch
 > Syntax full name: Parser.Tactic.«tacticNomatch_,,».nomatch <br>Frequency: 17, 0.0012% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.«tacticNomatch_,,»)
 
-
 The tactic `nomatch h` is shorthand for `exact nomatch h`.
 
-<div class="division"></div>
 
 ### 238. existsi
 > Syntax full name: «tacticExistsi_,,».existsi <br>Frequency: 17, 0.0012% <br>File: import Mathlib.Tactic.Existsi <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Existsi.html#«tacticExistsi_,,»)
-
 
 `existsi e₁, e₂, ⋯` applies the tactic `refine ⟨e₁, e₂, ⋯, ?_⟩`. It's purpose is to instantiate
 existential quantifiers.
@@ -4372,11 +3889,9 @@ example : ∃ x : Nat, ∃ y : Nat, x = y := by
   rfl
 ```
 
-<div class="division"></div>
 
 ### 239. observe
 > Syntax full name: LibrarySearch.observe.observe <br>Frequency: 16, 0.0011% <br>File: import Mathlib.Tactic.Observe <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Observe.html#LibrarySearch.observe)
-
 
 `observe hp : p` asserts the proposition `p`, and tries to prove it using `exact?`.
 If no proof is found, the tactic fails.
@@ -4387,11 +3902,9 @@ If `hp` is omitted, then the placeholder `this` is used.
 The variant `observe? hp : p` will emit a trace message of the form `have hp : p := proof_term`.
 This may be particularly useful to speed up proofs.
 
-<div class="division"></div>
 
 ### 240. rify
 > Syntax full name: Rify.rify.rify <br>Frequency: 15, 0.0011% <br>File: import Mathlib.Tactic.Rify <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Rify.html#Rify.rify)
-
 
 The `rify` tactic is used to shift propositions from `ℕ`, `ℤ` or `ℚ` to `ℝ`.
 Although less useful than its cousins `zify` and `qify`, it can be useful when your
@@ -4420,19 +3933,15 @@ example (a b c : ℕ) (h : a - b < c) (hab : b ≤ a) : a < b + c := by
 Note that `zify` or `qify` would work just as well in the above example (and `zify` is the natural
 choice since it is enough to get rid of the pathological `ℕ` subtraction).
 
-<div class="division"></div>
 
 ### 241. clear_
 > Syntax full name: clear_.clear_ <br>Frequency: 14, 0.0010% <br>File: import Mathlib.Tactic.Clear_ <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Clear_.html#clear_)
 
-
 Clear all hypotheses starting with `_`, like `_match` and `_let_match`.
 
-<div class="division"></div>
 
 ### 242. casesm
 > Syntax full name: casesM.casesm <br>Frequency: 14, 0.0010% <br>File: import Mathlib.Tactic.CasesM <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CasesM.html#casesM)
-
 
 * `casesm p` applies the `cases` tactic to a hypothesis `h : type`
   if `type` matches the pattern `p`.
@@ -4446,19 +3955,15 @@ Example: The following tactic destructs all conjunctions and disjunctions in the
 casesm* _ ∨ _, _ ∧ _
 ```
 
-<div class="division"></div>
 
 ### 243. frac_tac
 > Syntax full name: RatFunc.tacticFrac_tac.frac_tac <br>Frequency: 14, 0.0010% <br>File: import Mathlib.FieldTheory.RatFunc.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/FieldTheory/RatFunc/Basic.html#RatFunc.tacticFrac_tac)
 
-
 Solve equations for `RatFunc K` by working in `FractionRing K[X]`.
 
-<div class="division"></div>
 
 ### 244. move_add
 > Syntax full name: Mathlib.MoveAdd.tacticMove_add_.move_add <br>Frequency: 13, 0.0009% <br>File: import Mathlib.Tactic.MoveAdd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/MoveAdd.html#Mathlib.MoveAdd.tacticMove_add_)
-
 
 The tactic `move_add` rearranges summands of expressions.
 Calling `move_add [a, ← b, ...]` matches `a, b,...` with summands in the main goal.
@@ -4475,33 +3980,27 @@ In this case the syntax requires providing first a term whose head symbol is the
 E.g. `move_oper HAdd.hAdd [...]` is the same as `move_add`, while `move_oper Max.max [...]`
 rearranges `max`s.
 
+
 > Syntax full name: moveAdd.move_add <br>Frequency: 13, 0.0009% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#moveAdd)
 
 
 
-<div class="division"></div>
-
 ### 245. fail_if_no_progress
 > Syntax full name: failIfNoProgress.fail_if_no_progress <br>Frequency: 13, 0.0009% <br>File: import Mathlib.Tactic.FailIfNoProgress <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/FailIfNoProgress.html#failIfNoProgress)
-
 
 `fail_if_no_progress tacs` evaluates `tacs`, and fails if no progress is made on the main goal
 or the local context at reducible transparency.
 
-<div class="division"></div>
 
 ### 246. unfold_projs
 > Syntax full name: unfoldProjsStx.unfold_projs <br>Frequency: 13, 0.0009% <br>File: import Mathlib.Tactic.DefEqTransformations <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DefEqTransformations.html#unfoldProjsStx)
 
-
 `unfold_projs at loc` unfolds projections of class instances at the given location.
 This also exists as a `conv`-mode tactic.
 
-<div class="division"></div>
 
 ### 247. pick_goal
 > Syntax full name: Batteries.Tactic.«tacticPick_goal-_».pick_goal <br>Frequency: 13, 0.0009% <br>File: import Batteries.Tactic.PermuteGoals <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/PermuteGoals.html#Batteries.Tactic.«tacticPick_goal-_»)
-
 
 `pick_goal n` will move the `n`-th goal to the front.
 
@@ -4509,11 +4008,9 @@ This also exists as a `conv`-mode tactic.
 
 See also `Tactic.rotate_goals`, which moves goals from the front to the back and vice-versa.
 
-<div class="division"></div>
 
 ### 248. move_oper
 > Syntax full name: Mathlib.MoveAdd.moveOperTac.move_oper <br>Frequency: 12, 0.0008% <br>File: import Mathlib.Tactic.MoveAdd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/MoveAdd.html#Mathlib.MoveAdd.moveOperTac)
-
 
 The tactic `move_add` rearranges summands of expressions.
 Calling `move_add [a, ← b, ...]` matches `a, b,...` with summands in the main goal.
@@ -4530,11 +4027,9 @@ In this case the syntax requires providing first a term whose head symbol is the
 E.g. `move_oper HAdd.hAdd [...]` is the same as `move_add`, while `move_oper Max.max [...]`
 rearranges `max`s.
 
-<div class="division"></div>
 
 ### 249. dbg_trace
 > Syntax full name: Parser.Tactic.dbgTrace.dbg_trace <br>Frequency: 12, 0.0008% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.dbgTrace)
-
 
 `dbg_trace "foo"` prints `foo` when elaborated.
 Useful for debugging tactic control flow:
@@ -4545,27 +4040,21 @@ example : False ∨ True := by
   | apply Or.inr; trivial; dbg_trace "right"
 ```
 
-<div class="division"></div>
 
 ### 250. assumption'
 > Syntax full name: tacticAssumption'.assumption' <br>Frequency: 12, 0.0008% <br>File: import Mathlib.Tactic.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Basic.html#tacticAssumption')
 
-
 Try calling `assumption` on all goals; succeeds if it closes at least one goal.
 
-<div class="division"></div>
 
 ### 251. run_tac
 > Syntax full name: Parser.Tactic.runTac.run_tac <br>Frequency: 12, 0.0008% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.runTac)
 
-
 The `run_tac doSeq` tactic executes code in `TacticM Unit`.
 
-<div class="division"></div>
 
 ### 252. eta_expand
 > Syntax full name: etaExpandStx.eta_expand <br>Frequency: 11, 0.0008% <br>File: import Mathlib.Tactic.DefEqTransformations <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DefEqTransformations.html#etaExpandStx)
-
 
 `eta_expand at loc` eta expands all sub-expressions at the given location.
 It also beta reduces any applications of eta expanded terms, so it puts it
@@ -4577,11 +4066,9 @@ and `f x` becomes `fun y => f x y`.
 
 This can be useful to turn, for example, a raw `HAdd.hAdd` into `fun x y => x + y`.
 
-<div class="division"></div>
 
 ### 253. save
 > Syntax full name: Parser.Tactic.save.save <br>Frequency: 10, 0.0007% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.save)
-
 
 `save` is defined to be the same as `skip`, but the elaborator has
 special handling for occurrences of `save` in tactic scripts and will transform
@@ -4592,28 +4079,22 @@ when working on a long tactic proof, by using `save` after expensive tactics.
 (TODO: do this automatically and transparently so that users don't have to use
 this combinator explicitly.)
 
-<div class="division"></div>
 
 ### 254. use_discharger
 > Syntax full name: tacticUse_discharger.use_discharger <br>Frequency: 10, 0.0007% <br>File: import Mathlib.Tactic.Use <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Use.html#tacticUse_discharger)
 
-
 Default discharger to try to use for the `use` and `use!` tactics.
 This is similar to the `trivial` tactic but doesn't do things like `contradiction` or `decide`.
 
-<div class="division"></div>
 
 ### 255. triv
 > Syntax full name: Batteries.Tactic.triv.triv <br>Frequency: 10, 0.0007% <br>File: import Batteries.Tactic.Init <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Init.html#Batteries.Tactic.triv)
 
-
 Deprecated variant of `trivial`.
 
-<div class="division"></div>
 
 ### 256. rcongr
 > Syntax full name: Batteries.Tactic.rcongr.rcongr <br>Frequency: 10, 0.0007% <br>File: import Batteries.Tactic.Congr <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Congr.html#Batteries.Tactic.rcongr)
-
 
 Repeatedly apply `congr` and `ext`, using the given patterns as arguments for `ext`.
 
@@ -4641,28 +4122,22 @@ and `congr with x` (or `congr; ext x`) would produce
 x : α ⊢ f x + 3 = g x + 3
 ```
 
-<div class="division"></div>
 
 ### 257. bicategory_coherence
 > Syntax full name: BicategoryCoherence.tacticBicategory_coherence.bicategory_coherence <br>Frequency: 9, 0.0006% <br>File: import Mathlib.Tactic.CategoryTheory.BicategoryCoherence <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/BicategoryCoherence.html#BicategoryCoherence.tacticBicategory_coherence)
 
-
 Coherence tactic for bicategories.
 Use `pure_coherence` instead, which is a frontend to this one.
 
-<div class="division"></div>
 
 ### 258. subst_hom_lift
 > Syntax full name: CategoryTheory.tacticSubst_hom_lift___.subst_hom_lift <br>Frequency: 9, 0.0006% <br>File: import Mathlib.CategoryTheory.FiberedCategory.HomLift <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/FiberedCategory/HomLift.html#CategoryTheory.tacticSubst_hom_lift___)
 
-
 `subst_hom_lift p f φ` tries to substitute `f` with `p(φ)` by using `p.IsHomLift f φ`
 
-<div class="division"></div>
 
 ### 259. simp_intro
 > Syntax full name: «tacticSimp_intro_____..Only_».simp_intro <br>Frequency: 9, 0.0006% <br>File: import Mathlib.Tactic.SimpIntro <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SimpIntro.html#«tacticSimp_intro_____..Only_»)
-
 
 The `simp_intro` tactic is a combination of `simp` and `intro`: it will simplify the types of
 variables as it introduces them and uses the new variables to simplify later arguments
@@ -4678,19 +4153,17 @@ example : x + 0 = y → x = z := by
   sorry
 ```
 
-<div class="division"></div>
 
 ### 260. case'
 > Syntax full name: Parser.Tactic.case'.case' <br>Frequency: 9, 0.0006% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.case')
-
 
 `case'` is similar to the `case tag => tac` tactic, but does not ensure the goal
 has been solved after applying `tac`, nor admits the goal if `tac` failed.
 Recall that `case` closes the goal using `sorry` when `tac` fails, and
 the tactic execution is not interrupted.
 
-> Syntax full name: Batteries.Tactic.casePatt'.case' <br>Frequency: 9, 0.0006% <br>File: import Batteries.Tactic.Case <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Case.html#Batteries.Tactic.casePatt')
 
+> Syntax full name: Batteries.Tactic.casePatt'.case' <br>Frequency: 9, 0.0006% <br>File: import Batteries.Tactic.Case <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Case.html#Batteries.Tactic.casePatt')
 
 `case' _ : t => tac` is similar to the `case _ : t => tac` tactic,
 but it does not ensure the goal has been solved after applying `tac`,
@@ -4698,7 +4171,6 @@ nor does it admit the goal if `tac` failed.
 Recall that `case` closes the goal using `sorry` when `tac` fails,
 and the tactic execution is not interrupted.
 
-<div class="division"></div>
 
 ### 261. move_mul
 > Syntax full name: moveMul.move_mul <br>Frequency: 9, 0.0006% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#moveMul)
@@ -4706,7 +4178,6 @@ and the tactic execution is not interrupted.
 
 
 > Syntax full name: Mathlib.MoveAdd.tacticMove_mul_.move_mul <br>Frequency: 9, 0.0006% <br>File: import Mathlib.Tactic.MoveAdd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/MoveAdd.html#Mathlib.MoveAdd.tacticMove_mul_)
-
 
 The tactic `move_add` rearranges summands of expressions.
 Calling `move_add [a, ← b, ...]` matches `a, b,...` with summands in the main goal.
@@ -4723,11 +4194,9 @@ In this case the syntax requires providing first a term whose head symbol is the
 E.g. `move_oper HAdd.hAdd [...]` is the same as `move_add`, while `move_oper Max.max [...]`
 rearranges `max`s.
 
-<div class="division"></div>
 
 ### 262. exact?
 > Syntax full name: Parser.Tactic.exact?.exact? <br>Frequency: 9, 0.0006% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.exact?)
-
 
 Searches environment for definitions or theorems that can solve the goal using `exact`
 with conditions resolved by `solve_by_elim`.
@@ -4736,102 +4205,78 @@ The optional `using` clause provides identifiers in the local context that must 
 used by `exact?` when closing the goal.  This is most useful if there are multiple
 ways to resolve the goal, and one wants to guide which lemma is used.
 
-<div class="division"></div>
 
 ### 263. apply_mod_cast
 > Syntax full name: Parser.Tactic.tacticApply_mod_cast_.apply_mod_cast <br>Frequency: 9, 0.0006% <br>File: import Init.TacticsExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/TacticsExtra.html#Parser.Tactic.tacticApply_mod_cast_)
 
-
 Normalize casts in the goal and the given expression, then `apply` the expression to the goal.
 
-<div class="division"></div>
 
 ### 264. suggest
 > Syntax full name: suggest.suggest <br>Frequency: 9, 0.0006% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#suggest)
 
 
 
-<div class="division"></div>
-
 ### 265. ghost_simp
 > Syntax full name: WittVector.Tactic.ghostSimp.ghost_simp <br>Frequency: 9, 0.0006% <br>File: import Mathlib.RingTheory.WittVector.IsPoly <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/WittVector/IsPoly.html#WittVector.Tactic.ghostSimp)
 
-
 A macro for a common simplification when rewriting with ghost component equations.
 
-<div class="division"></div>
 
 ### 266. ghost_fun_tac
 > Syntax full name: WittVector.«tacticGhost_fun_tac_,_».ghost_fun_tac <br>Frequency: 9, 0.0006% <br>File: import Mathlib.RingTheory.WittVector.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/WittVector/Basic.html#WittVector.«tacticGhost_fun_tac_,_»)
 
-
 An auxiliary tactic for proving that `ghostFun` respects the ring operations.
 
-<div class="division"></div>
 
 ### 267. map_fun_tac
 > Syntax full name: WittVector.mapFun.tacticMap_fun_tac.map_fun_tac <br>Frequency: 9, 0.0006% <br>File: import Mathlib.RingTheory.WittVector.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/WittVector/Basic.html#WittVector.mapFun.tacticMap_fun_tac)
 
-
 Auxiliary tactic for showing that `mapFun` respects the ring operations.
 
-<div class="division"></div>
 
 ### 268. bddDefault
 > Syntax full name: tacticBddDefault.bddDefault <br>Frequency: 9, 0.0006% <br>File: import Mathlib.Order.Bounds.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Bounds/Basic.html#tacticBddDefault)
-
 
 Sets are automatically bounded or cobounded in complete lattices. To use the same statements
 in complete and conditionally complete lattices but let automation fill automatically the
 boundedness proofs in complete lattices, we use the tactic `bddDefault` in the statements,
 in the form `(hA : BddAbove A := by bddDefault)`.
 
-<div class="division"></div>
 
 ### 269. witt_truncateFun_tac
 > Syntax full name: witt_truncateFun_tac.witt_truncateFun_tac <br>Frequency: 8, 0.0006% <br>File: import Mathlib.RingTheory.WittVector.Truncated <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/WittVector/Truncated.html#witt_truncateFun_tac)
 
-
 A macro tactic used to prove that `truncateFun` respects ring operations.
 
-<div class="division"></div>
 
 ### 270. try_this
 > Syntax full name: tacticTry_this_.try_this <br>Frequency: 8, 0.0006% <br>File: import Mathlib.Tactic.TryThis <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/TryThis.html#tacticTry_this_)
 
-
 Produces the text `Try this: <tac>` with the given tactic, and then executes it.
 
-<div class="division"></div>
 
 ### 271. pgame_wf_tac
 > Syntax full name: SetTheory.PGame.tacticPgame_wf_tac.pgame_wf_tac <br>Frequency: 8, 0.0006% <br>File: import Mathlib.SetTheory.Game.PGame <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/SetTheory/Game/PGame.html#SetTheory.PGame.tacticPgame_wf_tac)
 
-
 Discharges proof obligations of the form `⊢ Subsequent ..` arising in termination proofs
 of definitions using well-founded recursion on `PGame`.
 
-<div class="division"></div>
 
 ### 272. type_check
 > Syntax full name: tacticType_check_.type_check <br>Frequency: 8, 0.0006% <br>File: import Mathlib.Tactic.TypeCheck <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/TypeCheck.html#tacticType_check_)
 
-
 Type check the given expression, and trace its type.
 
-<div class="division"></div>
 
 ### 273. init_ring
 > Syntax full name: WittVector.initRing.init_ring <br>Frequency: 8, 0.0006% <br>File: import Mathlib.RingTheory.WittVector.InitTail <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/WittVector/InitTail.html#WittVector.initRing)
 
-
 `init_ring` is an auxiliary tactic that discharges goals factoring `init` over ring operations.
 
-<div class="division"></div>
 
 ### 274. ghost_calc
 > Syntax full name: WittVector.Tactic.ghostCalc.ghost_calc <br>Frequency: 8, 0.0006% <br>File: import Mathlib.RingTheory.WittVector.IsPoly <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/RingTheory/WittVector/IsPoly.html#WittVector.Tactic.ghostCalc)
-
 
 `ghost_calc` is a tactic for proving identities between polynomial functions.
 Typically, when faced with a goal like
@@ -4857,7 +4302,6 @@ All it does is apply the appropriate extensionality lemma and try to infer the r
 This is subtle and Lean's elaborator doesn't like it because of the HO unification involved,
 so it is easier (and prettier) to put it in a tactic script.
 
-<div class="division"></div>
 
 ### 275. uniqueDiffWithinAt_Ici_Iic_univ
 > Syntax full name: uniqueDiffWithinAt_Ici_Iic_univ.uniqueDiffWithinAt_Ici_Iic_univ <br>Frequency: 7, 0.0005% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#uniqueDiffWithinAt_Ici_Iic_univ)
@@ -4866,15 +4310,12 @@ so it is easier (and prettier) to put it in a tactic script.
 
 > Syntax full name: intervalIntegral.tacticUniqueDiffWithinAt_Ici_Iic_univ.uniqueDiffWithinAt_Ici_Iic_univ <br>Frequency: 7, 0.0005% <br>File: import Mathlib.MeasureTheory.Integral.FundThmCalculus <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Integral/FundThmCalculus.html#intervalIntegral.tacticUniqueDiffWithinAt_Ici_Iic_univ)
 
-
 An auxiliary tactic closing goals `UniqueDiffWithinAt ℝ s a` where
 `s ∈ {Iic a, Ici a, univ}`.
 
-<div class="division"></div>
 
 ### 276. ring!
 > Syntax full name: RingNF.tacticRing!.ring! <br>Frequency: 7, 0.0005% <br>File: import Mathlib.Tactic.Ring.RingNF <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/RingNF.html#RingNF.tacticRing!)
-
 
 Tactic for evaluating expressions in *commutative* (semi)rings, allowing for variables in the
 exponent.
@@ -4889,38 +4330,30 @@ example (a b : ℤ) (n : ℕ) : (a + b)^(n + 2) = (a^2 + b^2 + a * b + b * a) * 
 example (x y : ℕ) : x + id y = y + id x := by ring!
 ```
 
-<div class="division"></div>
 
 ### 277. show_term
 > Syntax full name: Parser.Tactic.showTerm.show_term <br>Frequency: 7, 0.0005% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.showTerm)
-
 
 `show_term tac` runs `tac`, then prints the generated term in the form
 "exact X Y Z" or "refine X ?_ Z" if there are remaining subgoals.
 
 (For some tactics, the printed term will not be human readable.)
 
-<div class="division"></div>
 
 ### 278. infer_param
 > Syntax full name: inferOptParam.infer_param <br>Frequency: 6, 0.0004% <br>File: import Mathlib.Tactic.InferParam <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/InferParam.html#inferOptParam)
 
-
 Close a goal of the form `optParam α a` or `autoParam α stx` by using `a`.
 
-<div class="division"></div>
 
 ### 279. trace_state
 > Syntax full name: Parser.Tactic.traceState.trace_state <br>Frequency: 6, 0.0004% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.traceState)
 
-
 `trace_state` displays the current state in the info view.
 
-<div class="division"></div>
 
 ### 280. pure_coherence
 > Syntax full name: Coherence.pure_coherence.pure_coherence <br>Frequency: 6, 0.0004% <br>File: import Mathlib.Tactic.CategoryTheory.Coherence <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/Coherence.html#Coherence.pure_coherence)
-
 
 `pure_coherence` uses the coherence theorem for monoidal categories to prove the goal.
 It can prove any equality made up only of associators, unitors, and identities.
@@ -4935,11 +4368,9 @@ which can also cope with identities of the form
 `a ≫ f ≫ b ≫ g ≫ c = a' ≫ f ≫ b' ≫ g ≫ c'`
 where `a = a'`, `b = b'`, and `c = c'` can be proved using `pure_coherence`
 
-<div class="division"></div>
 
 ### 281. have?
 > Syntax full name: Propose.propose'.have? <br>Frequency: 6, 0.0004% <br>File: import Mathlib.Tactic.Propose <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Propose.html#Propose.propose')
-
 
 * `have? using a, b, c` tries to find a lemma
 which makes use of each of the local hypotheses `a, b, c`,
@@ -4954,11 +4385,9 @@ only the types of the lemmas in the `using` clause.
 
 Suggestions are printed as `have := f a b c`.
 
-<div class="division"></div>
 
 ### 282. itauto!
 > Syntax full name: ITauto.itauto!.itauto! <br>Frequency: 6, 0.0004% <br>File: import Mathlib.Tactic.ITauto <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ITauto.html#ITauto.itauto!)
-
 
 A decision procedure for intuitionistic propositional logic. Unlike `finish` and `tauto!` this
 tactic never uses the law of excluded middle (without the `!` option), and the proof search is
@@ -4974,11 +4403,9 @@ example (p : Prop) : ¬ (p ↔ ¬ p) := by itauto
 find among the atomic propositions, and `itauto! *` will case on all propositional atoms.
 *Warning:* This can blow up the proof search, so it should be used sparingly.
 
-<div class="division"></div>
 
 ### 283. reduce_mod_char!
 > Syntax full name: ReduceModChar.reduce_mod_char!.reduce_mod_char! <br>Frequency: 6, 0.0004% <br>File: import Mathlib.Tactic.ReduceModChar <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ReduceModChar.html#ReduceModChar.reduce_mod_char!)
-
 
 The tactic `reduce_mod_char` looks for numeric expressions in characteristic `p`
 and reduces these to lie between `0` and `p`.
@@ -4998,11 +4425,9 @@ The variant `reduce_mod_char!` also tries to use `CharP R n` hypotheses in the c
 (Limitations of the typeclass system mean the tactic can't search for a `CharP R n` instance if
 `n` is not yet known; use `have : CharP R n := inferInstance; reduce_mod_char!` as a workaround.)
 
-<div class="division"></div>
 
 ### 284. aesop?
 > Syntax full name: Aesop.Frontend.Parser.aesopTactic?.aesop? <br>Frequency: 6, 0.0004% <br>File: import Aesop.Frontend.Tactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Tactic.html#Aesop.Frontend.Parser.aesopTactic?)
-
 
 `aesop <clause>*` tries to solve the current goal by applying a set of rules
 registered with the `@[aesop]` attribute. See [its
@@ -5030,11 +4455,9 @@ clauses are:
   `(simp_config := { zeta := false })` makes Aesop use
   `simp (config := { zeta := false })`.
 
-<div class="division"></div>
 
 ### 285. change?
 > Syntax full name: change?.change? <br>Frequency: 6, 0.0004% <br>File: import Mathlib.Tactic.Change <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Change.html#change?)
-
 
 `change? term` unifies `term` with the current goal, then suggests explicit `change` syntax
 that uses the resulting unified term.
@@ -5047,56 +4470,44 @@ example : (fun x : Nat => x) 0 = 1 := by
   change? 0 = _  -- `Try this: change 0 = 1`
 ```
 
-<div class="division"></div>
 
 ### 286. rename'
 > Syntax full name: rename'.rename' <br>Frequency: 6, 0.0004% <br>File: import Mathlib.Tactic.Rename <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Rename.html#rename')
-
 
 `rename' h => hnew` renames the hypothesis named `h` to `hnew`.
 To rename several hypothesis, use `rename' h₁ => h₁new, h₂ => h₂new`.
 You can use `rename' a => b, b => a` to swap two variables.
 
-<div class="division"></div>
 
 ### 287. refold_let
 > Syntax full name: refoldLetStx.refold_let <br>Frequency: 6, 0.0004% <br>File: import Mathlib.Tactic.DefEqTransformations <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DefEqTransformations.html#refoldLetStx)
-
 
 `refold_let x y z at loc` looks for the bodies of local definitions `x`, `y`, and `z` at the given
 location and replaces them with `x`, `y`, or `z`. This is the inverse of "zeta reduction."
 This also exists as a `conv`-mode tactic.
 
-<div class="division"></div>
 
 ### 288. smul_tac
 > Syntax full name: RatFunc.tacticSmul_tac.smul_tac <br>Frequency: 5, 0.0004% <br>File: import Mathlib.FieldTheory.RatFunc.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/FieldTheory/RatFunc/Basic.html#RatFunc.tacticSmul_tac)
 
-
 Solve equations for `RatFunc K` by applying `RatFunc.induction_on`.
 
-<div class="division"></div>
 
 ### 289. to_encard_tac
 > Syntax full name: Set.tacticTo_encard_tac.to_encard_tac <br>Frequency: 5, 0.0004% <br>File: import Mathlib.Data.Set.Card <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Set/Card.html#Set.tacticTo_encard_tac)
 
-
 A tactic useful for transferring proofs for `encard` to their corresponding `card` statements
 
-<div class="division"></div>
 
 ### 290. simp_arith
 > Syntax full name: Parser.Tactic.simpArith.simp_arith <br>Frequency: 5, 0.0004% <br>File: import Init.Meta <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Meta.html#Parser.Tactic.simpArith)
 
-
 `simp_arith` is shorthand for `simp` with `arith := true` and `decide := true`.
 This enables the use of normalization by linear arithmetic.
 
-<div class="division"></div>
 
 ### 291. swap_var
 > Syntax full name: «tacticSwap_var__,,».swap_var <br>Frequency: 5, 0.0004% <br>File: import Mathlib.Tactic.SwapVar <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SwapVar.html#«tacticSwap_var__,,»)
-
 
 `swap_var swap_rule₁, swap_rule₂, ⋯` applies `swap_rule₁` then `swap_rule₂` then `⋯`.
 
@@ -5109,39 +4520,31 @@ example {P Q : Prop} (q : P) (p : Q) : P ∧ Q := by
   exact ⟨p, q⟩
 ```
 
-<div class="division"></div>
 
 ### 292. eta_reduce
 > Syntax full name: etaReduceStx.eta_reduce <br>Frequency: 5, 0.0004% <br>File: import Mathlib.Tactic.DefEqTransformations <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DefEqTransformations.html#etaReduceStx)
-
 
 `eta_reduce at loc` eta reduces all sub-expressions at the given location.
 This also exists as a `conv`-mode tactic.
 
 For example, `fun x y => f x y` becomes `f` after eta reduction.
 
-<div class="division"></div>
 
 ### 293. whisker_simps
 > Syntax full name: BicategoryCoherence.whisker_simps.whisker_simps <br>Frequency: 5, 0.0004% <br>File: import Mathlib.Tactic.CategoryTheory.BicategoryCoherence <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/BicategoryCoherence.html#BicategoryCoherence.whisker_simps)
 
-
 Simp lemmas for rewriting a 2-morphism into a normal form.
 
-<div class="division"></div>
 
 ### 294. sleep
 > Syntax full name: Parser.Tactic.sleep.sleep <br>Frequency: 5, 0.0004% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.sleep)
 
-
 The tactic `sleep ms` sleeps for `ms` milliseconds and does nothing.
 It is used for debugging purposes only.
 
-<div class="division"></div>
 
 ### 295. ac_change
 > Syntax full name: acChange.ac_change <br>Frequency: 4, 0.0003% <br>File: import Mathlib.Tactic.Convert <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Convert.html#acChange)
-
 
 `ac_change g using n` is `convert_to g using n` followed by `ac_rfl`. It is useful for
 rearranging/reassociating e.g. sums:
@@ -5151,11 +4554,9 @@ example (a b c d e f g N : ℕ) : (a + b) + (c + d) + (e + f) + g ≤ N := by
   -- ⊢ a + d + e + f + c + g + b ≤ N
 ```
 
-<div class="division"></div>
 
 ### 296. simpa?
 > Syntax full name: Parser.Tactic.tacticSimpa?_.simpa? <br>Frequency: 4, 0.0003% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticSimpa?_)
-
 
 This is a "finishing" tactic modification of `simp`. It has two forms.
 
@@ -5170,21 +4571,17 @@ more robust under changes to the simp lemma set.
 hypothesis `this` if present in the context, then try to close the goal using
 the `assumption` tactic.
 
-<div class="division"></div>
 
 ### 297. pi_lower_bound
 > Syntax full name: Real.«tacticPi_lower_bound[_,,]».pi_lower_bound <br>Frequency: 4, 0.0003% <br>File: import Mathlib.Data.Real.Pi.Bounds <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Real/Pi/Bounds.html#Real.«tacticPi_lower_bound[_,,]»)
-
 
 Create a proof of `a < π` for a fixed rational number `a`, given a witness, which is a
 sequence of rational numbers `√2 < r 1 < r 2 < ... < r n < 2` satisfying the property that
 `√(2 + r i) ≤ r(i+1)`, where `r 0 = 0` and `√(2 - r n) ≥ a/2^(n+1)`.
 
-<div class="division"></div>
 
 ### 298. eta_struct
 > Syntax full name: etaStructStx.eta_struct <br>Frequency: 4, 0.0003% <br>File: import Mathlib.Tactic.DefEqTransformations <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DefEqTransformations.html#etaStructStx)
-
 
 `eta_struct at loc` transforms structure constructor applications such as `S.mk x.1 ... x.n`
 (pretty printed as, for example, `{a := x.a, b := x.b, ...}`) into `x`.
@@ -5195,11 +4592,9 @@ equal expressions.
 
 For example, given `x : α × β`, then `(x.1, x.2)` becomes `x` after this transformation.
 
-<div class="division"></div>
 
 ### 299. have?!
 > Syntax full name: Propose.«tacticHave?!:_Using__».have?! <br>Frequency: 4, 0.0003% <br>File: import Mathlib.Tactic.Propose <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Propose.html#Propose.«tacticHave?!:_Using__»)
-
 
 * `have? using a, b, c` tries to find a lemma
 which makes use of each of the local hypotheses `a, b, c`,
@@ -5214,11 +4609,9 @@ only the types of the lemmas in the `using` clause.
 
 Suggestions are printed as `have := f a b c`.
 
-<div class="division"></div>
 
 ### 300. mod_cases
 > Syntax full name: ModCases.«tacticMod_cases_:_%_».mod_cases <br>Frequency: 4, 0.0003% <br>File: import Mathlib.Tactic.ModCases <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ModCases.html#ModCases.«tacticMod_cases_:_%_»)
-
 
 * The tactic `mod_cases h : e % 3` will perform a case disjunction on `e`.
   If `e : ℤ`, then it will yield subgoals containing the assumptions
@@ -5229,19 +4622,15 @@ Suggestions are printed as `have := f a b c`.
   when `n` is a positive numeral and `e` is an expression of type `ℕ` or `ℤ`.
 * If `h` is omitted as in `mod_cases e % n`, it will be default-named `H`.
 
-<div class="division"></div>
 
 ### 301. monoidal_simps
 > Syntax full name: Coherence.monoidal_simps.monoidal_simps <br>Frequency: 4, 0.0003% <br>File: import Mathlib.Tactic.CategoryTheory.Coherence <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/Coherence.html#Coherence.monoidal_simps)
 
-
 Simp lemmas for rewriting a hom in monoical categories into a normal form.
 
-<div class="division"></div>
 
 ### 302. abel1!
 > Syntax full name: Abel.abel1!.abel1! <br>Frequency: 4, 0.0003% <br>File: import Mathlib.Tactic.Abel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Abel.html#Abel.abel1!)
-
 
 Tactic for solving equations in the language of
 *additive*, commutative monoids and groups.
@@ -5251,26 +4640,20 @@ that is provable by the axioms of commutative monoids/groups.
 `abel1!` will use a more aggressive reducibility setting to identify atoms.
 This can prove goals that `abel` cannot, but is more expensive.
 
-<div class="division"></div>
 
 ### 303. mem_tac_aux
 > Syntax full name: AlgebraicGeometry.ProjIsoSpecTopComponent.FromSpec.tacticMem_tac_aux.mem_tac_aux <br>Frequency: 4, 0.0003% <br>File: import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Scheme <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/AlgebraicGeometry/ProjectiveSpectrum/Scheme.html#AlgebraicGeometry.ProjIsoSpecTopComponent.FromSpec.tacticMem_tac_aux)
 
 
 
-<div class="division"></div>
-
 ### 304. guard_goal_nums
 > Syntax full name: guardGoalNums.guard_goal_nums <br>Frequency: 4, 0.0003% <br>File: import Mathlib.Tactic.GuardGoalNums <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/GuardGoalNums.html#guardGoalNums)
 
-
 `guard_goal_nums n` succeeds if there are exactly `n` goals and fails otherwise.
 
-<div class="division"></div>
 
 ### 305. with_panel_widgets
 > Syntax full name: ProofWidgets.withPanelWidgetsTacticStx.with_panel_widgets <br>Frequency: 4, 0.0003% <br>File: import ProofWidgets.Component.Panel.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/ProofWidgets/Component/Panel/Basic.html#ProofWidgets.withPanelWidgetsTacticStx)
-
 
 Display the selected panel widgets in the nested tactic script. For example,
 assuming we have written a `GeometryDisplay` component,
@@ -5281,11 +4664,9 @@ by with_panel_widgets [GeometryDisplay]
 ```
 will show the geometry display alongside the usual tactic state throughout the proof.
 
-<div class="division"></div>
 
 ### 306. decreasing_tactic
 > Syntax full name: tacticDecreasing_tactic.decreasing_tactic <br>Frequency: 4, 0.0003% <br>File: import Init.WFTactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/WFTactics.html#tacticDecreasing_tactic)
-
 
 `decreasing_tactic` is called by default on well-founded recursions in order
 to synthesize a proof that recursive calls decrease along the selected
@@ -5294,11 +4675,9 @@ on the recursive definition, and it can also be globally extended by adding
 more definitions for `decreasing_tactic` (or `decreasing_trivial`,
 which this tactic calls).
 
-<div class="division"></div>
 
 ### 307. cases_type
 > Syntax full name: casesType.cases_type <br>Frequency: 4, 0.0003% <br>File: import Mathlib.Tactic.CasesM <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CasesM.html#casesType)
-
 
 * `cases_type I` applies the `cases` tactic to a hypothesis `h : (I ...)`
 * `cases_type I_1 ... I_n` applies the `cases` tactic to a hypothesis
@@ -5311,11 +4690,9 @@ Example: The following tactic destructs all conjunctions and disjunctions in the
 cases_type* Or And
 ```
 
-<div class="division"></div>
 
 ### 308. aesop_graph
 > Syntax full name: aesop_graph.aesop_graph <br>Frequency: 4, 0.0003% <br>File: import Mathlib.Combinatorics.SimpleGraph.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Combinatorics/SimpleGraph/Basic.html#aesop_graph)
-
 
 A variant of the `aesop` tactic for use in the graph library. Changes relative
 to standard `aesop`:
@@ -5325,11 +4702,9 @@ to standard `aesop`:
 - We instruct Aesop to fail if it can't fully solve the goal. This allows us to
   use `aesop_graph` for auto-params.
 
-<div class="division"></div>
 
 ### 309. simp_all?
 > Syntax full name: Parser.Tactic.simpAllTrace.simp_all? <br>Frequency: 4, 0.0003% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.simpAllTrace)
-
 
 `simp?` takes the same arguments as `simp`, but reports an equivalent call to `simp only`
 that would be sufficient to close the goal. This is useful for reducing the size of the simp
@@ -5341,28 +4716,22 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 
 This command can also be used in `simp_all` and `dsimp`.
 
-<div class="division"></div>
 
 ### 310. bitwise_assoc_tac
 > Syntax full name: Nat.tacticBitwise_assoc_tac.bitwise_assoc_tac <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Data.Nat.Bitwise <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Nat/Bitwise.html#Nat.tacticBitwise_assoc_tac)
 
-
 Proving associativity of bitwise operations in general essentially boils down to a huge case
 distinction, so it is shorter to use this tactic instead of proving it in the general case.
 
-<div class="division"></div>
 
 ### 311. aux_group₂
 > Syntax full name: Group.aux_group₂.aux_group₂ <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Tactic.Group <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Group.html#Group.aux_group₂)
 
-
 Auxiliary tactic for the `group` tactic. Calls `ring_nf` to normalize exponents.
 
-<div class="division"></div>
 
 ### 312. constructorm
 > Syntax full name: constructorM.constructorm <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Tactic.CasesM <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CasesM.html#constructorM)
-
 
 * `constructorm p_1, ..., p_n` applies the `constructor` tactic to the main goal
   if `type` matches one of the given patterns.
@@ -5375,11 +4744,9 @@ and/or/true:
 constructorm* _ ∨ _, _ ∧ _, True
 ```
 
-<div class="division"></div>
 
 ### 313. liftable_prefixes
 > Syntax full name: Coherence.liftable_prefixes.liftable_prefixes <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Tactic.CategoryTheory.Coherence <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/Coherence.html#Coherence.liftable_prefixes)
-
 
 Internal tactic used in `coherence`.
 
@@ -5387,55 +4754,43 @@ Rewrites an equation `f = g` as `f₀ ≫ f₁ = g₀ ≫ g₁`,
 where `f₀` and `g₀` are maximal prefixes of `f` and `g` (possibly after reassociating)
 which are "liftable" (i.e. expressible as compositions of unitors and associators).
 
-<div class="division"></div>
 
 ### 314. eq_refl
 > Syntax full name: Parser.Tactic.eqRefl.eq_refl <br>Frequency: 3, 0.0002% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.eqRefl)
 
-
 `eq_refl` is equivalent to `exact rfl`, but has a few optimizations.
 
-<div class="division"></div>
 
 ### 315. mv_bisim
 > Syntax full name: MvBisim.tacticMv_bisim___With___.mv_bisim <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Data.QPF.Multivariate.Constructions.Cofix <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/QPF/Multivariate/Constructions/Cofix.html#MvBisim.tacticMv_bisim___With___)
 
-
 tactic for proof by bisimulation
+
 
 > Syntax full name: mvBisim.mv_bisim <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#mvBisim)
 
 
 
-<div class="division"></div>
-
 ### 316. ext?
 > Syntax full name: ext?.ext? <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#ext?)
 
-
 `ext? pat*` is like `ext pat*` but gives a suggestion on what pattern to use
 
-<div class="division"></div>
 
 ### 317. aux_group₁
 > Syntax full name: Group.aux_group₁.aux_group₁ <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Tactic.Group <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Group.html#Group.aux_group₁)
 
-
 Auxiliary tactic for the `group` tactic. Calls the simplifier only.
 
-<div class="division"></div>
 
 ### 318. discrete_cases
 > Syntax full name: CategoryTheory.Discrete.tacticDiscrete_cases.discrete_cases <br>Frequency: 3, 0.0002% <br>File: import Mathlib.CategoryTheory.DiscreteCategory <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/DiscreteCategory.html#CategoryTheory.Discrete.tacticDiscrete_cases)
 
-
 A simple tactic to run `cases` on any `Discrete α` hypotheses.
 
-<div class="division"></div>
 
 ### 319. ring1!
 > Syntax full name: Ring.tacticRing1!.ring1! <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Tactic.Ring.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/Basic.html#Ring.tacticRing1!)
-
 
 Tactic for solving equations of *commutative* (semi)rings,
 allowing variables in the exponent.
@@ -5444,59 +4799,45 @@ allowing variables in the exponent.
 * The variant `ring1!` will use a more aggressive reducibility setting
   to determine equality of atoms.
 
-<div class="division"></div>
 
 ### 320. monoidal_coherence
 > Syntax full name: Coherence.tacticMonoidal_coherence.monoidal_coherence <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Tactic.CategoryTheory.Coherence <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/Coherence.html#Coherence.tacticMonoidal_coherence)
 
-
 Coherence tactic for monoidal categories.
 Use `pure_coherence` instead, which is a frontend to this one.
 
-<div class="division"></div>
 
 ### 321. elide
 > Syntax full name: elide.elide <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#elide)
 
 
 
-<div class="division"></div>
-
 ### 322. padic_index_simp
 > Syntax full name: padicIndexSimp.padic_index_simp <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#padicIndexSimp)
 
 
 
-<div class="division"></div>
-
 ### 323. restrict_tac
 > Syntax full name: TopCat.Presheaf.restrict_tac.restrict_tac <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Topology.Sheaves.Presheaf <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/Sheaves/Presheaf.html#TopCat.Presheaf.restrict_tac)
 
-
 `restrict_tac` solves relations among subsets (copied from `aesop cat`)
 
-<div class="division"></div>
 
 ### 324. pi_upper_bound
 > Syntax full name: Real.«tacticPi_upper_bound[_,,]».pi_upper_bound <br>Frequency: 3, 0.0002% <br>File: import Mathlib.Data.Real.Pi.Bounds <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Data/Real/Pi/Bounds.html#Real.«tacticPi_upper_bound[_,,]»)
-
 
 Create a proof of `π < a` for a fixed rational number `a`, given a witness, which is a
 sequence of rational numbers `√2 < r 1 < r 2 < ... < r n < 2` satisfying the property that
 `√(2 + r i) ≥ r(i+1)`, where `r 0 = 0` and `√(2 - r n) ≥ (a - 1/4^n) / 2^(n+1)`.
 
-<div class="division"></div>
 
 ### 325. mk_decorations
 > Syntax full name: mkDecorations.mk_decorations <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#mkDecorations)
 
 
 
-<div class="division"></div>
-
 ### 326. abel_nf!
 > Syntax full name: Abel.tacticAbel_nf!__.abel_nf! <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Tactic.Abel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Abel.html#Abel.tacticAbel_nf!__)
-
 
 Simplification tactic for expressions in the language of abelian groups,
 which rewrites all group expressions into a normal form.
@@ -5507,27 +4848,21 @@ which rewrites all group expressions into a normal form.
 * `abel_nf` works as both a tactic and a conv tactic.
   In tactic mode, `abel_nf at h` can be used to rewrite in a hypothesis.
 
-<div class="division"></div>
 
 ### 327. simp_wf
 > Syntax full name: tacticSimp_wf.simp_wf <br>Frequency: 2, 0.0001% <br>File: import Init.WFTactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/WFTactics.html#tacticSimp_wf)
 
-
 Unfold definitions commonly used in well founded relation definitions.
 This is primarily intended for internal use in `decreasing_tactic`.
 
-<div class="division"></div>
 
 ### 328. gcongr_discharger
 > Syntax full name: GCongr.tacticGcongr_discharger.gcongr_discharger <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Tactic.GCongr.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/GCongr/Core.html#GCongr.tacticGcongr_discharger)
 
 
 
-<div class="division"></div>
-
 ### 329. linear_combination2
 > Syntax full name: LinearCombination.tacticLinear_combination2____.linear_combination2 <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Tactic.LinearCombination <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/LinearCombination.html#LinearCombination.tacticLinear_combination2____)
-
 
 `linear_combination` attempts to simplify the target by creating a linear combination
   of a list of equalities and subtracting it from the target.
@@ -5599,18 +4934,14 @@ example (a b : ℚ) (h : ∀ p q : ℚ, p = q) : 3*a + qc = 3*b + 2*qc := by
   linear_combination 3 * h a b + hqc
 ```
 
-<div class="division"></div>
 
 ### 330. use_finite_instance
 > Syntax full name: tacticUse_finite_instance.use_finite_instance <br>Frequency: 2, 0.0001% <br>File: import Mathlib.LinearAlgebra.Dual <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/Dual.html#tacticUse_finite_instance)
 
 
 
-<div class="division"></div>
-
 ### 331. checkpoint
 > Syntax full name: Parser.Tactic.checkpoint.checkpoint <br>Frequency: 2, 0.0001% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.checkpoint)
-
 
 `checkpoint tac` acts the same as `tac`, but it caches the input and output of `tac`,
 and if the file is re-elaborated and the input matches, the tactic is not re-run and
@@ -5622,11 +4953,9 @@ See the `save` tactic, which may be more convenient to use.
 (TODO: do this automatically and transparently so that users don't have to use
 this combinator explicitly.)
 
-<div class="division"></div>
 
 ### 332. guard_hyp_nums
 > Syntax full name: guardHypNums.guard_hyp_nums <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Tactic.GuardHypNums <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/GuardHypNums.html#guardHypNums)
-
 
 `guard_hyp_nums n` succeeds if there are exactly `n` hypotheses and fails otherwise.
 
@@ -5634,61 +4963,47 @@ Note that, depending on what options are set, some hypotheses in the local conte
 not be printed in the goal view. This tactic computes the total number of hypotheses,
 not the number of visible hypotheses.
 
-<div class="division"></div>
 
 ### 333. refine_lift
 > Syntax full name: Parser.Tactic.tacticRefine_lift_.refine_lift <br>Frequency: 2, 0.0001% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticRefine_lift_)
 
-
 Auxiliary macro for lifting have/suffices/let/...
 It makes sure the "continuation" `?_` is the main goal after refining.
 
-<div class="division"></div>
 
 ### 334. econstructor
 > Syntax full name: tacticEconstructor.econstructor <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Tactic.Constructor <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Constructor.html#tacticEconstructor)
-
 
 `econstructor` is like `constructor`
 (it calls `apply` using the first matching constructor of an inductive datatype)
 except only non-dependent premises are added as new goals.
 
-<div class="division"></div>
 
 ### 335. move_op
 > Syntax full name: moveOp.move_op <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#moveOp)
 
 
 
-<div class="division"></div>
-
 ### 336. decide!
 > Syntax full name: decide!.decide! <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#decide!)
 
 
 
-<div class="division"></div>
-
 ### 337. field_simp_discharge
 > Syntax full name: FieldSimp.tacticField_simp_discharge.field_simp_discharge <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Tactic.FieldSimp <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/FieldSimp.html#FieldSimp.tacticField_simp_discharge)
 
-
 Discharge strategy for the `field_simp` tactic.
 
-<div class="division"></div>
 
 ### 338. symm_saturate
 > Syntax full name: Parser.Tactic.symmSaturate.symm_saturate <br>Frequency: 2, 0.0001% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.symmSaturate)
 
-
 For every hypothesis `h : a ~ b` where a `@[symm]` lemma is available,
 add a hypothesis `h_symm : b ~ a`.
 
-<div class="division"></div>
 
 ### 339. ring_nf!
 > Syntax full name: RingNF.tacticRing_nf!__.ring_nf! <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Tactic.Ring.RingNF <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/RingNF.html#RingNF.tacticRing_nf!__)
-
 
 Simplification tactic for expressions in the language of commutative (semi)rings,
 which rewrites all ring expressions into a normal form.
@@ -5699,11 +5014,9 @@ which rewrites all ring expressions into a normal form.
 * `ring_nf` works as both a tactic and a conv tactic.
   In tactic mode, `ring_nf at h` can be used to rewrite in a hypothesis.
 
-<div class="division"></div>
 
 ### 340. decreasing_trivial
 > Syntax full name: tacticDecreasing_trivial.decreasing_trivial <br>Frequency: 2, 0.0001% <br>File: import Init.WFTactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/WFTactics.html#tacticDecreasing_trivial)
-
 
 Extensible helper tactic for `decreasing_tactic`. This handles the "base case"
 reasoning after applying lexicographic order lemmas.
@@ -5712,29 +5025,23 @@ It can be extended by adding more macro definitions, e.g.
 macro_rules | `(tactic| decreasing_trivial) => `(tactic| linarith)
 ```
 
-<div class="division"></div>
 
 ### 341. simp_all!
 > Syntax full name: Parser.Tactic.simpAllAutoUnfold.simp_all! <br>Frequency: 2, 0.0001% <br>File: import Init.Meta <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Meta.html#Parser.Tactic.simpAllAutoUnfold)
-
 
 `simp_all!` is shorthand for `simp_all` with `autoUnfold := true`.
 This will rewrite with all equation lemmas, which can be used to
 partially evaluate many definitions.
 
-<div class="division"></div>
 
 ### 342. sorry_if_sorry
 > Syntax full name: CategoryTheory.sorryIfSorry.sorry_if_sorry <br>Frequency: 2, 0.0001% <br>File: import Mathlib.CategoryTheory.Category.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.sorryIfSorry)
 
-
 Close the main goal with `sorry` if its type contains `sorry`, and fail otherwise.
 
-<div class="division"></div>
 
 ### 343. rename_bvar
 > Syntax full name: «tacticRename_bvar_→__».rename_bvar <br>Frequency: 2, 0.0001% <br>File: import Mathlib.Tactic.RenameBVar <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/RenameBVar.html#«tacticRename_bvar_→__»)
-
 
 * `rename_bvar old new` renames all bound variables named `old` to `new` in the target.
 * `rename_bvar old new at h` does the same in hypothesis `h`.
@@ -5747,19 +5054,15 @@ example (P : ℕ → ℕ → Prop) (h : ∀ n, ∃ m, P n m) : ∀ l, ∃ m, P l
 ```
 Note: name clashes are resolved automatically.
 
-<div class="division"></div>
 
 ### 344. count_heartbeats
 > Syntax full name: Mathlib.CountHeartbeats.tacticCount_heartbeats_.count_heartbeats <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Util.CountHeartbeats <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/CountHeartbeats.html#Mathlib.CountHeartbeats.tacticCount_heartbeats_)
 
-
 Count the heartbeats used by a tactic, e.g.: `count_heartbeats simp`.
 
-<div class="division"></div>
 
 ### 345. ring1_nf
 > Syntax full name: RingNF.ring1NF.ring1_nf <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.Ring.RingNF <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/RingNF.html#RingNF.ring1NF)
-
 
 Tactic for solving equations of *commutative* (semi)rings, allowing variables in the exponent.
 
@@ -5767,11 +5070,9 @@ Tactic for solving equations of *commutative* (semi)rings, allowing variables in
 * The variant `ring1_nf!` will use a more aggressive reducibility setting
   to determine equality of atoms.
 
-<div class="division"></div>
 
 ### 346. linarith!
 > Syntax full name: tacticLinarith!_.linarith! <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.Linarith.Frontend <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Linarith/Frontend.html#tacticLinarith!_)
-
 
 `linarith` attempts to find a contradiction between hypotheses that are linear (in)equalities.
 Equivalently, it can prove a linear inequality by assuming its negation and proving `False`.
@@ -5830,74 +5131,56 @@ A variant, `nlinarith`, does some basic preprocessing to handle some nonlinear g
 The option `set_option trace.linarith true` will trace certain intermediate stages of the `linarith`
 routine.
 
-<div class="division"></div>
 
 ### 347. aesop_cat?
 > Syntax full name: CategoryTheory.aesop_cat?.aesop_cat? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.CategoryTheory.Category.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.aesop_cat?)
 
-
 We also use `aesop_cat?` to pass along a `Try this` suggestion when using `aesop_cat`
 
-<div class="division"></div>
 
 ### 348. rotate_right
 > Syntax full name: Parser.Tactic.rotateRight.rotate_right <br>Frequency: 1, 0.0001% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.rotateRight)
 
-
 Rotate the goals to the right by `n`. That is, take the goal at the back
 and push it to the front `n` times. If `n` is omitted, it defaults to `1`.
 
-<div class="division"></div>
 
 ### 349. aesop_graph?
 > Syntax full name: aesop_graph?.aesop_graph? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Combinatorics.SimpleGraph.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Combinatorics/SimpleGraph/Basic.html#aesop_graph?)
 
-
 Use `aesop_graph?` to pass along a `Try this` suggestion when using `aesop_graph`
 
-<div class="division"></div>
 
 ### 350. cases''
 > Syntax full name: cases''.cases'' <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#cases'')
 
 
 
-<div class="division"></div>
-
 ### 351. rcases?
 > Syntax full name: rcases?.rcases? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#rcases?)
 
 
-
-<div class="division"></div>
 
 ### 352. mapply
 > Syntax full name: mapply.mapply <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#mapply)
 
 
 
-<div class="division"></div>
-
 ### 353. assoc_rw
 > Syntax full name: assocRw.assoc_rw <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#assocRw)
 
 
 
-<div class="division"></div>
-
 ### 354. with_unfolding_all
 > Syntax full name: Parser.Tactic.withUnfoldingAll.with_unfolding_all <br>Frequency: 1, 0.0001% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.withUnfoldingAll)
-
 
 `with_unfolding_all tacs` executes `tacs` using the `.all` transparency setting.
 In this setting all definitions that are not opaque are unfolded.
 
-<div class="division"></div>
 
 ### 355. observe?
 > Syntax full name: LibrarySearch.«tacticObserve?__:_Using__,,».observe? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.Observe <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Observe.html#LibrarySearch.«tacticObserve?__:_Using__,,»)
 
-
 `observe hp : p` asserts the proposition `p`, and tries to prove it using `exact?`.
 If no proof is found, the tactic fails.
 In other words, this tactic is equivalent to `have hp : p := by exact?`.
@@ -5906,10 +5189,10 @@ If `hp` is omitted, then the placeholder `this` is used.
 
 The variant `observe? hp : p` will emit a trace message of the form `have hp : p := proof_term`.
 This may be particularly useful to speed up proofs.
+
 
 > Syntax full name: LibrarySearch.«tacticObserve?__:_».observe? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.Observe <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Observe.html#LibrarySearch.«tacticObserve?__:_»)
 
-
 `observe hp : p` asserts the proposition `p`, and tries to prove it using `exact?`.
 If no proof is found, the tactic fails.
 In other words, this tactic is equivalent to `have hp : p := by exact?`.
@@ -5919,25 +5202,19 @@ If `hp` is omitted, then the placeholder `this` is used.
 The variant `observe? hp : p` will emit a trace message of the form `have hp : p := proof_term`.
 This may be particularly useful to speed up proofs.
 
-<div class="division"></div>
 
 ### 356. match_target
 > Syntax full name: tacticMatch_target_.match_target <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Basic.html#tacticMatch_target_)
 
 
 
-<div class="division"></div>
-
 ### 357. induction''
 > Syntax full name: induction''.induction'' <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#induction'')
 
 
 
-<div class="division"></div>
-
 ### 358. monicity!
 > Syntax full name: ComputeDegree.tacticMonicity!.monicity! <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.ComputeDegree <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ComputeDegree.html#ComputeDegree.tacticMonicity!)
-
 
 `monicity` tries to solve a goal of the form `Monic f`.
 It converts the goal into a goal of the form `natDegree f ≤ n` and one of the form `f.coeff n = 1`
@@ -5945,26 +5222,20 @@ and calls `compute_degree` on those two goals.
 
 The variant `monicity!` starts like `monicity`, but calls `compute_degree!` on the two side-goals.
 
-<div class="division"></div>
 
 ### 359. async
 > Syntax full name: async.async <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#async)
 
 
 
-<div class="division"></div>
-
 ### 360. restrict_tac?
 > Syntax full name: TopCat.Presheaf.restrict_tac?.restrict_tac? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Topology.Sheaves.Presheaf <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/Sheaves/Presheaf.html#TopCat.Presheaf.restrict_tac?)
 
-
 `restrict_tac?` passes along `Try this` from `aesop`
 
-<div class="division"></div>
 
 ### 361. monicity
 > Syntax full name: ComputeDegree.monicityMacro.monicity <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.ComputeDegree <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ComputeDegree.html#ComputeDegree.monicityMacro)
-
 
 `monicity` tries to solve a goal of the form `Monic f`.
 It converts the goal into a goal of the form `natDegree f ≤ n` and one of the form `f.coeff n = 1`
@@ -5972,109 +5243,81 @@ and calls `compute_degree` on those two goals.
 
 The variant `monicity!` starts like `monicity`, but calls `compute_degree!` on the two side-goals.
 
-<div class="division"></div>
 
 ### 362. delta_instance
 > Syntax full name: deltaInstance.delta_instance <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#deltaInstance)
 
 
 
-<div class="division"></div>
-
 ### 363. tidy?
 > Syntax full name: tidy?.tidy? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#tidy?)
 
 
 
-<div class="division"></div>
-
 ### 364. norm_cast0
 > Syntax full name: Parser.Tactic.normCast0.norm_cast0 <br>Frequency: 1, 0.0001% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.normCast0)
 
-
 Implementation of `norm_cast` (the full `norm_cast` calls `trivial` afterwards).
 
-<div class="division"></div>
 
 ### 365. ext1?
 > Syntax full name: ext1?.ext1? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#ext1?)
 
-
 `ext1? pat*` is like `ext1 pat*` but gives a suggestion on what pattern to use
 
-<div class="division"></div>
 
 ### 366. conv'
 > Syntax full name: Parser.Tactic.Conv.convTactic.conv' <br>Frequency: 1, 0.0001% <br>File: import Init.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Conv.html#Parser.Tactic.Conv.convTactic)
 
-
 Executes the given conv block without converting regular goal into a `conv` goal.
 
-<div class="division"></div>
 
 ### 367. apply_gmonoid_gnpowRec_succ_tac
 > Syntax full name: GradedMonoid.tacticApply_gmonoid_gnpowRec_succ_tac.apply_gmonoid_gnpowRec_succ_tac <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Algebra.GradedMonoid <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/GradedMonoid.html#GradedMonoid.tacticApply_gmonoid_gnpowRec_succ_tac)
 
-
 A tactic to for use as an optional value for `GMonoid.gnpow_succ'`.
 
-<div class="division"></div>
 
 ### 368. reassoc!
 > Syntax full name: reassoc!.reassoc! <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#reassoc!)
 
 
 
-<div class="division"></div>
-
 ### 369. isBounded_default
 > Syntax full name: isBounded_default.isBounded_default <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#isBounded_default)
 
 
 
-<div class="division"></div>
-
 ### 370. count_heartbeats!
 > Syntax full name: Mathlib.CountHeartbeats.tacticCount_heartbeats!_In__.count_heartbeats! <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Util.CountHeartbeats <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/CountHeartbeats.html#Mathlib.CountHeartbeats.tacticCount_heartbeats!_In__)
-
 
 `count_heartbeats! in tac` runs a tactic 10 times, counting the heartbeats used, and logs the range
 and standard deviation. The tactic `count_heartbeats! n in tac` runs it `n` times instead.
 
-<div class="division"></div>
 
 ### 371. measurability!
 > Syntax full name: measurability!.measurability! <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.Measurability <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Measurability.html#measurability!)
 
 
 
-<div class="division"></div>
-
 ### 372. clear_aux_decl
 > Syntax full name: clearAuxDecl.clear_aux_decl <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Basic.html#clearAuxDecl)
 
-
 This tactic clears all auxiliary declarations from the context.
 
-<div class="division"></div>
 
 ### 373. nth_rw_rhs
 > Syntax full name: nthRwRHS.nth_rw_rhs <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#nthRwRHS)
 
 
 
-<div class="division"></div>
-
 ### 374. clarify
 > Syntax full name: clarify.clarify <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#clarify)
 
 
 
-<div class="division"></div>
-
 ### 375. compareOfLessAndEq_rfl
 > Syntax full name: tacticCompareOfLessAndEq_rfl.compareOfLessAndEq_rfl <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Init.Order.Defs <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Init/Order/Defs.html#tacticCompareOfLessAndEq_rfl)
-
 
 This attempts to prove that a given instance of `compare` is equal to `compareOfLessAndEq` by
 introducing the arguments and trying the following approaches in order:
@@ -6086,46 +5329,36 @@ implicit arguments, requires us to unfold the defs and split the `if`s in the de
 3. seeing if we can split by cases on the arguments, then see if the defs work themselves out
   (useful when `compare` is defined via a `match` statement, as it is for `Bool`)
 
-<div class="division"></div>
 
 ### 376. aesop_cat_nonterminal
 > Syntax full name: CategoryTheory.aesop_cat_nonterminal.aesop_cat_nonterminal <br>Frequency: 1, 0.0001% <br>File: import Mathlib.CategoryTheory.Category.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Category/Basic.html#CategoryTheory.aesop_cat_nonterminal)
-
 
 A variant of `aesop_cat` which does not fail when it is unable to solve the
 goal. Use this only for exploration! Nonterminal `aesop` is even worse than
 nonterminal `simp`.
 
-<div class="division"></div>
 
 ### 377. arith_mult?
 > Syntax full name: ArithmeticFunction.arith_mult?.arith_mult? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.ArithMult <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ArithMult.html#ArithmeticFunction.arith_mult?)
-
 
 `arith_mult` solves goals of the form `IsMultiplicative f` for `f : ArithmeticFunction R`
 by applying lemmas tagged with the user attribute `arith_mult`, and prints out the generated
 proof term.
 
-<div class="division"></div>
 
 ### 378. sleep_heartbeats
 > Syntax full name: tacticSleep_heartbeats_.sleep_heartbeats <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Util.SleepHeartbeats <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/SleepHeartbeats.html#tacticSleep_heartbeats_)
 
-
 do nothing for at least n heartbeats
 
-<div class="division"></div>
 
 ### 379. measurability!?
 > Syntax full name: measurability!?.measurability!? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.Measurability <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Measurability.html#measurability!?)
 
 
 
-<div class="division"></div>
-
 ### 380. cases_type!
 > Syntax full name: casesType!.cases_type! <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.CasesM <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CasesM.html#casesType!)
-
 
 * `cases_type I` applies the `cases` tactic to a hypothesis `h : (I ...)`
 * `cases_type I_1 ... I_n` applies the `cases` tactic to a hypothesis
@@ -6138,48 +5371,36 @@ Example: The following tactic destructs all conjunctions and disjunctions in the
 cases_type* Or And
 ```
 
-<div class="division"></div>
 
 ### 381. rsimp
 > Syntax full name: rsimp.rsimp <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#rsimp)
 
 
 
-<div class="division"></div>
-
 ### 382. unelide
 > Syntax full name: unelide.unelide <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#unelide)
 
 
-
-<div class="division"></div>
 
 ### 383. apply_normed
 > Syntax full name: applyNormed.apply_normed <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#applyNormed)
 
 
 
-<div class="division"></div>
-
 ### 384. repeat1
 > Syntax full name: tacticRepeat1_.repeat1 <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Tactic.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Core.html#tacticRepeat1_)
-
 
 `repeat1 tac` applies `tac` to main goal at least once. If the application succeeds,
 the tactic is applied recursively to the generated subgoals until it eventually fails.
 
-<div class="division"></div>
 
 ### 385. rintro?
 > Syntax full name: rintro?.rintro? <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#rintro?)
 
 
 
-<div class="division"></div>
-
 ### 386. simpa!
 > Syntax full name: Parser.Tactic.tacticSimpa!_.simpa! <br>Frequency: 1, 0.0001% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticSimpa!_)
-
 
 This is a "finishing" tactic modification of `simp`. It has two forms.
 
@@ -6194,46 +5415,36 @@ more robust under changes to the simp lemma set.
 hypothesis `this` if present in the context, then try to close the goal using
 the `assumption` tactic.
 
-<div class="division"></div>
 
 ### 387. aesop_graph_nonterminal
 > Syntax full name: aesop_graph_nonterminal.aesop_graph_nonterminal <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Combinatorics.SimpleGraph.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Combinatorics/SimpleGraph/Basic.html#aesop_graph_nonterminal)
-
 
 A variant of `aesop_graph` which does not fail if it is unable to solve the
 goal. Use this only for exploration! Nonterminal Aesop is even worse than
 nonterminal `simp`.
 
-<div class="division"></div>
 
 ### 388. apply_gmonoid_gnpowRec_zero_tac
 > Syntax full name: GradedMonoid.tacticApply_gmonoid_gnpowRec_zero_tac.apply_gmonoid_gnpowRec_zero_tac <br>Frequency: 1, 0.0001% <br>File: import Mathlib.Algebra.GradedMonoid <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/GradedMonoid.html#GradedMonoid.tacticApply_gmonoid_gnpowRec_zero_tac)
 
-
 A tactic to for use as an optional value for `GMonoid.gnpow_zero'`.
 
-<div class="division"></div>
 
 ### 389. simp_arith!
 > Syntax full name: Parser.Tactic.simpArithAutoUnfold.simp_arith! <br>Frequency: 0, 0.0000% <br>File: import Init.Meta <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Meta.html#Parser.Tactic.simpArithAutoUnfold)
-
 
 `simp_arith!` is shorthand for `simp_arith` with `autoUnfold := true`.
 This will rewrite with all equation lemmas, which can be used to
 partially evaluate many definitions.
 
-<div class="division"></div>
 
 ### 390. nth_rw_lhs
 > Syntax full name: nthRwLHS.nth_rw_lhs <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#nthRwLHS)
 
 
 
-<div class="division"></div>
-
 ### 391. ring1_nf!
 > Syntax full name: RingNF.tacticRing1_nf!_.ring1_nf! <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Ring.RingNF <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Ring/RingNF.html#RingNF.tacticRing1_nf!_)
-
 
 Tactic for solving equations of *commutative* (semi)rings, allowing variables in the exponent.
 
@@ -6241,28 +5452,22 @@ Tactic for solving equations of *commutative* (semi)rings, allowing variables in
 * The variant `ring1_nf!` will use a more aggressive reducibility setting
   to determine equality of atoms.
 
-<div class="division"></div>
 
 ### 392. aesop_unfold
 > Syntax full name: Aesop.«tacticAesop_unfold[_,,]».aesop_unfold <br>Frequency: 0, 0.0000% <br>File: import Aesop.Util.Tactic.Unfold <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Util/Tactic/Unfold.html#Aesop.«tacticAesop_unfold[_,,]»)
 
 
 
-<div class="division"></div>
-
 ### 393. array_get_dec
 > Syntax full name: Array.tacticArray_get_dec.array_get_dec <br>Frequency: 0, 0.0000% <br>File: import Init.Data.Array.Mem <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Data/Array/Mem.html#Array.tacticArray_get_dec)
-
 
 This tactic, added to the `decreasing_trivial` toolbox, proves that
 `sizeOf arr[i] < sizeOf arr`, which is useful for well founded recursions
 over a nested inductive like `inductive T | mk : Array T → T`.
 
-<div class="division"></div>
 
 ### 394. have!?
 > Syntax full name: Propose.«tacticHave!?:_Using__».have!? <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Propose <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Propose.html#Propose.«tacticHave!?:_Using__»)
-
 
 * `have? using a, b, c` tries to find a lemma
 which makes use of each of the local hypotheses `a, b, c`,
@@ -6277,26 +5482,20 @@ only the types of the lemmas in the `using` clause.
 
 Suggestions are printed as `have := f a b c`.
 
-<div class="division"></div>
 
 ### 395. generalize'
 > Syntax full name: «tacticGeneralize'_:_=_».generalize' <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Generalize <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Generalize.html#«tacticGeneralize'_:_=_»)
 
-
 Backwards compatibility shim for `generalize`.
 
-<div class="division"></div>
 
 ### 396. unfold_cases
 > Syntax full name: Mathlib.Tactic.unfoldCases.unfold_cases <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#Mathlib.Tactic.unfoldCases)
 
 
 
-<div class="division"></div>
-
 ### 397. squeeze_scope
 > Syntax full name: Batteries.Tactic.squeezeScope.squeeze_scope <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.SqueezeScope <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/SqueezeScope.html#Batteries.Tactic.squeezeScope)
-
 
 The `squeeze_scope` tactic allows aggregating multiple calls to `simp` coming from the same syntax
 but in different branches of execution, such as in `cases x <;> simp`.
@@ -6319,48 +5518,36 @@ example : foo x y = 1 + y := by
     cases x <;> simp -- only one printout: "Try this: simp only [foo, baz, bar]"
 ```
 
-<div class="division"></div>
 
 ### 398. extract_goal!
 > Syntax full name: extractGoal!.extract_goal! <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#extractGoal!)
 
 
 
-<div class="division"></div>
-
 ### 399. refine_struct
 > Syntax full name: refineStruct.refine_struct <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#refineStruct)
 
 
 
-<div class="division"></div>
-
 ### 400. rfl'
 > Syntax full name: Parser.Tactic.tacticRfl'.rfl' <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticRfl')
-
 
 `rfl'` is similar to `rfl`, but disables smart unfolding and unfolds all kinds of definitions,
 theorems included (relevant for declarations defined by well-founded recursion).
 
-<div class="division"></div>
 
 ### 401. revert_target_deps
 > Syntax full name: revertTargetDeps.revert_target_deps <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#revertTargetDeps)
 
 
 
-<div class="division"></div>
-
 ### 402. subtype_instance
 > Syntax full name: subtypeInstance.subtype_instance <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#subtypeInstance)
 
 
 
-<div class="division"></div>
-
 ### 403. simpa?!
 > Syntax full name: Parser.Tactic.tacticSimpa?!_.simpa?! <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticSimpa?!_)
-
 
 This is a "finishing" tactic modification of `simp`. It has two forms.
 
@@ -6375,11 +5562,9 @@ more robust under changes to the simp lemma set.
 hypothesis `this` if present in the context, then try to close the goal using
 the `assumption` tactic.
 
-<div class="division"></div>
 
 ### 404. nlinarith!
 > Syntax full name: tacticNlinarith!_.nlinarith! <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Linarith.Frontend <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Linarith/Frontend.html#tacticNlinarith!_)
-
 
 An extension of `linarith` with some preprocessing to allow it to solve some nonlinear arithmetic
 problems. (Based on Coq's `nra` tactic.) See `linarith` for the available syntax of options,
@@ -6392,121 +5577,91 @@ in `linarith`. The preprocessing is as follows:
   the assumption `0 R' (b1 - a1) * (b2 - a2)` is added to the context (non-recursively),
   where `R ∈ {<, ≤, =}` is the appropriate comparison derived from `R1, R2`.
 
-<div class="division"></div>
 
 ### 405. let'
 > Syntax full name: Parser.Tactic.tacticLet'_.let' <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticLet'_)
 
-
 Similar to `let`, but using `refine'`
 
-<div class="division"></div>
 
 ### 406. congrm?
 > Syntax full name: tacticCongrm?.congrm? <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Widget.Congrm <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Widget/Congrm.html#tacticCongrm?)
 
-
 Display a widget panel allowing to generate a `congrm` call with holes specified by selecting
 subexpressions in the goal.
 
-<div class="division"></div>
 
 ### 407. equiv_rw_type
 > Syntax full name: equivRwType.equiv_rw_type <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#equivRwType)
 
 
 
-<div class="division"></div>
-
 ### 408. measurability?
 > Syntax full name: tacticMeasurability?_.measurability? <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Measurability <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Measurability.html#tacticMeasurability?_)
-
 
 The tactic `measurability?` solves goals of the form `Measurable f`, `AEMeasurable f`,
 `StronglyMeasurable f`, `AEStronglyMeasurable f μ`, or `MeasurableSet s` by applying lemmas tagged
 with the `measurability` user attribute, and suggests a faster proof script that can be substituted
 for the tactic call in case of success.
 
-<div class="division"></div>
 
 ### 409. rw_search?
 > Syntax full name: rwSearch?.rw_search? <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#rwSearch?)
 
 
 
-<div class="division"></div>
-
 ### 410. match_hyp
 > Syntax full name: matchHyp.match_hyp <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#matchHyp)
 
 
-
-<div class="division"></div>
 
 ### 411. unfold_wf
 > Syntax full name: unfoldWf.unfold_wf <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#unfoldWf)
 
 
 
-<div class="division"></div>
-
 ### 412. html!
 > Syntax full name: ProofWidgets.htmlTac.html! <br>Frequency: 0, 0.0000% <br>File: import ProofWidgets.Component.HtmlDisplay <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/ProofWidgets/Component/HtmlDisplay.html#ProofWidgets.htmlTac)
 
 
-
-<div class="division"></div>
 
 ### 413. revert_deps
 > Syntax full name: revertDeps.revert_deps <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#revertDeps)
 
 
 
-<div class="division"></div>
-
 ### 414. try_for
 > Syntax full name: tryFor.try_for <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#tryFor)
 
 
 
-<div class="division"></div>
-
 ### 415. subst_eqs
 > Syntax full name: Parser.Tactic.substEqs.subst_eqs <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.substEqs)
-
 
 `subst_eq` repeatedly substitutes according to the equality proof hypotheses in the context,
 replacing the left side of the equality with the right, until no more progress can be made.
 
-<div class="division"></div>
 
 ### 416. bv_omega
 > Syntax full name: Parser.Tactic.tacticBv_omega.bv_omega <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticBv_omega)
-
 
 `bv_omega` is `omega` with an additional preprocessor that turns statements about `BitVec` into statements about `Nat`.
 Currently the preprocessor is implemented as `try simp only [bv_toNat] at *`.
 `bv_toNat` is a `@[simp]` attribute that you can (cautiously) add to more theorems.
 
-<div class="division"></div>
 
 ### 417. pretty_cases
 > Syntax full name: prettyCases.pretty_cases <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#prettyCases)
 
 
 
-<div class="division"></div>
-
 ### 418. trunc_cases
 > Syntax full name: truncCases.trunc_cases <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#truncCases)
 
 
 
-<div class="division"></div>
-
 ### 419. eapply
 > Syntax full name: Batteries.Tactic.tacticEapply_.eapply <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.Init <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Init.html#Batteries.Tactic.tacticEapply_)
-
 
 `eapply e` is like `apply e` but it does not add subgoals for variables that appear
 in the types of other goals. Note that this can lead to a failure where there are
@@ -6519,50 +5674,38 @@ example (h : ∀ x : Nat, x = x → True) : True := by
 -- (kernel) declaration has metavariables '_example'
 ```
 
-<div class="division"></div>
 
 ### 420. h_generalize!
 > Syntax full name: hGeneralize!.h_generalize! <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#hGeneralize!)
 
 
 
-<div class="division"></div>
-
 ### 421. pi_instance_derive_field
 > Syntax full name: piInstanceDeriveField.pi_instance_derive_field <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#piInstanceDeriveField)
 
 
-
-<div class="division"></div>
 
 ### 422. equiv_rw
 > Syntax full name: equivRw.equiv_rw <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#equivRw)
 
 
 
-<div class="division"></div>
-
 ### 423. array_mem_dec
 > Syntax full name: Array.tacticArray_mem_dec.array_mem_dec <br>Frequency: 0, 0.0000% <br>File: import Init.Data.Array.Mem <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Data/Array/Mem.html#Array.tacticArray_mem_dec)
-
 
 This tactic, added to the `decreasing_trivial` toolbox, proves that `sizeOf a < sizeOf arr`
 provided that `a ∈ arr` which is useful for well founded recursions over a nested inductive like
 `inductive T | mk : Array T → T`.
 
-<div class="division"></div>
 
 ### 424. refine_lift'
 > Syntax full name: Parser.Tactic.tacticRefine_lift'_.refine_lift' <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticRefine_lift'_)
 
-
 Similar to `refine_lift`, but using `refine'`
 
-<div class="division"></div>
 
 ### 425. get_elem_tactic
 > Syntax full name: tacticGet_elem_tactic.get_elem_tactic <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#tacticGet_elem_tactic)
-
 
 `get_elem_tactic` is the tactic automatically called by the notation `arr[i]`
 to prove any side conditions that arise when constructing the term
@@ -6570,11 +5713,9 @@ to prove any side conditions that arise when constructing the term
 `get_elem_tactic_trivial` and gives a diagnostic error message otherwise;
 users are encouraged to extend `get_elem_tactic_trivial` instead of this tactic.
 
-<div class="division"></div>
 
 ### 426. simp_all?!
 > Syntax full name: Parser.Tactic.tacticSimp_all?!_.simp_all?! <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticSimp_all?!_)
-
 
 `simp?` takes the same arguments as `simp`, but reports an equivalent call to `simp only`
 that would be sufficient to close the goal. This is useful for reducing the size of the simp
@@ -6586,57 +5727,46 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 
 This command can also be used in `simp_all` and `dsimp`.
 
-<div class="division"></div>
 
 ### 427. elementwise!
 > Syntax full name: Elementwise.tacticElementwise!___.elementwise! <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.CategoryTheory.Elementwise <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/CategoryTheory/Elementwise.html#Elementwise.tacticElementwise!___)
 
 
 
-<div class="division"></div>
-
 ### 428. have'
 > Syntax full name: Parser.Tactic.tacticHave'_.have' <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticHave'_)
 
-
 Similar to `have`, but using `refine'`
+
 
 > Syntax full name: Parser.Tactic.«tacticHave'_:=_».have' <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.«tacticHave'_:=_»)
 
-
 Similar to `have`, but using `refine'`
 
-<div class="division"></div>
 
 ### 429. unfold_coes
 > Syntax full name: unfoldCoes.unfold_coes <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#unfoldCoes)
 
 
 
-<div class="division"></div>
-
 ### 430. sizeOf_list_dec
 > Syntax full name: List.tacticSizeOf_list_dec.sizeOf_list_dec <br>Frequency: 0, 0.0000% <br>File: import Init.Data.List.BasicAux <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Data/List/BasicAux.html#List.tacticSizeOf_list_dec)
-
 
 This tactic, added to the `decreasing_trivial` toolbox, proves that
 `sizeOf a < sizeOf as` when `a ∈ as`, which is useful for well founded recursions
 over a nested inductive like `inductive T | mk : List T → T`.
 
-<div class="division"></div>
 
 ### 431. apply_field
 > Syntax full name: applyField.apply_field <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#applyField)
 
 
 
-<div class="division"></div>
-
 ### 432. ...
 > Syntax full name: cdot.... <br>Frequency: 0, 0.0000% <br>File: import Init.NotationExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/NotationExtra.html#cdot)
 
-
 `· tac` focuses on the main goal and tries to solve it using `tac`, or else fails.
+
 
 > Syntax full name: Parser.Tactic.nestedTactic.... <br>Frequency: 0, 0.0000% <br>File: import Lean.Parser.Tactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Tactic.html#Parser.Tactic.nestedTactic)
 
@@ -6646,40 +5776,31 @@ over a nested inductive like `inductive T | mk : List T → T`.
 
 
 
-<div class="division"></div>
-
 ### 433. apply_rfl
 > Syntax full name: Parser.Tactic.applyRfl.apply_rfl <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.applyRfl)
-
 
 This tactic applies to a goal whose target has the form `x ~ x`,
 where `~` is a reflexive relation other than `=`,
 that is, a relation which has a reflexive lemma tagged with the attribute @[refl].
 
-<div class="division"></div>
 
 ### 434. fail_if_success?
 > Syntax full name: failIfSuccess?.fail_if_success? <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#failIfSuccess?)
 
 
 
-<div class="division"></div>
-
 ### 435. guard_proof_term
 > Syntax full name: guardProofTerm.guard_proof_term <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#guardProofTerm)
 
 
 
-<div class="division"></div>
-
 ### 436. abel!
 > Syntax full name: Abel.abel!_term.abel! <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Abel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Abel.html#Abel.abel!_term)
 
-
 Unsupported legacy syntax from mathlib3, which allowed passing additional terms to `abel!`.
 
-> Syntax full name: Abel.tacticAbel!.abel! <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Abel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Abel.html#Abel.tacticAbel!)
 
+> Syntax full name: Abel.tacticAbel!.abel! <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Abel <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Abel.html#Abel.tacticAbel!)
 
 Tactic for evaluating expressions in abelian groups.
 
@@ -6692,18 +5813,14 @@ example [AddCommMonoid α] (a b : α) : a + (b + a) = a + a + b := by abel
 example [AddCommGroup α] (a : α) : (3 : ℤ) • a = a + (2 : ℤ) • a := by abel
 ```
 
-<div class="division"></div>
 
 ### 437. simp_result
 > Syntax full name: simpResult.simp_result <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#simpResult)
 
 
 
-<div class="division"></div>
-
 ### 438. guard_expr
 > Syntax full name: Parser.Tactic.guardExpr.guard_expr <br>Frequency: 0, 0.0000% <br>File: import Init.Guard <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Guard.html#Parser.Tactic.guardExpr)
-
 
 Tactic to check equality of two expressions.
 * `guard_expr e = e'` checks that `e` and `e'` are defeq at reducible transparency.
@@ -6715,72 +5832,54 @@ Both `e` and `e'` are elaborated then have their metavariables instantiated befo
 check. Their types are unified (using `isDefEqGuarded`) before synthetic metavariables are
 processed, which helps with default instance handling.
 
-<div class="division"></div>
 
 ### 439. guard_tags
 > Syntax full name: guardTags.guard_tags <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#guardTags)
 
 
 
-<div class="division"></div>
-
 ### 440. split_ands
 > Syntax full name: Batteries.Tactic.tacticSplit_ands.split_ands <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.Init <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Init.html#Batteries.Tactic.tacticSplit_ands)
 
-
 `split_ands` applies `And.intro` until it does not make progress.
 
-<div class="division"></div>
 
 ### 441. map_tacs
 > Syntax full name: Batteries.Tactic.«tacticMap_tacs[_;]».map_tacs <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.SeqFocus <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/SeqFocus.html#Batteries.Tactic.«tacticMap_tacs[_;]»)
 
-
 Assuming there are `n` goals, `map_tacs [t1; t2; ...; tn]` applies each `ti` to the respective
 goal and leaves the resulting subgoals.
 
-<div class="division"></div>
 
 ### 442. revert_after
 > Syntax full name: revertAfter.revert_after <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#revertAfter)
 
 
 
-<div class="division"></div>
-
 ### 443. derive_reassoc_proof
 > Syntax full name: deriveReassocProof.derive_reassoc_proof <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#deriveReassocProof)
 
 
-
-<div class="division"></div>
 
 ### 444. unfold_aux
 > Syntax full name: unfoldAux.unfold_aux <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#unfoldAux)
 
 
 
-<div class="division"></div>
-
 ### 445. compute_degree_le
 > Syntax full name: computeDegreeLE.compute_degree_le <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#computeDegreeLE)
 
 
 
-<div class="division"></div>
-
 ### 446. gcongr?
 > Syntax full name: tacticGcongr?.gcongr? <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Widget.Gcongr <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Widget/Gcongr.html#tacticGcongr?)
-
 
 Display a widget panel allowing to generate a `gcongr` call with holes specified by selecting
 subexpressions in the goal.
 
-<div class="division"></div>
 
 ### 447. dsimp?
 > Syntax full name: Parser.Tactic.dsimpTrace.dsimp? <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.dsimpTrace)
-
 
 `simp?` takes the same arguments as `simp`, but reports an equivalent call to `simp only`
 that would be sufficient to close the goal. This is useful for reducing the size of the simp
@@ -6792,11 +5891,9 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 
 This command can also be used in `simp_all` and `dsimp`.
 
-<div class="division"></div>
 
 ### 448. false_or_by_contra
 > Syntax full name: Parser.Tactic.falseOrByContra.false_or_by_contra <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.falseOrByContra)
-
 
 Changes the goal to `False`, retaining as much information as possible:
 
@@ -6808,18 +5905,14 @@ Changes the goal to `False`, retaining as much information as possible:
   and introduce `¬ P`.
 * For a non-propositional goal use `False.elim`.
 
-<div class="division"></div>
 
 ### 449. dsimp_result
 > Syntax full name: dsimpResult.dsimp_result <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#dsimpResult)
 
 
 
-<div class="division"></div>
-
 ### 450. unhygienic
 > Syntax full name: Parser.Tactic.tacticUnhygienic_.unhygienic <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticUnhygienic_)
-
 
 `unhygienic tacs` runs `tacs` with name hygiene disabled.
 This means that tactics that would normally create inaccessible names will instead
@@ -6832,52 +5925,40 @@ example : ∀ x : Nat, x = x := by unhygienic
   exact Eq.refl x  -- refer to x
 ```
 
-<div class="division"></div>
 
 ### 451. injections_and_clear
 > Syntax full name: injectionsAndClear.injections_and_clear <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#injectionsAndClear)
 
 
 
-<div class="division"></div>
-
 ### 452. pi_instance
 > Syntax full name: piInstance.pi_instance <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#piInstance)
 
 
 
-<div class="division"></div>
-
 ### 453. decreasing_trivial_pre_omega
 > Syntax full name: tacticDecreasing_trivial_pre_omega.decreasing_trivial_pre_omega <br>Frequency: 0, 0.0000% <br>File: import Init.WFTactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/WFTactics.html#tacticDecreasing_trivial_pre_omega)
-
 
 Variant of `decreasing_trivial` that does not use `omega`, intended to be used in core modules
 before `omega` is available.
 
-<div class="division"></div>
 
 ### 454. decreasing_with
 > Syntax full name: tacticDecreasing_with_.decreasing_with <br>Frequency: 0, 0.0000% <br>File: import Init.WFTactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/WFTactics.html#tacticDecreasing_with_)
-
 
 Constructs a proof of decreasing along a well founded relation, by applying
 lexicographic order lemmas and using `ts` to solve the base case. If it fails,
 it prints a message to help the user diagnose an ill-founded recursive definition.
 
-<div class="division"></div>
 
 ### 455. simp_all_arith
 > Syntax full name: Parser.Tactic.simpAllArith.simp_all_arith <br>Frequency: 0, 0.0000% <br>File: import Init.Meta <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Meta.html#Parser.Tactic.simpAllArith)
 
-
 `simp_all_arith` combines the effects of `simp_all` and `simp_arith`.
 
-<div class="division"></div>
 
 ### 456. dsimp?!
 > Syntax full name: Parser.Tactic.tacticDsimp?!_.dsimp?! <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticDsimp?!_)
-
 
 `simp?` takes the same arguments as `simp`, but reports an equivalent call to `simp only`
 that would be sufficient to close the goal. This is useful for reducing the size of the simp
@@ -6889,11 +5970,9 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 
 This command can also be used in `simp_all` and `dsimp`.
 
-<div class="division"></div>
 
 ### 457. get_elem_tactic_trivial
 > Syntax full name: tacticGet_elem_tactic_trivial.get_elem_tactic_trivial <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#tacticGet_elem_tactic_trivial)
-
 
 `get_elem_tactic_trivial` is an extensible tactic automatically called
 by the notation `arr[i]` to prove any side conditions that arise when
@@ -6902,43 +5981,33 @@ The default behavior is to just try `trivial` (which handles the case
 where `i < arr.size` is in the context) and `simp_arith` and `omega`
 (for doing linear arithmetic in the index).
 
-<div class="division"></div>
 
 ### 458. continuity?
 > Syntax full name: tacticContinuity?.continuity? <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Continuity <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Continuity.html#tacticContinuity?)
 
-
 The tactic `continuity` solves goals of the form `Continuous f` by applying lemmas tagged with the
 `continuity` user attribute.
 
-<div class="division"></div>
 
 ### 459. have_field
 > Syntax full name: haveField.have_field <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#haveField)
 
 
 
-<div class="division"></div>
-
 ### 460. classical!
 > Syntax full name: Batteries.Tactic.tacticClassical!.classical! <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.Classical <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Classical.html#Batteries.Tactic.tacticClassical!)
 
-
 `classical!` has been removed; use `classical` instead
 
-<div class="division"></div>
 
 ### 461. and_intros
 > Syntax full name: Parser.Tactic.tacticAnd_intros.and_intros <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticAnd_intros)
 
-
 `and_intros` applies `And.intro` until it does not make progress.
 
-<div class="division"></div>
 
 ### 462. repeat1'
 > Syntax full name: Parser.Tactic.repeat1'.repeat1' <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.repeat1')
-
 
 `repeat1' tac` recursively applies to `tac` on all of the goals so long as it succeeds,
 but `repeat1' tac` fails if `tac` succeeds on none of the initial goals.
@@ -6947,45 +6016,35 @@ See also:
 * `repeat tac` simply applies `tac` repeatedly.
 * `repeat' tac` is like `repeat1' tac` but it does not require that `tac` succeed at least once.
 
-<div class="division"></div>
 
 ### 463. apply_ext_theorem
 > Syntax full name: Ext.applyExtTheorem.apply_ext_theorem <br>Frequency: 0, 0.0000% <br>File: import Init.Ext <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Ext.html#Ext.applyExtTheorem)
 
-
 Apply a single extensionality theorem to the current goal.
 
-<div class="division"></div>
 
 ### 464. conv?
 > Syntax full name: tacticConv?.conv? <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Widget.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Widget/Conv.html#tacticConv?)
 
-
 Display a widget panel allowing to generate a `conv` call zooming to the subexpression selected
 in the goal.
 
-<div class="division"></div>
 
 ### 465. dsimp!
 > Syntax full name: Parser.Tactic.dsimpAutoUnfold.dsimp! <br>Frequency: 0, 0.0000% <br>File: import Init.Meta <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Meta.html#Parser.Tactic.dsimpAutoUnfold)
-
 
 `dsimp!` is shorthand for `dsimp` with `autoUnfold := true`.
 This will rewrite with all equation lemmas, which can be used to
 partially evaluate many definitions.
 
-<div class="division"></div>
 
 ### 466. propagate_tags
 > Syntax full name: propagateTags.propagate_tags <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#propagateTags)
 
 
 
-<div class="division"></div>
-
 ### 467. simp?!
 > Syntax full name: Parser.Tactic.tacticSimp?!_.simp?! <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.tacticSimp?!_)
-
 
 `simp?` takes the same arguments as `simp`, but reports an equivalent call to `simp only`
 that would be sufficient to close the goal. This is useful for reducing the size of the simp
@@ -6997,34 +6056,25 @@ example (x : Nat) : (if True then x + 2 else 3) = x + 2 := by
 
 This command can also be used in `simp_all` and `dsimp`.
 
-<div class="division"></div>
 
 ### 468. h_generalize
 > Syntax full name: hGeneralize.h_generalize <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#hGeneralize)
 
 
 
-<div class="division"></div>
-
 ### 469. witt_truncate_fun_tac
 > Syntax full name: wittTruncateFunTac.witt_truncate_fun_tac <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#wittTruncateFunTac)
 
 
-
-<div class="division"></div>
 
 ### 470. derive_elementwise_proof
 > Syntax full name: deriveElementwiseProof.derive_elementwise_proof <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#deriveElementwiseProof)
 
 
 
-<div class="division"></div>
-
 ### 471. simp_all_arith!
 > Syntax full name: Parser.Tactic.simpAllArithAutoUnfold.simp_all_arith! <br>Frequency: 0, 0.0000% <br>File: import Init.Meta <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Meta.html#Parser.Tactic.simpAllArithAutoUnfold)
 
-
 `simp_all_arith!` combines the effects of `simp_all`, `simp_arith` and `simp!`.
 
-<div class="division"></div>
 
