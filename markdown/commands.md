@@ -5,7 +5,7 @@
 }
 </style>
 ### 0. #align
-> Syntax full name: Mathlib.Prelude.Rename.align.#align <br>Frequency: 131178, 44.15% <br>File: import Mathlib.Mathport.Rename <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Rename.html#Mathlib.Prelude.Rename.align)
+> Syntax full name: Mathlib.Prelude.Rename.align.#align <br>Frequency: 131178, 44.1481% <br>File: import Mathlib.Mathport.Rename <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Rename.html#Mathlib.Prelude.Rename.align)
 
 
 `#align lean_3.def_name Lean4.defName` will record an "alignment" from the lean 3 name
@@ -24,14 +24,14 @@ these reasons, you should use `#align` on any theorem that needs to be renamed f
 <div class="division"></div>
 
 ### 1. in
-> Syntax full name: Parser.Command.in.in <br>Frequency: 35162, 11.83% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.in)
+> Syntax full name: Parser.Command.in.in <br>Frequency: 35162, 11.8338% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.in)
 
 
 
 <div class="division"></div>
 
 ### 2. variable
-> Syntax full name: Parser.Command.variable.variable <br>Frequency: 25406, 8.55% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.variable)
+> Syntax full name: Parser.Command.variable.variable <br>Frequency: 25406, 8.5504% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.variable)
 
 
 Declares one or more typed variables, or modifies whether already-declared variables are
@@ -132,14 +132,14 @@ end Logger
 <div class="division"></div>
 
 ### 3. import
-> Syntax full name: Parser.Command.import.import <br>Frequency: 18386, 6.19% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.import)
+> Syntax full name: Parser.Command.import.import <br>Frequency: 18386, 6.1878% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.import)
 
 
 
 <div class="division"></div>
 
 ### 4. end
-> Syntax full name: Parser.Command.end.end <br>Frequency: 18251, 6.14% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.end)
+> Syntax full name: Parser.Command.end.end <br>Frequency: 18251, 6.1424% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.end)
 
 
 `end` closes a `section` or `namespace` scope. If the scope is named `<id>`, it has to be closed
@@ -148,7 +148,7 @@ with `end <id>`.
 <div class="division"></div>
 
 ### 5. section
-> Syntax full name: Parser.Command.section.section <br>Frequency: 11566, 3.89% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.section)
+> Syntax full name: Parser.Command.section.section <br>Frequency: 11566, 3.8925% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.section)
 
 
 A `section`/`end` pair delimits the scope of `variable`, `open`, `set_option`, and `local` commands.
@@ -159,7 +159,7 @@ end of the file.
 <div class="division"></div>
 
 ### 6. open
-> Syntax full name: Parser.Command.open.open <br>Frequency: 10290, 3.46% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.open)
+> Syntax full name: Parser.Command.open.open <br>Frequency: 10290, 3.4631% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.open)
 
 
 Makes names from other namespaces visible without writing the namespace prefix.
@@ -277,7 +277,7 @@ end
 <div class="division"></div>
 
 ### 7. namespace
-> Syntax full name: Parser.Command.namespace.namespace <br>Frequency: 8330, 2.80% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.namespace)
+> Syntax full name: Parser.Command.namespace.namespace <br>Frequency: 8330, 2.8035% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.namespace)
 
 
 `namespace <id>` opens a section with label `<id>` that influences naming and name resolution inside
@@ -298,7 +298,7 @@ corresponding `end <id>` or the end of the file.
 <div class="division"></div>
 
 ### 8. /-!
-> Syntax full name: Parser.Command.moduleDoc./-! <br>Frequency: 7914, 2.66% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.moduleDoc)
+> Syntax full name: Parser.Command.moduleDoc./-! <br>Frequency: 7914, 2.6635% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.moduleDoc)
 
 
 `/-! <text> -/` defines a *module docstring* that can be displayed by documentation generation
@@ -308,14 +308,14 @@ multiple times in the same file.
 <div class="division"></div>
 
 ### 9. noncomputable
-> Syntax full name: Parser.Command.noncomputableSection.noncomputable <br>Frequency: 4873, 1.64% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.noncomputableSection)
+> Syntax full name: Parser.Command.noncomputableSection.noncomputable <br>Frequency: 4873, 1.6400% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.noncomputableSection)
 
 
 
 <div class="division"></div>
 
 ### 10. set_option
-> Syntax full name: Parser.Command.set_option.set_option <br>Frequency: 4315, 1.45% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.set_option)
+> Syntax full name: Parser.Command.set_option.set_option <br>Frequency: 4315, 1.4522% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.set_option)
 
 
 `set_option <id> <value>` sets the option `<id>` to `<value>`. Depending on the type of the option,
@@ -335,7 +335,7 @@ only in a single term or tactic.
 <div class="division"></div>
 
 ### 11. #align_import
-> Syntax full name: Mathlib.Prelude.Rename.alignImport.#align_import <br>Frequency: 3265, 1.10% <br>File: import Mathlib.Mathport.Rename <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Rename.html#Mathlib.Prelude.Rename.alignImport)
+> Syntax full name: Mathlib.Prelude.Rename.alignImport.#align_import <br>Frequency: 3265, 1.0988% <br>File: import Mathlib.Mathport.Rename <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Rename.html#Mathlib.Prelude.Rename.alignImport)
 
 
 Declare the corresponding mathlib3 module for the current mathlib4 module.
@@ -343,7 +343,7 @@ Declare the corresponding mathlib3 module for the current mathlib4 module.
 <div class="division"></div>
 
 ### 12. alias
-> Syntax full name: Batteries.Tactic.Alias.alias.alias <br>Frequency: 2522, 0.85% <br>File: import Batteries.Tactic.Alias <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Alias.html#Batteries.Tactic.Alias.alias)
+> Syntax full name: Batteries.Tactic.Alias.alias.alias <br>Frequency: 2522, 0.8488% <br>File: import Batteries.Tactic.Alias <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Alias.html#Batteries.Tactic.Alias.alias)
 
 
 The command `alias name := target` creates a synonym of `target` with the given name.
@@ -353,7 +353,7 @@ of an iff theorem. Use `_` if only one direction is required.
 
 These commands accept all modifiers and attributes that `def` and `theorem` do.
 
-> Syntax full name: Batteries.Tactic.Alias.aliasLR.alias <br>Frequency: 2522, 0.85% <br>File: import Batteries.Tactic.Alias <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Alias.html#Batteries.Tactic.Alias.aliasLR)
+> Syntax full name: Batteries.Tactic.Alias.aliasLR.alias <br>Frequency: 2522, 0.8488% <br>File: import Batteries.Tactic.Alias <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Alias.html#Batteries.Tactic.Alias.aliasLR)
 
 
 The command `alias name := target` creates a synonym of `target` with the given name.
@@ -366,14 +366,14 @@ These commands accept all modifiers and attributes that `def` and `theorem` do.
 <div class="division"></div>
 
 ### 13. attribute
-> Syntax full name: Parser.Command.attribute.attribute <br>Frequency: 2339, 0.79% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.attribute)
+> Syntax full name: Parser.Command.attribute.attribute <br>Frequency: 2339, 0.7872% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.attribute)
 
 
 
 <div class="division"></div>
 
 ### 14. class
-> Syntax full name: Parser.Command.classAbbrev.class <br>Frequency: 2284, 0.77% <br>File: import Init.NotationExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/NotationExtra.html#Parser.Command.classAbbrev)
+> Syntax full name: Parser.Command.classAbbrev.class <br>Frequency: 2284, 0.7687% <br>File: import Init.NotationExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/NotationExtra.html#Parser.Command.classAbbrev)
 
 
 Expands
@@ -389,7 +389,7 @@ attribute [instance] C.mk
 <div class="division"></div>
 
 ### 15. universe
-> Syntax full name: Parser.Command.universe.universe <br>Frequency: 2045, 0.69% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.universe)
+> Syntax full name: Parser.Command.universe.universe <br>Frequency: 2045, 0.6882% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.universe)
 
 
 Declares one or more universe variables.
@@ -453,7 +453,7 @@ structure Pair (α : Type u) (β : Type v) : Type (max u v) where
 <div class="division"></div>
 
 ### 16. scoped
-> Syntax full name: scopedNS.scoped <br>Frequency: 1988, 0.67% <br>File: import Mathlib.Tactic.ScopedNS <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ScopedNS.html#scopedNS)
+> Syntax full name: scopedNS.scoped <br>Frequency: 1988, 0.6691% <br>File: import Mathlib.Tactic.ScopedNS <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ScopedNS.html#scopedNS)
 
 
 `scoped[NS]` is similar to the `scoped` modifier on attributes and notations,
@@ -473,14 +473,14 @@ scoped[Nat.Count] attribute [instance] CountSet.fintype
 <div class="division"></div>
 
 ### 17. notation
-> Syntax full name: Parser.Command.notation.notation <br>Frequency: 1572, 0.53% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.notation)
+> Syntax full name: Parser.Command.notation.notation <br>Frequency: 1572, 0.5291% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.notation)
 
 
 
 <div class="division"></div>
 
 ### 18. #noalign
-> Syntax full name: Mathlib.Prelude.Rename.noalign.#noalign <br>Frequency: 830, 0.28% <br>File: import Mathlib.Mathport.Rename <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Rename.html#Mathlib.Prelude.Rename.noalign)
+> Syntax full name: Mathlib.Prelude.Rename.noalign.#noalign <br>Frequency: 830, 0.2793% <br>File: import Mathlib.Mathport.Rename <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Rename.html#Mathlib.Prelude.Rename.noalign)
 
 
 `#noalign lean_3.def_name` will record that `lean_3.def_name` has been marked for non-porting.
@@ -491,25 +491,25 @@ uses of the definition will be replaced by `sorry`.
 <div class="division"></div>
 
 ### 19. variables
-> Syntax full name: variables.variables <br>Frequency: 618, 0.21% <br>File: import Mathlib.Tactic.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Basic.html#variables)
+> Syntax full name: variables.variables <br>Frequency: 618, 0.2080% <br>File: import Mathlib.Tactic.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Basic.html#variables)
 
 
 
 <div class="division"></div>
 
 ### 20. syntax
-> Syntax full name: Parser.Command.syntax.syntax <br>Frequency: 473, 0.16% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.syntax)
+> Syntax full name: Parser.Command.syntax.syntax <br>Frequency: 473, 0.1592% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.syntax)
 
 
 
-> Syntax full name: Parser.Command.syntaxAbbrev.syntax <br>Frequency: 473, 0.16% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.syntaxAbbrev)
+> Syntax full name: Parser.Command.syntaxAbbrev.syntax <br>Frequency: 473, 0.1592% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.syntaxAbbrev)
 
 
 
 <div class="division"></div>
 
 ### 21. #guard_msgs
-> Syntax full name: guardMsgsCmd.#guard_msgs <br>Frequency: 472, 0.16% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#guardMsgsCmd)
+> Syntax full name: guardMsgsCmd.#guard_msgs <br>Frequency: 472, 0.1589% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#guardMsgsCmd)
 
 
 `/-- ... -/ #guard_msgs in cmd` captures the messages generated by the command `cmd`
@@ -575,7 +575,7 @@ everything else.
 <div class="division"></div>
 
 ### 22. assert_not_exists
-> Syntax full name: commandAssert_not_exists_.assert_not_exists <br>Frequency: 322, 0.11% <br>File: import Mathlib.Util.AssertExists <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/AssertExists.html#commandAssert_not_exists_)
+> Syntax full name: commandAssert_not_exists_.assert_not_exists <br>Frequency: 322, 0.1084% <br>File: import Mathlib.Util.AssertExists <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/AssertExists.html#commandAssert_not_exists_)
 
 
 `assert_not_exists n` is a user command that asserts that a declaration named `n` *does not exist*
@@ -596,14 +596,14 @@ You should *not* delete the `assert_not_exists` statement without careful discus
 <div class="division"></div>
 
 ### 23. deriving
-> Syntax full name: Parser.Command.deriving.deriving <br>Frequency: 314, 0.11% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.deriving)
+> Syntax full name: Parser.Command.deriving.deriving <br>Frequency: 314, 0.1057% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.deriving)
 
 
 
 <div class="division"></div>
 
 ### 24. initialize_simps_projections
-> Syntax full name: Parser.Command.initialize_simps_projections.initialize_simps_projections <br>Frequency: 191, 0.06% <br>File: import Mathlib.Tactic.Simps.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Simps/Basic.html#Parser.Command.initialize_simps_projections)
+> Syntax full name: Parser.Command.initialize_simps_projections.initialize_simps_projections <br>Frequency: 191, 0.0643% <br>File: import Mathlib.Tactic.Simps.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Simps/Basic.html#Parser.Command.initialize_simps_projections)
 
 
 This command specifies custom names and custom projections for the simp attribute `simpsAttr`.
@@ -673,7 +673,7 @@ Some common uses:
 <div class="division"></div>
 
 ### 25. export
-> Syntax full name: Parser.Command.export.export <br>Frequency: 188, 0.06% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.export)
+> Syntax full name: Parser.Command.export.export <br>Frequency: 188, 0.0633% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.export)
 
 
 Adds names from other namespaces to the current namespace.
@@ -703,21 +703,21 @@ end Evening.Sky
 <div class="division"></div>
 
 ### 26. macro
-> Syntax full name: Parser.Command.macro.macro <br>Frequency: 160, 0.05% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.macro)
+> Syntax full name: Parser.Command.macro.macro <br>Frequency: 160, 0.0538% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.macro)
 
 
 
 <div class="division"></div>
 
 ### 27. parameter
-> Syntax full name: parameter.parameter <br>Frequency: 156, 0.05% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#parameter)
+> Syntax full name: parameter.parameter <br>Frequency: 156, 0.0525% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#parameter)
 
 
 
 <div class="division"></div>
 
 ### 28. irreducible_def
-> Syntax full name: command_Irreducible_def____.irreducible_def <br>Frequency: 134, 0.05% <br>File: import Mathlib.Tactic.IrreducibleDef <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/IrreducibleDef.html#command_Irreducible_def____)
+> Syntax full name: command_Irreducible_def____.irreducible_def <br>Frequency: 134, 0.0451% <br>File: import Mathlib.Tactic.IrreducibleDef <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/IrreducibleDef.html#command_Irreducible_def____)
 
 
 Introduces an irreducible definition.
@@ -728,7 +728,7 @@ a theorem `foo_def : foo = 42`.
 <div class="division"></div>
 
 ### 29. add_decl_doc
-> Syntax full name: Parser.Command.addDocString.add_decl_doc <br>Frequency: 132, 0.04% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.addDocString)
+> Syntax full name: Parser.Command.addDocString.add_decl_doc <br>Frequency: 132, 0.0444% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.addDocString)
 
 
 Adds a docstring to an existing declaration, replacing any existing docstring.
@@ -755,21 +755,21 @@ Documentation can only be added to declarations in the same module.
 <div class="division"></div>
 
 ### 30. elab
-> Syntax full name: Parser.Command.elab.elab <br>Frequency: 129, 0.04% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.elab)
+> Syntax full name: Parser.Command.elab.elab <br>Frequency: 129, 0.0434% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.elab)
 
 
 
 <div class="division"></div>
 
 ### 31. #check
-> Syntax full name: Parser.Command.check.#check <br>Frequency: 129, 0.04% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.check)
+> Syntax full name: Parser.Command.check.#check <br>Frequency: 129, 0.0434% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.check)
 
 
 
 <div class="division"></div>
 
 ### 32. notation3
-> Syntax full name: Mathlib.Notation3.notation3.notation3 <br>Frequency: 123, 0.04% <br>File: import Mathlib.Mathport.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Notation.html#Mathlib.Notation3.notation3)
+> Syntax full name: Mathlib.Notation3.notation3.notation3 <br>Frequency: 123, 0.0414% <br>File: import Mathlib.Mathport.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Notation.html#Mathlib.Notation3.notation3)
 
 
 `notation3` declares notation using Lean-3-style syntax.
@@ -791,7 +791,7 @@ for backward compatibility.
 <div class="division"></div>
 
 ### 33. #adaptation_note
-> Syntax full name: adaptationNoteCmd.#adaptation_note <br>Frequency: 122, 0.04% <br>File: import Mathlib.Tactic.AdaptationNote <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/AdaptationNote.html#adaptationNoteCmd)
+> Syntax full name: adaptationNoteCmd.#adaptation_note <br>Frequency: 122, 0.0411% <br>File: import Mathlib.Tactic.AdaptationNote <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/AdaptationNote.html#adaptationNoteCmd)
 
 
 Adaptation notes are comments that are used to indicate that a piece of code
@@ -801,14 +801,14 @@ They typically require further action/maintenance to be taken in the future.
 <div class="division"></div>
 
 ### 34. include
-> Syntax full name: include.include <br>Frequency: 104, 0.04% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#include)
+> Syntax full name: include.include <br>Frequency: 104, 0.0350% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#include)
 
 
 
 <div class="division"></div>
 
 ### 35. run_cmd
-> Syntax full name: runCmd.run_cmd <br>Frequency: 80, 0.03% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#runCmd)
+> Syntax full name: runCmd.run_cmd <br>Frequency: 80, 0.0269% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#runCmd)
 
 
 The `run_cmd doSeq` command executes code in `CommandElabM Unit`.
@@ -818,28 +818,28 @@ except that it doesn't print an empty diagnostic.
 <div class="division"></div>
 
 ### 36. #eval
-> Syntax full name: Parser.Command.eval.#eval <br>Frequency: 78, 0.03% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.eval)
+> Syntax full name: Parser.Command.eval.#eval <br>Frequency: 78, 0.0263% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.eval)
 
 
 
 <div class="division"></div>
 
 ### 37. macro_rules
-> Syntax full name: Parser.Command.macro_rules.macro_rules <br>Frequency: 73, 0.02% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.macro_rules)
+> Syntax full name: Parser.Command.macro_rules.macro_rules <br>Frequency: 73, 0.0246% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.macro_rules)
 
 
 
 <div class="division"></div>
 
 ### 38. elab_rules
-> Syntax full name: Parser.Command.elab_rules.elab_rules <br>Frequency: 71, 0.02% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.elab_rules)
+> Syntax full name: Parser.Command.elab_rules.elab_rules <br>Frequency: 71, 0.0239% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.elab_rules)
 
 
 
 <div class="division"></div>
 
 ### 39. variable?
-> Syntax full name: Mathlib.Command.Variable.variable?.variable? <br>Frequency: 54, 0.02% <br>File: import Mathlib.Tactic.Variable <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Variable.html#Mathlib.Command.Variable.variable?)
+> Syntax full name: Mathlib.Command.Variable.variable?.variable? <br>Frequency: 54, 0.0182% <br>File: import Mathlib.Tactic.Variable <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Variable.html#Mathlib.Command.Variable.variable?)
 
 
 The `variable?` command has the same syntax as `variable`, but it will auto-insert
@@ -881,7 +881,7 @@ for quantified binders such as `[∀ i, F i]`.
 <div class="division"></div>
 
 ### 40. suppress_compilation
-> Syntax full name: commandSuppress_compilation.suppress_compilation <br>Frequency: 53, 0.02% <br>File: import Mathlib.Tactic.SuppressCompilation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SuppressCompilation.html#commandSuppress_compilation)
+> Syntax full name: commandSuppress_compilation.suppress_compilation <br>Frequency: 53, 0.0178% <br>File: import Mathlib.Tactic.SuppressCompilation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SuppressCompilation.html#commandSuppress_compilation)
 
 
 Replacing `def` and `instance` by `noncomputable def` and `noncomputable instance`, designed
@@ -893,14 +893,14 @@ Note that it does not work with `notation3`. You need to prefix such a notation 
 <div class="division"></div>
 
 ### 41. mutual
-> Syntax full name: Parser.Command.mutual.mutual <br>Frequency: 36, 0.01% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.mutual)
+> Syntax full name: Parser.Command.mutual.mutual <br>Frequency: 36, 0.0121% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.mutual)
 
 
 
 <div class="division"></div>
 
 ### 42. recall
-> Syntax full name: Recall.recall.recall <br>Frequency: 32, 0.01% <br>File: import Mathlib.Tactic.Recall <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Recall.html#Recall.recall)
+> Syntax full name: Recall.recall.recall <br>Frequency: 32, 0.0108% <br>File: import Mathlib.Tactic.Recall <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Recall.html#Recall.recall)
 
 
 The `recall` command redeclares a previous definition for illustrative purposes.
@@ -925,7 +925,7 @@ recall Nat.add_comm {n m : Nat} : n + m = m + n
 <div class="division"></div>
 
 ### 43. library_note
-> Syntax full name: Batteries.Util.LibraryNote.commandLibrary_note___.library_note <br>Frequency: 31, 0.01% <br>File: import Batteries.Util.LibraryNote <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Util/LibraryNote.html#Batteries.Util.LibraryNote.commandLibrary_note___)
+> Syntax full name: Batteries.Util.LibraryNote.commandLibrary_note___.library_note <br>Frequency: 31, 0.0104% <br>File: import Batteries.Util.LibraryNote <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Util/LibraryNote.html#Batteries.Util.LibraryNote.commandLibrary_note___)
 
 
 ```
@@ -942,7 +942,7 @@ in doc-comments.
 <div class="division"></div>
 
 ### 44. compile_inductive%
-> Syntax full name: Mathlib.Util.«commandCompile_inductive%_».compile_inductive% <br>Frequency: 30, 0.01% <br>File: import Mathlib.Util.CompileInductive <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/CompileInductive.html#Mathlib.Util.«commandCompile_inductive%_»)
+> Syntax full name: Mathlib.Util.«commandCompile_inductive%_».compile_inductive% <br>Frequency: 30, 0.0101% <br>File: import Mathlib.Util.CompileInductive <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/CompileInductive.html#Mathlib.Util.«commandCompile_inductive%_»)
 
 
 `compile_inductive% Foo` creates compiled code for the recursor `Foo.rec`,
@@ -952,7 +952,7 @@ without having to mark the definition as `noncomputable`.
 <div class="division"></div>
 
 ### 45. #guard
-> Syntax full name: Parser.Command.guardCmd.#guard <br>Frequency: 24, 0.01% <br>File: import Init.Guard <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Guard.html#Parser.Command.guardCmd)
+> Syntax full name: Parser.Command.guardCmd.#guard <br>Frequency: 24, 0.0081% <br>File: import Init.Guard <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Guard.html#Parser.Command.guardCmd)
 
 
 Command to check that an expression evaluates to `true`.
@@ -973,28 +973,28 @@ expression equals `true`.
 <div class="division"></div>
 
 ### 46. omit
-> Syntax full name: omit.omit <br>Frequency: 23, 0.01% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#omit)
+> Syntax full name: omit.omit <br>Frequency: 23, 0.0077% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#omit)
 
 
 
 <div class="division"></div>
 
 ### 47. #synth
-> Syntax full name: Parser.Command.synth.#synth <br>Frequency: 19, 0.01% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.synth)
+> Syntax full name: Parser.Command.synth.#synth <br>Frequency: 19, 0.0064% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.synth)
 
 
 
 <div class="division"></div>
 
 ### 48. #find
-> Syntax full name: Find.«command#find_».#find <br>Frequency: 19, 0.01% <br>File: import Mathlib.Tactic.Find <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Find.html#Find.«command#find_»)
+> Syntax full name: Find.«command#find_».#find <br>Frequency: 19, 0.0064% <br>File: import Mathlib.Tactic.Find <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Find.html#Find.«command#find_»)
 
 
 
 <div class="division"></div>
 
 ### 49. #help
-> Syntax full name: «command#help_Cats___».#help <br>Frequency: 17, 0.01% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Cats___»)
+> Syntax full name: «command#help_Cats___».#help <br>Frequency: 17, 0.0057% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Cats___»)
 
 
 The command `#help cats` shows all syntax categories that have been defined in the
@@ -1009,19 +1009,19 @@ but you can click to go to the definition.) It also shows the doc string if avai
 
 The form `#help cats id` will show only syntax categories that begin with `id`.
 
-> Syntax full name: «command#help_Tactic+____».#help <br>Frequency: 17, 0.01% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Tactic+____»)
+> Syntax full name: «command#help_Tactic+____».#help <br>Frequency: 17, 0.0057% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Tactic+____»)
 
 
 The command `#help tactic` shows all tactics that have been defined in the current environment.
 See `#help cat` for more information.
 
-> Syntax full name: «command#help_Conv+____».#help <br>Frequency: 17, 0.01% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Conv+____»)
+> Syntax full name: «command#help_Conv+____».#help <br>Frequency: 17, 0.0057% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Conv+____»)
 
 
 The command `#help conv` shows all tactics that have been defined in the current environment.
 See `#help cat` for more information.
 
-> Syntax full name: «command#help_Option___».#help <br>Frequency: 17, 0.01% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Option___»)
+> Syntax full name: «command#help_Option___».#help <br>Frequency: 17, 0.0057% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Option___»)
 
 
 The command `#help option` shows all options that have been defined in the current environment.
@@ -1037,13 +1037,13 @@ it will appear as a `(currently: true)` note next to the option.
 
 The form `#help option id` will show only options that begin with `id`.
 
-> Syntax full name: «command#help_Term+____».#help <br>Frequency: 17, 0.01% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Term+____»)
+> Syntax full name: «command#help_Term+____».#help <br>Frequency: 17, 0.0057% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Term+____»)
 
 
 The command `#help term` shows all term syntaxes that have been defined in the current environment.
 See `#help cat` for more information.
 
-> Syntax full name: «command#help_Cat+______».#help <br>Frequency: 17, 0.01% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Cat+______»)
+> Syntax full name: «command#help_Cat+______».#help <br>Frequency: 17, 0.0057% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Cat+______»)
 
 
 The command `#help cat C` shows all syntaxes that have been defined in syntax category `C` in the
@@ -1060,13 +1060,13 @@ name of the syntax (which you can also click to go to the definition), and the d
 * The form `#help cat+ C` will also show information about any `macro`s and `elab`s
   associated to the listed syntaxes.
 
-> Syntax full name: «command#help_Command+____».#help <br>Frequency: 17, 0.01% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Command+____»)
+> Syntax full name: «command#help_Command+____».#help <br>Frequency: 17, 0.0057% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_Command+____»)
 
 
 The command `#help command` shows all commands that have been defined in the current environment.
 See `#help cat` for more information.
 
-> Syntax full name: «command#help_AttrAttribute___».#help <br>Frequency: 17, 0.01% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_AttrAttribute___»)
+> Syntax full name: «command#help_AttrAttribute___».#help <br>Frequency: 17, 0.0057% <br>File: import Mathlib.Tactic.HelpCmd <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/HelpCmd.html#«command#help_AttrAttribute___»)
 
 
 The command `#help attribute` (or the short form `#help attr`) shows all attributes that have been
@@ -1085,7 +1085,7 @@ The form `#help attr id` will show only attributes that begin with `id`.
 <div class="division"></div>
 
 ### 50. mk_iff_of_inductive_prop
-> Syntax full name: MkIff.mkIffOfInductiveProp.mk_iff_of_inductive_prop <br>Frequency: 17, 0.01% <br>File: import Mathlib.Tactic.MkIffOfInductiveProp <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/MkIffOfInductiveProp.html#MkIff.mkIffOfInductiveProp)
+> Syntax full name: MkIff.mkIffOfInductiveProp.mk_iff_of_inductive_prop <br>Frequency: 17, 0.0057% <br>File: import Mathlib.Tactic.MkIffOfInductiveProp <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/MkIffOfInductiveProp.html#MkIff.mkIffOfInductiveProp)
 
 
 `mk_iff_of_inductive_prop i r` makes an `iff` rule for the inductively-defined proposition `i`.
@@ -1109,14 +1109,14 @@ See also the `mk_iff` user attribute.
 <div class="division"></div>
 
 ### 51. register_option
-> Syntax full name: Option.registerOption.register_option <br>Frequency: 17, 0.01% <br>File: import Lean.Data.Options <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Data/Options.html#Option.registerOption)
+> Syntax full name: Option.registerOption.register_option <br>Frequency: 17, 0.0057% <br>File: import Lean.Data.Options <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Data/Options.html#Option.registerOption)
 
 
 
 <div class="division"></div>
 
 ### 52. #explode
-> Syntax full name: Mathlib.Explode.«command#explode_».#explode <br>Frequency: 14, 0.00% <br>File: import Mathlib.Tactic.Explode <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Explode.html#Mathlib.Explode.«command#explode_»)
+> Syntax full name: Mathlib.Explode.«command#explode_».#explode <br>Frequency: 14, 0.0047% <br>File: import Mathlib.Tactic.Explode <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Explode.html#Mathlib.Explode.«command#explode_»)
 
 
 `#explode expr` displays a proof term in a line-by-line format somewhat akin to a Fitch-style
@@ -1230,7 +1230,7 @@ have global scope anyway so detailed tracking is not necessary.)
 <div class="division"></div>
 
 ### 53. proof_wanted
-> Syntax full name: proof_wanted.proof_wanted <br>Frequency: 14, 0.00% <br>File: import Batteries.Util.ProofWanted <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Util/ProofWanted.html#proof_wanted)
+> Syntax full name: proof_wanted.proof_wanted <br>Frequency: 14, 0.0047% <br>File: import Batteries.Util.ProofWanted <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Util/ProofWanted.html#proof_wanted)
 
 
 This proof would be a welcome contribution to the library!
@@ -1249,7 +1249,7 @@ Typical usage:
 <div class="division"></div>
 
 ### 54. compile_def%
-> Syntax full name: Mathlib.Util.«commandCompile_def%_».compile_def% <br>Frequency: 13, 0.00% <br>File: import Mathlib.Util.CompileInductive <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/CompileInductive.html#Mathlib.Util.«commandCompile_def%_»)
+> Syntax full name: Mathlib.Util.«commandCompile_def%_».compile_def% <br>Frequency: 13, 0.0044% <br>File: import Mathlib.Util.CompileInductive <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/CompileInductive.html#Mathlib.Util.«commandCompile_def%_»)
 
 
 `compile_def% Foo.foo` adds compiled code for the definition `Foo.foo`.
@@ -1260,14 +1260,14 @@ for which Lean does not generate compiled code by default
 <div class="division"></div>
 
 ### 55. register_simp_attr
-> Syntax full name: Parser.Command.registerSimpAttr.register_simp_attr <br>Frequency: 13, 0.00% <br>File: import Lean.Meta.Tactic.Simp.RegisterCommand <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Meta/Tactic/Simp/RegisterCommand.html#Parser.Command.registerSimpAttr)
+> Syntax full name: Parser.Command.registerSimpAttr.register_simp_attr <br>Frequency: 13, 0.0044% <br>File: import Lean.Meta.Tactic.Simp.RegisterCommand <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Meta/Tactic/Simp/RegisterCommand.html#Parser.Command.registerSimpAttr)
 
 
 
 <div class="division"></div>
 
 ### 56. #guard_expr
-> Syntax full name: Parser.Command.guardExprCmd.#guard_expr <br>Frequency: 12, 0.00% <br>File: import Init.Guard <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Guard.html#Parser.Command.guardExprCmd)
+> Syntax full name: Parser.Command.guardExprCmd.#guard_expr <br>Frequency: 12, 0.0040% <br>File: import Init.Guard <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Guard.html#Parser.Command.guardExprCmd)
 
 
 Command to check equality of two expressions.
@@ -1281,28 +1281,28 @@ This is a command version of the `guard_expr` tactic.
 <div class="division"></div>
 
 ### 57. declare_config_elab
-> Syntax full name: configElab.declare_config_elab <br>Frequency: 10, 0.00% <br>File: import Lean.Elab.Tactic.Config <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Elab/Tactic/Config.html#configElab)
+> Syntax full name: configElab.declare_config_elab <br>Frequency: 10, 0.0034% <br>File: import Lean.Elab.Tactic.Config <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Elab/Tactic/Config.html#configElab)
 
 
 
 <div class="division"></div>
 
 ### 58. declare_aesop_rule_sets
-> Syntax full name: Aesop.Frontend.Parser.declareAesopRuleSets.declare_aesop_rule_sets <br>Frequency: 10, 0.00% <br>File: import Aesop.Frontend.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Command.html#Aesop.Frontend.Parser.declareAesopRuleSets)
+> Syntax full name: Aesop.Frontend.Parser.declareAesopRuleSets.declare_aesop_rule_sets <br>Frequency: 10, 0.0034% <br>File: import Aesop.Frontend.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Command.html#Aesop.Frontend.Parser.declareAesopRuleSets)
 
 
 
 <div class="division"></div>
 
 ### 59. unif_hint
-> Syntax full name: «command__Unif_hint____Where_|_-⊢_».unif_hint <br>Frequency: 9, 0.00% <br>File: import Init.NotationExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/NotationExtra.html#«command__Unif_hint____Where_|_-⊢_»)
+> Syntax full name: «command__Unif_hint____Where_|_-⊢_».unif_hint <br>Frequency: 9, 0.0030% <br>File: import Init.NotationExtra <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/NotationExtra.html#«command__Unif_hint____Where_|_-⊢_»)
 
 
 
 <div class="division"></div>
 
 ### 60. #print
-> Syntax full name: Batteries.Tactic.printPrefix.#print <br>Frequency: 9, 0.00% <br>File: import Batteries.Tactic.PrintPrefix <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/PrintPrefix.html#Batteries.Tactic.printPrefix)
+> Syntax full name: Batteries.Tactic.printPrefix.#print <br>Frequency: 9, 0.0030% <br>File: import Batteries.Tactic.PrintPrefix <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/PrintPrefix.html#Batteries.Tactic.printPrefix)
 
 
 The command `#print prefix foo` will print all definitions that start with
@@ -1331,15 +1331,15 @@ by setting `showTypes` to `false`:
 The complete set of flags can be seen in the documentation
 for `Lean.Elab.Command.PrintPrefixConfig`.
 
-> Syntax full name: Parser.Command.printAxioms.#print <br>Frequency: 9, 0.00% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.printAxioms)
+> Syntax full name: Parser.Command.printAxioms.#print <br>Frequency: 9, 0.0030% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.printAxioms)
 
 
 
-> Syntax full name: Parser.Command.printEqns.#print <br>Frequency: 9, 0.00% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.printEqns)
+> Syntax full name: Parser.Command.printEqns.#print <br>Frequency: 9, 0.0030% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.printEqns)
 
 
 
-> Syntax full name: Batteries.Tactic.«command#printDependents___».#print <br>Frequency: 9, 0.00% <br>File: import Batteries.Tactic.PrintDependents <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/PrintDependents.html#Batteries.Tactic.«command#printDependents___»)
+> Syntax full name: Batteries.Tactic.«command#printDependents___».#print <br>Frequency: 9, 0.0030% <br>File: import Batteries.Tactic.PrintDependents <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/PrintDependents.html#Batteries.Tactic.«command#printDependents___»)
 
 
 The command `#print dependents X Y` prints a list of all the declarations in the file that
@@ -1365,14 +1365,14 @@ theorem bar' : 1 = 1 ∨ 1 ≠ 1 := foo
 -- bar': foo
 ```
 
-> Syntax full name: Parser.Command.print.#print <br>Frequency: 9, 0.00% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.print)
+> Syntax full name: Parser.Command.print.#print <br>Frequency: 9, 0.0030% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.print)
 
 
 
 <div class="division"></div>
 
 ### 61. register_hint
-> Syntax full name: Hint.registerHintStx.register_hint <br>Frequency: 8, 0.00% <br>File: import Mathlib.Tactic.Hint <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Hint.html#Hint.registerHintStx)
+> Syntax full name: Hint.registerHintStx.register_hint <br>Frequency: 8, 0.0027% <br>File: import Mathlib.Tactic.Hint <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Hint.html#Hint.registerHintStx)
 
 
 Register a tactic for use with the `hint` tactic, e.g. `register_hint simp_all`.
@@ -1380,7 +1380,7 @@ Register a tactic for use with the `hint` tactic, e.g. `register_hint simp_all`.
 <div class="division"></div>
 
 ### 62. with_weak_namespace
-> Syntax full name: commandWith_weak_namespace__.with_weak_namespace <br>Frequency: 8, 0.00% <br>File: import Mathlib.Util.WithWeakNamespace <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/WithWeakNamespace.html#commandWith_weak_namespace__)
+> Syntax full name: commandWith_weak_namespace__.with_weak_namespace <br>Frequency: 8, 0.0027% <br>File: import Mathlib.Util.WithWeakNamespace <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/WithWeakNamespace.html#commandWith_weak_namespace__)
 
 
 Changes the current namespace without causing scoped things to go out of scope
@@ -1388,7 +1388,7 @@ Changes the current namespace without causing scoped things to go out of scope
 <div class="division"></div>
 
 ### 63. #norm_num
-> Syntax full name: normNumCmd.#norm_num <br>Frequency: 6, 0.00% <br>File: import Mathlib.Tactic.NormNum.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/NormNum/Core.html#normNumCmd)
+> Syntax full name: normNumCmd.#norm_num <br>Frequency: 6, 0.0020% <br>File: import Mathlib.Tactic.NormNum.Core <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/NormNum/Core.html#normNumCmd)
 
 
 The basic usage is `#norm_num e`, where `e` is an expression,
@@ -1409,7 +1409,7 @@ Unlike `norm_num`, this command does not fail when no simplifications are made.
 <div class="division"></div>
 
 ### 64. unsuppress_compilation
-> Syntax full name: commandUnsuppress_compilationIn_.unsuppress_compilation <br>Frequency: 6, 0.00% <br>File: import Mathlib.Tactic.SuppressCompilation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SuppressCompilation.html#commandUnsuppress_compilationIn_)
+> Syntax full name: commandUnsuppress_compilationIn_.unsuppress_compilation <br>Frequency: 6, 0.0020% <br>File: import Mathlib.Tactic.SuppressCompilation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SuppressCompilation.html#commandUnsuppress_compilationIn_)
 
 
 The command `unsuppress_compilation in def foo : ...` makes sure that the definition is
@@ -1418,21 +1418,21 @@ compiled to executable code, even if `suppress_compilation` is active.
 <div class="division"></div>
 
 ### 65. add_tactic_doc
-> Syntax full name: addTacticDoc.add_tactic_doc <br>Frequency: 5, 0.00% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#addTacticDoc)
+> Syntax full name: addTacticDoc.add_tactic_doc <br>Frequency: 5, 0.0017% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#addTacticDoc)
 
 
 
 <div class="division"></div>
 
 ### 66. #time
-> Syntax full name: timeCmd.#time <br>Frequency: 4, 0.00% <br>File: import Mathlib.Util.Time <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/Time.html#timeCmd)
+> Syntax full name: timeCmd.#time <br>Frequency: 4, 0.0013% <br>File: import Mathlib.Util.Time <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/Time.html#timeCmd)
 
 
 
 <div class="division"></div>
 
 ### 67. lrat_proof
-> Syntax full name: Sat.commandLrat_proof_Example____.lrat_proof <br>Frequency: 4, 0.00% <br>File: import Mathlib.Tactic.Sat.FromLRAT <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Sat/FromLRAT.html#Sat.commandLrat_proof_Example____)
+> Syntax full name: Sat.commandLrat_proof_Example____.lrat_proof <br>Frequency: 4, 0.0013% <br>File: import Mathlib.Tactic.Sat.FromLRAT <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Sat/FromLRAT.html#Sat.commandLrat_proof_Example____)
 
 
 A macro for producing SAT proofs from CNF / LRAT files.
@@ -1459,7 +1459,7 @@ foo : ∀ (a a_1 : Prop), (¬a ∧ ¬a_1 ∨ a ∧ ¬a_1) ∨ ¬a ∧ a_1 ∨ a 
 <div class="division"></div>
 
 ### 68. sudo
-> Syntax full name: commandSudoSet_option___.sudo <br>Frequency: 3, 0.00% <br>File: import Mathlib.Tactic.SudoSetOption <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SudoSetOption.html#commandSudoSet_option___)
+> Syntax full name: commandSudoSet_option___.sudo <br>Frequency: 3, 0.0010% <br>File: import Mathlib.Tactic.SudoSetOption <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/SudoSetOption.html#commandSudoSet_option___)
 
 
 The command `sudo set_option name val` is similar to `set_option name val`,
@@ -1468,7 +1468,7 @@ but it also allows to set undeclared options.
 <div class="division"></div>
 
 ### 69. unseal
-> Syntax full name: Parser.commandUnseal__.unseal <br>Frequency: 3, 0.00% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.commandUnseal__)
+> Syntax full name: Parser.commandUnseal__.unseal <br>Frequency: 3, 0.0010% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.commandUnseal__)
 
 
 The `unseal foo` command ensures that the definition of `foo` is unsealed, meaning it is marked as `[semireducible]`, the
@@ -1480,11 +1480,11 @@ Applying this attribute makes `foo` semireducible only within the local scope.
 <div class="division"></div>
 
 ### 70. #sample
-> Syntax full name: sample.#sample <br>Frequency: 2, 0.00% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#sample)
+> Syntax full name: sample.#sample <br>Frequency: 2, 0.0007% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#sample)
 
 
 
-> Syntax full name: SlimCheck.«command#sample_».#sample <br>Frequency: 2, 0.00% <br>File: import Mathlib.Testing.SlimCheck.Sampleable <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Testing/SlimCheck/Sampleable.html#SlimCheck.«command#sample_»)
+> Syntax full name: SlimCheck.«command#sample_».#sample <br>Frequency: 2, 0.0007% <br>File: import Mathlib.Testing.SlimCheck.Sampleable <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Testing/SlimCheck/Sampleable.html#SlimCheck.«command#sample_»)
 
 
 `#sample type`, where `type` has an instance of `SampleableExt`, prints ten random
@@ -1523,7 +1523,7 @@ values of type `type` using an increasing size parameter.
 <div class="division"></div>
 
 ### 71. gen_injective_theorems%
-> Syntax full name: Parser.Command.genInjectiveTheorems.gen_injective_theorems% <br>Frequency: 2, 0.00% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.genInjectiveTheorems)
+> Syntax full name: Parser.Command.genInjectiveTheorems.gen_injective_theorems% <br>Frequency: 2, 0.0007% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.genInjectiveTheorems)
 
 
 This is an auxiliary command for generation constructor injectivity theorems for
@@ -1533,7 +1533,7 @@ It is meant for bootstrapping purposes only.
 <div class="division"></div>
 
 ### 72. aux_def
-> Syntax full name: aux_def.aux_def <br>Frequency: 2, 0.00% <br>File: import Lean.Elab.AuxDef <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Elab/AuxDef.html#aux_def)
+> Syntax full name: aux_def.aux_def <br>Frequency: 2, 0.0007% <br>File: import Lean.Elab.AuxDef <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Elab/AuxDef.html#aux_def)
 
 
 Declares an auxiliary definition with an automatically generated name.
@@ -1543,7 +1543,7 @@ with an internal, unused name based on the suggestion `foo`.
 <div class="division"></div>
 
 ### 73. extend_docs
-> Syntax full name: ExtendDocs.commandExtend_docs__Before__After_.extend_docs <br>Frequency: 2, 0.00% <br>File: import Mathlib.Tactic.ExtendDoc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ExtendDoc.html#ExtendDocs.commandExtend_docs__Before__After_)
+> Syntax full name: ExtendDocs.commandExtend_docs__Before__After_.extend_docs <br>Frequency: 2, 0.0007% <br>File: import Mathlib.Tactic.ExtendDoc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/ExtendDoc.html#ExtendDocs.commandExtend_docs__Before__After_)
 
 
 `extend_docs <declName> before <prefix_string> after <suffix_string>` extends the
@@ -1552,14 +1552,14 @@ docs of `<declName>` by adding `<prefix_string>` before and `<suffix_string>` af
 <div class="division"></div>
 
 ### 74. #test
-> Syntax full name: SlimCheck.«command#test_».#test <br>Frequency: 2, 0.00% <br>File: import Mathlib.Testing.SlimCheck.Testable <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Testing/SlimCheck/Testable.html#SlimCheck.«command#test_»)
+> Syntax full name: SlimCheck.«command#test_».#test <br>Frequency: 2, 0.0007% <br>File: import Mathlib.Testing.SlimCheck.Testable <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Testing/SlimCheck/Testable.html#SlimCheck.«command#test_»)
 
 
 
 <div class="division"></div>
 
 ### 75. #lint
-> Syntax full name: Std.Tactic.Lint.«command#lint+-*Only___».#lint <br>Frequency: 2, 0.00% <br>File: import Batteries.Tactic.Lint.Frontend <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Lint/Frontend.html#Std.Tactic.Lint.«command#lint+-*Only___»)
+> Syntax full name: Std.Tactic.Lint.«command#lint+-*Only___».#lint <br>Frequency: 2, 0.0007% <br>File: import Batteries.Tactic.Lint.Frontend <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Lint/Frontend.html#Std.Tactic.Lint.«command#lint+-*Only___»)
 
 
 The command `#lint` runs the linters on the current file (by default).
@@ -1569,7 +1569,7 @@ The command `#lint` runs the linters on the current file (by default).
 <div class="division"></div>
 
 ### 76. count_heartbeats
-> Syntax full name: Mathlib.CountHeartbeats.commandCount_heartbeatsIn__.count_heartbeats <br>Frequency: 1, 0.00% <br>File: import Mathlib.Util.CountHeartbeats <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/CountHeartbeats.html#Mathlib.CountHeartbeats.commandCount_heartbeatsIn__)
+> Syntax full name: Mathlib.CountHeartbeats.commandCount_heartbeatsIn__.count_heartbeats <br>Frequency: 1, 0.0003% <br>File: import Mathlib.Util.CountHeartbeats <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/CountHeartbeats.html#Mathlib.CountHeartbeats.commandCount_heartbeatsIn__)
 
 
 Count the heartbeats used in the enclosed command.
@@ -1591,7 +1591,7 @@ As this is intended as a user command, we divide by 1000.
 <div class="division"></div>
 
 ### 77. assert_no_sorry
-> Syntax full name: commandAssert_no_sorry_.assert_no_sorry <br>Frequency: 1, 0.00% <br>File: import Mathlib.Util.AssertNoSorry <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/AssertNoSorry.html#commandAssert_no_sorry_)
+> Syntax full name: commandAssert_no_sorry_.assert_no_sorry <br>Frequency: 1, 0.0003% <br>File: import Mathlib.Util.AssertNoSorry <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/AssertNoSorry.html#commandAssert_no_sorry_)
 
 
 Throws an error if the given identifier uses sorryAx.
@@ -1599,21 +1599,21 @@ Throws an error if the given identifier uses sorryAx.
 <div class="division"></div>
 
 ### 78. #reduce
-> Syntax full name: Parser.Command.reduce.#reduce <br>Frequency: 1, 0.00% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.reduce)
+> Syntax full name: Parser.Command.reduce.#reduce <br>Frequency: 1, 0.0003% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.reduce)
 
 
 
 <div class="division"></div>
 
 ### 79. #check_tactic
-> Syntax full name: Batteries.Tactic.«command#check_tactic_~>_By_».#check_tactic <br>Frequency: 1, 0.00% <br>File: import Batteries.Util.CheckTactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Util/CheckTactic.html#Batteries.Tactic.«command#check_tactic_~>_By_»)
+> Syntax full name: Batteries.Tactic.«command#check_tactic_~>_By_».#check_tactic <br>Frequency: 1, 0.0003% <br>File: import Batteries.Util.CheckTactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Util/CheckTactic.html#Batteries.Tactic.«command#check_tactic_~>_By_»)
 
 
 `#check_tactic t ~> r by commands` runs the tactic sequence `commands`
 on a goal with t in the type and sees if the resulting expression has
 reduced it to `r`.
 
-> Syntax full name: Parser.checkTactic.#check_tactic <br>Frequency: 1, 0.00% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.checkTactic)
+> Syntax full name: Parser.checkTactic.#check_tactic <br>Frequency: 1, 0.0003% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.checkTactic)
 
 
 `#check_tactic t ~> r by commands` runs the tactic sequence `commands`
@@ -1623,7 +1623,7 @@ to `r`.
 <div class="division"></div>
 
 ### 80. #whnf
-> Syntax full name: Conv.«command#whnf_».#whnf <br>Frequency: 1, 0.00% <br>File: import Mathlib.Tactic.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Conv.html#Conv.«command#whnf_»)
+> Syntax full name: Conv.«command#whnf_».#whnf <br>Frequency: 1, 0.0003% <br>File: import Mathlib.Tactic.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Conv.html#Conv.«command#whnf_»)
 
 
 The command `#whnf e` evaluates `e` to Weak Head Normal Form, which means that the "head"
@@ -1646,7 +1646,7 @@ still unevaluated. `#reduce` is equivalent to using `#whnf` on every subexpressi
 <div class="division"></div>
 
 ### 81. unset_option
-> Syntax full name: unsetOption.unset_option <br>Frequency: 1, 0.00% <br>File: import Mathlib.Tactic.UnsetOption <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/UnsetOption.html#unsetOption)
+> Syntax full name: unsetOption.unset_option <br>Frequency: 1, 0.0003% <br>File: import Mathlib.Tactic.UnsetOption <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/UnsetOption.html#unsetOption)
 
 
 Unset a user option
@@ -1654,14 +1654,14 @@ Unset a user option
 <div class="division"></div>
 
 ### 82. add_hint_tactic
-> Syntax full name: addHintTactic.add_hint_tactic <br>Frequency: 1, 0.00% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#addHintTactic)
+> Syntax full name: addHintTactic.add_hint_tactic <br>Frequency: 1, 0.0003% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#addHintTactic)
 
 
 
 <div class="division"></div>
 
 ### 83. count_heartbeats!
-> Syntax full name: Mathlib.CountHeartbeats.commandCount_heartbeats!_In__.count_heartbeats! <br>Frequency: 1, 0.00% <br>File: import Mathlib.Util.CountHeartbeats <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/CountHeartbeats.html#Mathlib.CountHeartbeats.commandCount_heartbeats!_In__)
+> Syntax full name: Mathlib.CountHeartbeats.commandCount_heartbeats!_In__.count_heartbeats! <br>Frequency: 1, 0.0003% <br>File: import Mathlib.Util.CountHeartbeats <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/CountHeartbeats.html#Mathlib.CountHeartbeats.commandCount_heartbeats!_In__)
 
 
 `count_heartbeats! in cmd` runs a command `10` times, reporting the range in heartbeats, and the
@@ -1677,7 +1677,7 @@ displays the info message `Min: 7 Max: 8 StdDev: 14%`.
 <div class="division"></div>
 
 ### 84. seal
-> Syntax full name: Parser.commandSeal__.seal <br>Frequency: 1, 0.00% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.commandSeal__)
+> Syntax full name: Parser.commandSeal__.seal <br>Frequency: 1, 0.0003% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.commandSeal__)
 
 
 The `seal foo` command ensures that the definition of `foo` is sealed, meaning it is marked as `[irreducible]`.
@@ -1690,7 +1690,7 @@ which helps in maintaining the desired abstraction level without affecting globa
 <div class="division"></div>
 
 ### 85. #conv
-> Syntax full name: Conv.«command#conv_=>_».#conv <br>Frequency: 1, 0.00% <br>File: import Mathlib.Tactic.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Conv.html#Conv.«command#conv_=>_»)
+> Syntax full name: Conv.«command#conv_=>_».#conv <br>Frequency: 1, 0.0003% <br>File: import Mathlib.Tactic.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Conv.html#Conv.«command#conv_=>_»)
 
 
 The command `#conv tac => e` will run a conv tactic `tac` on `e`, and display the resulting
@@ -1706,7 +1706,7 @@ There are also shorthand commands for several common conv tactics:
 <div class="division"></div>
 
 ### 86. whatsnew
-> Syntax full name: Mathlib.WhatsNew.commandWhatsnewIn__.whatsnew <br>Frequency: 1, 0.00% <br>File: import Mathlib.Util.WhatsNew <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/WhatsNew.html#Mathlib.WhatsNew.commandWhatsnewIn__)
+> Syntax full name: Mathlib.WhatsNew.commandWhatsnewIn__.whatsnew <br>Frequency: 1, 0.0003% <br>File: import Mathlib.Util.WhatsNew <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/WhatsNew.html#Mathlib.WhatsNew.commandWhatsnewIn__)
 
 
 `whatsnew in $command` executes the command and then prints the
@@ -1715,7 +1715,7 @@ declarations that were added to the environment.
 <div class="division"></div>
 
 ### 87. register_label_attr
-> Syntax full name: Parser.Command.registerLabelAttr.register_label_attr <br>Frequency: 1, 0.00% <br>File: import Lean.LabelAttribute <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/LabelAttribute.html#Parser.Command.registerLabelAttr)
+> Syntax full name: Parser.Command.registerLabelAttr.register_label_attr <br>Frequency: 1, 0.0003% <br>File: import Lean.LabelAttribute <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/LabelAttribute.html#Parser.Command.registerLabelAttr)
 
 
 Initialize a new "label" attribute.
@@ -1724,22 +1724,22 @@ Declarations tagged with the attribute can be retrieved using `Std.Tactic.LabelA
 <div class="division"></div>
 
 ### 88. #check_simp
-> Syntax full name: Parser.checkSimp.#check_simp <br>Frequency: 0, 0.00% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.checkSimp)
+> Syntax full name: Parser.checkSimp.#check_simp <br>Frequency: 0, 0.0000% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.checkSimp)
 
 
 `#check_simp t ~> r` checks `simp` reduces `t` to `r`.
 
-> Syntax full name: Batteries.Tactic.«command#check_simp_!~>».#check_simp <br>Frequency: 0, 0.00% <br>File: import Batteries.Util.CheckTactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Util/CheckTactic.html#Batteries.Tactic.«command#check_simp_!~>»)
+> Syntax full name: Batteries.Tactic.«command#check_simp_!~>».#check_simp <br>Frequency: 0, 0.0000% <br>File: import Batteries.Util.CheckTactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Util/CheckTactic.html#Batteries.Tactic.«command#check_simp_!~>»)
 
 
 `#check_simp t !~>` checks `simp` fails to reduce `t`.
 
-> Syntax full name: Parser.checkSimpFailure.#check_simp <br>Frequency: 0, 0.00% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.checkSimpFailure)
+> Syntax full name: Parser.checkSimpFailure.#check_simp <br>Frequency: 0, 0.0000% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.checkSimpFailure)
 
 
 `#check_simp t !~>` checks `simp` fails on reducing `t`.
 
-> Syntax full name: Batteries.Tactic.«command#check_simp_~>_».#check_simp <br>Frequency: 0, 0.00% <br>File: import Batteries.Util.CheckTactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Util/CheckTactic.html#Batteries.Tactic.«command#check_simp_~>_»)
+> Syntax full name: Batteries.Tactic.«command#check_simp_~>_».#check_simp <br>Frequency: 0, 0.0000% <br>File: import Batteries.Util.CheckTactic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Util/CheckTactic.html#Batteries.Tactic.«command#check_simp_~>_»)
 
 
 `#check_simp t ~> r` checks `simp` reduces `t` to `r`.
@@ -1747,7 +1747,7 @@ Declarations tagged with the attribute can be retrieved using `Std.Tactic.LabelA
 <div class="division"></div>
 
 ### 89. #redundant_imports
-> Syntax full name: «command#redundant_imports».#redundant_imports <br>Frequency: 0, 0.00% <br>File: import ImportGraph.Imports <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/ImportGraph/Imports.html#«command#redundant_imports»)
+> Syntax full name: «command#redundant_imports».#redundant_imports <br>Frequency: 0, 0.0000% <br>File: import ImportGraph.Imports <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/ImportGraph/Imports.html#«command#redundant_imports»)
 
 
 List the imports in this file which can be removed
@@ -1756,14 +1756,14 @@ because they are transitively implied by another import.
 <div class="division"></div>
 
 ### 90. declare_syntax_cat
-> Syntax full name: Parser.Command.syntaxCat.declare_syntax_cat <br>Frequency: 0, 0.00% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.syntaxCat)
+> Syntax full name: Parser.Command.syntaxCat.declare_syntax_cat <br>Frequency: 0, 0.0000% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.syntaxCat)
 
 
 
 <div class="division"></div>
 
 ### 91. #minimize_imports
-> Syntax full name: «command#minimize_imports».#minimize_imports <br>Frequency: 0, 0.00% <br>File: import ImportGraph.Imports <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/ImportGraph/Imports.html#«command#minimize_imports»)
+> Syntax full name: «command#minimize_imports».#minimize_imports <br>Frequency: 0, 0.0000% <br>File: import ImportGraph.Imports <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/ImportGraph/Imports.html#«command#minimize_imports»)
 
 
 Try to compute a minimal set of imports for this file,
@@ -1776,27 +1776,27 @@ so the results will likely need to be adjusted by hand.
 <div class="division"></div>
 
 ### 92. ...
-> Syntax full name: Parser.Command.mixfix.... <br>Frequency: 0, 0.00% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.mixfix)
+> Syntax full name: Parser.Command.mixfix.... <br>Frequency: 0, 0.0000% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.mixfix)
 
 
 
-> Syntax full name: lemma.... <br>Frequency: 0, 0.00% <br>File: import Mathlib.Tactic.Lemma <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Lemma.html#lemma)
+> Syntax full name: lemma.... <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Lemma <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Lemma.html#lemma)
 
 
 `lemma` means the same as `theorem`. It is used to denote "less important" theorems
 
-> Syntax full name: Parser.Command.initialize.... <br>Frequency: 0, 0.00% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.initialize)
+> Syntax full name: Parser.Command.initialize.... <br>Frequency: 0, 0.0000% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.initialize)
 
 
 
-> Syntax full name: Parser.Command.declaration.... <br>Frequency: 0, 0.00% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.declaration)
+> Syntax full name: Parser.Command.declaration.... <br>Frequency: 0, 0.0000% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.declaration)
 
 
 
 <div class="division"></div>
 
 ### 93. assert_exists
-> Syntax full name: commandAssert_exists_.assert_exists <br>Frequency: 0, 0.00% <br>File: import Mathlib.Util.AssertExists <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/AssertExists.html#commandAssert_exists_)
+> Syntax full name: commandAssert_exists_.assert_exists <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Util.AssertExists <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/AssertExists.html#commandAssert_exists_)
 
 
 `assert_exists n` is a user command that asserts that a declaration named `n` exists
@@ -1807,14 +1807,14 @@ Be careful to use names (e.g. `Rat`) rather than notations (e.g. `ℚ`).
 <div class="division"></div>
 
 ### 94. add_aesop_rules
-> Syntax full name: Aesop.Frontend.Parser.command_Add_aesop_rules_.add_aesop_rules <br>Frequency: 0, 0.00% <br>File: import Aesop.Frontend.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Command.html#Aesop.Frontend.Parser.command_Add_aesop_rules_)
+> Syntax full name: Aesop.Frontend.Parser.command_Add_aesop_rules_.add_aesop_rules <br>Frequency: 0, 0.0000% <br>File: import Aesop.Frontend.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Command.html#Aesop.Frontend.Parser.command_Add_aesop_rules_)
 
 
 
 <div class="division"></div>
 
 ### 95. #find_home
-> Syntax full name: «command#find_home!_».#find_home <br>Frequency: 0, 0.00% <br>File: import ImportGraph.Imports <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/ImportGraph/Imports.html#«command#find_home!_»)
+> Syntax full name: «command#find_home!_».#find_home <br>Frequency: 0, 0.0000% <br>File: import ImportGraph.Imports <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/ImportGraph/Imports.html#«command#find_home!_»)
 
 
 Find locations as high as possible in the import hierarchy
@@ -1833,7 +1833,7 @@ uses one lemma from each, then `#find_home! lemma` returns the current file.
 <div class="division"></div>
 
 ### 96. #simp
-> Syntax full name: Conv.«command#simpOnly_=>__».#simp <br>Frequency: 0, 0.00% <br>File: import Mathlib.Tactic.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Conv.html#Conv.«command#simpOnly_=>__»)
+> Syntax full name: Conv.«command#simpOnly_=>__».#simp <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Conv.html#Conv.«command#simpOnly_=>__»)
 
 
 * `#simp => e` runs `simp` on the expression `e` and displays the resulting expression after
@@ -1845,21 +1845,21 @@ uses one lemma from each, then `#find_home! lemma` returns the current file.
 <div class="division"></div>
 
 ### 97. #list_unused_decls
-> Syntax full name: listUnusedDecls.#list_unused_decls <br>Frequency: 0, 0.00% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#listUnusedDecls)
+> Syntax full name: listUnusedDecls.#list_unused_decls <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#listUnusedDecls)
 
 
 
 <div class="division"></div>
 
 ### 98. register_builtin_option
-> Syntax full name: Option.registerBuiltinOption.register_builtin_option <br>Frequency: 0, 0.00% <br>File: import Lean.Data.Options <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Data/Options.html#Option.registerBuiltinOption)
+> Syntax full name: Option.registerBuiltinOption.register_builtin_option <br>Frequency: 0, 0.0000% <br>File: import Lean.Data.Options <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Data/Options.html#Option.registerBuiltinOption)
 
 
 
 <div class="division"></div>
 
 ### 99. #instances
-> Syntax full name: Batteries.Tactic.Instances.instancesCmd.#instances <br>Frequency: 0, 0.00% <br>File: import Batteries.Tactic.Instances <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Instances.html#Batteries.Tactic.Instances.instancesCmd)
+> Syntax full name: Batteries.Tactic.Instances.instancesCmd.#instances <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.Instances <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Instances.html#Batteries.Tactic.Instances.instancesCmd)
 
 
 `#instances term` prints all the instances for the given class.
@@ -1872,7 +1872,7 @@ the command adds metavariables until the argument is no longer a function.
 The `#instances` command is closely related to `#synth`, but `#synth` does the full
 instance synthesis algorithm and `#instances` does the first step of finding potential instances.
 
-> Syntax full name: Batteries.Tactic.Instances.«command#instances__:_».#instances <br>Frequency: 0, 0.00% <br>File: import Batteries.Tactic.Instances <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Instances.html#Batteries.Tactic.Instances.«command#instances__:_»)
+> Syntax full name: Batteries.Tactic.Instances.«command#instances__:_».#instances <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.Instances <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Instances.html#Batteries.Tactic.Instances.«command#instances__:_»)
 
 
 `#instances term` prints all the instances for the given class.
@@ -1888,14 +1888,14 @@ instance synthesis algorithm and `#instances` does the first step of finding pot
 <div class="division"></div>
 
 ### 100. elab_stx_quot
-> Syntax full name: Term.Quotation.commandElab_stx_quot_.elab_stx_quot <br>Frequency: 0, 0.00% <br>File: import Lean.Elab.Quotation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Elab/Quotation.html#Term.Quotation.commandElab_stx_quot_)
+> Syntax full name: Term.Quotation.commandElab_stx_quot_.elab_stx_quot <br>Frequency: 0, 0.0000% <br>File: import Lean.Elab.Quotation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Elab/Quotation.html#Term.Quotation.commandElab_stx_quot_)
 
 
 
 <div class="division"></div>
 
 ### 101. builtin_simproc_decl
-> Syntax full name: Parser.«command_Builtin_simproc_decl_(_):=_».builtin_simproc_decl <br>Frequency: 0, 0.00% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command_Builtin_simproc_decl_(_):=_»)
+> Syntax full name: Parser.«command_Builtin_simproc_decl_(_):=_».builtin_simproc_decl <br>Frequency: 0, 0.0000% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command_Builtin_simproc_decl_(_):=_»)
 
 
 A builtin simplification procedure declaration.
@@ -1903,7 +1903,7 @@ A builtin simplification procedure declaration.
 <div class="division"></div>
 
 ### 102. builtin_simproc
-> Syntax full name: Parser.«command__Builtin_simproc__[_]_(_):=_».builtin_simproc <br>Frequency: 0, 0.00% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command__Builtin_simproc__[_]_(_):=_»)
+> Syntax full name: Parser.«command__Builtin_simproc__[_]_(_):=_».builtin_simproc <br>Frequency: 0, 0.0000% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command__Builtin_simproc__[_]_(_):=_»)
 
 
 A builtin simplification procedure.
@@ -1911,7 +1911,7 @@ A builtin simplification procedure.
 <div class="division"></div>
 
 ### 103. binder_predicate
-> Syntax full name: Parser.Command.binderPredicate.binder_predicate <br>Frequency: 0, 0.00% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.binderPredicate)
+> Syntax full name: Parser.Command.binderPredicate.binder_predicate <br>Frequency: 0, 0.0000% <br>File: import Lean.Parser.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Syntax.html#Parser.Command.binderPredicate)
 
 
 Declares a binder predicate.  For example:
@@ -1922,28 +1922,28 @@ binder_predicate x " > " y:term => `($x > $y)
 <div class="division"></div>
 
 ### 104. def_replacer
-> Syntax full name: defReplacer.def_replacer <br>Frequency: 0, 0.00% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#defReplacer)
+> Syntax full name: defReplacer.def_replacer <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#defReplacer)
 
 
 
 <div class="division"></div>
 
 ### 105. test_extern
-> Syntax full name: testExternCmd.test_extern <br>Frequency: 0, 0.00% <br>File: import Lean.Util.TestExtern <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Util/TestExtern.html#testExternCmd)
+> Syntax full name: testExternCmd.test_extern <br>Frequency: 0, 0.0000% <br>File: import Lean.Util.TestExtern <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Util/TestExtern.html#testExternCmd)
 
 
 
 <div class="division"></div>
 
 ### 106. assert_no_instance
-> Syntax full name: assertNoInstance.assert_no_instance <br>Frequency: 0, 0.00% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#assertNoInstance)
+> Syntax full name: assertNoInstance.assert_no_instance <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#assertNoInstance)
 
 
 
 <div class="division"></div>
 
 ### 107. show_panel_widgets
-> Syntax full name: Widget.showPanelWidgetsCmd.show_panel_widgets <br>Frequency: 0, 0.00% <br>File: import Lean.Widget.UserWidget <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Widget/UserWidget.html#Widget.showPanelWidgetsCmd)
+> Syntax full name: Widget.showPanelWidgetsCmd.show_panel_widgets <br>Frequency: 0, 0.0000% <br>File: import Lean.Widget.UserWidget <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Widget/UserWidget.html#Widget.showPanelWidgetsCmd)
 
 
 Use `show_panel_widgets [<widget>]` to mark that `<widget>`
@@ -1971,7 +1971,7 @@ Note that persistent erasure is not possible, i.e.,
 <div class="division"></div>
 
 ### 108. builtin_dsimproc_decl
-> Syntax full name: Parser.«command_Builtin_dsimproc_decl_(_):=_».builtin_dsimproc_decl <br>Frequency: 0, 0.00% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command_Builtin_dsimproc_decl_(_):=_»)
+> Syntax full name: Parser.«command_Builtin_dsimproc_decl_(_):=_».builtin_dsimproc_decl <br>Frequency: 0, 0.0000% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command_Builtin_dsimproc_decl_(_):=_»)
 
 
 A builtin defeq simplification procedure declaration.
@@ -1979,7 +1979,7 @@ A builtin defeq simplification procedure declaration.
 <div class="division"></div>
 
 ### 109. #check_tactic_failure
-> Syntax full name: Parser.checkTacticFailure.#check_tactic_failure <br>Frequency: 0, 0.00% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.checkTacticFailure)
+> Syntax full name: Parser.checkTacticFailure.#check_tactic_failure <br>Frequency: 0, 0.0000% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#Parser.checkTacticFailure)
 
 
 `#check_tactic_failure t by tac` runs the tactic `tac`
@@ -1988,7 +1988,7 @@ on a goal with `t` and verifies it fails.
 <div class="division"></div>
 
 ### 110. open private
-> Syntax full name: openPrivate.open private <br>Frequency: 0, 0.00% <br>File: import Batteries.Tactic.OpenPrivate <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/OpenPrivate.html#openPrivate)
+> Syntax full name: openPrivate.open private <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.OpenPrivate <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/OpenPrivate.html#openPrivate)
 
 
 The command `open private a b c in foo bar` will look for private definitions named `a`, `b`, `c`
@@ -2004,7 +2004,7 @@ It is also possible to specify the module instead with
 <div class="division"></div>
 
 ### 111. export private
-> Syntax full name: exportPrivate.export private <br>Frequency: 0, 0.00% <br>File: import Batteries.Tactic.OpenPrivate <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/OpenPrivate.html#exportPrivate)
+> Syntax full name: exportPrivate.export private <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.OpenPrivate <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/OpenPrivate.html#exportPrivate)
 
 
 The command `export private a b c in foo bar` is similar to `open private`, but instead of opening
@@ -2020,7 +2020,7 @@ It is also possible to specify the module instead with
 <div class="division"></div>
 
 ### 112. run_meta
-> Syntax full name: runMeta.run_meta <br>Frequency: 0, 0.00% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#runMeta)
+> Syntax full name: runMeta.run_meta <br>Frequency: 0, 0.0000% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#runMeta)
 
 
 The `run_meta doSeq` command executes code in `MetaM Unit`.
@@ -2032,14 +2032,14 @@ except that it doesn't print an empty diagnostic.
 <div class="division"></div>
 
 ### 113. declare_uint_simprocs
-> Syntax full name: commandDeclare_uint_simprocs_.declare_uint_simprocs <br>Frequency: 0, 0.00% <br>File: import Lean.Meta.Tactic.Simp.BuiltinSimprocs.UInt <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Meta/Tactic/Simp/BuiltinSimprocs/UInt.html#commandDeclare_uint_simprocs_)
+> Syntax full name: commandDeclare_uint_simprocs_.declare_uint_simprocs <br>Frequency: 0, 0.0000% <br>File: import Lean.Meta.Tactic.Simp.BuiltinSimprocs.UInt <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Meta/Tactic/Simp/BuiltinSimprocs/UInt.html#commandDeclare_uint_simprocs_)
 
 
 
 <div class="division"></div>
 
 ### 114. #whnfR
-> Syntax full name: Conv.«command#whnfR_».#whnfR <br>Frequency: 0, 0.00% <br>File: import Mathlib.Tactic.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Conv.html#Conv.«command#whnfR_»)
+> Syntax full name: Conv.«command#whnfR_».#whnfR <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Conv <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Conv.html#Conv.«command#whnfR_»)
 
 
 The command `#whnfR e` evaluates `e` to Weak Head Normal Form with Reducible transparency,
@@ -2048,21 +2048,21 @@ that is, it uses `whnf` but only unfolding reducible definitions.
 <div class="division"></div>
 
 ### 115. #aesop_stats
-> Syntax full name: Aesop.Frontend.Parser.«command#aesop_stats_».#aesop_stats <br>Frequency: 0, 0.00% <br>File: import Aesop.Frontend.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Command.html#Aesop.Frontend.Parser.«command#aesop_stats_»)
+> Syntax full name: Aesop.Frontend.Parser.«command#aesop_stats_».#aesop_stats <br>Frequency: 0, 0.0000% <br>File: import Aesop.Frontend.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Command.html#Aesop.Frontend.Parser.«command#aesop_stats_»)
 
 
 
 <div class="division"></div>
 
 ### 116. assert_instance
-> Syntax full name: assertInstance.assert_instance <br>Frequency: 0, 0.00% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#assertInstance)
+> Syntax full name: assertInstance.assert_instance <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#assertInstance)
 
 
 
 <div class="division"></div>
 
 ### 117. declare_ext_theorems_for
-> Syntax full name: Ext.declareExtTheoremFor.declare_ext_theorems_for <br>Frequency: 0, 0.00% <br>File: import Init.Ext <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Ext.html#Ext.declareExtTheoremFor)
+> Syntax full name: Ext.declareExtTheoremFor.declare_ext_theorems_for <br>Frequency: 0, 0.0000% <br>File: import Init.Ext <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Ext.html#Ext.declareExtTheoremFor)
 
 
 `declare_ext_theorems_for A` declares the extensionality theorems for the structure `A`.
@@ -2072,21 +2072,21 @@ These theorems state that two expressions with the structure type are equal if t
 <div class="division"></div>
 
 ### 118. declare_simp_like_tactic
-> Syntax full name: Parser.Tactic.declareSimpLikeTactic.declare_simp_like_tactic <br>Frequency: 0, 0.00% <br>File: import Init.Meta <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Meta.html#Parser.Tactic.declareSimpLikeTactic)
+> Syntax full name: Parser.Tactic.declareSimpLikeTactic.declare_simp_like_tactic <br>Frequency: 0, 0.0000% <br>File: import Init.Meta <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Meta.html#Parser.Tactic.declareSimpLikeTactic)
 
 
 
 <div class="division"></div>
 
 ### 119. declare_uint_theorems
-> Syntax full name: commandDeclare_uint_theorems_.declare_uint_theorems <br>Frequency: 0, 0.00% <br>File: import Init.Data.UInt.Lemmas <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Data/UInt/Lemmas.html#commandDeclare_uint_theorems_)
+> Syntax full name: commandDeclare_uint_theorems_.declare_uint_theorems <br>Frequency: 0, 0.0000% <br>File: import Init.Data.UInt.Lemmas <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Data/UInt/Lemmas.html#commandDeclare_uint_theorems_)
 
 
 
 <div class="division"></div>
 
 ### 120. builtin_dsimproc
-> Syntax full name: Parser.«command__Builtin_dsimproc__[_]_(_):=_».builtin_dsimproc <br>Frequency: 0, 0.00% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command__Builtin_dsimproc__[_]_(_):=_»)
+> Syntax full name: Parser.«command__Builtin_dsimproc__[_]_(_):=_».builtin_dsimproc <br>Frequency: 0, 0.0000% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command__Builtin_dsimproc__[_]_(_):=_»)
 
 
 A builtin defeq simplification procedure.
@@ -2094,7 +2094,7 @@ A builtin defeq simplification procedure.
 <div class="division"></div>
 
 ### 121. #long_instances
-> Syntax full name: «command#long_instances_».#long_instances <br>Frequency: 0, 0.00% <br>File: import Mathlib.Util.LongNames <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/LongNames.html#«command#long_instances_»)
+> Syntax full name: «command#long_instances_».#long_instances <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Util.LongNames <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/LongNames.html#«command#long_instances_»)
 
 
 Lists all instances with a long name beginning with `inst`,
@@ -2106,7 +2106,7 @@ Use as `#long_names` or `#long_names 100` to specify the length.
 <div class="division"></div>
 
 ### 122. #widget
-> Syntax full name: Widget.widgetCmd.#widget <br>Frequency: 0, 0.00% <br>File: import Lean.Widget.UserWidget <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Widget/UserWidget.html#Widget.widgetCmd)
+> Syntax full name: Widget.widgetCmd.#widget <br>Frequency: 0, 0.0000% <br>File: import Lean.Widget.UserWidget <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Widget/UserWidget.html#Widget.widgetCmd)
 
 
 Use `#widget <widget>` to display a panel widget,
@@ -2120,7 +2120,7 @@ In particular, `<props> : Json` works.
 <div class="division"></div>
 
 ### 123. #where
-> Syntax full name: Batteries.Tactic.Where.«command#where».#where <br>Frequency: 0, 0.00% <br>File: import Batteries.Tactic.Where <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Where.html#Batteries.Tactic.Where.«command#where»)
+> Syntax full name: Batteries.Tactic.Where.«command#where».#where <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.Where <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Where.html#Batteries.Tactic.Where.«command#where»)
 
 
 `#where` gives a description of the global scope at this point in the module.
@@ -2130,7 +2130,7 @@ and options set with `set_option`.
 <div class="division"></div>
 
 ### 124. builtin_simproc_pattern%
-> Syntax full name: Parser.simprocPatternBuiltin.builtin_simproc_pattern% <br>Frequency: 0, 0.00% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.simprocPatternBuiltin)
+> Syntax full name: Parser.simprocPatternBuiltin.builtin_simproc_pattern% <br>Frequency: 0, 0.0000% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.simprocPatternBuiltin)
 
 
 Auxiliary command for associating a pattern with a builtin simplification procedure.
@@ -2138,7 +2138,7 @@ Auxiliary command for associating a pattern with a builtin simplification proced
 <div class="division"></div>
 
 ### 125. run_elab
-> Syntax full name: runElab.run_elab <br>Frequency: 0, 0.00% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#runElab)
+> Syntax full name: runElab.run_elab <br>Frequency: 0, 0.0000% <br>File: import Init.Notation <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Notation.html#runElab)
 
 
 The `run_elab doSeq` command executes code in `TermElabM Unit`.
@@ -2148,14 +2148,14 @@ except that it doesn't print an empty diagnostic.
 <div class="division"></div>
 
 ### 126. #aesop_rules
-> Syntax full name: Aesop.Frontend.Parser.«command#aesop_rules».#aesop_rules <br>Frequency: 0, 0.00% <br>File: import Aesop.Frontend.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Command.html#Aesop.Frontend.Parser.«command#aesop_rules»)
+> Syntax full name: Aesop.Frontend.Parser.«command#aesop_rules».#aesop_rules <br>Frequency: 0, 0.0000% <br>File: import Aesop.Frontend.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Command.html#Aesop.Frontend.Parser.«command#aesop_rules»)
 
 
 
 <div class="division"></div>
 
 ### 127. dsimproc_decl
-> Syntax full name: Parser.«command_Dsimproc_decl_(_):=_».dsimproc_decl <br>Frequency: 0, 0.00% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command_Dsimproc_decl_(_):=_»)
+> Syntax full name: Parser.«command_Dsimproc_decl_(_):=_».dsimproc_decl <br>Frequency: 0, 0.0000% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command_Dsimproc_decl_(_):=_»)
 
 
 A user-defined defeq simplification procedure declaration. To activate this procedure in `simp` tactic,
@@ -2164,14 +2164,14 @@ we must provide it as an argument, or use the command `attribute` to set its `[s
 <div class="division"></div>
 
 ### 128. erase_aesop_rules
-> Syntax full name: Aesop.Frontend.Parser.«commandErase_aesop_rules[_,,]».erase_aesop_rules <br>Frequency: 0, 0.00% <br>File: import Aesop.Frontend.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Command.html#Aesop.Frontend.Parser.«commandErase_aesop_rules[_,,]»)
+> Syntax full name: Aesop.Frontend.Parser.«commandErase_aesop_rules[_,,]».erase_aesop_rules <br>Frequency: 0, 0.0000% <br>File: import Aesop.Frontend.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Aesop/Frontend/Command.html#Aesop.Frontend.Parser.«commandErase_aesop_rules[_,,]»)
 
 
 
 <div class="division"></div>
 
 ### 129. norm_cast_add_elim
-> Syntax full name: Parser.Tactic.normCastAddElim.norm_cast_add_elim <br>Frequency: 0, 0.00% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.normCastAddElim)
+> Syntax full name: Parser.Tactic.normCastAddElim.norm_cast_add_elim <br>Frequency: 0, 0.0000% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.normCastAddElim)
 
 
 `norm_cast_add_elim foo` registers `foo` as an elim-lemma in `norm_cast`.
@@ -2179,7 +2179,7 @@ we must provide it as an argument, or use the command `attribute` to set its `[s
 <div class="division"></div>
 
 ### 130. simproc_decl
-> Syntax full name: Parser.«command_Simproc_decl_(_):=_».simproc_decl <br>Frequency: 0, 0.00% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command_Simproc_decl_(_):=_»)
+> Syntax full name: Parser.«command_Simproc_decl_(_):=_».simproc_decl <br>Frequency: 0, 0.0000% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command_Simproc_decl_(_):=_»)
 
 
 A user-defined simplification procedure declaration. To activate this procedure in `simp` tactic,
@@ -2188,21 +2188,21 @@ we must provide it as an argument, or use the command `attribute` to set its `[s
 <div class="division"></div>
 
 ### 131. reassoc_axiom
-> Syntax full name: reassocAxiom.reassoc_axiom <br>Frequency: 0, 0.00% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#reassocAxiom)
+> Syntax full name: reassocAxiom.reassoc_axiom <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#reassocAxiom)
 
 
 
 <div class="division"></div>
 
 ### 132. #exit
-> Syntax full name: Parser.Command.exit.#exit <br>Frequency: 0, 0.00% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.exit)
+> Syntax full name: Parser.Command.exit.#exit <br>Frequency: 0, 0.0000% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.exit)
 
 
 
 <div class="division"></div>
 
 ### 133. #long_names
-> Syntax full name: «command#long_names_».#long_names <br>Frequency: 0, 0.00% <br>File: import Mathlib.Util.LongNames <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/LongNames.html#«command#long_names_»)
+> Syntax full name: «command#long_names_».#long_names <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Util.LongNames <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Util/LongNames.html#«command#long_names_»)
 
 
 Lists all declarations with a long name, gathered according to the module they are defined in.
@@ -2211,7 +2211,7 @@ Use as `#long_names` or `#long_names 100` to specify the length.
 <div class="division"></div>
 
 ### 134. simproc
-> Syntax full name: Parser.«command__Simproc__[_]_(_):=_».simproc <br>Frequency: 0, 0.00% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command__Simproc__[_]_(_):=_»)
+> Syntax full name: Parser.«command__Simproc__[_]_(_):=_».simproc <br>Frequency: 0, 0.0000% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command__Simproc__[_]_(_):=_»)
 
 
 A user-defined simplification procedure used by the `simp` tactic, and its variants.
@@ -2239,28 +2239,28 @@ Simplification procedures can be also scoped or local.
 <div class="division"></div>
 
 ### 135. #check_failure
-> Syntax full name: Parser.Command.check_failure.#check_failure <br>Frequency: 0, 0.00% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.check_failure)
+> Syntax full name: Parser.Command.check_failure.#check_failure <br>Frequency: 0, 0.0000% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.check_failure)
 
 
 
 <div class="division"></div>
 
 ### 136. #myhelp
-> Syntax full name: «command#myhelp_Cats___».#myhelp <br>Frequency: 0, 0.00% <br>File: import ... <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs////.html#«command#myhelp_Cats___»)
+> Syntax full name: «command#myhelp_Cats___».#myhelp <br>Frequency: 0, 0.0000% <br>File: import ... <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs////.html#«command#myhelp_Cats___»)
 
 
 
 <div class="division"></div>
 
 ### 137. init_quot
-> Syntax full name: Parser.Command.init_quot.init_quot <br>Frequency: 0, 0.00% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.init_quot)
+> Syntax full name: Parser.Command.init_quot.init_quot <br>Frequency: 0, 0.0000% <br>File: import Lean.Parser.Command <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html#Parser.Command.init_quot)
 
 
 
 <div class="division"></div>
 
 ### 138. #lookup3
-> Syntax full name: Mathlib.Prelude.Rename.lookup3.#lookup3 <br>Frequency: 0, 0.00% <br>File: import Mathlib.Mathport.Rename <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Rename.html#Mathlib.Prelude.Rename.lookup3)
+> Syntax full name: Mathlib.Prelude.Rename.lookup3.#lookup3 <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Rename <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Rename.html#Mathlib.Prelude.Rename.lookup3)
 
 
 Show information about the alignment status of a lean 3 definition.
@@ -2268,7 +2268,7 @@ Show information about the alignment status of a lean 3 definition.
 <div class="division"></div>
 
 ### 139. #list_linters
-> Syntax full name: Std.Tactic.Lint.«command#list_linters».#list_linters <br>Frequency: 0, 0.00% <br>File: import Batteries.Tactic.Lint.Frontend <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Lint/Frontend.html#Std.Tactic.Lint.«command#list_linters»)
+> Syntax full name: Std.Tactic.Lint.«command#list_linters».#list_linters <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.Lint.Frontend <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/Lint/Frontend.html#Std.Tactic.Lint.«command#list_linters»)
 
 
 The command `#list_linters` prints a list of all available linters.
@@ -2276,7 +2276,7 @@ The command `#list_linters` prints a list of all available linters.
 <div class="division"></div>
 
 ### 140. #push_neg
-> Syntax full name: PushNeg.pushNeg.#push_neg <br>Frequency: 0, 0.00% <br>File: import Mathlib.Tactic.PushNeg <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/PushNeg.html#PushNeg.pushNeg)
+> Syntax full name: PushNeg.pushNeg.#push_neg <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.PushNeg <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/PushNeg.html#PushNeg.pushNeg)
 
 
 The syntax is `#push_neg e`, where `e` is an expression,
@@ -2287,7 +2287,7 @@ which will print the `push_neg` form of `e`.
 <div class="division"></div>
 
 ### 141. dsimproc
-> Syntax full name: Parser.«command__Dsimproc__[_]_(_):=_».dsimproc <br>Frequency: 0, 0.00% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command__Dsimproc__[_]_(_):=_»)
+> Syntax full name: Parser.«command__Dsimproc__[_]_(_):=_».dsimproc <br>Frequency: 0, 0.0000% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.«command__Dsimproc__[_]_(_):=_»)
 
 
 Similar to `simproc`, but resulting expression must be definitionally equal to the input one.
@@ -2295,14 +2295,14 @@ Similar to `simproc`, but resulting expression must be definitionally equal to t
 <div class="division"></div>
 
 ### 142. #print_sorry_in
-> Syntax full name: printSorryIn.#print_sorry_in <br>Frequency: 0, 0.00% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#printSorryIn)
+> Syntax full name: printSorryIn.#print_sorry_in <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Mathport.Syntax <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Mathport/Syntax.html#printSorryIn)
 
 
 
 <div class="division"></div>
 
 ### 143. #show_unused
-> Syntax full name: Batteries.Tactic.ShowUnused.«command#show_unused___».#show_unused <br>Frequency: 0, 0.00% <br>File: import Batteries.Tactic.ShowUnused <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/ShowUnused.html#Batteries.Tactic.ShowUnused.«command#show_unused___»)
+> Syntax full name: Batteries.Tactic.ShowUnused.«command#show_unused___».#show_unused <br>Frequency: 0, 0.0000% <br>File: import Batteries.Tactic.ShowUnused <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Batteries/Tactic/ShowUnused.html#Batteries.Tactic.ShowUnused.«command#show_unused___»)
 
 
 `#show_unused decl1 decl2 ..` will highlight every theorem or definition in the current file
@@ -2318,14 +2318,14 @@ def bar := foo
 <div class="division"></div>
 
 ### 144. #html
-> Syntax full name: ProofWidgets.htmlCmd.#html <br>Frequency: 0, 0.00% <br>File: import ProofWidgets.Component.HtmlDisplay <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/ProofWidgets/Component/HtmlDisplay.html#ProofWidgets.htmlCmd)
+> Syntax full name: ProofWidgets.htmlCmd.#html <br>Frequency: 0, 0.0000% <br>File: import ProofWidgets.Component.HtmlDisplay <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/ProofWidgets/Component/HtmlDisplay.html#ProofWidgets.htmlCmd)
 
 
 
 <div class="division"></div>
 
 ### 145. deprecate to
-> Syntax full name: DeprecateMe.commandDeprecate_to____.deprecate to <br>Frequency: 0, 0.00% <br>File: import Mathlib.Tactic.DeprecateMe <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DeprecateMe.html#DeprecateMe.commandDeprecate_to____)
+> Syntax full name: DeprecateMe.commandDeprecate_to____.deprecate to <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.DeprecateMe <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/DeprecateMe.html#DeprecateMe.commandDeprecate_to____)
 
 
 Writing
@@ -2363,7 +2363,7 @@ make tests time-dependent.
 <div class="division"></div>
 
 ### 146. initialize_simps_projections?
-> Syntax full name: Parser.Command.commandInitialize_simps_projections?_.initialize_simps_projections? <br>Frequency: 0, 0.00% <br>File: import Mathlib.Tactic.Simps.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Simps/Basic.html#Parser.Command.commandInitialize_simps_projections?_)
+> Syntax full name: Parser.Command.commandInitialize_simps_projections?_.initialize_simps_projections? <br>Frequency: 0, 0.0000% <br>File: import Mathlib.Tactic.Simps.Basic <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Simps/Basic.html#Parser.Command.commandInitialize_simps_projections?_)
 
 
 This command specifies custom names and custom projections for the simp attribute `simpsAttr`.
@@ -2433,7 +2433,7 @@ Some common uses:
 <div class="division"></div>
 
 ### 147. simproc_pattern%
-> Syntax full name: Parser.simprocPattern.simproc_pattern% <br>Frequency: 0, 0.00% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.simprocPattern)
+> Syntax full name: Parser.simprocPattern.simproc_pattern% <br>Frequency: 0, 0.0000% <br>File: import Init.Simproc <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Simproc.html#Parser.simprocPattern)
 
 
 Auxiliary command for associating a pattern with a simplification procedure.
