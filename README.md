@@ -5,7 +5,7 @@ These are printed out by the `#help` command,
 similar to https://github.com/haruhisa-enomoto/mathlib4-all-tactics,
 and should include all the tactics you can use after `import Mathlib`.
 
-I also used python to roughly sort and [visualize](./postprocess.ipynb) them by the frequency they appear in Mathlib, and slightly modified `#help` to make it print the file where each syntax is defined, but I haven't set up Github Action to automatically update these for the time being.
+I also used Python to roughly sort and [visualize](./postprocess.ipynb) them by the frequency they appear in Mathlib, and slightly modified `#help` to make it print the file where each syntax is defined, but I haven't set up Github Action to automatically update these for the time being.
 
 I found the practical guides from the Formalizing Mathematics 2024 page to be very helpful in my studies as well. Now it has been mostly updated from Lean3 to Lean4. [link](https://www.ma.imperial.ac.uk/~buzzard/xena/formalising-mathematics-2024/Part_C/Part_C.html)
 
