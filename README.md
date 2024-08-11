@@ -4,9 +4,9 @@ I organized the list of tactics and commands in the Lean4 theorem prover printed
 similar to https://github.com/haruhisa-enomoto/mathlib4-all-tactics.
 This should include all the tactics you can use after `import Mathlib`.
 
-I also used python to roughly sort and (visualize)[./postprocess.ipynb] them by the frequency they appear in Mathlib, and slightly modified `#help` to make it print the file where each syntax is defined, but I haven't set up Github Action to automatically update these for the time being.
+I also used python to roughly sort and [visualize](./postprocess.ipynb) them by the frequency they appear in Mathlib, and slightly modified `#help` to make it print the file where each syntax is defined, but I haven't set up Github Action to automatically update these for the time being.
 
-See ./markdown/commands.md for commands instead of tactics.
+See [./markdown/commands.md] for commands instead of tactics.
 
 I found the Formalized Mathematics 2024 list to be very helpful in my studies as well. It looks like a detailed and practical tutorial. Now it has been mostly updated from Lean3 to Lean4. https://www.ma.imperial.ac.uk/~buzzard/xena/formalising-mathematics-2024/Part_C/Part_C.html
 
