@@ -12,15 +12,15 @@ See [./markdown/commands.md] for commands instead of tactics.
 
 I found the Formalized Mathematics 2024 list to be very helpful in my studies as well. It looks like a detailed and practical tutorial. Now it has been mostly updated from Lean3 to Lean4.
 
-[https://www.ma.imperial.ac.uk/~buzzard/xena/formalising-mathematics-2024/Part_C/Part_C.html]
+https://www.ma.imperial.ac.uk/~buzzard/xena/formalising-mathematics-2024/Part_C/Part_C.html
 
 See this short and concise explanation table.
 
-[https://github.com/madvorak/lean4-tactics]
+https://github.com/madvorak/lean4-tactics
 
 And also this table by Terence Tao.
 
-[https://docs.google.com/spreadsheets/d/1Gsn5al4hlpNc_xKoXdU6XGmMyLiX4q-LFesFVsMlANo]
+https://docs.google.com/spreadsheets/d/1Gsn5al4hlpNc_xKoXdU6XGmMyLiX4q-LFesFVsMlANo
 
 
 
