@@ -1,7 +1,7 @@
 # Mathlib Tactics
 
 I organized the list of tactics [and commands](./markdown/commands.md) in the Lean4 theorem prover into markdown. 
-These are printed by the `#help` command,
+These are printed out by the `#help` command,
 similar to https://github.com/haruhisa-enomoto/mathlib4-all-tactics,
 and should include all the tactics you can use after `import Mathlib`.
 
