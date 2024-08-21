@@ -1,6 +1,6 @@
 # Mathlib Tactics
 
-I organized the list of tactics [and commands](./markdown/commands.md) in the Lean4 theorem prover into markdown. 
+I organized the list of proof tactics [and commands](./markdown/commands.md) in the Lean4 theorem prover into markdown. 
 These are printed out by the `#help` command,
 similar to https://github.com/haruhisa-enomoto/mathlib4-all-tactics,
 and should include all the tactics you can use after `import Mathlib`.
@@ -11,7 +11,7 @@ I found the practical guides from the Formalizing Mathematics 2024 page to be ve
 
 See also this short and concise explanation table. [link](https://github.com/madvorak/lean4-tactics)
 
-And also this table by Terence Tao. [link](https://docs.google.com/spreadsheets/d/1Gsn5al4hlpNc_xKoXdU6XGmMyLiX4q-LFesFVsMlANo)
+And also this table. [link](https://docs.google.com/spreadsheets/d/1Gsn5al4hlpNc_xKoXdU6XGmMyLiX4q-LFesFVsMlANo)
 
 
 
