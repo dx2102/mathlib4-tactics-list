@@ -8,7 +8,7 @@ import Mathlib.Tactic
 
 #help tactic    -- Eg. intro, exact, use, simp
 #help command   -- Eg. #check, #eval, #reduce, #print, #help
-#help option    -- Eg. pp.all, pp.explicit (pretty-printer options)
+#help option    -- Eg. pp.all, pp.explicit (pretty-printer options), maxHeartbeats
 #help attribute -- Eg. [aesop] [simps] [field_simps] [symm] [norm_cast] [push_cast] [qify_simps]
 #help term      -- Eg. ∑ ∏
 
