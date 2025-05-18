@@ -6,12 +6,13 @@ Export documentation strings with the [#help](https://github.com/dx2102/mathlib4
 ```lean
 import Mathlib.Tactic
 
+#help tactic  -- Eg. intro, exact, use, simp
+#help command -- Eg. #check, #eval, #reduce, #print, #help
+#help option  -- Eg. pp.all, pp.explicit (pretty-printer options)
+
 #help cats
-#help tactic
 #help conv
-#help option
 #help term
-#help command
 #help attribute
 ```
 
