@@ -2,6 +2,19 @@
 
 See also:  https://www.ma.imperial.ac.uk/~buzzard/xena/formalising-mathematics-2024/Part_C/Part_C.html
 
+Export documentation strings with the [#help](https://github.com/dx2102/mathlib4-tactics-list/blob/main/markdown/commands.md#49-help) command:
+```lean
+import Mathlib.Tactic
+
+#help cats
+#help tactic
+#help conv
+#help option
+#help term
+#help command
+#help attribute
+```
+
 ### 0. (
 > Syntax full name: Parser.Tactic.paren.( <br>Frequency: 699255, 49.5162% <br>File: import Init.Tactics <br>[Mathlib4 Docs](https://leanprover-community.github.io/mathlib4_docs/Init/Tactics.html#Parser.Tactic.paren)
 
